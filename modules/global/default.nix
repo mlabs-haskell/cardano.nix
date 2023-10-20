@@ -13,7 +13,7 @@
   };
 in
   # FIXME: proper assertion, private also can have any unused number
-  assert networkNumbers ? cfg.network;
+  #  assert networkNumbers ? cfg.network;
   with lib; {
     options.cardano-ecosystem.globals = {
       network = mkOption {
