@@ -2,7 +2,8 @@
   self,
   inputs,
   ...
-}: {
+}:
+with self.lib; {
   perSystem = {
     lib,
     config,
@@ -13,7 +14,6 @@
     pkgs = import inputs.nixpkgs {
       inherit system;
       overlays = [
-        self.overlays.default
       ];
     };
   in {

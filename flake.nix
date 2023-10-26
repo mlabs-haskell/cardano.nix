@@ -21,24 +21,17 @@
       flake = false;
     };
   };
-  outputs = inputs @ {
-    flake-parts,
-    nixpkgs,
-    ...
-  }: let
-    lib = nixpkgs.lib.extend (final: _: import ./lib.nix final);
-  in
+  outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {
       inherit inputs;
-      specialArgs = {inherit lib;};
     }
     {
       imports = [
         inputs.devshell.flakeModule
-        inputs.flake-parts.flakeModules.easyOverlay
         inputs.flake-root.flakeModule
         inputs.hercules-ci-effects.flakeModule
         inputs.treefmt-nix.flakeModule
+        ./lib
         ./checks
         ./ci
         ./formatter
