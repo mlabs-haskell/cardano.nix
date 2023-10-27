@@ -4,6 +4,7 @@
       name = "cardano.nix";
       packages = with pkgs; [
         statix
+        config.treefmt.build.wrapper
       ];
     };
   };
