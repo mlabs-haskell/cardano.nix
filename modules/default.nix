@@ -1,6 +1,5 @@
 {
   imports = [
-    ./testing.nix
   ];
 
   # create a default nixos module which mixes in all modules
