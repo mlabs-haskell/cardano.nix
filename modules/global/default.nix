@@ -30,6 +30,9 @@ in
         # FIXME: could we extract it from IOG nix stuff w/o IFD or massive inclusion of https://github.com/input-output-hk/iohk-nix
         default = {
           mainnet = 0;
+          preprod = 1;
+          preview = 2;
+          sanchonet = 4;
           private = 42;
         };
         internal = true;

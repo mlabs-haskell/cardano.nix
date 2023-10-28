@@ -1,5 +1,5 @@
-{inputs, ...}: let
-  lib = import ./functions.nix inputs.nixpkgs.lib;
+{lib, ...}: let
+  lib' = import ./functions.nix lib;
 in {
-  flake.lib = lib;
+  flake.lib = lib';
 }
