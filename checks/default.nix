@@ -1,13 +1,14 @@
 {inputs, ...}: {
-  perSystem = {pkgs, ...}: {
-    checks = let
-      devour-flake = pkgs.callPackage inputs.devour-flake {};
-    in {
-      nix-build-all = pkgs.writeShellApplication {
+  perSystem = {
+    pkgs,
+    config,
+    ...
+  }: {
+    apps = {
+      nix-build-all.program = pkgs.writeShellApplication {
         name = "nix-build-all";
         runtimeInputs = [
-          pkgs.nix
-          devour-flake
+          (pkgs.callPackage inputs.devour-flake {})
         ];
         text = ''
           # Make sure that flake.lock is sync
@@ -23,8 +24,8 @@
       {
         category = "Tools";
         name = "check";
-        help = "Checks the source tree";
-        command = "nix flake check";
+        help = "Build all the checks";
+        command = config.apps.nix-build-all.program;
       }
     ];
   };
