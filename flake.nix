@@ -27,10 +27,6 @@
     }
     {
       imports = [
-        inputs.devshell.flakeModule
-        inputs.flake-root.flakeModule
-        inputs.hercules-ci-effects.flakeModule
-        inputs.treefmt-nix.flakeModule
         ./lib
         ./checks
         ./ci
