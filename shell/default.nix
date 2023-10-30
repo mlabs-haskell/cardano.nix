@@ -1,10 +1,16 @@
 {
   perSystem = {pkgs, ...}: {
     devshells.default = {
-      name = "cardano.nix";
+      devshell = {
+        name = "cardano.nix";
+        motd = ''
+          ❄️ Welcome to the {14}{bold}cardano.nix{reset}'s shell ❄️
+          $(type -p menu &>/dev/null && menu)
+        '';
+      };
       packages = with pkgs; [
         statix
-        config.treefmt.build.wrapper
+        # config.treefmt.build.wrapper
       ];
     };
   };
