@@ -2,10 +2,10 @@
   imports = [
   ];
 
-  # create a default nixos module which mixes in all modules
   flake.nixosModules = {
     global = ./global;
-    cardano-cli = ./cardano/cli.nix;
+    cardano-cli = ./cardano-cli;
+    # the default module imports all modules
     default = {
       imports = with builtins; attrValues (removeAttrs config.flake.nixosModules ["default"]);
     };

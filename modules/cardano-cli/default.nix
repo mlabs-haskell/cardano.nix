@@ -9,7 +9,7 @@ with lib; {
 
   config = mkIf config.cardano-ecosystem.cli.enable {
     environment.systemPackages = with pkgs; [
-      git # FIXME: we use git at scaffolding to avoid long CI builds on early prototyping stage
+      git # FIXME: just a placeholder
     ];
   };
 }
