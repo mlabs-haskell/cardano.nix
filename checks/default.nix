@@ -23,9 +23,15 @@
     devshells.default.commands = [
       {
         category = "Tools";
-        name = "check";
+        name = "build-all";
         help = "Build all the checks";
         command = config.apps.nix-build-all.program;
+      }
+      {
+        category = "Tools";
+        name = "check";
+        help = "Alias of `nix flake check`";
+        command = "nix flake check";
       }
     ];
   };
