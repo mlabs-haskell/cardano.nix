@@ -28,7 +28,7 @@
         category = "Tools";
         name = "fmt";
         help = "Format the source tree";
-        command = "nix fmt";
+        command = lib.getExe config.treefmt.build.wrapper;
       }
     ];
   };
