@@ -2,7 +2,7 @@
   imports = [
     inputs.devshell.flakeModule
   ];
-  
+
   perSystem = {
     pkgs,
     config,
@@ -20,7 +20,6 @@
         statix
         config.treefmt.build.wrapper
       ];
-      
     };
   };
 }
