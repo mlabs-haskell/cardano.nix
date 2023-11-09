@@ -33,6 +33,7 @@
         ./formatter
         ./modules
         ./shell
+        ./tests
       ];
       systems = [
         "x86_64-linux"

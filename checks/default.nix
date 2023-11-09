@@ -1,24 +1,33 @@
-{inputs, ...}: {
+{
+  inputs,
+  self,
+  ...
+}: {
+  imports = [
+    ./testing.nix
+  ];
   perSystem = {
     pkgs,
     config,
     ...
   }: {
-    apps = {
-      nix-build-all.program = pkgs.writeShellApplication {
-        name = "nix-build-all";
-        runtimeInputs = [
-          (pkgs.callPackage inputs.devour-flake {})
-        ];
-        text = ''
-          # Make sure that flake.lock is sync
-          nix flake lock --no-update-lock-file
+    apps =
+      {
+        nix-build-all.program = pkgs.writeShellApplication {
+          name = "nix-build-all";
+          runtimeInputs = [
+            (pkgs.callPackage inputs.devour-flake {})
+          ];
+          text = ''
+            # Make sure that flake.lock is sync
+            nix flake lock --no-update-lock-file
 
-          # Do a full nix build (all outputs)
-          devour-flake . "$@"
-        '';
-      };
-    };
+            # Do a full nix build (all outputs)
+            devour-flake . "$@"
+          '';
+        };
+      }
+      // self.cardanoNix.checks;
 
     devshells.default.commands = [
       {
