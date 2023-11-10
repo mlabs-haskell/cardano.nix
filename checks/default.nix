@@ -1,6 +1,5 @@
 {
   inputs,
-  self,
   ...
 }: {
   imports = [
@@ -27,7 +26,7 @@
           '';
         };
       }
-      // self.cardanoNix.checks;
+      // config.cardanoNix.checks;
 
     devshells.default.commands = [
       {
