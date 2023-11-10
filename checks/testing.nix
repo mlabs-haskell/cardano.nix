@@ -103,13 +103,13 @@ in {
             # display available tests
             echo "  list of available tests:"
             echo
-            echo "${strings.concatmapstrings (s: "    - " + s + "\n") (attrsets.mapattrstolist (name: _: (removeprefix "testing-" name)) config.checks)}"
+            echo "${concatMapStrings (s: "    - " + s + "\n") (mapAttrsToList (_: test: test.name) config.cardanoNix.tests)}"
           }
 
           args=$(getopt -o lihs: --long list,interactive,help,system: -n 'tests' -- "$@")
           eval set -- "$args"
 
-          system="x86_64-linux"
+          system="${system}"
           driver_args=()
 
           while [ $# -gt 0 ]; do
@@ -132,12 +132,8 @@ in {
           name="$1"
           shift
 
-          # build the test driver
-          driver=$(nix build ".#checks.$system.testing-$name.driver" --print-out-paths --no-link)
-
-          # run the test driver, passing any remaining arguments
-          set -x
-          ''${driver}/bin/nixos-test-driver "''${driver_args[@]}"
+          # build/run the test driver, passing any remaining arguments
+          nix run ".#checks.$system.testing-$name.driver" -- "''${driver_args[@]}"
         '';
       }
     ];
