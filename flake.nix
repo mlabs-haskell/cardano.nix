@@ -30,6 +30,7 @@
         ./lib
         ./checks
         ./ci
+        ./docs
         ./formatter
         ./modules
         ./shell

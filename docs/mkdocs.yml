@@ -1,0 +1,81 @@
+site_name: Cardano.nix
+site_description: Nix packages and NixOS modules for the Cardano ecosystem
+site_url: https://nix-community.github.io/ethereum.nix
+
+repo_url: https://github.com/mlabs-haskell/cardano.nix
+edit_uri: edit/main/docs
+
+theme:
+  name: material
+  # FIXME: add logo
+  logo: assets/logo.svg
+  # FIXME: add favicon
+  favicon: assets/favicon.png
+
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    - scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-5
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: blue grey
+      accent: amber
+      toggle:
+        icon: material/brightness-2
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
+
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      linenums: true
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+nav:
+  - index.md
+  - license.md
+  - Development:
+      - development/contributing.md
+  - Getting Started:
+      - getting-started/installation.md
+  - Reference:
+      - NixOS Module Options:
+          - reference/module-options/default.md
+
+extra:
+  homepage: https://mlabs-haskell.github.io/cardano.nix
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mlabs-haskell/cardano.nix
+      name: Cardano.nix on Github
+  generator: false # hide the line "Made with Material for MkDocs"
+
+copyright: Copyright &copy; MLabs Ltd and Cardano.nix contributors
