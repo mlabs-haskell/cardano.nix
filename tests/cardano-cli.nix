@@ -13,7 +13,7 @@
               memorySize = 1024;
               writableStore = true;
             };
-            cardano-ecosystem.cli.enable = true;
+            cardanoNix.cardano-cli.enable = true;
           };
         };
 
