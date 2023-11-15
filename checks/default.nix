@@ -1,4 +1,7 @@
 {inputs, ...}: {
+  imports = [
+    ./testing.nix
+  ];
   perSystem = {
     pkgs,
     config,
