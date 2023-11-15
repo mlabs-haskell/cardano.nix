@@ -1,5 +1,7 @@
 {
-  imports = [
-    ./cardano-cli.nix
-  ];
+  perSystem = _: {
+    imports = [
+      ./cardano-cli.nix
+    ];
+  };
 }

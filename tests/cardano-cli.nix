@@ -1,4 +1,4 @@
-_: {
+{
   cardanoNix.tests = {
     dummy = {
       systems = ["x86_64-linux"];
@@ -16,6 +16,7 @@ _: {
             cardano-ecosystem.cli.enable = true;
           };
         };
+
         testScript = ''
           # FIXME: check for cardano cli, not git
           machine.succeed("git --version")
