@@ -3,14 +3,14 @@
   config,
   ...
 }: let
-  cfg = config.cardano-ecosystem.globals;
+  cfg = config.cardanoNix.globals;
 in
   # FIXME: proper assertion, private also can have any unused number
   #  assert cfg.networkNumbers ? cfg.network;
   with lib; {
-    options.cardano-ecosystem.globals = {
+    options.cardanoNix.globals = {
       network = mkOption {
-        type = types.enum (builtins.attrNames networkNumbers);
+        type = types.enum (builtins.attrNames cfg.networkNumbers);
         default = "mainnet";
         description = ''
           Cardano network to join/use
@@ -18,9 +18,9 @@ in
       };
       networkNumber = mkOption {
         type = types.int;
-        default = networkNumbers.${cfg.network};
+        default = cfg.networkNumbers.${cfg.network};
         description = ''
-          Cardano network number to join/use (should match cardano-ecosystem.globals,network)
+          Cardano network number to join/use (should match cardanoNix.globals,network)
         '';
       };
       networkNumbers = mkOption {
