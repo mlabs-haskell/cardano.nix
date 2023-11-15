@@ -33,7 +33,7 @@
     options-doc = let
       # FIXME: options rendering implemented to have one page per module, but temporary it squashed to single page
       # Reason -- we need to explicitly list all pages in mkdocs.yml, so it postponed for later resolution
-      eachOptions = { inherit (config.flake.nixosModules) default; };
+      eachOptions = {inherit (config.flake.nixosModules) default;};
 
       eachOptionsDoc = with lib;
         mapAttrs' (
@@ -43,10 +43,13 @@
             (head (splitString "." name))
             # generate options doc
             (pkgs.nixosOptionsDoc {
-              options = (evalModules {
+              options =
+                (evalModules {
                   modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
                   specialArgs = {inherit pkgs;};
-                }).options.cardanoNix;
+                })
+                .options
+                .cardanoNix;
             })
         )
         eachOptions;
@@ -76,7 +79,7 @@
         ln -s ${options-doc} ${docsPath}
         # mkdocs expect mkdocs one level upper than `docs/`, but we want to keep it in `docs/`
         cp docs/mkdocs.yml .
-        mkdocs build -f mkdocs.yml -d site 
+        mkdocs build -f mkdocs.yml -d site
       '';
 
       installPhase = ''
