@@ -31,46 +31,62 @@
         chmod +x $out/bin/mkdocs
       '';
 
-    options-doc = let
-      # FIXME: options rendering implemented to have one page per module, but temporary it squashed to single page
-      # Reason -- we need to explicitly list all pages in mkdocs.yml, so it postponed for later resolution
-      eachOptions = {inherit (config.flake.nixosModules) default;};
+    eachOptions = removeAttrs config.flake.nixosModules ["default"];
 
-      eachOptionsDoc = with lib;
-        mapAttrs' (
-          name: value:
-            nameValuePair
-            # take foo.options and turn it into just foo
-            (head (splitString "." name))
-            # generate options doc
-            (pkgs.nixosOptionsDoc {
-              options =
-                (evalModules {
-                  modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
-                  specialArgs = {inherit pkgs;};
-                })
-                .options
-                .cardanoNix;
-            })
-        )
-        eachOptions;
+    eachOptionsDoc = with lib;
+      mapAttrs' (
+        name: value:
+          nameValuePair
+          # take foo.options and turn it into just foo
+          (head (splitString "." name))
+          # generate options doc
+          (pkgs.nixosOptionsDoc {
+            options =
+              (evalModules {
+                modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
+                specialArgs = {inherit pkgs;};
+              })
+              .options
+              .cardanoNix;
+          })
+      )
+      eachOptions;
 
-      statements = with lib;
-        concatStringsSep "\n"
-        (mapAttrsToList (n: v: ''
-            path=$out/${n}.md
-            cat ${v.optionsCommonMark} >> $path
-          '')
-          eachOptionsDoc);
-      githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master"; # Yes, url to definition in file, not project url
-    in
-      pkgs.runCommand "nixos-options" {} ''
-        mkdir $out
-        ${statements}
-        # Fixing links to storage to files in github
-        find $out -type f | xargs -n1 sed -i -e "s,${self.outPath},${githubUrl},g" -e "s,file://https://,https://,g"
-      '';
+    statements = with lib;
+      concatStringsSep "\n"
+      (mapAttrsToList (n: v: ''
+          path=$out/${n}.md
+          cat ${v.optionsCommonMark} >> $path
+        '')
+        eachOptionsDoc);
+    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master"; # Yes, url to definition in file, not project url
+    options-doc = pkgs.runCommand "nixos-options" {} ''
+      mkdir $out
+      ${statements}
+      # Fixing links to storage to files in github
+      find $out -type f | xargs -n1 sed -i -e "s,${self.outPath},${githubUrl},g" -e "s,file://https://,https://,g"
+    '';
     docsPath = "./docs/reference/module-options";
+    index = {
+      nav = [
+        {
+          "Reference" = [{"NixOS Module Options" = lib.mapAttrsToList (n: _: "reference/module-options/${n}.md") eachOptionsDoc;}];
+        }
+      ];
+    };
+    indexYAML =
+      pkgs.runCommand "index.yaml" {
+        nativeBuildInputs = [pkgs.yq-go];
+        index = builtins.toFile "index.json" (builtins.unsafeDiscardStringContext (builtins.toJSON index));
+      } ''
+        yq -o yaml $index >$out
+      '';
+    mergedMkdocsYaml =
+      pkgs.runCommand "mkdocs.yaml" {
+        nativeBuildInputs = [pkgs.yq-go];
+      } ''
+        yq '. *+ load("${indexYAML}")' ${./mkdocs.yml} -o yaml >$out
+      '';
   in {
     packages.docs = stdenv.mkDerivation {
       src = ../.; # FIXME: use config.flake-root.package here
@@ -82,7 +98,7 @@
       buildPhase = ''
         ln -s ${options-doc} ${docsPath}
         # mkdocs expect mkdocs one level upper than `docs/`, but we want to keep it in `docs/`
-        cp docs/mkdocs.yml .
+        cp ${mergedMkdocsYaml} mkdocs.yml
         mkdocs build -f mkdocs.yml -d site
       '';
 
