@@ -8,7 +8,7 @@
 
   config = lib.mkIf config.cardanoNix.cardano-cli.enable {
     environment.systemPackages = [
-      pkgs.git # FIXME: just a placeholder
+      pkgs.git # TODO: replace with `cardano-cli` (milestone 2)
     ];
   };
 }
