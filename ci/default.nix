@@ -2,5 +2,11 @@
   imports = [
     inputs.hercules-ci-effects.flakeModule
   ];
-  config.herculesCI.ciSystems = ["x86_64-linux" "x86_64-darwin"];
+  config = {
+    hercules-ci.github-pages.branch = "main";
+    perSystem = {config, ...}: {
+      hercules-ci.github-pages.settings.contents = config.packages.docs;
+    };
+    herculesCI.ciSystems = ["x86_64-linux" "x86_64-darwin"];
+  };
 }

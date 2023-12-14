@@ -13,12 +13,12 @@
               memorySize = 1024;
               writableStore = true;
             };
-            cardano-ecosystem.cli.enable = true;
+            cardanoNix.cardano-cli.enable = true;
           };
         };
 
+        # TODO `git` will be replaced by `cardano-cli` (milestone 2)
         testScript = ''
-          # FIXME: check for cardano cli, not git
           machine.succeed("git --version")
         '';
       };
