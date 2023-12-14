@@ -38,7 +38,7 @@
       lib.mapAttrs' (
         name: value:
           lib.nameValuePair
-          (builtins.head (lib.plitString "." name)) # take foo.options and turn it into just foo
+          (builtins.head (lib.splitString "." name)) # take foo.options and turn it into just foo
           
           (pkgs.nixosOptionsDoc {
             options =
