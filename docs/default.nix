@@ -60,14 +60,18 @@
           cat ${v.optionsCommonMark} >> $path
         '')
         eachOptionsDoc);
-    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master"; # Yes, url to definition in file, not project url
+    
+    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master";
+    
     options-doc = pkgs.runCommand "nixos-options" {} ''
       mkdir $out
       ${statements}
       # Fixing links to storage to files in github
       find $out -type f | xargs -n1 sed -i -e "s,${self.outPath},${githubUrl},g" -e "s,file://https://,https://,g"
     '';
+    
     docsPath = "./docs/reference/module-options";
+    
     index = {
       nav = [
         {
@@ -75,6 +79,7 @@
         }
       ];
     };
+    
     indexYAML =
       pkgs.runCommand "index.yaml" {
         nativeBuildInputs = [pkgs.yq-go];
@@ -82,6 +87,7 @@
       } ''
         yq -o yaml $index >$out
       '';
+    
     mergedMkdocsYaml =
       pkgs.runCommand "mkdocs.yaml" {
         nativeBuildInputs = [pkgs.yq-go];
