@@ -4,30 +4,30 @@
   ...
 }: let
   cfg = config.cardanoNix.globals;
+  inherit (lib) types;
 in
   # FIXME: proper assertion, private also can have any unused number
   #  assert cfg.networkNumbers ? cfg.network;
-  with lib; {
+  {
     options.cardanoNix.globals = {
-      network = mkOption {
+      network = lib.mkOption {
         type = types.enum (builtins.attrNames cfg.networkNumbers);
         default = "mainnet";
         description = ''
           Cardano network to join/use
         '';
       };
-      networkNumber = mkOption {
+      networkNumber = lib.mkOption {
         type = types.int;
         default = cfg.networkNumbers.${cfg.network};
+        defaultText = lib.literalExpression "config.cardanoNix.globals.networkNumbers.$${config.cardanoNix.globals.net}";
         description = ''
           Cardano network number to join/use (should match cardanoNix.globals,network)
         '';
+        internal = true;
       };
-      networkNumbers = mkOption {
+      networkNumbers = lib.mkOption {
         type = types.attrsOf types.int;
-        # FIXME: fill other nets
-        # FIXME: could we extract networkNumbers automatically?
-        # FIXME: could we extract it from IOG nix stuff w/o IFD or massive inclusion of https://github.com/input-output-hk/iohk-nix
         default = {
           mainnet = 0;
           preprod = 1;

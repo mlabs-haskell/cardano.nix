@@ -1,7 +1,4 @@
 {config, ...}: {
-  imports = [
-  ];
-
   flake.nixosModules = {
     globals = ./globals;
     cardano-cli = ./cardano-cli;
