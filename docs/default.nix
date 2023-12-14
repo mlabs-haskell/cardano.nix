@@ -34,28 +34,26 @@
 
     eachOptions = removeAttrs rootConfig.flake.nixosModules ["default"];
 
-    eachOptionsDoc = with lib;
-      mapAttrs' (
+    eachOptionsDoc =
+      lib.mapAttrs' (
         name: value:
-          nameValuePair
-          # take foo.options and turn it into just foo
-          (head (splitString "." name))
-          # generate options doc
-          (pkgs.nixosOptionsDoc {
-            options =
-              (evalModules {
-                modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
-                specialArgs = {inherit pkgs;};
-              })
+          lib.nameValuePair
+            (builtins.head (lib.plitString "." name))  # take foo.options and turn it into just foo
+            (pkgs.nixosOptionsDoc {
+              options =
+		(lib.evalModules {
+                  modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
+                  specialArgs = {inherit pkgs;};
+		})
               .options
               .cardanoNix;
-          })
+            })
       )
-      eachOptions;
+	eachOptions;
 
-    statements = with lib;
-      concatStringsSep "\n"
-      (mapAttrsToList (n: v: ''
+    statements =
+      lib.concatStringsSep "\n"
+      (lib.mapAttrsToList (n: v: ''
           path=$out/${n}.md
           cat ${v.optionsCommonMark} >> $path
         '')
