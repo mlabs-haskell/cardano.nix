@@ -20,11 +20,11 @@ in
       networkNumber = lib.mkOption {
         type = types.int;
         default = cfg.networkNumbers.${cfg.network};
-	defaultText = lib.literalExpression "config.cardanoNix.globals.networkNumbers.$${config.cardanoNix.globals.net}";
+        defaultText = lib.literalExpression "config.cardanoNix.globals.networkNumbers.$${config.cardanoNix.globals.net}";
         description = ''
           Cardano network number to join/use (should match cardanoNix.globals,network)
         '';
-	internal = true;
+        internal = true;
       };
       networkNumbers = lib.mkOption {
         type = types.attrsOf types.int;

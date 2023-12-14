@@ -38,18 +38,19 @@
       lib.mapAttrs' (
         name: value:
           lib.nameValuePair
-            (builtins.head (lib.plitString "." name))  # take foo.options and turn it into just foo
-            (pkgs.nixosOptionsDoc {
-              options =
-		(lib.evalModules {
-                  modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
-                  specialArgs = {inherit pkgs;};
-		})
+          (builtins.head (lib.plitString "." name)) # take foo.options and turn it into just foo
+          
+          (pkgs.nixosOptionsDoc {
+            options =
+              (lib.evalModules {
+                modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
+                specialArgs = {inherit pkgs;};
+              })
               .options
               .cardanoNix;
-            })
+          })
       )
-	eachOptions;
+      eachOptions;
 
     statements =
       lib.concatStringsSep "\n"
@@ -58,18 +59,18 @@
           cat ${v.optionsCommonMark} >> $path
         '')
         eachOptionsDoc);
-    
+
     githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master";
-    
+
     options-doc = pkgs.runCommand "nixos-options" {} ''
       mkdir $out
       ${statements}
       # Fixing links to storage to files in github
       find $out -type f | xargs -n1 sed -i -e "s,${self.outPath},${githubUrl},g" -e "s,file://https://,https://,g"
     '';
-    
+
     docsPath = "./docs/reference/module-options";
-    
+
     index = {
       nav = [
         {
@@ -77,7 +78,7 @@
         }
       ];
     };
-    
+
     indexYAML =
       pkgs.runCommand "index.yaml" {
         nativeBuildInputs = [pkgs.yq-go];
@@ -85,7 +86,7 @@
       } ''
         yq -o yaml $index >$out
       '';
-    
+
     mergedMkdocsYaml =
       pkgs.runCommand "mkdocs.yaml" {
         nativeBuildInputs = [pkgs.yq-go];
