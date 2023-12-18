@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2023 MLabs ltd and cardano.nix contributors
+#
+# SPDX-License-Identifier: Apache-2.0
 .direnv
 
 # docs-serve stuff
