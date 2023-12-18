@@ -7,9 +7,7 @@ edit_uri: edit/main/docs
 
 theme:
   name: material
-  # FIXME: add logo
   logo: assets/logo.svg
-  # FIXME: add favicon
   favicon: assets/favicon.png
 
   palette:
