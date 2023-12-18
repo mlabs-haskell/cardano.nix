@@ -41,6 +41,19 @@
           (builtins.head (lib.splitString "." name)) # take foo.options and turn it into just foo
           
           (pkgs.nixosOptionsDoc {
+            # By default `nixosOptionsDoc` will ignore internal options but we want to show them
+            # This hack will make all the options not internal and visible and optionally append to the
+            # description a new field which is then corrected rendered as it was a native field
+            transformOptions = opt:
+              opt
+              // {
+                internal = false;
+                visible = true;
+                description = ''
+                  ${lib.traceVal opt.description}
+                  ${lib.optionalString opt.internal "*Internal:* true"}
+                '';
+              };
             options =
               (lib.evalModules {
                 modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
