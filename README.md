@@ -16,6 +16,10 @@ Collection of Cardano related NixOS modules, with a special focus on:
 
 A `.envrc` is also provided, using [direnv]() and [nix-direnv](https://github.com/nix-community/nix-direnv) is highly suggested.
 
+## Documentation
+
+Rendered [documentation](https://mlabs-haskell.github.io/cardano.nix/).
+
 ## License information
 
 `cardano.nix` released under terms of [Apache-2.0](LICENSES/Apache-2.0.txt) license.
