@@ -13,15 +13,15 @@ theme:
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
-      primary: teal
-      accent: amber
+      primary: light blue
+      accent: deep orange
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
 
     - scheme: default
-      primary: teal
-      accent: amber
+      primary: light blue
+      accent: deep orange
       toggle:
         icon: material/brightness-5
         name: Switch to dark mode
