@@ -35,6 +35,9 @@ in
           sanchonet = 4;
           private = 42;
         };
+        description = ''
+          Cardano network numbers
+        '';
         internal = true;
       };
     };
