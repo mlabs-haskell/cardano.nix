@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: cardano.nix
+Upstream-Contact: <legal@mlabs.city>
+Source: https://github.com/mlabs-haskell/cardano.nix
+
+Copyright: 2023 MLabs ltd and cardano.nix contributors 
+License: Apache-2.0
+Files: *.lock *.nix *.md docs/mkdocs.yml .envrc .gitignore

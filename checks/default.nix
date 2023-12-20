@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./testing.nix
+    ./licenses.nix
   ];
   perSystem = {
     pkgs,
