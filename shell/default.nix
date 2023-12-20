@@ -19,6 +19,7 @@
       packages = with pkgs; [
         statix
         config.treefmt.build.wrapper
+        reuse
       ];
     };
   };
