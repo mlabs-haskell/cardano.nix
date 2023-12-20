@@ -5,4 +5,4 @@ Source: https://github.com/mlabs-haskell/cardano.nix
 
 Copyright: 2023 MLabs ltd and cardano.nix contributors 
 License: Apache-2.0
-Files: *.lock *.nix *.md
+Files: *.lock *.nix *.md docs/mkdocs.yml .envrc .gitignore

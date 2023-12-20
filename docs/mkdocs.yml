@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2023 MLabs ltd and cardano.nix contributors
-#
-# SPDX-License-Identifier: Apache-2.0
 site_name: Cardano.nix
 site_description: Nix packages and NixOS modules for the Cardano ecosystem
 site_url: https://github.com/mlabs-haskell/cardano.nix
