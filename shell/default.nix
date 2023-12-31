@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.devshell.flakeModule
     inputs.pre-commit-hooks-nix.flakeModule
@@ -19,15 +15,21 @@
         motd = ''
           ❄️ Welcome to the {14}{bold}cardano.nix{reset}'s shell ❄️
           $(type -p menu &>/dev/null && menu)
+          $(type -p update-pre-commit-hooks &>/dev/null && update-pre-commit-hooks)
         '';
-        startup = {
-          pre-commit = lib.noDepEntry "eval ${config.pre-commit.installationScript}";
-        };
       };
       packages = with pkgs; [
         statix
         config.treefmt.build.wrapper
         reuse
+      ];
+      commands = [
+        {
+          name = "update-pre-commit-hooks";
+          command = config.pre-commit.installationScript;
+          category = "Tools";
+          help = "Update pre-commit-hooks";
+        }
       ];
     };
     pre-commit.settings = {
