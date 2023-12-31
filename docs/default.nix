@@ -50,7 +50,7 @@
                 internal = false;
                 visible = true;
                 description = ''
-                  ${lib.traceVal opt.description}
+                  ${opt.description}
                   ${lib.optionalString opt.internal "*Internal:* true"}
                 '';
               };
