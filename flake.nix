@@ -3,8 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # we use effects for CI and documentation
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    # we use effects for CI, documentation and pushing to public cache
+    hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
 
     # Utilities
     devshell = {
@@ -19,6 +19,10 @@
     devour-flake = {
       url = "github:srid/devour-flake";
       flake = false;
+    };
+    attic = {
+      url = "github:zhaofengli/attic";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs @ {flake-parts, ...}:
