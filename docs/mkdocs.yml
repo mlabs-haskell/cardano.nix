@@ -77,4 +77,4 @@ extra:
       name: Cardano.nix on Github
   generator: false # hide the line "Made with Material for MkDocs"
 
-copyright: Copyright &copy; MLabs Ltd and Cardano.nix contributors
+copyright: Copyright &copy; MLabs Ltd
