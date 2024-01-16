@@ -3,6 +3,10 @@ Upstream-Name: cardano.nix
 Upstream-Contact: <legal@mlabs.city>
 Source: https://github.com/mlabs-haskell/cardano.nix
 
-Copyright: 2023 MLabs ltd and cardano.nix contributors 
-License: Apache-2.0
 Files: *.lock *.nix *.md docs/mkdocs.yml .envrc .gitignore
+Copyright: © 2023 MLabs LTD <legal@mlabs.city>
+License: Apache-2.0
+
+Files: docs/assets/favicon.png docs/assets/logo.svg
+Copyright: © 2023 MLabs LTD <legal@mlabs.city>
+License: LicenseRef-MLabs
