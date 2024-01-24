@@ -1,0 +1,4 @@
+/* Prevent right navigation bar with option from truncating */
+nav.md-nav--secondary a.md-nav__link {
+  word-break: break-all;
+}
