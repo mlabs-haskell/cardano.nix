@@ -3,7 +3,7 @@ site_description: Nix packages and NixOS modules for the Cardano ecosystem
 site_url: https://github.com/mlabs-haskell/cardano.nix
 
 repo_url: https://github.com/mlabs-haskell/cardano.nix
-edit_uri: edit/main/docs
+edit_uri: edit/master/docs
 
 theme:
   name: material
@@ -76,5 +76,8 @@ extra:
       link: https://github.com/mlabs-haskell/cardano.nix
       name: Cardano.nix on Github
   generator: false # hide the line "Made with Material for MkDocs"
+
+extra_css:
+  - stylesheets/extra.css
 
 copyright: Copyright &copy; MLabs Ltd
