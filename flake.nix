@@ -6,6 +6,15 @@
     # we use effects for CI and documentation
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
 
+    # Cardano
+    cardano-node.url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    iohk-nix.follows = "cardano-node/iohkNix";
+
+    # Reduce stackage.nix source download deps
+    haskell-nix.follows = "cardano-node/haskellNix";
+    haskell-nix.inputs.stackage.follows = "empty-flake";
+    empty-flake.url = "github:input-output-hk/empty-flake";
+
     # Utilities
     devshell = {
       url = "github:numtide/devshell";
@@ -38,6 +47,7 @@
         ./docs
         ./formatter
         ./modules
+        ./packages
         ./shell
         ./tests
       ];
