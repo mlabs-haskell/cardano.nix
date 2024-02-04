@@ -7,6 +7,7 @@
   perSystem = {
     pkgs,
     config,
+    self',
     ...
   }: {
     devshells.default = {
@@ -22,6 +23,7 @@
         statix
         config.treefmt.build.wrapper
         reuse
+        self'.packages.cardano-cli
       ];
       commands = [
         {
