@@ -19,7 +19,7 @@
 
         # TODO `git` will be replaced by `cardano-cli` (milestone 2)
         testScript = ''
-          machine.succeed("git --version")
+          machine.succeed("cardano-cli --version")
         '';
       };
     };
