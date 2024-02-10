@@ -1,28 +1,32 @@
-{self, ...}: {
-  flake.nixosModules.packages = {
-    pkgs,
-    lib,
-  }: let
-    inherit (lib) types mkOption docMD;
-    inherit (types) path;
-    inherit (pkgs.stdenv.hostPlatform) system;
-  in {
-    options.cardanoNix.packages = {
-      cardano-node = mkOption {
-        type = path;
-        description = docMD ''
-          Default package for cardano-node
-        '';
-      };
-      cardano-cli = mkOption {
-        type = path;
-        description = docMD ''
-          Default package for cardano-cli
-        '';
+{
+  self',
+  lib,
+  ...
+}: let
+  inherit (lib) types mkOption;
+  inherit (types) path submodule;
+in {
+  options.cardanoNix.packages = mkOption {
+    type = submodule {
+      options = {
+        cardano-node = mkOption {
+          type = path;
+          description = ''
+            Default package for cardano-node
+          '';
+          default = self'.packages.cardano-node;
+          internal = true;
+        };
+        cardano-cli = mkOption {
+          type = path;
+          description = ''
+            Default package for cardano-cli
+          '';
+          default = self'.packages.cardano-cli;
+          internal = true;
+        };
       };
     };
-    config.packages = {
-      inherit (self.packages.${system}) cardano-node cardano-cli;
-    };
+    description = "FIXME";
   };
 }

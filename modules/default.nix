@@ -1,19 +1,36 @@
-{config, ...}: {
-  # FIXME: two approaches
-  #        1st -- we keep all modules in `parts` level, to have access to self/packages/etc
-  #          cardano-cli is example of first approach
-  #        2nd -- we keep only ./packages.nix in `parts` level, because it require access to self.packages/self.inputs
-  #          package.nix re-export packages as `cardanoNix.packages` options set.
-  imports = [
-    ./cardano-cli
-    ./packages.nix
-  ];
-  flake.nixosModules = {
-    # FIXME for second approach all modules except packages.nix should be imported here
-    globals = ./globals;
+{
+  config,
+  self,
+  inputs,
+  ...
+}: {
+  flake.nixosModules = let
+    # Load nixos module, enhancing it's arguments with `self`, `self'`, `inputs` and `system`
+    getModule = module: {pkgs, ...}: {
+      imports = [module];
+      _module.args = let
+        inherit (pkgs.stdenv.hostPlatform) system;
+      in {
+        inherit self system inputs;
+        self' = config.perSystem system;
+      };
+    };
+  in {
+    globals = getModule ./globals;
+    cardano-cli = getModule ./cardano-cli;
+    packages = getModule ./packages.nix;
     # the default module imports all modules
     default = {
       imports = with builtins; attrValues (removeAttrs config.flake.nixosModules ["default"]);
     };
+    #    stub = { lib }: {
+    #      options.cardanoNix = lib.mkOption {
+    #        type = lib.types.submoduleWith {
+    #          modules = [
+    #            { freeformType = lib.types.lazyAttrsOf lib.types.raw; }
+    #          ];
+    #        };
+    #      };
+    #    };
   };
 }
