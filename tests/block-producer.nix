@@ -1,4 +1,4 @@
-{inputs}: {pkgs, ...}: {
+{pkgs, ...}: {
   cardanoNix.tests = {
     block-producer = {
       systems = ["x86_64-linux"];
@@ -8,6 +8,7 @@
 
         nodes = {
           machine = {config, ...}: {
+            imports = [./block-producer-keys];
             virtualisation = {
               cores = 2;
               memorySize = 1024;

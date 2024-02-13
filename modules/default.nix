@@ -17,6 +17,8 @@
     };
   in {
     globals = getModule ./globals;
+    cardano-block-producer = getModule ./cardano-node/producer.nix;
+    cardano-node-instance = getModule ./cardano-node/instance.nix;
     cardano-cli = getModule ./cardano-cli;
     packages = getModule ./packages.nix;
     # the default module imports all modules

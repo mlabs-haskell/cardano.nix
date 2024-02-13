@@ -16,7 +16,7 @@
 
   # FIXME: move all types to `types.nix`?
   # Options shared between "cardanoNix.cardano-node.defaults" "and cardanoNix.cardano-node.instance.$name"
-  processOptions' = {
+  processOptions'.options = {
     package = mkOption {
       type = types.package;
       package = pkgs.cardano-node; # FIXME: would we want to
@@ -72,7 +72,12 @@
   processOptions = submodule processOptions';
 in {
   options.cardanoNix.cardano-node = {
-    defaults = processOptions;
+    defaults = mkOption {
+      type = processOptions;
+      description = ''
+        Set of instance defaults
+      '';
+    };
     instances = mkOption {
       type = types.attrsOf processOptions;
       description = ''
