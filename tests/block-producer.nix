@@ -15,14 +15,17 @@
               writableStore = false;
             };
             environment.systemPackages = [config.services.cardano-node.cardanoNodePackages.cardano-cli];
-            cardanoNix.cardano-node.producer = {
-              enable = true;
-              relayAddrs = [
-                {
-                  address = "x.x.x.x";
-                  port = 3000;
-                }
-              ];
+            cardanoNix.cardano-node = {
+              defaults = {};
+              producer = {
+                enable = true;
+                relayAddrs = [
+                  {
+                    address = "x.x.x.x";
+                    port = 3000;
+                  }
+                ];
+              };
             };
           };
         };

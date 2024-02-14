@@ -5,11 +5,13 @@
   config,
   lib,
   pkgs,
+  inputs,
+  system,
   ...
 }: let
   cardanoTypes = import ./types.nix {inherit lib;};
   inherit (builtins) length attrNames;
-  inherit (lib) types mkOption mapAttrs' nameValuePair flip getBin toGNUCommandLineShell mkIf optional;
+  inherit (lib) types mkOption mapAttrs' nameValuePair flip getBin toGNUCommandLineShell mkIf;
   inherit (types) submodule;
   inherit (cardanoTypes) topologyType;
   cfg = config.cardanoNix.cardano-node;
@@ -17,10 +19,11 @@
   # FIXME: move all types to `types.nix`?
   # Options shared between "cardanoNix.cardano-node.defaults" "and cardanoNix.cardano-node.instance.$name"
   processOptions'.options = {
-    package = mkOption {
-      type = types.package;
-      package = pkgs.cardano-node; # FIXME: would we want to
-    };
+    package =
+      lib.mkPackageOption pkgs
+      "cardano-node" {
+        default = inputs.cardano-node.packages.${system}.cardano-node;
+      };
 
     options = mkOption {
       type = types.attrsOf types.str;
@@ -58,12 +61,12 @@
     topologyFile = mkOption {
       type = types.either types.str types.path;
       internal = true;
-      literalExample = ''
+      defaultText = lib.literalExpression ''
         # default implementation (for reference purpose)
         topologyFile = mkTopologyFile instance.topology;
       '';
     };
-    topology = {
+    topology = mkOption {
       type = topologyType;
     };
   };
@@ -97,11 +100,11 @@ in {
         cardano-node = {};
       }
       // flip mapAttrs' cfg.instances (name: instance:
-        nameValuePair "cardano-node-${instance.name}" {
+        nameValuePair "cardano-node-${name}" {
           after = ["network-online.target"];
           wants = ["network-online.target"];
           wantedBy = ["multi-user.target"];
-          required = optional instance.useSnapshot "cardano-node-${instance.name}-snapshot.service"; # One shot, which should depends on downloader
+          # required = optional instance.useSnapshot "cardano-node-${instance.name}-snapshot.service"; # One shot, which should depends on downloader
           script = ''
             # Show commandline before execution
             set -x

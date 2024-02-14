@@ -4,23 +4,24 @@
   inputs,
   ...
 }: {
-  flake.nixosModules = let
-    # Load nixos module, enhancing it's arguments with `self`, `self'`, `inputs` and `system`
-    getModule = module: {pkgs, ...}: {
-      imports = [module];
+  flake.nixosModules = {
+    inject-args = {
+      pkgs,
+      lib,
+      ...
+    }: {
       _module.args = let
         inherit (pkgs.stdenv.hostPlatform) system;
       in {
         inherit self system inputs;
-        self' = config.perSystem system;
+        self' = lib.mkForce (config.perSystem system);
       };
     };
-  in {
-    globals = getModule ./globals;
-    cardano-block-producer = getModule ./cardano-node/producer.nix;
-    cardano-node-instance = getModule ./cardano-node/instance.nix;
-    cardano-cli = getModule ./cardano-cli;
-    packages = getModule ./packages.nix;
+    globals = ./globals;
+    cardano-block-producer = ./cardano-node/producer.nix;
+    cardano-node-instance = ./cardano-node/instance.nix;
+    cardano-cli = ./cardano-cli;
+    packages = ./packages.nix;
     # the default module imports all modules
     default = {
       imports = with builtins; attrValues (removeAttrs config.flake.nixosModules ["default"]);
