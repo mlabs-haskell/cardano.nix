@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./instance.nix
     ./relay.nix
