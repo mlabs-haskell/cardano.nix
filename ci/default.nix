@@ -10,6 +10,15 @@
   ];
   config = {
     hercules-ci.github-pages.branch = "master";
+    hercules-ci.flake-update = {
+      enable = true;
+      when = {
+        dayOfWeek = "Sun";
+        hour = 12;
+        minute = 45;
+      };
+    };
+
     perSystem = {config, ...}: {
       hercules-ci.github-pages.settings.contents = config.packages.docs;
     };
