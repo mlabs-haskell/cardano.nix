@@ -12,7 +12,7 @@
       devshell = {
         name = "cardano.nix";
         motd = ''
-          ❄️ Welcome to the {14}{bold}cardano.nix{reset}'s shell ❄️
+          ❄️ Welcome to the {14}{bold}cardano.nix{reset} devshell ❄️
           $(type -p menu &>/dev/null && menu)
         '';
       };
