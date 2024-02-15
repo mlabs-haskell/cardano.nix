@@ -4,13 +4,12 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cardanoTypes = import ./types.nix {inherit lib;};
   inherit (builtins) length attrNames;
-  inherit (lib) types mkOption mapAttrs' nameValuePair flip getBin toGNUCommandLineShell mkIf optional;
-  inherit (types) submodule;
+  inherit (lib) types mkOption mapAttrs' nameValuePair flip getExe mkIf optional;
+  inherit (types) submodule listOf attrsOf package str either path bool;
   inherit (cardanoTypes) topologyType;
   cfg = config.cardanoNix.cardano-node;
 
@@ -18,20 +17,21 @@
   # Options shared between "cardanoNix.cardano-node.defaults" "and cardanoNix.cardano-node.instance.$name"
   processOptions'.options = {
     package = mkOption {
-      type = types.package;
-      package = pkgs.cardano-node; # FIXME: would we want to
+      type = package;
+      default = config.cardanoNix.packages.cardano-node;
     };
 
     options = mkOption {
-      type = types.attrsOf types.str;
+      type = attrsOf str;
       description = ''
         Key-value pairs, auto-convertable to command-line arguments --arg value
         (Semi-internal)
       '';
+      default = {};
     };
 
-    extraCommandLine = mkOption {
-      type = types.lines;
+    extraCommandLineArgs = mkOption {
+      type = listOf str;
       default = [];
     };
 
@@ -41,13 +41,13 @@
     };
 
     dbPath = mkOption {
-      type = types.str;
+      type = str;
       description = ''
         path for DB files
       '';
     };
     useSnapshot = mkOption {
-      type = types.str;
+      type = bool;
       description = ''
         use snapshot
       '';
@@ -56,14 +56,14 @@
       default = false;
     };
     topologyFile = mkOption {
-      type = types.either types.str types.path;
+      type = either str path;
       internal = true;
-      literalExample = ''
+      defaultText = lib.literalExpression ''
         # default implementation (for reference purpose)
         topologyFile = mkTopologyFile instance.topology;
       '';
     };
-    topology = {
+    topology = mkOption {
       type = topologyType;
     };
   };
@@ -77,6 +77,7 @@ in {
       description = ''
         Set of instance defaults
       '';
+      default = {};
     };
     instances = mkOption {
       type = types.attrsOf processOptions;
@@ -96,16 +97,18 @@ in {
         # FIXME: just rename "cardano-node-${instance.name}" to cardano-node in case of single node?
         cardano-node = {};
       }
-      // flip mapAttrs' cfg.instances (name: instance:
-        nameValuePair "cardano-node-${instance.name}" {
+      // flip mapAttrs' cfg.instances (name: instance: let
+        nodeArguments = (lib.cli.toGNUCommandLine {} instance.options) ++ instance.extraCommandLineArgs;
+      in
+        nameValuePair "cardano-node-${name}" {
           after = ["network-online.target"];
           wants = ["network-online.target"];
           wantedBy = ["multi-user.target"];
-          required = optional instance.useSnapshot "cardano-node-${instance.name}-snapshot.service"; # One shot, which should depends on downloader
+          requires = optional instance.useSnapshot "cardano-node-${instance.name}-snapshot.service"; # One shot, which should depends on downloader
           script = ''
             # Show commandline before execution
             set -x
-            exec ${getBin instance.package}/bin/cardano-node run ${toGNUCommandLineShell instance.options}
+            exec ${getExe instance.package} run ${lib.concatStringsSep " " nodeArguments}
           '';
         });
   };

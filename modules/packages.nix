@@ -1,8 +1,9 @@
 {
-  self',
+  cardanoNixInternals,
   lib,
   ...
 }: let
+  inherit (cardanoNixInternals) self';
   inherit (lib) types mkOption;
   inherit (types) path submodule;
 in {
@@ -28,5 +29,8 @@ in {
       };
     };
     description = "FIXME";
+  };
+  config = {
+    cardanoNix.packages = lib.mkDefault {};
   };
 }

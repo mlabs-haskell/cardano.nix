@@ -1,6 +1,6 @@
 {lib}: let
-  inherit (lib) types optionalAttrs;
-  inherit (types) mkOption submodule either path str int bool listOf;
+  inherit (lib) types optionalAttrs mkOption;
+  inherit (types) submodule either path str int bool listOf nullOr;
 in rec {
   addressPortType = submodule {
     options = {
@@ -47,7 +47,7 @@ in rec {
   };
 
   # FIXME: do we need support older eras key?
-  shellyEraKeysType = submodule {
+  shelleyEraKeysType = submodule {
     options = {
       # Shelly+ era secrets path definitions
       vrfKey = mkOption {
@@ -66,10 +66,11 @@ in rec {
         type = either path str;
         # "${name}.opcert";
       };
-      #      bulkCredentials = mkOption {
-      #        type = nullOr (either path str);
-      #        # "${name}-bulk.creds";
-      #      };
+      bulkCredentials = mkOption {
+        type = nullOr (either path str);
+        default = null;
+        # "${name}-bulk.creds";
+      };
     };
   };
 
@@ -78,7 +79,6 @@ in rec {
     {
       "kes-key" = keys.kesKey;
       "vrf-key" = keys.vrfKey;
-      "cold-verification" = keys.coldVerification;
     }
-    // optionalAttrs keys.bulkCredentials {"bulk-credentials-file" = keys.bulkCredentials;};
+    // optionalAttrs (keys.bulkCredentials != null) {"bulk-credentials-file" = keys.bulkCredentials;};
 }

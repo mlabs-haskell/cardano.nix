@@ -7,22 +7,24 @@
         name = "block producer starts";
 
         nodes = {
-          machine = {config, ...}: {
+          machine = {...}: {
             imports = [./block-producer-keys];
             virtualisation = {
               cores = 2;
               memorySize = 1024;
               writableStore = false;
             };
-            environment.systemPackages = [config.services.cardano-node.cardanoNodePackages.cardano-cli];
-            cardanoNix.cardano-node.producer = {
-              enable = true;
-              relayAddrs = [
-                {
-                  address = "x.x.x.x";
-                  port = 3000;
-                }
-              ];
+            cardanoNix.cardano-cli.enable = true;
+            cardanoNix.cardano-node = {
+              producer = {
+                enable = true;
+                relayAddrs = [
+                  {
+                    address = "x.x.x.x";
+                    port = 3000;
+                  }
+                ];
+              };
             };
           };
         };
