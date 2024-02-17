@@ -16,8 +16,17 @@
 
   # FIXME: move all types to `types.nix`?
   # Options shared between "cardanoNix.cardano-node.defaults" "and cardanoNix.cardano-node.instance.$name"
-  processOptions = submodule {
+  processOptions = submodule ({config, ...}: {
     options = {
+      name = mkOption {
+        type = str;
+        internal = true;
+        default = config._module.arg.name;
+        description = ''
+          For instances, should match attr name in `cardano-node.instances`
+        '';
+      };
+
       package = mkOption {
         type = package;
         default = config.cardanoNix.packages.cardano-node;
@@ -69,7 +78,7 @@
         type = topologyType;
       };
     };
-  };
+  });
 in {
   options.cardanoNix.cardano-node = {
     defaults = mkOption {
