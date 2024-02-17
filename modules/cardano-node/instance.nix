@@ -16,61 +16,60 @@
 
   # FIXME: move all types to `types.nix`?
   # Options shared between "cardanoNix.cardano-node.defaults" "and cardanoNix.cardano-node.instance.$name"
-  processOptions'.options = {
-    package = mkOption {
-      type = package;
-      default = config.cardanoNix.packages.cardano-node;
-    };
+  processOptions = submodule {
+    options = {
+      package = mkOption {
+        type = package;
+        default = config.cardanoNix.packages.cardano-node;
+      };
 
-    options = mkOption {
-      type = attrsOf str;
-      description = ''
-        Key-value pairs, auto-convertable to command-line arguments --arg value
-        (Semi-internal)
-      '';
-      default = {};
-    };
+      options = mkOption {
+        type = attrsOf str;
+        description = ''
+          Key-value pairs, auto-convertable to command-line arguments --arg value
+          (Semi-internal)
+        '';
+        default = {};
+      };
 
-    extraCommandLineArgs = mkOption {
-      type = listOf str;
-      default = [];
-    };
+      extraCommandLineArgs = mkOption {
+        type = listOf str;
+        default = [];
+      };
 
-    extraSystemdOptions = mkOption {
-      type = types.lazyAttrsOf types.any;
-      default = {};
-    };
+      extraSystemdOptions = mkOption {
+        type = types.lazyAttrsOf types.any;
+        default = {};
+      };
 
-    dbPath = mkOption {
-      type = str;
-      description = ''
-        path for DB files
-      '';
-    };
-    useSnapshot = mkOption {
-      type = bool;
-      description = ''
-        use snapshot
-      '';
-      # FIXME: need at least a stub `config.cardanoNix.cardano-snapshot-download` to uncomment
-      # default = config.cardanoNix.cardano-snapshot-download.enable;
-      default = false;
-    };
-    topologyFile = mkOption {
-      type = either str path;
-      internal = true;
-      defaultText = lib.literalExpression ''
-        # default implementation (for reference purpose)
-        topologyFile = mkTopologyFile instance.topology;
-      '';
-    };
-    topology = mkOption {
-      type = topologyType;
+      dbPath = mkOption {
+        type = str;
+        description = ''
+          path for DB files
+        '';
+      };
+      useSnapshot = mkOption {
+        type = bool;
+        description = ''
+          use snapshot
+        '';
+        # FIXME: need at least a stub `config.cardanoNix.cardano-snapshot-download` to uncomment
+        # default = config.cardanoNix.cardano-snapshot-download.enable;
+        default = false;
+      };
+      topologyFile = mkOption {
+        type = either str path;
+        internal = true;
+        defaultText = lib.literalExpression ''
+          # default implementation (for reference purpose)
+          topologyFile = mkTopologyFile instance.topology;
+        '';
+      };
+      topology = mkOption {
+        type = topologyType;
+      };
     };
   };
-
-  # FIXME: kludge in case if we want to extend instance with exclusive options
-  processOptions = submodule processOptions';
 in {
   options.cardanoNix.cardano-node = {
     defaults = mkOption {
