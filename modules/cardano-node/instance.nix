@@ -4,10 +4,11 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cardanoTypes = import ./types.nix {inherit lib;};
-  inherit (builtins) length attrNames;
+  inherit (builtins) length attrNames map;
   inherit (lib) types mkOption mapAttrs' nameValuePair flip getExe mkIf optional;
   inherit (types) submodule listOf attrsOf package str either path bool;
   inherit (cardanoTypes) topologyType;
@@ -90,12 +91,24 @@ in {
   };
 
   config = mkIf (length (attrNames cfg.instances) > 0) {
-    # Dummy implementation now
     systemd.services =
       {
         # default systemd service to control them all (FIXME: now a stub)
         # FIXME: just rename "cardano-node-${instance.name}" to cardano-node in case of single node?
-        cardano-node = {};
+        cardano-node = {
+          description = "Control all instances at once.";
+          enable = true;
+          wants = map (name: "cardano-node-${name}.service") (attrNames cfg.instances);
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = "yes";
+            User = "cardano-node";
+            Group = "cardano-node";
+            ExecStart = "${pkgs.coreutils}/bin/echo 'Starting cardano-node instances'";
+            WorkingDirectory = "/var/lib/cardano-node";
+            StateDirectory = "cardano-node";
+          };
+        };
       }
       // flip mapAttrs' cfg.instances (name: instance: let
         nodeArguments = (lib.cli.toGNUCommandLine {} instance.options) ++ instance.extraCommandLineArgs;

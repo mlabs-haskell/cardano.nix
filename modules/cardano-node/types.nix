@@ -77,8 +77,9 @@ in rec {
   # FIXME: check all options names for node, attrNames here should match node argument name
   generateShelleyKeysOptions = keys:
     {
-      "kes-key" = keys.kesKey;
-      "vrf-key" = keys.vrfKey;
+      "shelley-kes-key" = keys.kesKey;
+      "shelley-vrf-key" = keys.vrfKey;
+      "shelley-operational-certificate" = keys.operationalCertificate;
     }
     // optionalAttrs (keys.bulkCredentials != null) {"bulk-credentials-file" = keys.bulkCredentials;};
 }
