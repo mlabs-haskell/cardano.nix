@@ -5,14 +5,26 @@
   config,
   lib,
   pkgs,
+  cardanoNixInternals,
   ...
 }: let
   cardanoTypes = import ./types.nix {inherit lib;};
-  inherit (builtins) length attrNames map;
-  inherit (lib) types mkOption mapAttrs' nameValuePair flip getExe mkIf optional;
-  inherit (types) submodule listOf attrsOf package str either path bool;
-  inherit (cardanoTypes) topologyType;
+  inherit (cardanoNixInternals) inputs;
+  inherit (builtins) length attrNames map toFile toJSON;
+  inherit (lib) types mkOption mapAttrs' nameValuePair flip getExe mkIf optional recursiveUpdate;
+  inherit (types) submodule listOf attrsOf package str either path bool nullOr;
+  inherit (cardanoTypes) topologyType nodeConfigType;
   cfg = config.cardanoNix.cardano-node;
+  inherit (config.cardanoNix) packages;
+  cardano-lib = pkgs.callPackage "${inputs.iohk-nix}/cardano-lib" {};
+
+  inherit (cardano-lib) environments;
+  mkConfig = instance: let
+    basicConfig = environments.${instance.environment}.nodeConfig;
+  in
+    toFile "cardano-node-config.json" (toJSON (recursiveUpdate basicConfig instance.nodeConfig));
+  mkTopologyFile = instance:
+    toFile "topology.json" (toJSON instance.topology);
 
   # FIXME: move all types to `types.nix`?
   # Options shared between "cardanoNix.cardano-node.defaults" "and cardanoNix.cardano-node.instance.$name"
@@ -21,7 +33,7 @@
       name = mkOption {
         type = str;
         internal = true;
-        default = config._module.arg.name;
+        default = config._module.args.name;
         description = ''
           For instances, should match attr name in `cardano-node.instances`
         '';
@@ -29,7 +41,7 @@
 
       package = mkOption {
         type = package;
-        default = config.cardanoNix.packages.cardano-node;
+        default = packages.cardano-node;
       };
 
       options = mkOption {
@@ -51,12 +63,30 @@
         default = {};
       };
 
+      environment = mkOption {
+        type = types.enum (attrNames environments);
+        default = "preprod";
+        description = ''
+          environment node will connect to
+        '';
+      };
+
       dbPath = mkOption {
         type = str;
         description = ''
           path for DB files
         '';
+        default = "/var/lib/cardano-node"; # FIXME: ensure that is unique per-instance
       };
+
+      socketPath = mkOption {
+        type = str;
+        description = ''
+          Path to cardano-nix socket
+        '';
+        default = "/run/cardano-node/node.socket"; # FIXME: ensure that is unique per-instance
+      };
+
       useSnapshot = mkOption {
         type = bool;
         description = ''
@@ -66,16 +96,28 @@
         # default = config.cardanoNix.cardano-snapshot-download.enable;
         default = false;
       };
+
       topologyFile = mkOption {
-        type = either str path;
+        type = nullOr (either str path);
         internal = true;
         defaultText = lib.literalExpression ''
           # default implementation (for reference purpose)
           topologyFile = mkTopologyFile instance.topology;
         '';
+        default = null; # if not set, serialized instance.topology used
       };
       topology = mkOption {
         type = topologyType;
+        default = {};
+      };
+      nodeConfigFile = mkOption {
+        type = nullOr (either path str);
+        internal = true;
+        default = null;
+      };
+      nodeConfig = mkOption {
+        type = nodeConfigType;
+        default = {};
       };
     };
   });
@@ -119,9 +161,27 @@ in {
         };
       }
       // flip mapAttrs' cfg.instances (name: instance: let
-        nodeArguments = (lib.cli.toGNUCommandLine {} instance.options) ++ instance.extraCommandLineArgs;
+        configFile =
+          if instance.nodeConfigFile != null
+          then instance.nodeConfigFile
+          else mkConfig instance;
+        topologyFile =
+          if instance.topologyFile != null
+          then instance.topologyFile
+          else mkTopologyFile instance;
+        options =
+          {
+            "config" = configFile;
+            "topology" = topologyFile;
+            "database-path" = instance.dbPath;
+            "socket-path" = instance.socketPath;
+          }
+          // instance.options;
+        nodeArguments = (lib.cli.toGNUCommandLine {} options) ++ instance.extraCommandLineArgs;
       in
         nameValuePair "cardano-node-${name}" {
+          enable = true;
+          description = "Cardano node instance for ${instance.name}";
           after = ["network-online.target"];
           wants = ["network-online.target"];
           wantedBy = ["multi-user.target"];

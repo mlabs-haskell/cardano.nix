@@ -26,6 +26,13 @@ in {
           default = self'.packages.cardano-cli;
           internal = true;
         };
+        cardano-lib = mkOption {
+          type = path;
+          default = self'.packages.cardano-lib;
+          description = ''
+            Library of default cardano configurations
+          '';
+        };
       };
     };
     description = "FIXME";

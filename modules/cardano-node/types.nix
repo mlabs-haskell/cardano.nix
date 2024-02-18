@@ -1,11 +1,11 @@
 {lib}: let
   inherit (lib) types optionalAttrs mkOption;
-  inherit (types) submodule either path str int bool listOf nullOr;
+  inherit (types) submodule either path str int bool listOf nullOr attrsOf anything;
 in rec {
   addressPortType = submodule {
     options = {
       address = mkOption {
-        type = int;
+        type = str;
       };
       port = mkOption {
         type = int;
@@ -28,16 +28,19 @@ in rec {
         // optionalAttrs isLocal {
           valency = mkOption {
             type = int;
+            default = 1;
           };
         };
     };
   topologyType = submodule {
     options = {
       localRoots = mkOption {
-        type = rootsType true;
+        type = listOf (rootsType true);
+        default = [];
       };
       publicRoots = mkOption {
-        type = rootsType false;
+        type = listOf (rootsType false);
+        default = [];
       };
       useLedgerAfterSlot = mkOption {
         type = int;
@@ -45,6 +48,9 @@ in rec {
       };
     };
   };
+
+  # FIXME: do we want fully-typed schema for config here?
+  nodeConfigType = attrsOf anything;
 
   # FIXME: do we need support older eras key?
   shelleyEraKeysType = submodule {

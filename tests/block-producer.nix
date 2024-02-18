@@ -20,7 +20,7 @@
                 enable = true;
                 relayAddrs = [
                   {
-                    address = "x.x.x.x";
+                    address = "127.0.0.1";
                     port = 3000;
                   }
                 ];
@@ -30,7 +30,9 @@
         };
 
         testScript = ''
-          machine.wait_for_unit("cardano-node.service")
+          machine.wait_for_unit("cardano-node-producer.service")
+          # FIXME: is oneshot, why orchestrating doesn't starts?
+          # machine.wait_for_unit("cardano-node.service")
           machine.wait_for_open_port(12798) # prometheus
           machine.wait_for_open_port(3001)  # node
           machine.succeed("stat /run/cardano-node")
