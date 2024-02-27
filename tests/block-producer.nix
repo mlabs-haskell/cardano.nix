@@ -24,7 +24,16 @@
                     port = 3000;
                   }
                 ];
+                listen = {
+                  address = "127.0.0.1";
+                  port = 3001;
+                };
               };
+            };
+            users.groups.cardano-node = {};
+            users.users.cardano-node = {
+              group = "cardano-node";
+              isSystemUser = true;
             };
           };
         };
@@ -37,7 +46,8 @@
           machine.wait_for_open_port(3001)  # node
           machine.succeed("stat /run/cardano-node")
           machine.succeed("stat /run/cardano-node/node.socket")
-          machine.succeed("systemctl status cardano-node")
+          machine.succeed("systemctl status cardano-node-producer")
+          #machine.succeed("systemctl status cardano-node") # FIXME: oneshot is dead?
           machine.succeed(
             "cardano-cli ping -h 127.0.0.1 -c 1 --magic 1 -q --json \
               | ${pkgs.jq}/bin/jq '.pongs != null' \

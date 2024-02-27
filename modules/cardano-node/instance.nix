@@ -13,7 +13,7 @@
   inherit (builtins) length attrNames map toFile toJSON;
   inherit (lib) types mkOption mapAttrs' nameValuePair flip getExe mkIf optional recursiveUpdate;
   inherit (types) submodule listOf attrsOf package str either path bool nullOr;
-  inherit (cardanoTypes) topologyType nodeConfigType;
+  inherit (cardanoTypes) topologyType nodeConfigType addressPortType;
   cfg = config.cardanoNix.cardano-node;
   inherit (config.cardanoNix) packages;
   cardano-lib = pkgs.callPackage "${inputs.iohk-nix}/cardano-lib" {};
@@ -71,6 +71,13 @@
         '';
       };
 
+      stateDirectory = mkOption {
+        type = nullOr str;
+        description = ''
+        '';
+        default = "cardano-node";
+      };
+
       dbPath = mkOption {
         type = str;
         description = ''
@@ -87,6 +94,14 @@
         default = "/run/cardano-node/node.socket"; # FIXME: ensure that is unique per-instance
       };
 
+      runtimeDirectory = mkOption {
+        type = str;
+        description = ''
+          Runtime path for sockets, etc (relative to /run).
+        '';
+        default = "cardano-node";
+      };
+
       useSnapshot = mkOption {
         type = bool;
         description = ''
@@ -95,6 +110,15 @@
         # FIXME: need at least a stub `config.cardanoNix.cardano-snapshot-download` to uncomment
         # default = config.cardanoNix.cardano-snapshot-download.enable;
         default = false;
+      };
+
+      listen = mkOption {
+        type = addressPortType;
+        default = {
+          # FIXME: Shoundn't have default, and must set explicitly in downstream modules
+          address = "127.0.0.1";
+          port = 3001;
+        };
       };
 
       topologyFile = mkOption {
@@ -175,6 +199,8 @@ in {
             "topology" = topologyFile;
             "database-path" = instance.dbPath;
             "socket-path" = instance.socketPath;
+            "host-addr" = instance.listen.address;
+            "port" = instance.listen.port;
           }
           // instance.options;
         nodeArguments = (lib.cli.toGNUCommandLine {} options) ++ instance.extraCommandLineArgs;
@@ -186,11 +212,29 @@ in {
           wants = ["network-online.target"];
           wantedBy = ["multi-user.target"];
           requires = optional instance.useSnapshot "cardano-node-${instance.name}-snapshot.service"; # One shot, which should depends on downloader
+          serviceConfig = {
+            inherit (instance) runtimeDirectory stateDirectory;
+            User = "cardano-node";
+            Group = "cardano-node";
+            #            WorkingDirectory = "/var/lib/cardano-node";
+          };
           script = ''
             # Show commandline before execution
             set -x
             exec ${getExe instance.package} run ${lib.concatStringsSep " " nodeArguments}
           '';
         });
+    systemd.tmpfiles.rules =
+      flip lib.mapAttrsToList cfg.instances (_name: instance: "d /var/lib/${instance.stateDirectory} 0700 cardano-node cardano-node -")
+      ++ flip lib.mapAttrsToList cfg.instances (_name: instance: "d /run/${instance.runtimeDirectory} 0700 cardano-node cardano-node -");
+    ## Code below is same as `systemd.tmpfiles.rules` above, but wait for pending change from unstable
+    #      systemd.tmpfiles.settings = flip mapAttrs' cfg.instances (name: instance:
+    #        nameValuePair name (
+    #          nameValuePair "/var/lib/${instance.stateDirectory}" {
+    #            mode = "0700";
+    #            user = "cardano-node";
+    #            group = "cardano-node";
+    #          }
+    #        ));
   };
 }

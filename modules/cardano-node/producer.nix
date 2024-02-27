@@ -47,6 +47,10 @@ in {
         default = "producer";
       };
 
+      listen = mkOption {
+        type = addressPortType;
+      };
+
       shelleyEraKeys = mkOption {
         type = shelleyEraKeysType;
       };
@@ -56,6 +60,7 @@ in {
   config = mkIf cfg.enable {
     cardanoNix.cardano-node.instances.${cfg.name} = recursiveUpdate defaults {
       topology = mkBlockProducerTopology cfg.relayAddrs;
+      inherit (cfg) listen;
       options =
         {
           # Some local options here
