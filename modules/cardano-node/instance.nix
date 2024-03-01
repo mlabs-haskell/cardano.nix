@@ -11,7 +11,7 @@
   cardanoTypes = import ./types.nix {inherit lib;};
   inherit (cardanoNixInternals) inputs;
   inherit (builtins) length attrNames map toFile toJSON;
-  inherit (lib) types mkOption mapAttrs' nameValuePair flip getExe mkIf optional recursiveUpdate;
+  inherit (lib) concatStringsSep types mkOption mapAttrs' nameValuePair flip getExe mkIf optional recursiveUpdate;
   inherit (types) submodule listOf attrsOf package str either path bool nullOr;
   inherit (cardanoTypes) topologyType nodeConfigType addressPortType;
   cfg = config.cardanoNix.cardano-node;
@@ -161,6 +161,7 @@ in {
         As side effect, it allow to host all type of node on single host, althougt it NOT recommended for mainnet deployment.
       '';
       internal = true;
+      default = {};
     };
   };
 
@@ -178,7 +179,7 @@ in {
             RemainAfterExit = "yes";
             User = "cardano-node";
             Group = "cardano-node";
-            ExecStart = "${pkgs.coreutils}/bin/echo 'Starting cardano-node instances'";
+            ExecStart = "${pkgs.coreutils}/bin/echo 'Starting cardano-node instances: ${concatStringsSep ", " (attrNames cfg.instances)}.'";
             WorkingDirectory = "/var/lib/cardano-node";
             StateDirectory = "cardano-node";
           };
