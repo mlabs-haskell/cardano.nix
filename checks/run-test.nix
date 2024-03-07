@@ -42,6 +42,7 @@ writeShellApplication {
     eval set -- "$args"
 
     system="${stdenv.system}"
+    nix_args="''${NIX_ARGS:=}"
     driver_args=()
 
     while [ $# -gt 0 ]; do
@@ -64,6 +65,6 @@ writeShellApplication {
     shift
 
     # build/run the test driver, passing any remaining arguments
-    nix run ".#checks.$system.testing-$name.driver" -- "''${driver_args[@]}"
+    nix run ".#checks.$system.testing-$name.driver" "''${nix_args}" -- "''${driver_args[@]}"
   '';
 }
