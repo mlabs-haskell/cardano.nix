@@ -111,7 +111,6 @@
       src = ../.; # FIXME: use config.flake-root.package here
       name = "cardano-nix-docs";
 
-      buildInput = [options-doc];
       nativeBuildInputs = [my-mkdocs];
 
       buildPhase = ''
