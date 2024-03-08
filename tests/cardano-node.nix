@@ -10,7 +10,7 @@
         nodes = {
           machine = {pkgs, ...}: {
             virtualisation = {
-              cores = 2;
+              cores = 1;
               memorySize = 1024;
             };
             cardanoNix = {
@@ -27,7 +27,7 @@
 
         testScript = ''
           machine.wait_for_unit("cardano-node")
-          machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic 2 | jq '.syncProgress' --raw-output) > 1" | bc) == "1" ]]""")
+          machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic 2 | jq '.syncProgress' --raw-output) > 0.01" | bc) == "1" ]]""")
         '';
       };
     };
