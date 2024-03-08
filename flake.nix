@@ -6,6 +6,8 @@
     # we use effects for CI, documentation and pushing to public cache
     hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
 
+    cardano-node.url = "github:intersectmbo/cardano-node?ref=8.7.3";
+
     # Utilities
     devshell = {
       url = "github:numtide/devshell";
@@ -44,6 +46,7 @@
         ./modules
         ./shell
         ./tests
+        ./packages
       ];
       systems = [
         "x86_64-linux"
