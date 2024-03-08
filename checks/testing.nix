@@ -66,9 +66,11 @@ in {
               inherit (test) specialArgs;
             };
 
-            # import all of our flake nixos modules by default
             defaults.imports = [
+              # import all of our flake nixos modules by default
               nixosModules.default
+              # fix missing pkgs.system in tests
+              {nixpkgs.overlays = [(_: _: {inherit system;})];}
             ];
 
             # import the test module

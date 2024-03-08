@@ -1,25 +1,23 @@
 {
   cardanoNix.tests = {
-    dummy = {
+    cardano-cli = {
       systems = ["x86_64-linux"];
 
       module = {
-        name = "cli-test";
+        name = "cardano-cli-test";
 
         nodes = {
           machine = {
             virtualisation = {
               cores = 2;
               memorySize = 1024;
-              writableStore = true;
             };
             cardanoNix.cardano-cli.enable = true;
           };
         };
 
-        # TODO `git` will be replaced by `cardano-cli` (milestone 2)
         testScript = ''
-          machine.succeed("git --version")
+          machine.succeed("cardano-cli --version")
         '';
       };
     };

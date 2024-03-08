@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: {
-  options.cardanoNix.cardano-cli.enable = lib.mkEnableOption "Install cardano CLI tools and scripts";
+  options.cardanoNix.cardano-cli.enable = lib.mkEnableOption "cardano-cli in systemPackages";
 
   config = lib.mkIf config.cardanoNix.cardano-cli.enable {
     environment.systemPackages = [
-      pkgs.git # TODO: replace with `cardano-cli` (milestone 2)
+      pkgs.cardano-cli
     ];
   };
 }
