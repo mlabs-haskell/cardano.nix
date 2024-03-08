@@ -2,6 +2,7 @@
   cardanoNix.tests = {
     cardano-node = {
       systems = ["x86_64-linux"];
+      impure = true;
 
       module = {
         name = "cardano-node-test";

@@ -39,6 +39,10 @@ in {
               type = types.attrsOf types.anything;
               default = {};
             };
+            impure = mkOption {
+              type = types.bool;
+              default = false;
+            };
           };
         }));
       };
@@ -86,7 +90,7 @@ in {
         mapAttrs'
         (name: test: nameValuePair "testing-${test.name}" (cfg._mkCheckFromTest test))
         (lib.filterAttrs
-          (_: v: lib.elem system v.systems)
+          (_: v: lib.elem system v.systems && !v.impure)
           cfg.tests);
 
       apps.run-test.program = lib.getExe cfg.runTestScript;
