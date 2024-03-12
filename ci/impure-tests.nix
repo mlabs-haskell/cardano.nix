@@ -11,8 +11,10 @@
     ...
   }:
     hci-effects.modularEffect {
-      extraAttributes.__hci_effect_mounts."/dev/kvm" = "kvm";
+      extraAttributes.__hci_effect_mounts = ''{"/dev/kvm": "kvm"}'';
       effectScript = ''
+        ls /dev
+        exit 1
         ${(config.cardanoNix._mkCheckFromTest config.cardanoNix.tests.cardano-node).driver}/bin/nixos-test-driver
       '';
     });
