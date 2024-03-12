@@ -1,25 +1,19 @@
 {
-  cardanoNix.tests = {
-    cardano-cli = {
-      systems = ["x86_64-linux"];
+  nixosTests.tests.cardano-cli.module = {
+    name = "cardano-cli-test";
 
-      module = {
-        name = "cardano-cli-test";
-
-        nodes = {
-          machine = {
-            virtualisation = {
-              cores = 2;
-              memorySize = 1024;
-            };
-            cardanoNix.cardano-cli.enable = true;
-          };
+    nodes = {
+      machine = {
+        virtualisation = {
+          cores = 2;
+          memorySize = 1024;
         };
-
-        testScript = ''
-          machine.succeed("cardano-cli --version")
-        '';
+        cardanoNix.cardano-cli.enable = true;
       };
     };
+
+    testScript = ''
+      machine.succeed("cardano-cli --version")
+    '';
   };
 }

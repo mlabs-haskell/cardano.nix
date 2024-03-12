@@ -7,7 +7,6 @@
   imports = [
     inputs.hercules-ci-effects.flakeModule
     "${inputs.hercules-ci-effects}/effects/push-cache/default.nix"
-    ./impure-tests.nix
   ];
   config = {
     hercules-ci.github-pages.branch = "master";
