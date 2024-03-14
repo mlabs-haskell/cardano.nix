@@ -32,7 +32,7 @@
         chmod +x $out/bin/mkdocs
       '';
 
-    eachOptions = removeAttrs rootConfig.flake.nixosModules ["default"];
+    eachOptions = removeAttrs rootConfig.flake.nixosModules ["default" "cardano-overlay"];
 
     eachOptionsDoc =
       lib.mapAttrs' (

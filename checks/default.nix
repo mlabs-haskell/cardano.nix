@@ -1,6 +1,6 @@
 {inputs, ...}: {
   imports = [
-    ./testing.nix
+    ./nixosTests.nix
     ./licenses.nix
   ];
   perSystem = {
