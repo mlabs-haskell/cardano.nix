@@ -1,6 +1,5 @@
 {
-  nixosTests.tests.cardano-cli.module = {
-    name = "cardano-cli";
+  perSystem.vmTests.tests.cardano-cli.module = {
     nodes = {
       machine = {
         virtualisation = {

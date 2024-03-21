@@ -184,6 +184,23 @@
         "type": "github"
       }
     },
+    "cardano-configurations": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702085095,
+        "narHash": "sha256-IJChESftdO2tj2pRB+82xMaLP/RqyKHzttE7QMLqvBQ=",
+        "owner": "input-output-hk",
+        "repo": "cardano-configurations",
+        "rev": "21249e0d5c68b4e8f3661b250aa8272a8785d678",
+        "type": "github"
+      },
+      "original": {
+        "owner": "input-output-hk",
+        "repo": "cardano-configurations",
+        "rev": "21249e0d5c68b4e8f3661b250aa8272a8785d678",
+        "type": "github"
+      }
+    },
     "cardano-mainnet-mirror": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
@@ -2003,6 +2020,7 @@
     "root": {
       "inputs": {
         "attic": "attic",
+        "cardano-configurations": "cardano-configurations",
         "cardano-node": "cardano-node",
         "devour-flake": "devour-flake",
         "devshell": "devshell_3",

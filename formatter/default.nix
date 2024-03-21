@@ -25,9 +25,9 @@
 
     devshells.default.commands = [
       {
-        category = "Tools";
+        category = "tools";
         name = "fmt";
-        help = "Format the source tree";
+        help = "format the source tree";
         command = lib.getExe config.treefmt.build.wrapper;
       }
     ];

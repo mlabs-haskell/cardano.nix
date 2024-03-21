@@ -23,22 +23,45 @@ Don't edit `~/.config/nix/nix.conf` in your home directory. Don't add users to `
 
 ### Development Shell
 
-`cardano.nix` provides a devshell that includes some useful tools and aliases:
+Development is supported on linux systems. Virtual machines are run with `qemu` so `kvm` is recommended.
+
+`cardano.nix` provides a devshell that includes various tools to build, test, run and update the project:
 
 ```
 ❯ nix develop
 ...
 ❄️ Welcome to the cardano.nix devshell ❄️
-...
-[Tools]
 
-  build-all  - Build all the checks
-  check      - Alias of `nix flake check`
-  fmt        - Format the source tree
-...
+[documentation]
+
+  docs-build              - build documentation
+  docs-serve              - serve documentation web page
+
+[general commands]
+
+  menu                    - prints this menu
+
+[tests]
+
+  build-all               - build all packages and checks with `devour-flake`
+  check                   - run `nix flake check`
+  run-vm-test             - list and run virtual machine integration tests
+
+[tools]
+
+  fmt                     - format the source tree
+  update-pre-commit-hooks - update git pre-commit hooks
 ```
 
 A `.envrc` is also provided, using [direnv]() and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
+
+### Run Integration Test
+
+From the devshell, run an integration test that starts `cardano-node` and `ogmios` on the `preview` testnet and checks for synchronization progress.
+
+```
+run-vm-test ogmios
+```
 
 ## License information
 

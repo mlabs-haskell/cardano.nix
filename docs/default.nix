@@ -147,18 +147,18 @@
 
     devshells.default = {
       commands = let
-        category = "Docs";
+        category = "documentation";
       in [
         {
           inherit category;
           name = "docs-serve";
-          help = "Serve docs";
+          help = "serve documentation web page";
           command = "nix run .#docs.serve";
         }
         {
           inherit category;
           name = "docs-build";
-          help = "Build docs";
+          help = "build documentation";
           command = "nix build .#docs";
         }
       ];

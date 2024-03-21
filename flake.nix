@@ -4,6 +4,8 @@
 
     # cardano-node
     cardano-node.url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    cardano-configurations.url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
+    cardano-configurations.flake = false;
 
     # Utilities
     attic.url = "github:zhaofengli/attic";
@@ -47,7 +49,8 @@
         "aarch64-linux"
         # Ogmios doesn't support it
         # "x86_64-darwin"
-        "aarch64-darwin"
+        # We don't have a builder
+        # "aarch64-darwin"
       ];
     };
 }
