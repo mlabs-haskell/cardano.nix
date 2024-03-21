@@ -2,6 +2,8 @@
   nixosTests.tests.cardano-node = {
     impure = true;
     module = {
+      name = "cardano-node";
+
       nodes = {
         machine = {pkgs, ...}: {
           virtualisation = {
