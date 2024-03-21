@@ -6,8 +6,7 @@
   cfg = config.cardanoNix.globals;
   inherit (lib) types;
 in
-  # FIXME: proper assertion, private also can have any unused number
-  #  assert cfg.networkNumbers ? cfg.network;
+  # assert cfg.networkNumbers ? cfg.network;
   {
     options.cardanoNix.globals = {
       network = lib.mkOption {
