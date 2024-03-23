@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.cardanoNix.ogmios;
+  cfg = config.cardano.ogmios;
 in {
-  options.cardanoNix.ogmios = {
+  options.cardano.ogmios = {
     enable = lib.mkEnableOption "cardano-node service";
   };
 
@@ -13,11 +13,11 @@ in {
     services.ogmios = {
       enable = true;
       nodeConfigPath =
-        lib.mkIf (config.cardanoNix.cardano-node.enable or false)
-        config.cardanoNix.cardano-node.configPath;
+        lib.mkIf (config.cardano.node.enable or false)
+        config.cardano.node.configPath;
     };
 
-    systemd.services.ogmios = lib.mkIf (config.cardanoNix.cardano-node.enable or false) {
+    systemd.services.ogmios = lib.mkIf (config.cardano.node.enable or false) {
       after = ["cardano-node-socket.service"];
       requires = ["cardano-node-socket.service"];
     };

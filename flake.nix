@@ -2,8 +2,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # cardano-node
+    # cardano-node.
     cardano-node.url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    # cardano-configurations matching cardano-node 8.7.3
     cardano-configurations.url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
     cardano-configurations.flake = false;
 
@@ -34,7 +35,6 @@
     } {
       debug = true;
       imports = [
-        ./lib
         ./checks
         ./ci
         ./docs

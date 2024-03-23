@@ -9,7 +9,7 @@
     "${inputs.hercules-ci-effects}/effects/push-cache/default.nix"
   ];
   config = {
-    hercules-ci.github-pages.branch = "master";
+    hercules-ci.github-pages.branch = "main";
     hercules-ci.flake-update = {
       enable = true;
       when = {
