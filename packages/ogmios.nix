@@ -4,6 +4,7 @@
     pkgs,
     ...
   }: {
+    # Doesn't buid with haskell.nix but master contains a fix. Move to haskell.nix build on next release.
     packages.ogmios = pkgs.stdenv.mkDerivation rec {
       pname = "ogmios";
       version = "6.1.0";

@@ -26,7 +26,7 @@ in
         description = "Map from network names to network numbers. Selected network must be present in the map";
         type = types.attrsOf types.int;
         default = {
-          mainnet = 0;
+          mainnet = 764824073;
           preprod = 1;
           preview = 2;
           sanchonet = 4;

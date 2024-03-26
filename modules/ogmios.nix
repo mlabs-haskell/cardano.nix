@@ -6,7 +6,7 @@
   cfg = config.cardanoNix.ogmios;
 in {
   options.cardanoNix.ogmios = {
-    enable = lib.mkEnableOption "cardano-node service";
+    enable = lib.mkEnableOption "Ogmios bridge interface for cardano-node";
   };
 
   config = lib.mkIf cfg.enable {

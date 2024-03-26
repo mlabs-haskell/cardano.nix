@@ -19,10 +19,12 @@
         };
       };
 
-      testScript = ''
+      testScript = {nodes, ...}: let
+        magic = toString nodes.machine.config.cardanoNix.globals.networkNumber;
+      in ''
         machine.wait_for_unit("cardano-node")
         machine.wait_for_unit("cardano-node-socket")
-        machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic 2 | jq '.syncProgress' --raw-output) > 0.001" | bc) == "1" ]]""")
+        machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic ${magic} | jq '.syncProgress' --raw-output) > 0.001" | bc) == "1" ]]""")
         machine.wait_for_unit("ogmios")
         machine.succeed("curl --fail http://localhost:1337")
         machine.wait_until_succeeds(r"""journalctl --no-pager -r -n 1 -u ogmios.service -g networkSynchronization\":0\.[0-9][0-9][0-9][1-9]""")
