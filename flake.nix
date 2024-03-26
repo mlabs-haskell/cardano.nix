@@ -1,36 +1,33 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # we use effects for CI, documentation and pushing to public cache
-    hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
-
+    # cardano-node.
     cardano-node.url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    # cardano-configurations matching cardano-node 8.7.3
+    cardano-configurations.url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
+    cardano-configurations.flake = false;
 
     # Utilities
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    attic.url = "github:zhaofengli/attic";
+    devour-flake.url = "github:srid/devour-flake";
+    devour-flake.flake = false;
+    devshell.url = "github:numtide/devshell";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    devour-flake = {
-      url = "github:srid/devour-flake";
-      flake = false;
-    };
-    attic = {
-      url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    pre-commit-hooks-nix = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs"; # prevent unnecessary download
-    };
+    hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
+    pre-commit-hooks-nix.url = "github:cachix/pre-commit-hooks.nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    # Prevent unnecessary downloads
+    attic.inputs.nixpkgs.follows = "nixpkgs";
+    attic.inputs.nixpkgs-stable.follows = "nixpkgs";
+    devshell.inputs.nixpkgs.follows = "nixpkgs";
+    hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
+    hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
+    pre-commit-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+    pre-commit-hooks-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {
@@ -38,7 +35,6 @@
     } {
       debug = true;
       imports = [
-        ./lib
         ./checks
         ./ci
         ./docs
@@ -51,8 +47,10 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
+        # Ogmios doesn't support it
+        # "x86_64-darwin"
+        # We don't have a builder
+        # "aarch64-darwin"
       ];
     };
 }

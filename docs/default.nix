@@ -1,13 +1,15 @@
 {
+  config,
   inputs,
   self,
   ...
-}: {
+}: let
+  rootConfig = config;
+in {
   perSystem = {
     config,
     lib,
     pkgs,
-    rootConfig,
     ...
   }: let
     inherit (pkgs) stdenv mkdocs python310Packages;
@@ -32,14 +34,14 @@
         chmod +x $out/bin/mkdocs
       '';
 
-    eachOptions = removeAttrs rootConfig.flake.nixosModules ["default" "cardano-overlay"];
+    eachOptions = removeAttrs rootConfig.flake.nixosModules ["default"];
 
     eachOptionsDoc =
       lib.mapAttrs' (
         name: value:
           lib.nameValuePair
-          (builtins.head (lib.splitString "." name)) # take foo.options and turn it into just foo
-          
+          # take foo.options and turn it into just foo
+          (builtins.head (lib.splitString "." name))
           (pkgs.nixosOptionsDoc {
             # By default `nixosOptionsDoc` will ignore internal options but we want to show them
             # This hack will make all the options not internal and visible and optionally append to the
@@ -60,7 +62,7 @@
                 specialArgs = {inherit pkgs;};
               })
               .options
-              .cardanoNix;
+              .cardano;
           })
       )
       eachOptions;
@@ -73,7 +75,7 @@
         '')
         eachOptionsDoc);
 
-    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master";
+    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
 
     options-doc = pkgs.runCommand "nixos-options" {} ''
       mkdir $out
@@ -147,18 +149,18 @@
 
     devshells.default = {
       commands = let
-        category = "Docs";
+        category = "documentation";
       in [
         {
           inherit category;
           name = "docs-serve";
-          help = "Serve docs";
+          help = "serve documentation web page";
           command = "nix run .#docs.serve";
         }
         {
           inherit category;
           name = "docs-build";
-          help = "Build docs";
+          help = "build documentation";
           command = "nix build .#docs";
         }
       ];

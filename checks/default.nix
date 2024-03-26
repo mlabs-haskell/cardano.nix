@@ -1,6 +1,6 @@
 {inputs, ...}: {
   imports = [
-    ./nixosTests.nix
+    ./vmTests.nix
     ./licenses.nix
   ];
   perSystem = {
@@ -26,15 +26,15 @@
 
     devshells.default.commands = [
       {
-        category = "Tools";
+        category = "tests";
         name = "build-all";
-        help = "Build all the checks";
+        help = "build all packages and checks with `devour-flake`";
         command = config.apps.nix-build-all.program;
       }
       {
-        category = "Tools";
+        category = "tests";
         name = "check";
-        help = "Alias of `nix flake check`";
+        help = "run `nix flake check`";
         command = "nix flake check";
       }
     ];

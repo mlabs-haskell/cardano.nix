@@ -27,8 +27,8 @@
         {
           name = "update-pre-commit-hooks";
           command = config.pre-commit.installationScript;
-          category = "Tools";
-          help = "Update pre-commit-hooks";
+          category = "tools";
+          help = "update git pre-commit hooks";
         }
       ];
     };
