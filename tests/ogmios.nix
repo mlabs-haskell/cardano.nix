@@ -26,8 +26,8 @@
         machine.wait_for_unit("cardano-node-socket")
         machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic ${magic} | jq '.syncProgress' --raw-output) > 0.001" | bc) == "1" ]]""")
         machine.wait_for_unit("ogmios")
-        machine.succeed("curl --fail http://localhost:1337")
-        machine.wait_until_succeeds(r"""journalctl --no-pager -r -n 1 -u ogmios.service -g networkSynchronization\":0\.[0-9][0-9][0-9][1-9]""")
+        machine.succeed("curl --fail http://localhost:1337/health")
+        machine.wait_until_succeeds("""[[ $(echo "$(curl --fail http://localhost:1337/health | jq '.networkSynchronization' --raw-output) > 0.00001" | bc) == "1" ]]""")
         print(machine.succeed("systemd-analyze security ogmios"))
       '';
     };
