@@ -22,7 +22,6 @@
     perSystem = {config, ...}: {
       hercules-ci.github-pages.settings.contents = config.packages.docs;
     };
-    herculesCI.ciSystems = ["x86_64-linux" "x86_64-darwin"];
 
     push-cache-effect = {
       enable = true;
@@ -35,9 +34,9 @@
             flatten [
               (forEach ["apps" "devShells" "packages"]
                 (attr:
-                  forEach ["x86_64-linux" "x86_64-darwin" "aarch64-linux"]
+                  forEach config.systems
                   (system:
-                    collect isDerivation config.flake.${attr}.${system})))
+                    collect isDerivation (config.flake.${attr}.${system} or {}))))
               (forEach (attrValues config.flake.nixosConfigurations)
                 (os:
                   os.config.system.build.toplevel))

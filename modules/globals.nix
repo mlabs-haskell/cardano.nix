@@ -11,33 +11,27 @@ in
   {
     options.cardanoNix.globals = {
       network = lib.mkOption {
-        type = types.enum (builtins.attrNames cfg.networkNumbers);
+        description = "Cardano network to operate on.";
+        type = types.enum (lib.attrNames cfg.networkNumbers);
         default = "mainnet";
-        description = ''
-          Cardano network to join/use
-        '';
       };
       networkNumber = lib.mkOption {
+        description = "Cardano network number to operate on. Defaults to the network number of the selected network.";
+        internal = true;
         type = types.int;
         default = cfg.networkNumbers.${cfg.network};
         defaultText = lib.literalExpression "config.cardanoNix.globals.networkNumbers.\${config.cardanoNix.globals.net}";
-        description = ''
-          Cardano network number to join/use (should match cardanoNix.globals,network)
-        '';
-        internal = true;
       };
       networkNumbers = lib.mkOption {
+        description = "Map from network names to network numbers. Selected network must be present in the map";
         type = types.attrsOf types.int;
         default = {
-          mainnet = 0;
+          mainnet = 764824073;
           preprod = 1;
           preview = 2;
           sanchonet = 4;
           private = 42;
         };
-        description = ''
-          Cardano network numbers
-        '';
         internal = true;
       };
     };

@@ -6,7 +6,7 @@
   ...
 }:
 writeShellApplication {
-  name = "run-test";
+  name = "run-vm-test";
 
   runtimeInputs = [];
 
@@ -14,21 +14,21 @@ writeShellApplication {
     cmd_name=$(basename "$0")
 
     help() {
-      echo "  build and run a test"
+      echo "  Build and run integration test on a network of virtual machines."
       echo
-      echo "  usage:"
+      echo "  Usage:"
       echo "    $cmd_name <name>"
       echo "    $cmd_name <name> --interactive"
       echo "    $cmd_name -s <system> <name>"
       echo
-      echo "  arguments:"
+      echo "  Arguments:"
       echo "    <name>"
       echo
-      echo "  options:"
-      echo "    -h --help          show this screen."
-      echo "    -l --list          show available tests."
-      echo "    -s --system        specify the target platform [default: ${stdenv.system}]."
-      echo "    -i --interactive   run the test interactively."
+      echo "  Options:"
+      echo "    -h --help          Show this screen."
+      echo "    -l --list          Show available tests."
+      echo "    -s --system        Specify the target platform [default: ${stdenv.system}]."
+      echo "    -i --interactive   Run the test interactively."
       echo
     }
 
@@ -65,6 +65,7 @@ writeShellApplication {
     shift
 
     # build/run the test driver, passing any remaining arguments
-    nix run ".#checks.$system.testing-$name.driver" "''${nix_args}" -- "''${driver_args[@]}"
+     # shellcheck disable=SC2068,SC2086
+    nix run ".#apps.$system.vmTests-$name" ''${nix_args} -- ''${driver_args[@]}
   '';
 }

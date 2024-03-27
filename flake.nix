@@ -1,35 +1,51 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
 
-    # we use effects for CI, documentation and pushing to public cache
-    hercules-ci-effects.url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
-
-    cardano-node.url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    # Cardano-node
+    cardano-node = {
+      url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    };
+    cardano-configurations = {
+      url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
+      flake = false;
+    };
 
     # Utilities
-    devshell = {
-      url = "github:numtide/devshell";
+    attic = {
+      url = "github:zhaofengli/attic";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-root.url = "github:srid/flake-root";
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
     devour-flake = {
       url = "github:srid/devour-flake";
       flake = false;
     };
-    attic = {
-      url = "github:zhaofengli/attic";
+    devshell = {
+      url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+    flake-root = {
+      url = "github:srid/flake-root";
+    };
+    hercules-ci-effects = {
+      url = "github:mlabs-haskell/hercules-ci-effects/push-cache-effect";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     pre-commit-hooks-nix = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs"; # prevent unnecessary download
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs @ {flake-parts, ...}:
@@ -51,8 +67,10 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
+        # Ogmios doesn't support it
+        # "x86_64-darwin"
+        # We don't have a builder
+        # "aarch64-darwin"
       ];
     };
 }

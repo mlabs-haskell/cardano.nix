@@ -1,8 +1,7 @@
 {
-  perSystem = _: {
-    imports = [
-      ./cardano-cli.nix
-      ./cardano-node.nix
-    ];
-  };
+  imports = [
+    ./cardano-cli.nix
+    ./cardano-node.nix
+    ./ogmios.nix
+  ];
 }

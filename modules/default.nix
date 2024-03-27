@@ -3,23 +3,39 @@
   config,
   ...
 }: {
-  flake.nixosModules = rec {
-    globals = ./globals;
-    cardano-node = {
+  flake.nixosModules = {
+    globals = {
       imports = [
-        inputs.cardano-node.nixosModules.cardano-node
-        cardano-overlay
-        ./cardano-node
+        ./globals.nix
       ];
     };
     cardano-cli = {
       imports = [
-        cardano-overlay
-        ./cardano-cli
+        ./cardano-cli.nix
+      ];
+      nixpkgs.overlays = [
+        config.flake.overlays.cardano-cli
       ];
     };
-    cardano-overlay = {
-      nixpkgs.overlays = [config.flake.overlays.default];
+    cardano-node = {
+      imports = [
+        inputs.cardano-node.nixosModules.cardano-node
+        ./cardano-node.nix
+      ];
+      nixpkgs.overlays = [
+        config.flake.overlays.cardano-cli
+        config.flake.overlays.cardano-node
+        config.flake.overlays.cardano-configurations
+      ];
+    };
+    ogmios = {
+      imports = [
+        ./services/ogmios.nix
+        ./ogmios.nix
+      ];
+      nixpkgs.overlays = [
+        config.flake.overlays.ogmios
+      ];
     };
     # the default module imports all modules
     default = {

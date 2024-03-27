@@ -1,15 +1,16 @@
-{inputs, ...}: {
-  imports = [inputs.flake-parts.flakeModules.easyOverlay];
-  perSystem = {
-    config,
-    system,
-    lib,
-    ...
-  }: {
-    packages = let
-      packageNames = ["cardano-node" "cardano-cli"];
-    in
-      lib.filterAttrs (n: _: builtins.elem n packageNames) (inputs.cardano-node.packages.${system} or {});
-    overlayAttrs = config.packages;
+{config, ...}: let
+  mkOverlay = name: (
+    final: _prev: {${name} = (config.perSystem final.system).packages.${name};}
+  );
+in {
+  imports = [
+    ./cardano.nix
+    ./ogmios.nix
+  ];
+  flake.overlays = {
+    cardano-cli = mkOverlay "cardano-cli";
+    cardano-node = mkOverlay "cardano-node";
+    cardano-configurations = mkOverlay "cardano-configurations";
+    ogmios = mkOverlay "ogmios";
   };
 }
