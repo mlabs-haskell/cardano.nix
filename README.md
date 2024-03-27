@@ -55,9 +55,9 @@ Development is supported on linux systems. Virtual machines are run with `qemu` 
 
 A `.envrc` is also provided, using [direnv]() and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
 
-### Run Integration Test
+### Running Integration Tests
 
-From the devshell, run an integration test that starts `cardano-node` and `ogmios` on the `preview` testnet and checks for synchronization progress.
+From the devshell you can run integration tests with `run-vm-test`, for example the following will start `cardano-node` and `ogmios` on the `preview` testnet and will check for synchronization progress.
 
 ```
 run-vm-test ogmios
