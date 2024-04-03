@@ -14,7 +14,7 @@
       };
 
       testScript = {nodes, ...}: let
-        magic = toString nodes.machine.config.cardanoNix.globals.networkNumber;
+        magic = toString nodes.machine.config.cardano.networkNumber;
       in ''
         machine.wait_for_unit("cardano-node")
         machine.wait_for_unit("cardano-node-socket")

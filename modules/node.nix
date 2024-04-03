@@ -4,10 +4,14 @@
   pkgs,
   ...
 }: let
-  cfg = config.cardanoNix.cardano-node;
+  cfg = config.cardano.node;
 in {
-  options.cardanoNix.cardano-node = {
-    enable = lib.mkEnableOption "cardano-node service";
+  options.cardano.node = {
+    enable = lib.mkOption {
+      description = "Whether to enable the cardano-node service.";
+      type = lib.types.bool;
+      default = config.cardano.enable or false;
+    };
 
     socketPath = lib.mkOption {
       description = "Path to cardano-node socket.";
@@ -19,8 +23,8 @@ in {
       description = "Path to cardano-node configuration.";
       type = lib.types.path;
       # TODO: remove "_p2p" after updating cardano-node to >= 8.9.0
-      default = "${pkgs.cardano-configurations}/network/${config.cardanoNix.globals.network}_p2p/cardano-node/config.json";
-      defaultText = lib.literalExpression "\${pkgs.cardano-configurations}/network/\${config.cardanoNix.globals.network}_p2p/cardano-node/config.json";
+      default = "${pkgs.cardano-configurations}/network/${config.cardano.network}_p2p/cardano-node/config.json";
+      defaultText = lib.literalExpression "\${pkgs.cardano-configurations}/network/\${config.cardano.network}_p2p/cardano-node/config.json";
     };
   };
 
@@ -34,7 +38,7 @@ in {
 
       inherit (cfg) socketPath;
       nodeConfigFile = cfg.configPath;
-      environment = config.cardanoNix.globals.network;
+      environment = config.cardano.network;
 
       # Listen on all interfaces.
       hostAddr = lib.mkDefault "0.0.0.0";

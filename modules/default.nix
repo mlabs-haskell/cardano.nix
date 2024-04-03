@@ -4,23 +4,23 @@
   ...
 }: {
   flake.nixosModules = {
-    globals = {
+    cardano = {
       imports = [
-        ./globals.nix
+        ./cardano.nix
       ];
     };
-    cardano-cli = {
+    cli = {
       imports = [
-        ./cardano-cli.nix
+        ./cli.nix
       ];
       nixpkgs.overlays = [
         config.flake.overlays.cardano-cli
       ];
     };
-    cardano-node = {
+    node = {
       imports = [
         inputs.cardano-node.nixosModules.cardano-node
-        ./cardano-node.nix
+        ./node.nix
       ];
       nixpkgs.overlays = [
         config.flake.overlays.cardano-cli
