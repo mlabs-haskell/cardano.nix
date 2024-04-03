@@ -3,13 +3,13 @@
   config,
   ...
 }: let
-  cfg = config.cardanoNix.globals;
+  cfg = config.cardano;
   inherit (lib) types;
 in
   # FIXME: proper assertion, private also can have any unused number
   #  assert cfg.networkNumbers ? cfg.network;
   {
-    options.cardanoNix.globals = {
+    options.cardano = {
       network = lib.mkOption {
         description = "Cardano network to operate on.";
         type = types.enum (lib.attrNames cfg.networkNumbers);
@@ -20,7 +20,7 @@ in
         internal = true;
         type = types.int;
         default = cfg.networkNumbers.${cfg.network};
-        defaultText = lib.literalExpression "config.cardanoNix.globals.networkNumbers.\${config.cardanoNix.globals.net}";
+        defaultText = lib.literalExpression "config.cardano.networkNumbers.\${config.cardano.net}";
       };
       networkNumbers = lib.mkOption {
         description = "Map from network names to network numbers. Selected network must be present in the map";
