@@ -10,20 +10,18 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano-cli/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/ogmios/">
       
       
-        <link rel="prev" href="../../../getting-started/installation/">
+        <link rel="prev" href="../node/">
       
-      
-        <link rel="next" href="../globals/">
       
       <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.13">
     
     
       
-        <title>Cardano cli - cardano.nix</title>
+        <title>Ogmios - cardano.nix</title>
       
     
     
@@ -77,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cardanonixcardano-clienable" class="md-skip">
+        <a href="#cardanoogmiosenable" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cardano cli
+              Ogmios
             
           </span>
         </div>
@@ -452,6 +450,48 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../cardano/" class="md-nav__link">
+        Cardano
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        Cli
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node/" class="md-nav__link">
+        Node
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -462,12 +502,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Cardano cli
+          Ogmios
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Cardano cli
+        Ogmios
       </a>
       
         
@@ -484,8 +524,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanonixcardano-clienable" class="md-nav__link">
-    cardanoNix.cardano-cli.enable
+  <a href="#cardanoogmiosenable" class="md-nav__link">
+    cardano.ogmios.enable
   </a>
   
 </li>
@@ -494,20 +534,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../globals/" class="md-nav__link">
-        Globals
-      </a>
     </li>
   
 
@@ -551,8 +577,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanonixcardano-clienable" class="md-nav__link">
-    cardanoNix.cardano-cli.enable
+  <a href="#cardanoogmiosenable" class="md-nav__link">
+    cardano.ogmios.enable
   </a>
   
 </li>
@@ -572,7 +598,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/master/docs/reference/module-options/cardano-cli.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/ogmios.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -581,25 +607,23 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/master/docs/reference/module-options/cardano-cli.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/ogmios.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Cardano cli</h1>
+  <h1>Ogmios</h1>
 
-<h2 id="cardanonixcardano-clienable">cardanoNix.cardano-cli.enable</h2>
-<p>Whether to enable Install cardano CLI tools and scripts.</p>
+<h2 id="cardanoogmiosenable">cardano.ogmios.enable</h2>
+<p>Whether to enable the Ogmios bridge interface for cardano-node.</p>
 <p><em>Type:</em>
 boolean</p>
 <p><em>Default:</em>
 <code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
 <p><em>Declared by:</em>
- - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/master/modules/cardano-cli">https://github.com/mlabs-haskell/cardano.nix/tree/master/modules/cardano-cli</a></p>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/ogmios.nix</a></p>
 
 
 

@@ -10,27 +10,27 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/development/contributing/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/node/">
       
       
-        <link rel="prev" href="../../license/">
+        <link rel="prev" href="../cli/">
       
       
-        <link rel="next" href="../../getting-started/installation/">
+        <link rel="next" href="../ogmios/">
       
-      <link rel="icon" href="../../assets/favicon.png">
+      <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.13">
     
     
       
-        <title>Contributing - cardano.nix</title>
+        <title>Node - cardano.nix</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.85bb2934.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a6bdf11c.min.css">
       
       
 
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,6 +76,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#cardanonodeenable" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -90,7 +95,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="https://mlabs-haskell.github.io/cardano.nix" title="cardano.nix" class="md-header__button md-logo" aria-label="cardano.nix" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -106,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Node
             
           </span>
         </div>
@@ -229,7 +234,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://mlabs-haskell.github.io/cardano.nix" title="cardano.nix" class="md-nav__button md-logo" aria-label="cardano.nix" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     cardano.nix
@@ -257,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         About the Project
       </a>
     </li>
@@ -272,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../license/" class="md-nav__link">
+      <a href="../../../license/" class="md-nav__link">
         License
       </a>
     </li>
@@ -285,18 +290,16 @@
 
   
   
-    
-  
   
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
       
       
       
@@ -305,7 +308,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Development
@@ -316,19 +319,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../development/contributing/" class="md-nav__link">
         Contributing
       </a>
-      
     </li>
   
 
@@ -377,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/" class="md-nav__link">
+      <a href="../../../getting-started/installation/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -397,16 +392,18 @@
 
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
@@ -415,7 +412,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Reference
@@ -426,14 +423,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
       
       
       
@@ -442,7 +441,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
           NixOS Module Options
@@ -455,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano/" class="md-nav__link">
+      <a href="../cardano/" class="md-nav__link">
         Cardano
       </a>
     </li>
@@ -469,7 +468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cli/" class="md-nav__link">
+      <a href="../cli/" class="md-nav__link">
         Cli
       </a>
     </li>
@@ -481,11 +480,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../reference/module-options/node/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Node
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Node
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodeenable" class="md-nav__link">
+    cardano.node.enable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodeconfigpath" class="md-nav__link">
+    cardano.node.configPath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodesocketpath" class="md-nav__link">
+    cardano.node.socketPath
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -497,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/ogmios/" class="md-nav__link">
+      <a href="../ogmios/" class="md-nav__link">
         Ogmios
       </a>
     </li>
@@ -536,6 +586,35 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodeenable" class="md-nav__link">
+    cardano.node.enable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodeconfigpath" class="md-nav__link">
+    cardano.node.configPath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodesocketpath" class="md-nav__link">
+    cardano.node.socketPath
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -549,7 +628,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/development/contributing.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/node.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -558,16 +637,39 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/development/contributing.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/node.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Contributing</h1>
+  <h1>Node</h1>
 
-<p>FIXME</p>
+<h2 id="cardanonodeenable">cardano.node.enable</h2>
+<p>Whether to enable the cardano-node service.</p>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Default:</em>
+<code>false</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
+<h2 id="cardanonodeconfigpath">cardano.node.configPath</h2>
+<p>Path to cardano-node configuration.</p>
+<p><em>Type:</em>
+path</p>
+<p><em>Default:</em>
+<code>${pkgs.cardano-configurations}/network/${config.cardano.network}_p2p/cardano-node/config.json</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
+<h2 id="cardanonodesocketpath">cardano.node.socketPath</h2>
+<p>Path to cardano-node socket.</p>
+<p><em>Type:</em>
+path</p>
+<p><em>Default:</em>
+<code>"/run/cardano-node/node.socket"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 
 
 
@@ -621,10 +723,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>

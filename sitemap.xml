@@ -21,12 +21,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano-cli/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/globals/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cli/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/node/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/ogmios/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
