@@ -4,3 +4,5 @@
 # docs-serve stuff
 /mkdocs.yml
 /docs/reference/module-options
+/.nixos-test-history
+/result*

@@ -1,13 +1,15 @@
 {
+  config,
   inputs,
   self,
   ...
-}: {
+}: let
+  rootConfig = config;
+in {
   perSystem = {
     config,
     lib,
     pkgs,
-    rootConfig,
     ...
   }: let
     inherit (pkgs) stdenv mkdocs python310Packages;
@@ -60,7 +62,7 @@
                 specialArgs = {inherit pkgs;};
               })
               .options
-              .cardanoNix;
+              .cardano;
           })
       )
       eachOptions;
@@ -73,7 +75,7 @@
         '')
         eachOptionsDoc);
 
-    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/master";
+    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
 
     options-doc = pkgs.runCommand "nixos-options" {} ''
       mkdir $out

@@ -54,7 +54,6 @@
     } {
       debug = true;
       imports = [
-        ./lib
         ./checks
         ./ci
         ./docs

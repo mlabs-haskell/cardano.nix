@@ -2,22 +2,14 @@
   perSystem.vmTests.tests.cardano-node = {
     impure = true;
     module = {
-      nodes = {
-        machine = {pkgs, ...}: {
-          virtualisation = {
-            cores = 1;
-            memorySize = 1024;
-          };
-          cardanoNix = {
-            globals.network = "preview";
-            cardano-cli.enable = true;
-            cardano-node = {
-              enable = true;
-            };
-          };
-
-          environment.systemPackages = with pkgs; [jq bc];
+      nodes.machine = {pkgs, ...}: {
+        cardano = {
+          network = "preview";
+          cli.enable = true;
+          node.enable = true;
         };
+
+        environment.systemPackages = with pkgs; [jq bc];
       };
 
       testScript = {nodes, ...}: let

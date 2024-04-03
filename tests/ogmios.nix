@@ -2,21 +2,15 @@
   perSystem.vmTests.tests.ogmios = {
     impure = true;
     module = {
-      nodes = {
-        machine = {pkgs, ...}: {
-          virtualisation = {
-            cores = 1;
-            memorySize = 1024;
-          };
-          cardanoNix = {
-            globals.network = "preview";
-            cardano-cli.enable = true;
-            cardano-node.enable = true;
-            ogmios.enable = true;
-          };
-
-          environment.systemPackages = with pkgs; [jq bc curl];
+      nodes .machine = {pkgs, ...}: {
+        cardano = {
+          network = "preview";
+          cli.enable = true;
+          node.enable = true;
+          ogmios.enable = true;
         };
+
+        environment.systemPackages = with pkgs; [jq bc curl];
       };
 
       testScript = {nodes, ...}: let
