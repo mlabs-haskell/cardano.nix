@@ -37,6 +37,12 @@
         config.flake.overlays.ogmios
       ];
     };
+    http = {
+      imports = [
+        ./services/http-proxy.nix
+        ./http.nix
+      ];
+    };
     # the default module imports all modules
     default = {
       imports = with builtins; attrValues (removeAttrs config.flake.nixosModules ["default"]);
