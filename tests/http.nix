@@ -23,12 +23,13 @@
         environment.systemPackages = [pkgs.curl];
       };
 
-      testScript = ''
+      testScript = {nodes, ...}: ''
         start_all()
         node.wait_for_unit("ogmios")
         node.wait_until_succeeds('curl --fail http://127.0.0.1:1337/health')
         proxy.wait_for_unit("nginx")
         client.wait_until_succeeds('curl --fail -H "Host: ogmios" http://proxy/health')
+        client.succeed('[ "${nodes.node.services.ogmios.package.version}" == "$(curl --silent --fail -H "Host: ogmios" http://proxy/version)" ]')
       '';
     };
   };
