@@ -13,10 +13,15 @@ in {
       default = "cdbsync";
       description = "Used for postgresql database and the cardano-db-sync service user.";
     };
+    _environment = mkOption {
+      default = config.services.cardano-node.environments.${config.cardano.network};
+      internal = true;
+      type = attrs;
+    };
     # `services.cardano-db-sync` module options:
     explorerConfig = mkOption {
       type = attrs;
-      default = cfg.environment.dbSyncConfig;
+      default = cfg._environment.dbSyncConfig;
     };
     logConfig = mkOption {
       type = attrs;
@@ -61,20 +66,15 @@ in {
   config = mkIf cfg.enable {
     services.cardano-db-sync = {
       enable = true;
-      environment = config.services.cardano-node.environments.${config.cardano.network};
+      environment = cfg._environment;
       inherit (config.cardano.node) socketPath;
       postgres = {
-        inherit (config.services.postgresql) port;
+        inherit (config.services.postgresql.settings) port;
         inherit (cfg.postgres) database;
         user = cfg.postgres.database;
         socketdir = "/var/run/postgresql";
       };
-      inherit (cfg) explorerConfig;
-      inherit (cfg) logConfig;
-      inherit (cfg) disableLedger;
-      inherit (cfg) takeSnapshot;
-      inherit (cfg) restoreSnapshot;
-      inherit (cfg) restoreSnapshotSha;
+      inherit (cfg) explorerConfig logConfig disableLedger takeSnapshot restoreSnapshot restoreSnapshotSha;
     };
     services.postgresql = {
       enable = true;
@@ -86,19 +86,13 @@ in {
         }
       ];
     };
-    # users.users = {
-    #   "${cfg.postgres.database}" = {
-    #     group = "${cfg.postgres.database}";
-    #     isSystemUser = true;
-    #   };
-    # };
-    # users.groups."${cfg.postgres.database}" = {};
     systemd.services.cardano-db-sync = mkIf (config.cardano.node.enable or false) {
       after = ["cardano-node-socket.service"];
       requires = ["cardano-node-socket.service"];
       serviceConfig = {
         DynamicUser = true;
         User = cfg.postgres.database;
+        Group = cfg.postgres.database;
       };
     };
     assertions = [

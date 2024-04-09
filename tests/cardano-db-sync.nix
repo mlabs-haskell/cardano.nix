@@ -7,29 +7,27 @@
           network = "preview";
           cli.enable = true;
           node.enable = true;
-          # cardano-db-sync.enable = true;
-        };
-        services.postgresql = {
-          enable = true;
-          ensureUsers = [
-            {
-              name = "karol";
-              ensureDBOwnership = true;
-            }
-          ];
+          cardano-db-sync.enable = true;
         };
         environment.systemPackages = with pkgs; [jq bc curl postgresql];
       };
 
       testScript = {nodes, ...}: let
-        magic = toString nodes.machine.config.cardano.networkNumber;
+        cfg = nodes.machine.config;
+        dbname = cfg.cardano.cardano-db-sync.postgres.database;
+        host = "localhost";
+        sql = ''
+          select
+            100 * (extract (epoch from (max (time) at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC')))
+                / (extract (epoch from (now () at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC')))
+            as sync_percent
+            from block ;
+            sync_percent
+        '';
       in ''
-        machine.wait_for_unit("cardano-node")
-        machine.wait_for_unit("cardano-node-socket")
-        machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic ${magic} | jq '.syncProgress' --raw-output) > 0.001" | bc) == "1" ]]""")
         machine.wait_for_unit("cardano-db-sync")
-
         print(machine.succeed("systemd-analyze security cardano-db-sync"))
+        print(machine.succeed("""psql --no-password -h '${host}' -U '${dbname}' -d '${dbname}' -c '${sql}' <<< '*\n' """))
       '';
     };
   };
