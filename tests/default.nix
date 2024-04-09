@@ -5,5 +5,6 @@
     ./ogmios.nix
     ./kupo.nix
     ./http.nix
+    ./cardano-db-sync.nix
   ];
 }
