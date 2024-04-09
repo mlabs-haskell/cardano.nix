@@ -7,11 +7,9 @@
   cfg = config.cardano.node;
 in {
   options.cardano.node = {
-    enable = lib.mkOption {
-      description = "Whether to enable the cardano-node service.";
-      type = lib.types.bool;
-      default = config.cardano.enable or false;
-    };
+    enable =
+      lib.mkEnableOption "cardano-node service"
+      // {default = config.cardano.enable or false;};
 
     socketPath = lib.mkOption {
       description = "Path to cardano-node socket.";

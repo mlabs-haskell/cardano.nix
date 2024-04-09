@@ -7,7 +7,7 @@
   inherit (lib) types listToAttrs mkOption mkEnableOption mapAttrs mkIf optionalString;
 in {
   options.services.http-proxy = {
-    enable = mkEnableOption "HTTP proxy, TLS endpoint and load balancer.";
+    enable = mkEnableOption "HTTP proxy, TLS endpoint and load balancer";
     domainName = mkOption {
       description = "Domain name. For each service a virtualHost is configured as a subdomain.";
       type = types.str;

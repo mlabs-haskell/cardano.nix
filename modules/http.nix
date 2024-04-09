@@ -4,14 +4,12 @@
   ...
 }: let
   cfg = config.cardano.http;
-  inherit (lib) types last mkIf mkOption optional splitString;
+  inherit (lib) mkIf mkEnableOption optional;
 in {
   options.cardano.http = {
-    enable = mkOption {
-      description = "Whether to enable HTTP SSL proxy and load balancer for cardano services.";
-      type = types.bool;
-      default = config.cardano.enable or false;
-    };
+    enable =
+      mkEnableOption "HTTP SSL proxy and load balancer for cardano services"
+      // {default = config.cardano.enable or false;};
   };
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [80] ++ optional config.services.http-proxy.https.enable 443;
@@ -22,7 +20,7 @@ in {
       services = {
         cardano-node = {
           inherit (config.services.cardano-node) port;
-          version = last (splitString " " config.services.cardano-node.package);
+          inherit (config.services.cardano-node.package.passthru.identifier) version;
         };
         ogmios = {
           inherit (config.services.ogmios) port;
