@@ -43,7 +43,7 @@ in {
     host = mkOption {
       description = "Host address or name to listen on.";
       type = str;
-      default = "localhost";
+      default = "127.0.0.1";
     };
 
     port = mkOption {
