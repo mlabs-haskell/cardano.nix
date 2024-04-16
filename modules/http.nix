@@ -26,6 +26,11 @@ in {
           inherit (config.services.ogmios) port;
           inherit (config.services.ogmios.package) version;
         };
+        # it's cardano-db-sync db, so:
+        cardano-db = {
+          inherit (config.services.cardano-db-sync.postgres) port;
+          inherit (config.services.cardano-db-sync.package) version;
+        };
         kupo = {
           inherit (config.services.kupo) port;
           inherit (config.services.kupo.package) version;
