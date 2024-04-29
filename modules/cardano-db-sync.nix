@@ -21,7 +21,7 @@ in {
           socketdir = "/run/postgresql";
         };
         ```
-      or enable the default postgresql service with `services.cardano-db-sync.postgres.enable`.
+      or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
     '';
     postgres = {
       enable = mkEnableOption "Run postgres and connect dbsync to it.";
