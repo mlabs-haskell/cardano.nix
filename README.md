@@ -15,26 +15,13 @@ Collection of Cardano related Nix packages and NixOS modules, with a special foc
 }
 ```
 
-This will configure `cardano-node` and `ogmios` on the `preview` network.
+This example NixOS configuration will run `cardano-node` and related services on the `preview` network.
 
 ### Read the [Documentation](https://mlabs-haskell.github.io/cardano.nix/)
 
-## Setup
+### Development
 
-Install nix and enable flakes, eg. with [Determinate nix installer](https://github.com/DeterminateSystems/nix-installer).
-
-Use the project's binary cache to skip builds. Edit `/etc/nix/nix.conf` (or related settings in NixOS config) and merge the new values separated by spaces into the options:
-
-```
-substituters = ... https://cache.staging.mlabs.city/cardano-nix
-trusted-public-keys = ... cardano-nix:BQ7QKgoQQAuL3Kh6pfIJ8oxrihUbUSxf6tN9SxyW608=
-```
-
-Don't edit `~/.config/nix/nix.conf` in your home directory. Don't add users to `trusted-users` because it is [insecure](https://nixos.org/manual/nix/stable/command-ref/conf-file.html?highlight=trusted-user#conf-trusted-users).
-
-### Development Shell
-
-Development is supported on linux systems. Virtual machines are run with `qemu` so `kvm` is recommended.
+Development is supported on linux systems. Virtual machines are run with `qemu` so `kvm` is recommended. Follow the [installation guide](https://mlabs-haskell.github.io/cardano.nix/getting-started/installation/) to set up nix.
 
 `cardano.nix` provides a devshell that includes various tools to build, test, run and update the project:
 
@@ -64,7 +51,7 @@ Development is supported on linux systems. Virtual machines are run with `qemu` 
   update-pre-commit-hooks - update git pre-commit hooks
 ```
 
-A `.envrc` is also provided, using [direnv]() and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
+A `.envrc` file is also provided, using [direnv]() and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
 
 ### Running Integration Tests
 

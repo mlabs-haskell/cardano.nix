@@ -6,3 +6,4 @@
 /docs/reference/module-options
 /.nixos-test-history
 /result*
+/*.qcow2
