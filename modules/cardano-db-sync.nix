@@ -123,7 +123,33 @@ in {
           serviceConfig = {
             DynamicUser = true;
             User = cfg.database.user;
-            Group = cfg.database.user;
+            # Security
+            UMask = "0077";
+            CapabilityBoundingSet = "";
+            ProtectClock = true;
+            ProtectKernelLogs = true;
+            ProtectDevices = true;
+            ProtectKernelModules = true;
+            SystemCallArchitectures = "native";
+            MemoryDenyWriteExecute = true;
+            RestrictNamespaces = true;
+            ProtectHostname = true;
+            ProtectKernelTunables = true;
+            RestrictRealtime = true;
+            SystemCallFilter = ["@system-service" "~@privileged"];
+            PrivateDevices = true;
+            RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
+            IPAddressAllow = "localhost";
+            IPAddressDeny = "any";
+            ProtectHome = true;
+            DevicePolicy = "closed";
+            DeviceAllow = "";
+            ProtectProc = "invisible";
+            ProcSubset = "pid";
+            PrivateTmp = true;
+            ProtectControlGroups = true;
+            PrivateUsers = true;
+            LockPersonality = true;
           };
         };
         assertions = [
