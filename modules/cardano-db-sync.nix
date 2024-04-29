@@ -55,15 +55,18 @@ in {
       default = config.services.cardano-node.environments.${config.cardano.network} or {hack = "<Cardano envirionment attribute set>";};
       internal = true;
       type = attrs;
+      description = "Attribute set describing the chosen network (mainnet, testnet, etc.). By default taken from `services.cardano-node.environments`.";
     };
     # `services.cardano-db-sync` module options:
     explorerConfig = mkOption {
       type = attrs;
       default = cfg._environment.dbSyncConfig or {hack = "Should be cfg._environment.dbSyncConfig";};
+      description = "Together with logConfig constructs the db-sync config file.";
     };
     logConfig = mkOption {
       type = attrs;
       default = {};
+      description = "Together with explorerConfig constructs the db-sync config file.";
     };
     disableLedger = mkOption {
       type = bool;
