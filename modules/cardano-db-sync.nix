@@ -52,14 +52,14 @@ in {
       };
     };
     _environment = mkOption {
-      default = config.services.cardano-node.environments.${config.cardano.network};
+      default = config.services.cardano-node.environments.${config.cardano.network} or {hack = "<Cardano envirionment attribute set>";};
       internal = true;
       type = attrs;
     };
     # `services.cardano-db-sync` module options:
     explorerConfig = mkOption {
       type = attrs;
-      default = cfg._environment.dbSyncConfig;
+      default = cfg._environment.dbSyncConfig or {hack = "Should be cfg._environment.dbSyncConfig";};
     };
     logConfig = mkOption {
       type = attrs;
