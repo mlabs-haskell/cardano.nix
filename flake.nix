@@ -20,8 +20,7 @@
     # Utilities
     attic = {
       url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
+      # doesn't build yet with our nixpkgs
     };
     devour-flake = {
       url = "github:srid/devour-flake";
