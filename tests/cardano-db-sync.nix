@@ -28,7 +28,7 @@
         import time
         machine.wait_for_unit("cardano-db-sync")
         i = 0
-        timeout = 100
+        timeout = 420
         while True:
           (status, output) = machine.execute(r"""sudo -u postgres psql --no-password "host=${socketdir} user=postgres dbname=${name}" -c "${sql}" """)
           if i >= timeout:
