@@ -1,6 +1,6 @@
 ## Deploy Cardano services
 
-In order to access all the options available in `cardano.nix`, the [NixOS module](https://zero-to-nix.com/concepts/nixos#modules) provided by this project has to be included in a [https://zero-to-nix.com/concepts/nixos#configuration](NixOS configuration) and deployed to a (local or remote or virtual) machine.
+In order to access all the options available in `cardano.nix`, the [NixOS module](https://zero-to-nix.com/concepts/nixos#modules) provided by this project has to be included in a [NixOS configuration](https://zero-to-nix.com/concepts/nixos#configuration) and deployed to a (local or remote or virtual) machine.
 
 ### Start new project with flake template
 
@@ -20,7 +20,7 @@ The default template provides a virtual machine configuration starting all the s
 
 `nix run .#vm`
 
-This machine is set up just like the one in [Running a VM](vm), but can be customized.
+This machine is set up just like the one in [Run a VM](../vm), but can be customized.
 
 ### Look around
 
@@ -33,7 +33,7 @@ The file `configuration.nix` is the configuration for the machine.
 
 ### Customize
 
-To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](https://mlabs-haskell.github.io/cardano.nix/reference/module-options/cardano/) (see other modules in the menu on the left).
+To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../../reference/module-options/cardano/) (see other modules in the menu on the left).
 
 Add these options to `configuration.nix` to
 

@@ -51,7 +51,7 @@ Development is supported on linux systems. Virtual machines are run with `qemu` 
   update-pre-commit-hooks - update git pre-commit hooks
 ```
 
-A `.envrc` file is also provided, using [direnv]() and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
+A `.envrc` file is also provided, using [direnv](https://direnv.net/) and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
 
 ### Running Integration Tests
 
