@@ -25,4 +25,4 @@ Don't edit `~/.config/nix/nix.conf` in your home directory. Don't add users to `
 
 ### Learn more
 
-For an introduction to the Nix ecosystem, check out [Zero to Nix](https://zero-to-nix.com/). Learn more about [Nix flakes](https://zero-to-nix.com/concepts/flakes) and [NixOS](https://zero-to-nix.com/concepts/nixos)
+For an introduction to the Nix ecosystem, check out [Zero to Nix](https://zero-to-nix.com/). Learn more about [Nix flakes](https://zero-to-nix.com/concepts/flakes) and [NixOS](https://zero-to-nix.com/concepts/nixos).

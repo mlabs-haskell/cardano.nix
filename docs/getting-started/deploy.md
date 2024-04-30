@@ -1,6 +1,6 @@
 ## Deploy Cardano services
 
-In order to access all the options available in `cardano.nix`, the [NixOS module](https://zero-to-nix.com/concepts/nixos#modules) provided by this project has to be included in a [https://zero-to-nix.com/concepts/nixos#configuration](NixOS configuration) and deployed to a (local or remote or virtual) machine.
+In order to access all the options available in `cardano.nix`, the [NixOS module](https://zero-to-nix.com/concepts/nixos#modules) provided by this project has to be included in a [NixOS configuration](https://zero-to-nix.com/concepts/nixos#configuration) and deployed to a (local or remote or virtual) machine.
 
 ### Start new project with flake template
 
