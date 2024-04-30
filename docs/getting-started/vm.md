@@ -1,5 +1,3 @@
-## Run Cardano services in a Virtual Machine
-
 This project provides a virtual machine configuration with all cardano services.
 
 `nix run github:mlabs-haskell/cardano.nix#vm-preview`

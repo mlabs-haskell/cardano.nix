@@ -20,5 +20,13 @@
         program = "${self.nixosConfigurations.vm-preview.config.system.build.vm}/bin/run-nixos-vm";
       };
     };
+    devshells.default.commands = [
+      {
+        name = "vm-preview";
+        category = "examples";
+        command = "${self.nixosConfigurations.vm-preview.config.system.build.vm}/bin/run-nixos-vm";
+        help = "Start vm with cardano services on the preview network and ports forwarded to host";
+      }
+    ];
   };
 }
