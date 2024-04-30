@@ -56,6 +56,7 @@
       imports = [
         ./checks
         ./ci
+        ./configurations
         ./docs
         ./formatter
         ./modules
@@ -63,6 +64,10 @@
         ./tests
         ./packages
       ];
+      flake.templates.default = {
+        path = ./template;
+        description = "Example flake using cardano.nix";
+      };
       systems = [
         "x86_64-linux"
         "aarch64-linux"

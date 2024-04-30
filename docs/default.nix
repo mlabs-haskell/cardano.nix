@@ -109,25 +109,29 @@ in {
         yq '. *+ load("${indexYAML}")' ${./mkdocs.yml} -o yaml >$out
       '';
   in {
-    packages.docs = stdenv.mkDerivation {
-      src = ../.; # FIXME: use config.flake-root.package here
-      name = "cardano-nix-docs";
+    packages = {
+      docs = stdenv.mkDerivation {
+        src = ../.; # FIXME: use config.flake-root.package here
+        name = "cardano-nix-docs";
 
-      nativeBuildInputs = [my-mkdocs];
+        nativeBuildInputs = [my-mkdocs];
 
-      buildPhase = ''
-        ln -s ${options-doc} ${docsPath}
-        # mkdocs expect mkdocs one level upper than `docs/`, but we want to keep it in `docs/`
-        cp ${mergedMkdocsYaml} mkdocs.yml
-        mkdocs build -f mkdocs.yml -d site
-      '';
+        buildPhase = ''
+          ln -s ${options-doc} ${docsPath}
+          # mkdocs expect mkdocs one level upper than `docs/`, but we want to keep it in `docs/`
+          cp ${mergedMkdocsYaml} mkdocs.yml
+          mkdocs build -f mkdocs.yml -d site
+        '';
 
-      installPhase = ''
-        mv site $out
-        rm $out/default.nix  # Clean nwanted side-effect of mkdocs
-      '';
+        installPhase = ''
+          mv site $out
+          rm $out/default.nix  # Clean nwanted side-effect of mkdocs
+        '';
 
-      passthru.serve = pkgs.writeShellScriptBin "serve" ''
+        passthru.serve = config.packages.docs-serve;
+      };
+
+      docs-serve = pkgs.writeShellScriptBin "docs-serve" ''
         set -euo pipefail
 
         # link in options reference
@@ -155,7 +159,7 @@ in {
           inherit category;
           name = "docs-serve";
           help = "serve documentation web page";
-          command = "nix run .#docs.serve";
+          command = "nix run .#docs-serve";
         }
         {
           inherit category;
