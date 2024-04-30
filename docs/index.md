@@ -16,7 +16,7 @@ Here are some motivating examples.
 
 This NixOS configuration will start `cardano-node` and related services on the `preview` testnet.
 
-```
+```nix
 {
   cardano = {
     enable = true;
@@ -27,7 +27,7 @@ This NixOS configuration will start `cardano-node` and related services on the `
 
 This snippet will configure a HTTPS reverse proxy and load balancer with ACME certificates from Let's Encrypt. DNS records need to be set up and the backend servers (configured as above) need to be reachable.
 
-```
+```nix
 {
   cardano.http.enable = true;
   services.http-proxy = {
