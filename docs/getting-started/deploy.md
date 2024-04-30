@@ -20,7 +20,7 @@ The default template provides a virtual machine configuration starting all the s
 
 `nix run .#vm`
 
-This machine is set up just like the one in [Running a VM](vm), but can be customized.
+This machine is set up just like the one in [Run a VM](../vm), but can be customized.
 
 ### Look around
 
