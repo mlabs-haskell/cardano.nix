@@ -33,7 +33,7 @@ The file `configuration.nix` is the configuration for the machine.
 
 ### Customize
 
-To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](https://mlabs-haskell.github.io/cardano.nix/reference/module-options/cardano/) (see other modules in the menu on the left).
+To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../../reference/module-options/cardano/) (see other modules in the menu on the left).
 
 Add these options to `configuration.nix` to
 
