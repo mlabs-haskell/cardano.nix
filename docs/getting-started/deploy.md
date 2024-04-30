@@ -22,13 +22,39 @@ This machine is set up just like the one in [Run a VM](../vm), but can be custom
 
 ### Look around
 
-The file named `flake.nix` includes:
+#### `flake.nix`
 
-- a [https://zero-to-nix.com/concepts/nixos#configuration](NixOS configuration) to run cardano services, under `nixosConfigurations.server`
-- an app to run the virtual machine as above, under `apps.x86_64-linux.vm`
+This [Nix Flake](https://zero-to-nix.com/concepts/flakes) is the entry point to the project. It locks inputs and provides the following inputs:
 
-The file `configuration.nix` is the configuration for the machine.
+- a NixOS configuration for the virtual machine, under `nixosConfigurations.server-vm`
+- an app to run the virtual machine as above, under `apps.x86_64-linux.server-vm`
+
+#### `configuration.nix`
+
+This is the [NixOS configuration](https://zero-to-nix.com/concepts/nixos#configuration) to run cardano services for the machine.
+
+#### `vm.nix`
+
+This NixOS configuration sets virtual machine options such as cores, memory and port forwarding. It is included in the configuration for the `nixosConfigurations.server-vm` virtual machine in `flake.nix`.
 
 ### Customize
 
 To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../../reference/module-options/cardano/) (see other modules in the menu on the left). You can ad these options to `configuration.nix` to configure the system.
+
+### Deployment options
+
+The configuration can be deployed to any target running NixOS, such as:
+
+- cloud hosts on AWS, DigitalOcean or any other cloud provider
+- physical machines
+- [NixOS containers](https://nixos.org/manual/nixos/stable/#sec-declarative-containers)
+
+There are a variety of resources to help install NixOS:
+
+- the [official documentation installation guide](https://nixos.org/manual/nixos/stable/#ch-installation)
+- [https://nix-community.github.io/nixos-anywhere/quickstart.html](nixos-anyware) to deploy on existing hosts running other distrbutions
+- various web resources for specific cloud providers or other circumstances
+
+With a running NixOS installation and a NixOS configuration `server` in a nix flake, this command will deploy the server:
+
+`nixos-rebuild switch --flake .#server --target-host <target>`
