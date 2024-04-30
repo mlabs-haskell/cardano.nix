@@ -12,9 +12,11 @@ in {
     pkgs,
     ...
   }: let
-    inherit (pkgs) stdenv mkdocs python311Packages;
+    inherit (pkgs) stdenv python311Packages;
 
-    my-mkdocs =
+    my-mkdocs = let
+      inherit (python311Packages) mkdocs;
+    in
       pkgs.runCommand "my-mkdocs"
       {
         buildInputs = [
