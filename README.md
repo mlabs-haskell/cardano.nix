@@ -17,41 +17,20 @@ Collection of Cardano related Nix packages and NixOS modules, with a special foc
 
 This example NixOS configuration will run `cardano-node` and related services on the `preview` network.
 
-### Read the [Documentation](https://mlabs-haskell.github.io/cardano.nix/)
+#### Read the [Documentation](https://mlabs-haskell.github.io/cardano.nix/)
 
 ### Development
 
-Development is supported on linux systems. Virtual machines are run with `qemu` so `kvm` is recommended. Follow the [installation guide](https://mlabs-haskell.github.io/cardano.nix/getting-started/installation/) to set up nix.
+To get started, [install nix with flakes enabled](https://zero-to-nix.com/start/install). Enter the development shell and a list of useful tools will be displayed
 
-`cardano.nix` provides a devshell that includes various tools to build, test, run and update the project:
-
-```
-❯ nix develop
+```bash
+$ nix develop
 ...
 ❄️ Welcome to the cardano.nix devshell ❄️
-
-[documentation]
-
-  docs-build              - build documentation
-  docs-serve              - serve documentation web page
-
-[general commands]
-
-  menu                    - prints this menu
-
-[tests]
-
-  build-all               - build all packages and checks with `devour-flake`
-  check                   - run `nix flake check`
-  run-vm-test             - list and run virtual machine integration tests
-
-[tools]
-
-  fmt                     - format the source tree
-  update-pre-commit-hooks - update git pre-commit hooks
+...
 ```
 
-A `.envrc` file is also provided, using [direnv](https://direnv.net/) and [nix-direnv](https://github.com/nix-community/nix-direnv) is suggested.
+See the [Development Documentation](https://mlabs-haskell.github.io/cardano.nix/development/develop/) for more information.
 
 ### Running Integration Tests
 

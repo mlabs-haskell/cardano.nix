@@ -4,7 +4,7 @@
 
 ### Why?
 
-[Nix](https://zero-to-nix.com/concepts/nix) is a declarative package manager ensuring hash-based reproducible build and dependency management. [NixOS](https://zero-to-nix.com/concepts/nixos) is a Linux distribution with a declarative configuration system. With NixOS, entire system configurations are reproducible and work the same regardless of the current state of the system. Updates (and rollbacks) are atomic: they either work or nothing happens, so they can't get stuck halfway through. These features are responsible for the increased reliability of a NixOS system, making it an attractive DevOps tool for deploying services.
+[Nix](https://zero-to-nix.com/concepts/nix) is a [declarative](https://zero-to-nix.com/concepts/declarative) package manager ensuring hash-based [dependency pinning](https://zero-to-nix.com/concepts/pinning) and [reproducible](<[reproducible](https://zero-to-nix.com/concepts/reproducibility)>) builds. [NixOS](https://zero-to-nix.com/concepts/nixos) is a Linux distribution with a [declarative configuration](https://zero-to-nix.com/concepts/nixos#configuration) system providing [atomic](https://zero-to-nix.com/concepts/nixos#atomicity) updates and [rollbacks](https://zero-to-nix.com/concepts/nixos#rollbacks). These features are responsible for the increased reliability of a NixOS system, making it an attractive DevOps toolset for deploying Cardano services.
 
 ### What?
 
