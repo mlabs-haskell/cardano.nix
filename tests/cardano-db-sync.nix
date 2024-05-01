@@ -21,8 +21,8 @@
       testScript = {nodes, ...}: let
         cfg = nodes.machine;
         inherit (cfg.cardano.cardano-db-sync.database) name socketdir;
-        # get sync percentage, return true if it's above 0.000001
-        sql = "select (100 * (extract (epoch from (max (time) at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC'))) / (extract (epoch from (now () at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC')))) > 0.00000001 from block limit 1;";
+        # get sync percentage, return true if it's above 0.000000001
+        sql = "select (100 * (extract (epoch from (max (time) at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC'))) / (extract (epoch from (now () at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC')))) > 0.000000001 from block limit 1;";
         output = " ?column? \\n----------\\n t\\n(1 row)\\n\\n"; # postgres "true" result
       in ''
         import time
@@ -32,13 +32,13 @@
         while True:
           (status, output) = machine.execute(r"""sudo -u postgres psql --no-password "host=${socketdir} user=postgres dbname=${name}" -c "${sql}" """)
           if i >= timeout:
-            print("Can't wait forever for the dbsync to reach 0.000001. Exiting - dbsync doesn't seem to sync.")
+            print("Can't wait forever for the dbsync to reach 0.000000001. Exiting - dbsync doesn't seem to sync.")
             raise Exception("Timeout")
           elif status == 0 and output == "${output}":
             print("DbSync started syncing. Succeeds.")
             break
           i += 1
-          time.sleep(1)
+          time.sleep(3)
         print(machine.succeed("systemd-analyze security cardano-db-sync"))
       '';
     };
