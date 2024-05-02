@@ -20,7 +20,7 @@ This NixOS configuration will start `cardano-node` and related services on the `
 {
   cardano = {
     enable = true;
-    network = preview;
+    network = "preview";
   };
 }
 ```
