@@ -60,8 +60,13 @@ in {
               // {
                 internal = false;
                 visible = true;
-                description = ''
-                  ${opt.description}
+                description = let
+                  description =
+                    if opt.description == null
+                    then lib.debug.traceVal "FIXME: ${opt.name} have no description"
+                    else opt.description;
+                in ''
+                  ${description}
                   ${lib.optionalString opt.internal "*Internal:* true"}
                 '';
               };
