@@ -37,6 +37,13 @@ in {
       '';
 
     eachOptions = removeAttrs rootConfig.flake.nixosModules ["default"];
+    explicitList = [
+      "cardano"
+      # FIXME: ogmios' fails with mysterious error
+      # "services.ogmios"
+      "services.cardano-node"
+      "services.http-proxy"
+    ];
 
     eachOptionsDoc =
       lib.mapAttrs' (
@@ -58,13 +65,13 @@ in {
                   ${lib.optionalString opt.internal "*Internal:* true"}
                 '';
               };
-            options =
-              (lib.evalModules {
+            options = let
+              evaluated = lib.evalModules {
                 modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
                 specialArgs = {inherit pkgs;};
-              })
-              .options
-              .cardano;
+              };
+            in
+              lib.foldr (path: acc: lib.recursiveUpdate acc (lib.attrByPath (lib.splitString "." path) {} evaluated.options)) {} explicitList;
           })
       )
       eachOptions;
