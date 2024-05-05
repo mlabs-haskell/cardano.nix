@@ -10,7 +10,7 @@
           network = "preview";
           cli.enable = true;
           node.enable = true;
-          cardano-db-sync = {
+          db-sync = {
             enable = true;
             postgres.enable = true;
           };
@@ -20,7 +20,7 @@
 
       testScript = {nodes, ...}: let
         cfg = nodes.machine;
-        inherit (cfg.cardano.cardano-db-sync.database) name socketdir;
+        inherit (cfg.cardano.db-sync.database) name socketdir;
         # get sync percentage, return true if it's above 0.000000001
         sql = "select (100 * (extract (epoch from (max (time) at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC'))) / (extract (epoch from (now () at time zone 'UTC')) - extract (epoch from (min (time) at time zone 'UTC')))) > 0.000000001 from block limit 1;";
         output = " ?column? \\n----------\\n t\\n(1 row)\\n\\n"; # postgres "true" result

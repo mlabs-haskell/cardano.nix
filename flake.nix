@@ -14,7 +14,7 @@
       flake = false;
     };
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync?ref=13.2.0.1"; # compatible with 8.7.3
+      url = "github:intersectmbo/cardano-db-sync/13.2.0.1"; # compatible with 8.7.3
     };
 
     # Utilities
