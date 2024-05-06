@@ -18,10 +18,6 @@
     };
 
     # Utilities
-    attic = {
-      url = "github:zhaofengli/attic";
-      # doesn't build yet with our nixpkgs
-    };
     devour-flake = {
       url = "github:srid/devour-flake";
       flake = false;

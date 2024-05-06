@@ -28,8 +28,10 @@ in {
     };
     nodeSocketPath = mkOption {
       description = "Path to cardano-node socket.";
-      type = lib.types.path;
-      default = config.cardano.node.socketPath;
+      type = types.path;
+      default =
+        mkIf (config.cardano.node.enable or false)
+        (config.cardano.node.socketPath or null);
     };
     database = {
       name = mkOption {
@@ -47,8 +49,8 @@ in {
         default = config.services.postgresql.settings.port or 5432;
         description = "Postgres database port. See also option socketDir `cardano.db-sync.database.socketdir`.";
       };
-      socketdir = lib.mkOption {
-        type = lib.types.str;
+      socketdir = mkOption {
+        type = str;
         # use first socket from postgresql settings or default to /run/postgresql
         default = builtins.head ((config.services.postgresql.settings.unix_socket_directories or []) ++ ["/run/postgresql"]);
         description = "Path to the postgresql socket.";
