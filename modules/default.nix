@@ -37,6 +37,15 @@
         config.flake.overlays.ogmios
       ];
     };
+    kupo = {
+      imports = [
+        ./services/kupo.nix
+        ./kupo.nix
+      ];
+      nixpkgs.overlays = [
+        config.flake.overlays.kupo
+      ];
+    };
     http = {
       imports = [
         ./services/http-proxy.nix

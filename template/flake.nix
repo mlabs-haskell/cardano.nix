@@ -10,7 +10,7 @@
         system = "x86_64-linux";
         modules = [
           inputs.cardano-nix.nixosModules.default
-          ./configuration.nix
+          ./preview.nix
           ./vm.nix
         ];
       };

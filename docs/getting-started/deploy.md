@@ -29,7 +29,7 @@ This [Nix Flake](https://zero-to-nix.com/concepts/flakes) is the entry point to 
 - a NixOS configuration for the virtual machine, under `nixosConfigurations.server-vm`
 - an app to run the virtual machine as above, under `apps.x86_64-linux.server-vm`
 
-#### `configuration.nix`
+#### `preview.nix`
 
 This is the [NixOS configuration](https://zero-to-nix.com/concepts/nixos#configuration) to run cardano services for the machine.
 
@@ -39,7 +39,7 @@ This NixOS configuration sets virtual machine options such as cores, memory and 
 
 ### Customize
 
-To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../../reference/module-options/cardano/) (see other modules in the menu on the left). You can ad these options to `configuration.nix` to configure the system.
+To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../../reference/module-options/cardano/) (see other modules in the menu on the left). You can ad these options to `preview.nix` to configure the system.
 
 ### Deployment options
 

@@ -14,6 +14,9 @@ in {
   config = lib.mkIf cfg.enable {
     services.ogmios = {
       enable = true;
+      nodeSocketPath =
+        lib.mkIf (config.cardano.node.enable or false)
+        config.cardano.node.socketPath or null;
       nodeConfigPath =
         lib.mkIf (config.cardano.node.enable or false)
         config.cardano.node.configPath or null;

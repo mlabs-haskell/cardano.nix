@@ -26,6 +26,10 @@ in {
           inherit (config.services.ogmios) port;
           inherit (config.services.ogmios.package) version;
         };
+        kupo = {
+          inherit (config.services.kupo) port;
+          inherit (config.services.kupo.package) version;
+        };
       };
     };
   };
