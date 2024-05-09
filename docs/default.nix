@@ -89,13 +89,22 @@ in {
         '')
         eachOptionsDoc);
 
-    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
+    fixups = [
+      {
+        storePath = self.outPath;
+        githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
+      }
+      {
+        storePath = inputs.cardano-node.outPath;
+        githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
+      }
+    ];
 
     options-doc = pkgs.runCommand "nixos-options" {} ''
       mkdir $out
       ${statements}
       # Fixing links to storage to files in github
-      find $out -type f | xargs -n1 sed -i -e "s,${self.outPath},${githubUrl},g" -e "s,file://https://,https://,g"
+      find $out -type f | xargs -n1 sed -i ${lib.concatMapStrings (x: " -e 's,${x.storePath},${x.githubUrl},g'") fixups} -e "s,file://https://,https://,g"
     '';
 
     docsPath = "./docs/reference/module-options";
