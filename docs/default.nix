@@ -14,6 +14,52 @@ in {
   }: let
     inherit (pkgs) stdenv python311Packages;
 
+    sidebarOptions = [
+      {
+        anchor = "cardano";
+        modules = [rootConfig.flake.nixosModules.cardano];
+        namespaces = ["cardano"];
+      }
+      {
+        anchor = "cardano.cli";
+        modules = [rootConfig.flake.nixosModules.cli];
+        namespaces = ["cardano.cli"];
+      }
+      {
+        anchor = "cardano.node";
+        modules = [rootConfig.flake.nixosModules.node];
+        namespaces = ["cardano.node"];
+      }
+      {
+        anchor = "services.cardano-node";
+        modules = [rootConfig.flake.nixosModules.node];
+        namespaces = ["services.cardano-node"];
+      }
+      # FIXME: ogmios' fails with mysterious error
+      #{
+      #  anchor = "services.ogmios";
+      #  modules = [ rootConfig.flake.nixosModules.ogmios ];
+      #  namespaces = ["services.ogmios"];
+      #}
+      {
+        anchor = "service.http-proxy";
+        modules = [rootConfig.flake.nixosModules.http];
+        namespaces = ["services.http-proxy"];
+      }
+    ];
+
+    # Replace `/nix/store` related paths with public urls
+    fixups = [
+      {
+        storePath = self.outPath;
+        githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
+      }
+      {
+        storePath = inputs.cardano-node.outPath;
+        githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
+      }
+    ];
+
     my-mkdocs = let
       inherit (python311Packages) mkdocs;
     in
@@ -36,21 +82,15 @@ in {
         chmod +x $out/bin/mkdocs
       '';
 
-    eachOptions = removeAttrs rootConfig.flake.nixosModules ["default"];
-    explicitList = [
-      "cardano"
-      # FIXME: ogmios' fails with mysterious error
-      # "services.ogmios"
-      "services.cardano-node"
-      "services.http-proxy"
-    ];
-
-    eachOptionsDoc =
-      lib.mapAttrs' (
-        name: value:
+    eachOptionsDoc = builtins.listToAttrs (builtins.map (
+        {
+          anchor,
+          modules,
+          namespaces,
+          ...
+        }:
           lib.nameValuePair
-          # take foo.options and turn it into just foo
-          (builtins.head (lib.splitString "." name))
+          anchor
           (pkgs.nixosOptionsDoc {
             # By default `nixosOptionsDoc` will ignore internal options but we want to show them
             # This hack will make all the options not internal and visible and optionally append to the
@@ -72,14 +112,14 @@ in {
               };
             options = let
               evaluated = lib.evalModules {
-                modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
+                modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ modules;
                 specialArgs = {inherit pkgs;};
               };
             in
-              lib.foldr (path: acc: lib.recursiveUpdate acc (lib.attrByPath (lib.splitString "." path) {} evaluated.options)) {} explicitList;
+              lib.foldr (path: acc: lib.recursiveUpdate acc (lib.attrByPath (lib.splitString "." path) {} evaluated.options)) {} namespaces;
           })
       )
-      eachOptions;
+      sidebarOptions);
 
     statements =
       lib.concatStringsSep "\n"
@@ -89,21 +129,10 @@ in {
         '')
         eachOptionsDoc);
 
-    fixups = [
-      {
-        storePath = self.outPath;
-        githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
-      }
-      {
-        storePath = inputs.cardano-node.outPath;
-        githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
-      }
-    ];
-
     options-doc = pkgs.runCommand "nixos-options" {} ''
       mkdir $out
       ${statements}
-      # Fixing links to storage to files in github
+      # Replace `/nix/store` related paths with public urls
       find $out -type f | xargs -n1 sed -i ${lib.concatMapStrings (x: " -e 's,${x.storePath},${x.githubUrl},g'") fixups} -e "s,file://https://,https://,g"
     '';
 
