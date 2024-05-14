@@ -93,11 +93,6 @@ in {
             ensureDBOwnership = true;
           }
         ];
-        authentication =
-          # type database  DBuser      auth-method optional_ident_map
-          ''
-            local sameuser ${dbsync-cfg.postgres.database} peer
-          '';
       };
       warnings =
         if (dbsync-cfg.postgres.database != dbsync-cfg.postgres.user)
