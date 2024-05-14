@@ -86,21 +86,21 @@ in {
       services.postgresql = {
         enable = true;
         # see warnings: this should be same as user name
-        ensureDatabases = [dbsync-cfg.postgres.name];
+        ensureDatabases = [dbsync-cfg.postgres.database];
         ensureUsers = [
           {
-            name = "${dbsync-cfg.postgres.name}";
+            name = "${dbsync-cfg.postgres.database}";
             ensureDBOwnership = true;
           }
         ];
         authentication =
           # type database  DBuser      auth-method optional_ident_map
           ''
-            local sameuser ${dbsync-cfg.postgres.name} peer
+            local sameuser ${dbsync-cfg.postgres.database} peer
           '';
       };
       warnings =
-        if (dbsync-cfg.postgres.name != dbsync-cfg.postgres.user)
+        if (dbsync-cfg.postgres.database != dbsync-cfg.postgres.user)
         then [
           "When postgres is enabled, we use the ensureDBOwnership option which expects the user name to match db name."
         ]
