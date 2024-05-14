@@ -124,9 +124,11 @@ in {
               # description a new field which is then corrected rendered as it was a native field
               transformOptions = opt:
                 opt
-                // {
+                // lib.optionalAttrs cfg.invisible {
                   internal = false;
                   visible = true;
+                }
+                // {
                   description = let
                     description =
                       if opt.description == null
@@ -134,7 +136,7 @@ in {
                       else opt.description;
                   in ''
                     ${description}
-                    ${lib.optionalString opt.internal "*Internal:* true"}
+                    ${lib.optionalString (opt.internal && cfg.invisible) "*Internal:* true"}
                   '';
                 };
               options = let
