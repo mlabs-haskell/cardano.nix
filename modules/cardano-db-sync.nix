@@ -5,6 +5,7 @@
 }:
 with lib; let
   cfg = config.cardano.db-sync;
+  dbsync-cfg = config.services.cardano-db-sync;
 in {
   options.cardano.db-sync = with types; {
     enable = mkEnableOption ''
@@ -23,112 +24,87 @@ in {
         ```
       or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
     '';
-    postgres = {
-      enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
-    };
-    database = {
-      name = mkOption {
-        type = str;
-        default = "cdbsync";
-        description = "Postgres database name.";
-      };
-      user = mkOption {
-        type = str;
-        default = "cdbsync";
-        description = "Postgres database user.";
-      };
-      port = mkOption {
-        type = int;
-        default = config.services.postgresql.settings.port or 5432;
-        description = "Postgres database port. See also option socketDir `cardano.db-sync.database.socketdir`.";
-      };
-      socketdir = mkOption {
-        type = str;
-        # use first socket from postgresql settings or default to /run/postgresql
-        default = builtins.head ((config.services.postgresql.settings.unix_socket_directories or []) ++ ["/run/postgresql"]);
-        description = "Path to the postgresql socket.";
-      };
-    };
+    postgres.enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
   };
 
-  config = let
-    inherit (cfg.postgres) database;
-  in
-    mkIf cfg.enable (mkMerge [
-      {
-        services.cardano-db-sync = {
-          enable = true;
-          environment = config.services.cardano-node.environments.${config.cardano.network};
-          inherit (config.cardano.node) socketPath;
-          postgres = {
-            inherit (cfg.database) user socketdir port;
-            database = cfg.database.name;
-          };
-          stateDir = "/var/lib/${cfg.database.user}";
+  config = mkIf cfg.enable (mkMerge [
+    {
+      services.cardano-db-sync = {
+        enable = true;
+        environment = config.services.cardano-node.environments.${config.cardano.network};
+        inherit (config.cardano.node) socketPath;
+        postgres = {
+          user = "cdbsync";
+          # use first socket from postgresql settings or default to /run/postgresql
+          socketdir = builtins.head ((config.services.postgresql.settings.unix_socket_directories or []) ++ ["/run/postgresql"]);
+          port = config.services.postgresql.settings.port or 5432;
+          database = "cdbsync";
         };
-        systemd.services.cardano-db-sync = {
-          serviceConfig = {
-            DynamicUser = true;
-            User = cfg.database.user;
-            # Security
-            UMask = "0077";
-            CapabilityBoundingSet = "";
-            ProtectClock = true;
-            ProtectKernelLogs = true;
-            ProtectDevices = true;
-            ProtectKernelModules = true;
-            SystemCallArchitectures = "native";
-            MemoryDenyWriteExecute = true;
-            RestrictNamespaces = true;
-            ProtectHostname = true;
-            ProtectKernelTunables = true;
-            RestrictRealtime = true;
-            SystemCallFilter = ["@system-service" "~@privileged"];
-            PrivateDevices = true;
-            RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
-            IPAddressAllow = "localhost";
-            IPAddressDeny = "any";
-            ProtectHome = true;
-            DevicePolicy = "closed";
-            DeviceAllow = "";
-            ProtectProc = "invisible";
-            ProcSubset = "pid";
-            PrivateTmp = true;
-            ProtectControlGroups = true;
-            PrivateUsers = true;
-            LockPersonality = true;
-          };
+        stateDir = "/var/lib/${dbsync-cfg.postgres.user}";
+      };
+      systemd.services.cardano-db-sync = {
+        serviceConfig = {
+          DynamicUser = true;
+          User = dbsync-cfg.postgres.user;
+          # Security
+          UMask = "0077";
+          CapabilityBoundingSet = "";
+          ProtectClock = true;
+          ProtectKernelLogs = true;
+          ProtectDevices = true;
+          ProtectKernelModules = true;
+          SystemCallArchitectures = "native";
+          MemoryDenyWriteExecute = true;
+          RestrictNamespaces = true;
+          ProtectHostname = true;
+          ProtectKernelTunables = true;
+          RestrictRealtime = true;
+          SystemCallFilter = ["@system-service" "~@privileged"];
+          PrivateDevices = true;
+          RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
+          IPAddressAllow = "localhost";
+          IPAddressDeny = "any";
+          ProtectHome = true;
+          DevicePolicy = "closed";
+          DeviceAllow = "";
+          ProtectProc = "invisible";
+          ProcSubset = "pid";
+          PrivateTmp = true;
+          ProtectControlGroups = true;
+          PrivateUsers = true;
+          LockPersonality = true;
         };
-      }
-      (mkIf (config.cardano.node.enable or false) {
-        systemd.services.cardano-db-sync = {
-          after = ["cardano-node-socket.service"];
-          requires = ["cardano-node-socket.service"];
-        };
-      })
-      (mkIf cfg.postgres.enable {
-        services.postgresql = {
-          enable = true;
-          # see warnings: this should be same as user name
-          ensureDatabases = [cfg.database.name];
-          ensureUsers = [
-            {
-              name = "${cfg.database.name}";
-              ensureDBOwnership = true;
-            }
-          ];
-          authentication =
-            # type database  DBuser      auth-method optional_ident_map
-            ''
-              local sameuser ${cfg.database.name} peer
-            '';
-        };
-        warnings =
-          if (cfg.database.name == cfg.database.user)
-          then [
-            "When postgres is enabled, we use the ensureDBOwnership option which expects the user name to match db name."
-          ]
-          else [];
-      })
-    ]);
+      };
+    }
+    (mkIf (config.cardano.node.enable or false) {
+      systemd.services.cardano-db-sync = {
+        after = ["cardano-node-socket.service"];
+        requires = ["cardano-node-socket.service"];
+      };
+    })
+    (mkIf cfg.postgres.enable {
+      services.postgresql = {
+        enable = true;
+        # see warnings: this should be same as user name
+        ensureDatabases = [dbsync-cfg.postgres.name];
+        ensureUsers = [
+          {
+            name = "${dbsync-cfg.postgres.name}";
+            ensureDBOwnership = true;
+          }
+        ];
+        authentication =
+          # type database  DBuser      auth-method optional_ident_map
+          ''
+            local sameuser ${dbsync-cfg.postgres.name} peer
+          '';
+      };
+      warnings =
+        if (dbsync-cfg.postgres.name != dbsync-cfg.postgres.user)
+        then [
+          "When postgres is enabled, we use the ensureDBOwnership option which expects the user name to match db name."
+        ]
+        else [];
+    })
+  ]);
 }
