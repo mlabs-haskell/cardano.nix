@@ -26,13 +26,6 @@ in {
     postgres = {
       enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
     };
-    nodeSocketPath = mkOption {
-      description = "Path to cardano-node socket.";
-      type = types.path;
-      default =
-        mkIf (config.cardano.node.enable or false)
-        (config.cardano.node.socketPath or null);
-    };
     database = {
       name = mkOption {
         type = str;
@@ -66,7 +59,7 @@ in {
         services.cardano-db-sync = {
           enable = true;
           environment = config.services.cardano-node.environments.${config.cardano.network};
-          socketPath = cfg.nodeSocketPath;
+          inherit (config.cardano.node) socketPath;
           postgres = {
             inherit (cfg.database) user socketdir port;
             database = cfg.database.name;
