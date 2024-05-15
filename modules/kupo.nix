@@ -15,11 +15,11 @@ in {
     services.kupo = {
       enable = true;
       nodeSocketPath =
-        lib.mkIf (!(config.cardano.ogmios.enable or true) || config.cardano.node.enable or false)
-        config.cardano.node.socketPath or null;
+        lib.mkIf (config.cardano.node.enable or false)
+        config.cardano.node.socketPath;
       nodeConfigPath =
-        lib.mkIf (!(config.cardano.ogmios.enable or true) || config.cardano.node.enable or false)
-        config.cardano.node.configPath or null;
+        lib.mkIf (config.cardano.node.enable or false)
+        config.cardano.node.configPath;
       ogmiosHost =
         lib.mkIf (config.cardano.ogmios.enable or false)
         "127.0.0.1";
