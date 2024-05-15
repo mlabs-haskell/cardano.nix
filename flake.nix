@@ -9,6 +9,7 @@
       url = "github:intersectmbo/cardano-node?ref=8.7.3";
     };
     cardano-configurations = {
+      # This version is compatible with cardano-node above and likely needs to be updated together.
       url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
       flake = false;
     };
@@ -49,9 +50,11 @@
     };
   };
   outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {
+    flake-parts.lib.mkFlake
+    {
       inherit inputs;
-    } {
+    }
+    {
       debug = true;
       imports = [
         ./checks

@@ -8,6 +8,7 @@ A virtual machine will be started with the following services, and the following
 | ------------ | ---- |
 | cardano-node | 3001 |
 | ogmios       | 1337 |
+| kupo         | 1442 |
 
 You can log in with user `root`. The password is empty. In the virtual machine, `cardano-cli` is available to query the node.
 

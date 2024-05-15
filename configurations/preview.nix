@@ -1,6 +1,1 @@
-{
-  cardano = {
-    enable = true;
-    network = "preview";
-  };
-}
+../template/preview.nix

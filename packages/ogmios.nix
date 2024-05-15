@@ -4,30 +4,26 @@
     pkgs,
     ...
   }: {
-    # Doesn't buid with haskell.nix but master contains a fix. Move to haskell.nix build on next release.
-    packages.ogmios = pkgs.stdenv.mkDerivation rec {
-      pname = "ogmios";
-      version = "6.2.0";
+    packages.ogmios = let
+      version = "6.1.0";
       src = pkgs.fetchurl {
         url = "https://github.com/CardanoSolutions/ogmios/releases/download/v${version}/ogmios-v${version}-${system}.zip";
         hash =
-          if system == "x86_64-linux"
-          then "sha256-Ryfuzu7JzbR7ivh2Sl9xyOuWh4btjCVSPhXfDLmepHk=u"
-          else if system == "aarch64-linux"
-          then "sha256-SJQWbIkXF2e4jJtq2hQFqSPO/EhbmLYeZx3aEaXv/gI="
-          else abort "Ogmios release not available for system ${system}";
+          {
+            "x86_64-linux" = "sha256-JQJTaws+gihwHpTBtUqcNhgbhFDUAdiiXrO2kMX4ZkY=";
+            "aarch64-linux" = "sha256-gWNTzUZHdp5rvbU0aIA3/GJ+YZeFx66h05ugJN4kMco=";
+          }
+          .${system};
       };
-      nativeBuildInputs = [pkgs.unzip];
-      unpackPhase = ''
-        unzip $src
+    in
+      pkgs.runCommandNoCC "ogmios-${version}" {
+        inherit version;
+        meta.mainProgram = "ogmios";
+      } ''
+        mkdir $out
+        cd $out
+        ${pkgs.unzip}/bin/unzip ${src}
+        chmod a+x $out/bin/ogmios
       '';
-      buildPhase = ''
-        chmod a+x bin/ogmios
-      '';
-      installPhase = ''
-        mkdir -p $out
-        mv bin share $out/
-      '';
-    };
   };
 }

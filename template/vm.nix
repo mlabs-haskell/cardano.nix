@@ -17,12 +17,20 @@
       {
         # cardano-node
         from = "host";
-        port = 3001;
+        host.port = 3001;
+        guest.port = 3001;
       }
       {
         # ogmios
         from = "host";
-        port = 1337;
+        host.port = 1337;
+        guest.port = 1337;
+      }
+      {
+        # kupo
+        from = "host";
+        host.port = 1442;
+        guest.port = 1442;
       }
     ];
   };
