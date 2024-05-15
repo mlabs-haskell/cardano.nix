@@ -5,14 +5,23 @@
     };
 
     # Cardano-node
-    cardano-node = {
+    "cardano-node-8.7.3" = {
       url = "github:intersectmbo/cardano-node?ref=8.7.3";
     };
-    cardano-configurations = {
+    "cardano-configurations-8.7.3" = {
       # This version is compatible with cardano-node above and likely needs to be updated together.
       url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
       flake = false;
     };
+    "cardano-node-8.1.1" = {
+      url = "github:intersectmbo/cardano-node?ref=8.7.3";
+    };
+    "cardano-configurations-8.1.1" = {
+      url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
+      flake = false;
+    };
+
+    # Services
     cardano-db-sync = {
       url = "github:intersectmbo/cardano-db-sync/13.2.0.1"; # compatible with 8.7.3
     };
