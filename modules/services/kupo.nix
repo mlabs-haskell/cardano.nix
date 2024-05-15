@@ -9,7 +9,7 @@
 in
   with lib; {
     options.services.kupo = {
-      enable = mkEnableOption "Kupo cardano chain-index";
+      enable = mkEnableOption "Kupo Cardano chain-indexer";
 
       package = mkOption {
         description = "Kupo package.";
@@ -19,25 +19,25 @@ in
 
       user = mkOption {
         description = "User to run kupo service as.";
-        type = types.str;
+        type = types.nonEmptyStr;
         default = "kupo";
       };
 
       group = mkOption {
         description = "Group to run kupo service as.";
-        type = types.str;
+        type = types.nonEmptyStr;
         default = "kupo";
       };
 
       workDir = mkOption {
-        description = "Directory to start the kupo and store its data. Must be under /var/lib/.";
+        description = "Directory to start the kupo and store its data. Must start with `/var/lib/`.";
         type = types.path;
         default = "/var/lib/kupo";
       };
 
       host = mkOption {
         description = "Host address or name to listen on.";
-        type = types.str;
+        type = types.nonEmptyStr;
         default = "127.0.0.1";
       };
 
@@ -48,25 +48,25 @@ in
       };
 
       nodeSocketPath = mkOption {
-        description = "Path to cardano-node IPC socket. Ignored if `ogmiosHost` is specified.";
+        description = "Path to cardano-node IPC socket. Ignored if `ogmiosHost` is not `null`.";
         type = types.nullOr types.path;
         default = "/run/cardano-node/node.socket";
       };
 
       nodeConfigPath = mkOption {
-        description = "Path to cardano-node config.json file. Ignored if `ogmiosHost` is specified";
+        description = "Path to cardano-node config.json file. Ignored if `ogmiosHost` is not `null`";
         type = types.path;
-        default = "/run/cardano-node/node.socket";
+        default = "/etc/cardano-node/config.json";
       };
 
       ogmiosHost = mkOption {
-        description = "Ogmios host name. Optional, will connect to cardano-node if not specified.";
-        type = types.nullOr types.str;
+        description = "Ogmios host name. Optional, will connect to cardano-node if `null`.";
+        type = types.nullOr types.nonEmptyStr;
         default = null;
       };
 
       ogmiosPort = mkOption {
-        description = "Ogmios port. Ignored unless `ogmiosHost` is specified.";
+        description = "Ogmios port. Ignored if `ogmiosHost` is `null`.";
         type = types.port;
         default = 1337;
       };
@@ -78,26 +78,26 @@ in
       };
 
       hydraPort = mkOption {
-        description = "Hydra port. Ignored unless `hydraHost` is specified.";
+        description = "Hydra port. Ignored if `hydraHost` is `null`.";
         type = types.port;
       };
 
       matches = mkOption {
         description = "The list of addresses to watch.";
-        type = types.listOf types.str;
-        default = ["*/*"];
+        type = types.listOf types.nonEmptyStr;
+        default = ["*"];
       };
 
       since = mkOption {
         description = "Watching depth.";
-        type = types.str;
+        type = types.nonEmptyStr;
         default = "origin";
       };
 
       pruneUtxo = mkOption {
         description = "Automatically remove inputs that are spent on-chain.";
         type = types.bool;
-        default = true;
+        default = false;
       };
 
       extraArgs = mkOption {
@@ -108,6 +108,13 @@ in
     };
 
     config = mkIf cfg.enable {
+      assertions = [
+        {
+          assertion = lib.hasPrefix "/var/lib/" cfg.workDir;
+          message = "`workDir` must start with `/var/lib/`";
+        }
+      ];
+
       users.users.kupo = mkIf (cfg.user == "kupo") {
         isSystemUser = true;
         inherit (cfg) group;
@@ -117,7 +124,7 @@ in
 
       systemd.services.kupo = {
         enable = true;
-        after = ["cardano-node.service"];
+        after = ["cardano-node.service" "ogmios.service"];
         wantedBy = ["multi-user.target"];
 
         script = escapeShellArgs (flatten [
@@ -145,8 +152,8 @@ in
 
         serviceConfig = {
           User = cfg.user;
-          WorkingDirectory = cfg.workDir;
           Group = cfg.group;
+          WorkingDirectory = cfg.workDir;
           StateDirectory = lib.removePrefix "/var/lib/" cfg.workDir;
           # Security
           UMask = "0077";

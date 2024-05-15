@@ -16,7 +16,10 @@
           .${system};
       };
     in
-      pkgs.runCommandNoCC "ogmios-${version}" {inherit version;} ''
+      pkgs.runCommandNoCC "ogmios-${version}" {
+        inherit version;
+        meta.mainProgram = "ogmios";
+      } ''
         mkdir $out
         cd $out
         ${pkgs.unzip}/bin/unzip ${src}

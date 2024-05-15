@@ -21,7 +21,10 @@
         }
         .${system};
     in
-      pkgs.runCommandNoCC "kupo-${version}" {inherit version;} ''
+      pkgs.runCommandNoCC "kupo-${version}" {
+        inherit version;
+        meta.mainProgram = "kupo";
+      } ''
         mkdir $out
         cd $out
         ${pkgs.gnutar}/bin/tar -xvzf ${src}
