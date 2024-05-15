@@ -395,8 +395,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configurationnix" class="md-nav__link">
-    configuration.nix
+  <a href="#previewnix" class="md-nav__link">
+    preview.nix
   </a>
   
 </li>
@@ -627,6 +627,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/module-options/kupo/" class="md-nav__link">
+        Kupo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/module-options/node/" class="md-nav__link">
         Node
       </a>
@@ -716,8 +730,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configurationnix" class="md-nav__link">
-    configuration.nix
+  <a href="#previewnix" class="md-nav__link">
+    preview.nix
   </a>
   
 </li>
@@ -805,12 +819,12 @@
 <li>a NixOS configuration for the virtual machine, under <code>nixosConfigurations.server-vm</code></li>
 <li>an app to run the virtual machine as above, under <code>apps.x86_64-linux.server-vm</code></li>
 </ul>
-<h4 id="configurationnix"><code>configuration.nix</code></h4>
+<h4 id="previewnix"><code>preview.nix</code></h4>
 <p>This is the <a href="https://zero-to-nix.com/concepts/nixos#configuration">NixOS configuration</a> to run cardano services for the machine.</p>
 <h4 id="vmnix"><code>vm.nix</code></h4>
 <p>This NixOS configuration sets virtual machine options such as cores, memory and port forwarding. It is included in the configuration for the <code>nixosConfigurations.server-vm</code> virtual machine in <code>flake.nix</code>.</p>
 <h3 id="customize">Customize</h3>
-<p>To learn more, browse available <a href="https://search.nixos.org/options">NixOS options in nixpkgs</a> and <a href="../../reference/module-options/cardano/">NixOS options provided by cardano.nix</a> (see other modules in the menu on the left). You can ad these options to <code>configuration.nix</code> to configure the system.</p>
+<p>To learn more, browse available <a href="https://search.nixos.org/options">NixOS options in nixpkgs</a> and <a href="../../reference/module-options/cardano/">NixOS options provided by cardano.nix</a> (see other modules in the menu on the left). You can ad these options to <code>preview.nix</code> to configure the system.</p>
 <h3 id="deployment-options">Deployment options</h3>
 <p>The configuration can be deployed to any target running NixOS, such as:</p>
 <ul>
