@@ -46,6 +46,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/db-sync/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/http/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
