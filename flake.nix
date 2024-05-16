@@ -13,13 +13,11 @@
       url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
       flake = false;
     };
+    cardano-db-sync = {
+      url = "github:intersectmbo/cardano-db-sync/13.2.0.1"; # compatible with 8.7.3
+    };
 
     # Utilities
-    attic = {
-      url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-    };
     devour-flake = {
       url = "github:srid/devour-flake";
       flake = false;

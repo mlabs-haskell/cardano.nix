@@ -52,6 +52,12 @@
         ./http.nix
       ];
     };
+    db-sync = {
+      imports = [
+        inputs.cardano-db-sync.nixosModules.cardano-db-sync
+        ./db-sync.nix
+      ];
+    };
     # the default module imports all modules
     default = {
       imports = with builtins; attrValues (removeAttrs config.flake.nixosModules ["default"]);

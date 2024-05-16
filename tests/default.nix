@@ -1,9 +1,10 @@
 {
   imports = [
     ./cardano-cli.nix
-    ./cardano-node.nix
+    ./node.nix
     ./ogmios.nix
     ./kupo.nix
     ./http.nix
+    ./db-sync.nix
   ];
 }

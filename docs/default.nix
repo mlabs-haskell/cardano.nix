@@ -12,14 +12,16 @@ in {
     pkgs,
     ...
   }: let
-    inherit (pkgs) stdenv mkdocs python310Packages;
+    inherit (pkgs) stdenv python311Packages;
 
-    my-mkdocs =
+    my-mkdocs = let
+      inherit (python311Packages) mkdocs;
+    in
       pkgs.runCommand "my-mkdocs"
       {
         buildInputs = [
           mkdocs
-          python310Packages.mkdocs-material
+          python311Packages.mkdocs-material
         ];
       } ''
         mkdir -p $out/bin

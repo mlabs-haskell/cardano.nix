@@ -2,7 +2,7 @@
   perSystem.vmTests.tests.ogmios = {
     impure = true;
     module = {
-      nodes .machine = {pkgs, ...}: {
+      nodes.machine = {pkgs, ...}: {
         cardano = {
           network = "preview";
           cli.enable = true;
