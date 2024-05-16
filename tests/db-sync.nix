@@ -1,5 +1,5 @@
 {
-  perSystem.vmTests.tests.cardano-db-sync = {
+  perSystem.vmTests.tests.db-sync = {
     # The test runs cardano-db-sync with postgres enabled and checks that the db syncs.
     # We call the db as the `postgres` user, but the service connects as the `cdbsync` user, but it is systemd dynamic user.
     # Test runs impure to access the "preview" network.
@@ -10,10 +10,7 @@
           network = "preview";
           cli.enable = true;
           node.enable = true;
-          db-sync = {
-            enable = true;
-            postgres.enable = true;
-          };
+          db-sync.enable = true;
         };
         environment.systemPackages = with pkgs; [jq bc curl postgresql];
       };
@@ -36,7 +33,7 @@
             print("Can't wait forever for the dbsync to reach 0.000000001. Exiting - dbsync doesn't seem to sync.")
             raise Exception("Timeout")
           elif status == 0 and output == "${output}":
-            print("DbSync started syncing. Succeeds.")
+            print("DbSync started syncing. Success.")
             break
           i += 1
           time.sleep(3)

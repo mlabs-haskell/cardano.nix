@@ -2,28 +2,30 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.cardano.db-sync;
   dbsync-cfg = config.services.cardano-db-sync;
+  inherit (lib) mkIf mkMerge mkEnableOption;
 in {
-  options.cardano.db-sync = with types; {
-    enable = mkEnableOption ''
-      Cardano DB Sync provides a way to query local cardano node.
+  options.cardano.db-sync = {
+    enable =
+      mkEnableOption ''
+        Cardano DB Sync provides a way to query local cardano node.
 
-      Cardano DB sync connects to a cardano node and saves blocks to a database.
-      You need to either provide the db connection arguments:
-        ```nix
-        services.cardano-db-sync.database = {
-          # these are the defaults:
-          name = "cdbsync";
-          user = "cdbsync";
-          port = 5432;
-          socketdir = "/run/postgresql";
-        };
-        ```
-      or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
-    '';
+        Cardano DB sync connects to a cardano node and saves blocks to a database.
+        You need to either provide the db connection arguments:
+          ```nix
+          services.cardano-db-sync.database = {
+            # these are the defaults:
+            name = "cardano-db-sync";
+            user = "cardano-db-sync";
+            port = 5432;
+            socketdir = "/run/postgresql";
+          };
+          ```
+        or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
+      ''
+      // {default = config.cardano.enable or false;};
     postgres.enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
   };
 
@@ -34,18 +36,17 @@ in {
         environment = config.services.cardano-node.environments.${config.cardano.network};
         inherit (config.cardano.node) socketPath;
         postgres = {
-          user = "cdbsync";
+          user = "cardano-db-sync";
           # use first socket from postgresql settings or default to /run/postgresql
           socketdir = builtins.head ((config.services.postgresql.settings.unix_socket_directories or []) ++ ["/run/postgresql"]);
           port = config.services.postgresql.settings.port or 5432;
-          database = "cdbsync";
+          database = "cardano-db-sync";
         };
-        stateDir = "/var/lib/${dbsync-cfg.postgres.user}";
+        stateDir = "/var/lib/cardano-db-sync";
       };
       systemd.services.cardano-db-sync = {
         serviceConfig = {
-          DynamicUser = true;
-          User = dbsync-cfg.postgres.user;
+          User = "cardano-db-sync";
           # Security
           UMask = "0077";
           CapabilityBoundingSet = "";
@@ -62,8 +63,6 @@ in {
           SystemCallFilter = ["@system-service" "~@privileged"];
           PrivateDevices = true;
           RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
-          IPAddressAllow = "localhost";
-          IPAddressDeny = "any";
           ProtectHome = true;
           DevicePolicy = "closed";
           DeviceAllow = "";
@@ -94,12 +93,12 @@ in {
           }
         ];
       };
-      warnings =
-        if (dbsync-cfg.postgres.database != dbsync-cfg.postgres.user)
-        then [
-          "When postgres is enabled, we use the ensureDBOwnership option which expects the user name to match db name."
-        ]
-        else [];
+      assertions = [
+        {
+          assertion = cfg.postgres.enable && dbsync-cfg.postgres.database == dbsync-cfg.postgres.user;
+          message = "`cardano-db-sync.postgres.database` and `user` must be equal for `services.postgresql.ensureUsers.*.ensureDBOwnership` to work.";
+        }
+      ];
     })
   ]);
 }

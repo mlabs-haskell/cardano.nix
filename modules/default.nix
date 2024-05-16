@@ -52,10 +52,10 @@
         ./http.nix
       ];
     };
-    cardano-db-sync = {
+    db-sync = {
       imports = [
         inputs.cardano-db-sync.nixosModules.cardano-db-sync
-        ./cardano-db-sync.nix
+        ./db-sync.nix
       ];
     };
     # the default module imports all modules
