@@ -71,10 +71,11 @@
       };
       systems = [
         "x86_64-linux"
-        "aarch64-linux"
-        # Ogmios doesn't support it
+        # cardano-node doesn't support it
+        # "aarch64-linux"
+        # ogmios doesn't support it
         # "x86_64-darwin"
-        # We don't have a builder
+        # we don't have a builder
         # "aarch64-darwin"
       ];
     };
