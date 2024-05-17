@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/http/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.node/">
       
       
-        <link rel="prev" href="../db-sync/">
+        <link rel="prev" href="../cardano.kupo/">
       
       
-        <link rel="next" href="../kupo/">
+        <link rel="next" href="../cardano.ogmios/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Http - cardano.nix</title>
+        <title>cardano.node - cardano.nix</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cardanohttpenable" class="md-skip">
+        <a href="#cardanonodeenable" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Http
+              cardano.node
             
           </span>
         </div>
@@ -533,7 +533,7 @@
             
   
   <span class="md-ellipsis">
-    Reference
+    NixOS Module Reference
   </span>
   
 
@@ -543,46 +543,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    NixOS Module Options
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            NixOS Module Options
+            NixOS Module Reference
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -597,7 +558,7 @@
         
   
   <span class="md-ellipsis">
-    Cardano
+    cardano
   </span>
   
 
@@ -614,11 +575,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../cardano.cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Cli
+    cardano.cli
   </span>
   
 
@@ -635,11 +596,53 @@
   
   
     <li class="md-nav__item">
-      <a href="../db-sync/" class="md-nav__link">
+      <a href="../cardano.db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Db sync
+    cardano.db-sync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardano.http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cardano.http
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardano.kupo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cardano.kupo
   </span>
   
 
@@ -667,7 +670,7 @@
           
   
   <span class="md-ellipsis">
-    Http
+    cardano.node
   </span>
   
 
@@ -678,7 +681,7 @@
         
   
   <span class="md-ellipsis">
-    Http
+    cardano.node
   </span>
   
 
@@ -698,9 +701,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanohttpenable" class="md-nav__link">
+  <a href="#cardanonodeenable" class="md-nav__link">
     <span class="md-ellipsis">
-      cardano.http.enable
+      cardano.node.enable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodeconfigpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      cardano.node.configPath
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodesocketpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      cardano.node.socketPath
     </span>
   </a>
   
@@ -722,11 +743,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../kupo/" class="md-nav__link">
+      <a href="../cardano.ogmios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Kupo
+    cardano.ogmios
   </span>
   
 
@@ -743,11 +764,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../node/" class="md-nav__link">
+      <a href="../services.cardano-db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Node
+    services.cardano-db-sync
   </span>
   
 
@@ -764,11 +785,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../ogmios/" class="md-nav__link">
+      <a href="../services.cardano-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Ogmios
+    services.cardano-node
   </span>
   
 
@@ -778,9 +799,64 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services.http-proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.http-proxy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services.kupo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.kupo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services.ogmios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.ogmios
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -818,9 +894,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanohttpenable" class="md-nav__link">
+  <a href="#cardanonodeenable" class="md-nav__link">
     <span class="md-ellipsis">
-      cardano.http.enable
+      cardano.node.enable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodeconfigpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      cardano.node.configPath
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanonodesocketpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      cardano.node.socketPath
     </span>
   </a>
   
@@ -841,7 +935,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/http.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/cardano.node.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -850,17 +944,17 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/http.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/cardano.node.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Http</h1>
+  <h1>cardano.node</h1>
 
-<h2 id="cardanohttpenable">cardano.http.enable</h2>
-<p>Whether to enable HTTP SSL proxy and load balancer for cardano services.</p>
+<h2 id="cardanonodeenable">cardano.node.enable</h2>
+<p>Whether to enable cardano-node service.</p>
 <p><em>Type:</em>
 boolean</p>
 <p><em>Default:</em>
@@ -868,7 +962,23 @@ boolean</p>
 <p><em>Example:</em>
 <code>true</code></p>
 <p><em>Declared by:</em>
- - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/http.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/http.nix</a></p>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
+<h2 id="cardanonodeconfigpath">cardano.node.configPath</h2>
+<p>Path to cardano-node configuration.</p>
+<p><em>Type:</em>
+path</p>
+<p><em>Default:</em>
+<code>${pkgs.cardano-configurations}/network/${config.cardano.network}_p2p/cardano-node/config.json</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
+<h2 id="cardanonodesocketpath">cardano.node.socketPath</h2>
+<p>Path to cardano-node socket.</p>
+<p><em>Type:</em>
+path</p>
+<p><em>Default:</em>
+<code>"/run/cardano-node/node.socket"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 
 
 

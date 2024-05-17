@@ -36,37 +36,62 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.cli/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.db-sync/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.http/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.kupo/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cli/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.node/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/db-sync/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.ogmios/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/http/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.cardano-db-sync/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/kupo/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.cardano-node/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/node/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.http-proxy/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/ogmios/</loc>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.kupo/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.ogmios/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>

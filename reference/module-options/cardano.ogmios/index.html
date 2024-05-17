@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/db-sync/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.ogmios/">
       
       
-        <link rel="prev" href="../cli/">
+        <link rel="prev" href="../cardano.node/">
       
       
-        <link rel="next" href="../http/">
+        <link rel="next" href="../services.cardano-db-sync/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Db sync - cardano.nix</title>
+        <title>cardano.ogmios - cardano.nix</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cardanodb-syncenable" class="md-skip">
+        <a href="#cardanoogmiosenable" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Db sync
+              cardano.ogmios
             
           </span>
         </div>
@@ -533,7 +533,7 @@
             
   
   <span class="md-ellipsis">
-    Reference
+    NixOS Module Reference
   </span>
   
 
@@ -543,46 +543,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    NixOS Module Options
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            NixOS Module Options
+            NixOS Module Reference
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -597,7 +558,7 @@
         
   
   <span class="md-ellipsis">
-    Cardano
+    cardano
   </span>
   
 
@@ -614,11 +575,95 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../cardano.cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Cli
+    cardano.cli
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardano.db-sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cardano.db-sync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardano.http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cardano.http
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardano.kupo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cardano.kupo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cardano.node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cardano.node
   </span>
   
 
@@ -646,7 +691,7 @@
           
   
   <span class="md-ellipsis">
-    Db sync
+    cardano.ogmios
   </span>
   
 
@@ -657,7 +702,7 @@
         
   
   <span class="md-ellipsis">
-    Db sync
+    cardano.ogmios
   </span>
   
 
@@ -677,18 +722,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanodb-syncenable" class="md-nav__link">
+  <a href="#cardanoogmiosenable" class="md-nav__link">
     <span class="md-ellipsis">
-      cardano.db-sync.enable
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cardanodb-syncpostgresenable" class="md-nav__link">
-    <span class="md-ellipsis">
-      cardano.db-sync.postgres.enable
+      cardano.ogmios.enable
     </span>
   </a>
   
@@ -710,11 +746,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../http/" class="md-nav__link">
+      <a href="../services.cardano-db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Http
+    services.cardano-db-sync
   </span>
   
 
@@ -731,11 +767,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../kupo/" class="md-nav__link">
+      <a href="../services.cardano-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Kupo
+    services.cardano-node
   </span>
   
 
@@ -752,11 +788,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../node/" class="md-nav__link">
+      <a href="../services.http-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Node
+    services.http-proxy
   </span>
   
 
@@ -773,11 +809,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../ogmios/" class="md-nav__link">
+      <a href="../services.kupo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Ogmios
+    services.kupo
   </span>
   
 
@@ -787,9 +823,22 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services.ogmios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.ogmios
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -827,18 +876,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanodb-syncenable" class="md-nav__link">
+  <a href="#cardanoogmiosenable" class="md-nav__link">
     <span class="md-ellipsis">
-      cardano.db-sync.enable
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cardanodb-syncpostgresenable" class="md-nav__link">
-    <span class="md-ellipsis">
-      cardano.db-sync.postgres.enable
+      cardano.ogmios.enable
     </span>
   </a>
   
@@ -859,7 +899,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/db-sync.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/cardano.ogmios.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -868,35 +908,17 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/db-sync.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/cardano.ogmios.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Db sync</h1>
+  <h1>cardano.ogmios</h1>
 
-<h2 id="cardanodb-syncenable">cardano.db-sync.enable</h2>
-<p>Whether to enable Cardano DB Sync provides a way to query local cardano node.</p>
-<p>Cardano DB sync connects to a cardano node and saves blocks to a database.
-You need to either provide the db connection arguments:</p>
-<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>services<span class="o">.</span>cardano-db-sync<span class="o">.</span><span class="ss">database</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="c1"># these are the defaults:</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="ss">name</span> <span class="o">=</span> <span class="s2">&quot;cardano-db-sync&quot;</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>  <span class="ss">user</span> <span class="o">=</span> <span class="s2">&quot;cardano-db-sync&quot;</span><span class="p">;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>  <span class="ss">port</span> <span class="o">=</span> <span class="mi">5432</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>  <span class="ss">socketdir</span> <span class="o">=</span> <span class="s2">&quot;/run/postgresql&quot;</span><span class="p">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">};</span>
-</span></code></pre></div></td></tr></table></div>
-<p>or enable the default postgresql service with <code>services.cardano-db-sync.postgres.enable</code> and possibly overwrite the <code>services.postgresql</code> options for your need.
-.</p>
+<h2 id="cardanoogmiosenable">cardano.ogmios.enable</h2>
+<p>Whether to enable Ogmios bridge interface for cardano-node.</p>
 <p><em>Type:</em>
 boolean</p>
 <p><em>Default:</em>
@@ -904,17 +926,7 @@ boolean</p>
 <p><em>Example:</em>
 <code>true</code></p>
 <p><em>Declared by:</em>
- - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/db-sync.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/db-sync.nix</a></p>
-<h2 id="cardanodb-syncpostgresenable">cardano.db-sync.postgres.enable</h2>
-<p>Whether to enable Run postgres and connect dbsync to it…</p>
-<p><em>Type:</em>
-boolean</p>
-<p><em>Default:</em>
-<code>true</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
-<p><em>Declared by:</em>
- - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/db-sync.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/db-sync.nix</a></p>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/ogmios.nix</a></p>
 
 
 

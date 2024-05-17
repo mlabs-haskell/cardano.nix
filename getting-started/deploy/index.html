@@ -647,7 +647,7 @@
             
   
   <span class="md-ellipsis">
-    Reference
+    NixOS Module Reference
   </span>
   
 
@@ -657,44 +657,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    NixOS Module Options
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            NixOS Module Options
+            NixOS Module Reference
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -709,7 +672,7 @@
         
   
   <span class="md-ellipsis">
-    Cardano
+    cardano
   </span>
   
 
@@ -726,11 +689,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cli/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Cli
+    cardano.cli
   </span>
   
 
@@ -747,11 +710,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/db-sync/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Db sync
+    cardano.db-sync
   </span>
   
 
@@ -768,11 +731,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/http/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.http/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Http
+    cardano.http
   </span>
   
 
@@ -789,11 +752,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/kupo/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.kupo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Kupo
+    cardano.kupo
   </span>
   
 
@@ -810,11 +773,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/node/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Node
+    cardano.node
   </span>
   
 
@@ -831,11 +794,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/ogmios/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.ogmios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Ogmios
+    cardano.ogmios
   </span>
   
 
@@ -845,9 +808,106 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/module-options/services.cardano-db-sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.cardano-db-sync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/module-options/services.cardano-node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.cardano-node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/module-options/services.http-proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.http-proxy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/module-options/services.kupo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.kupo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/module-options/services.ogmios/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    services.ogmios
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1011,7 +1071,7 @@
 <h3 id="run-a-virtual-machine">Run a virtual machine</h3>
 <p>The default template provides a virtual machine configuration starting all the services in the preview testnet. Here's how to run it:</p>
 <p><code>nix run .#vm</code></p>
-<p>This machine is set up just like the one in <a href="../vm">Run a VM</a>, but can be customized.</p>
+<p>This machine is set up just like the one in <a href="../vm/">Run a VM</a>, but can be customized.</p>
 <h3 id="look-around">Look around</h3>
 <h4 id="flakenix"><code>flake.nix</code></h4>
 <p>This <a href="https://zero-to-nix.com/concepts/flakes">Nix Flake</a> is the entry point to the project. It locks inputs and provides the following inputs:</p>
@@ -1035,7 +1095,7 @@
 <p>There are a variety of resources to help install NixOS:</p>
 <ul>
 <li>the <a href="https://nixos.org/manual/nixos/stable/#ch-installation">official documentation installation guide</a></li>
-<li><a href="nixos-anyware">https://nix-community.github.io/nixos-anywhere/quickstart.html</a> to deploy on existing hosts running other distrbutions</li>
+<li><a href="https://nix-community.github.io/nixos-anywhere/quickstart.html">nixos-anywhere</a> to deploy on existing hosts running other distrbutions</li>
 <li>various web resources for specific cloud providers or other circumstances</li>
 </ul>
 <p>With a running NixOS installation and a NixOS configuration <code>server</code> in a nix flake, this command will deploy the server:</p>
