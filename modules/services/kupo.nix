@@ -14,7 +14,7 @@ in
       package = mkOption {
         description = "Kupo package.";
         type = types.package;
-        default = pkgs.kupo;
+        default = pkgs.kupo or null;
       };
 
       user = mkOption {

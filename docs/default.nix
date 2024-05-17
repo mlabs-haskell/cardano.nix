@@ -33,14 +33,43 @@ in {
         modules = [rootConfig.flake.nixosModules.node];
         namespaces = ["services.cardano-node"];
       }
-      # FIXME: ogmios' fails with mysterious error
-      #{
-      #  anchor = "services.ogmios";
-      #  modules = [ rootConfig.flake.nixosModules.ogmios ];
-      #  namespaces = ["services.ogmios"];
-      #}
       {
-        anchor = "service.http-proxy";
+        anchor = "cardano.ogmios";
+        modules = [rootConfig.flake.nixosModules.ogmios];
+        namespaces = ["cardano.ogmios"];
+      }
+      {
+        anchor = "services.ogmios";
+        modules = [rootConfig.flake.nixosModules.ogmios];
+        namespaces = ["services.ogmios"];
+      }
+      {
+        anchor = "cardano.kupo";
+        modules = [rootConfig.flake.nixosModules.kupo];
+        namespaces = ["cardano.kupo"];
+      }
+      {
+        anchor = "services.kupo";
+        modules = [rootConfig.flake.nixosModules.kupo];
+        namespaces = ["services.kupo"];
+      }
+      {
+        anchor = "cardano.db-sync";
+        modules = [rootConfig.flake.nixosModules.db-sync];
+        namespaces = ["cardano.db-sync"];
+      }
+      {
+        anchor = "services.cardano-db-sync";
+        modules = [(rootConfig.flake.nixosModules.db-sync // {config.services.cardano-db-sync.cluster = "mainnet";})];
+        namespaces = ["services.cardano-db-sync"];
+      }
+      {
+        anchor = "cardano.http";
+        modules = [rootConfig.flake.nixosModules.http];
+        namespaces = ["cardano.http"];
+      }
+      {
+        anchor = "services.http-proxy";
         modules = [rootConfig.flake.nixosModules.http];
         namespaces = ["services.http-proxy"];
       }

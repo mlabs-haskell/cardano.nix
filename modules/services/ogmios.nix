@@ -14,7 +14,7 @@ in {
     package = mkOption {
       description = "Ogmios package";
       type = package;
-      default = pkgs.ogmios;
+      default = pkgs.ogmios or null;
     };
 
     user = mkOption {
