@@ -18,7 +18,7 @@ The default template provides a virtual machine configuration starting all the s
 
 `nix run .#vm`
 
-This machine is set up just like the one in [Run a VM](../vm), but can be customized.
+This machine is set up just like the one in [Run a VM](vm.md), but can be customized.
 
 ### Look around
 
@@ -39,7 +39,7 @@ This NixOS configuration sets virtual machine options such as cores, memory and 
 
 ### Customize
 
-To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../../reference/module-options/cardano/) (see other modules in the menu on the left). You can ad these options to `preview.nix` to configure the system.
+To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../reference/module-options/cardano.md) (see other modules in the menu on the left). You can ad these options to `preview.nix` to configure the system.
 
 ### Deployment options
 
@@ -52,7 +52,7 @@ The configuration can be deployed to any target running NixOS, such as:
 There are a variety of resources to help install NixOS:
 
 - the [official documentation installation guide](https://nixos.org/manual/nixos/stable/#ch-installation)
-- [https://nix-community.github.io/nixos-anywhere/quickstart.html](nixos-anyware) to deploy on existing hosts running other distrbutions
+- [nixos-anywhere](https://nix-community.github.io/nixos-anywhere/quickstart.html) to deploy on existing hosts running other distrbutions
 - various web resources for specific cloud providers or other circumstances
 
 With a running NixOS installation and a NixOS configuration `server` in a nix flake, this command will deploy the server:

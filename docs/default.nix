@@ -6,173 +6,85 @@
 }: let
   rootConfig = config;
 in {
-  perSystem = {
-    config,
-    lib,
-    pkgs,
-    ...
-  }: let
-    inherit (pkgs) stdenv python311Packages;
+  imports = [
+    ./render.nix
+  ];
 
-    my-mkdocs = let
-      inherit (python311Packages) mkdocs;
-    in
-      pkgs.runCommand "my-mkdocs"
+  renderDocs = {
+    enable = true;
+    sidebarOptions = [
       {
-        buildInputs = [
-          mkdocs
-          python311Packages.mkdocs-material
-        ];
-      } ''
-        mkdir -p $out/bin
+        anchor = "cardano";
+        modules = [rootConfig.flake.nixosModules.cardano];
+        namespaces = ["cardano"];
+      }
+      {
+        anchor = "cardano.cli";
+        modules = [rootConfig.flake.nixosModules.cli];
+        namespaces = ["cardano.cli"];
+      }
+      {
+        anchor = "cardano.node";
+        modules = [rootConfig.flake.nixosModules.node];
+        namespaces = ["cardano.node"];
+      }
+      {
+        anchor = "services.cardano-node";
+        modules = [rootConfig.flake.nixosModules.node];
+        namespaces = ["services.cardano-node"];
+      }
+      {
+        anchor = "cardano.ogmios";
+        modules = [rootConfig.flake.nixosModules.ogmios];
+        namespaces = ["cardano.ogmios"];
+      }
+      {
+        anchor = "services.ogmios";
+        modules = [rootConfig.flake.nixosModules.ogmios];
+        namespaces = ["services.ogmios"];
+      }
+      {
+        anchor = "cardano.kupo";
+        modules = [rootConfig.flake.nixosModules.kupo];
+        namespaces = ["cardano.kupo"];
+      }
+      {
+        anchor = "services.kupo";
+        modules = [rootConfig.flake.nixosModules.kupo];
+        namespaces = ["services.kupo"];
+      }
+      {
+        anchor = "cardano.db-sync";
+        modules = [rootConfig.flake.nixosModules.db-sync];
+        namespaces = ["cardano.db-sync"];
+      }
+      {
+        anchor = "services.cardano-db-sync";
+        modules = [(rootConfig.flake.nixosModules.db-sync // {config.services.cardano-db-sync.cluster = "mainnet";})];
+        namespaces = ["services.cardano-db-sync"];
+      }
+      {
+        anchor = "cardano.http";
+        modules = [rootConfig.flake.nixosModules.http];
+        namespaces = ["cardano.http"];
+      }
+      {
+        anchor = "services.http-proxy";
+        modules = [rootConfig.flake.nixosModules.http];
+        namespaces = ["services.http-proxy"];
+      }
+    ];
 
-        cat <<MKDOCS > $out/bin/mkdocs
-        #!${pkgs.bash}/bin/bash
-        set -euo pipefail
-        export PYTHONPATH=$PYTHONPATH
-        exec ${mkdocs}/bin/mkdocs "\$@"
-        MKDOCS
-
-        chmod +x $out/bin/mkdocs
-      '';
-
-    eachOptions = removeAttrs rootConfig.flake.nixosModules ["default"];
-
-    eachOptionsDoc =
-      lib.mapAttrs' (
-        name: value:
-          lib.nameValuePair
-          # take foo.options and turn it into just foo
-          (builtins.head (lib.splitString "." name))
-          (pkgs.nixosOptionsDoc {
-            # By default `nixosOptionsDoc` will ignore internal options but we want to show them
-            # This hack will make all the options not internal and visible and optionally append to the
-            # description a new field which is then corrected rendered as it was a native field
-            transformOptions = opt:
-              opt
-              // {
-                internal = false;
-                visible = true;
-                description = ''
-                  ${opt.description}
-                  ${lib.optionalString opt.internal "*Internal:* true"}
-                '';
-              };
-            options =
-              (lib.evalModules {
-                modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ [value];
-                specialArgs = {inherit pkgs;};
-              })
-              .options
-              .cardano;
-          })
-      )
-      eachOptions;
-
-    statements =
-      lib.concatStringsSep "\n"
-      (lib.mapAttrsToList (n: v: ''
-          path=$out/${n}.md
-          cat ${v.optionsCommonMark} >> $path
-        '')
-        eachOptionsDoc);
-
-    githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
-
-    options-doc = pkgs.runCommand "nixos-options" {} ''
-      mkdir $out
-      ${statements}
-      # Fixing links to storage to files in github
-      find $out -type f | xargs -n1 sed -i -e "s,${self.outPath},${githubUrl},g" -e "s,file://https://,https://,g"
-    '';
-
-    docsPath = "./docs/reference/module-options";
-
-    index = {
-      nav = [
-        {
-          "Reference" = [{"NixOS Module Options" = lib.mapAttrsToList (n: _: "reference/module-options/${n}.md") eachOptionsDoc;}];
-        }
-      ];
-    };
-
-    indexYAML =
-      pkgs.runCommand "index.yaml" {
-        nativeBuildInputs = [pkgs.yq-go];
-        index = builtins.toFile "index.json" (builtins.unsafeDiscardStringContext (builtins.toJSON index));
-      } ''
-        yq -o yaml $index >$out
-      '';
-
-    mergedMkdocsYaml =
-      pkgs.runCommand "mkdocs.yaml" {
-        nativeBuildInputs = [pkgs.yq-go];
-      } ''
-        yq '. *+ load("${indexYAML}")' ${./mkdocs.yml} -o yaml >$out
-      '';
-  in {
-    packages = {
-      docs = stdenv.mkDerivation {
-        src = ../.; # FIXME: use config.flake-root.package here
-        name = "cardano-nix-docs";
-
-        nativeBuildInputs = [my-mkdocs];
-
-        buildPhase = ''
-          ln -s ${options-doc} ${docsPath}
-          # mkdocs expect mkdocs one level upper than `docs/`, but we want to keep it in `docs/`
-          cp ${mergedMkdocsYaml} mkdocs.yml
-          mkdocs build -f mkdocs.yml -d site
-        '';
-
-        installPhase = ''
-          mv site $out
-          rm $out/default.nix  # Clean nwanted side-effect of mkdocs
-        '';
-
-        passthru.serve = config.packages.docs-serve;
-      };
-
-      docs-serve = pkgs.writeShellScriptBin "docs-serve" ''
-        set -euo pipefail
-
-        # link in options reference
-        rm -f ${docsPath}
-        ln -s ${options-doc} ${docsPath}
-        rm -f mkdocs.yml
-        ln -s ${mergedMkdocsYaml} mkdocs.yml
-
-        BASEDIR="$(${lib.getExe config.flake-root.package})"
-        cd $BASEDIR
-
-        cat <<EOF
-        NOTE: Documentation/index autogenerated from NixOS options doesn't reload automatically
-        NOTE: Please restart 'docs-serve' for it
-        EOF
-        ${my-mkdocs}/bin/mkdocs serve
-      '';
-    };
-
-    devshells.default = {
-      commands = let
-        category = "documentation";
-      in [
-        {
-          inherit category;
-          name = "docs-serve";
-          help = "serve documentation web page";
-          command = "nix run .#docs-serve";
-        }
-        {
-          inherit category;
-          name = "docs-build";
-          help = "build documentation";
-          command = "nix build .#docs";
-        }
-      ];
-      packages = [
-        my-mkdocs
-      ];
-    };
+    # Replace `/nix/store` related paths with public urls
+    fixups = [
+      {
+        storePath = self.outPath;
+        githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
+      }
+      {
+        storePath = inputs.cardano-node.outPath;
+        githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
+      }
+    ];
   };
 }
