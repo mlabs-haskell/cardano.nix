@@ -163,7 +163,7 @@ in {
         lib.concatStringsSep "\n"
         (lib.mapAttrsToList (n: v: ''
             path=$out/${n}.md
-            cat ${v.optionsCommonMark} | sed 's/\\</</g' | sed 's/This value is long\. Click to expand\./This value is long. Click to expand./g' >> $path
+            cat ${v.optionsCommonMark} | sed 's/\\</</g' | sed 's/This value is long\\. Click to expand\\./This value is long. Click to expand./g' >> $path
           '')
           eachOptionsDoc);
 
