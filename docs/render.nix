@@ -87,14 +87,14 @@ in {
       pkgs,
       ...
     }: let
-      inherit (pkgs) stdenv mkdocs python310Packages;
+      inherit (pkgs) stdenv mkdocs python311Packages;
 
       my-mkdocs =
         pkgs.runCommand "my-mkdocs"
         {
           buildInputs = [
             mkdocs
-            python310Packages.mkdocs-material
+            python311Packages.mkdocs-material
           ];
         } ''
           mkdir -p $out/bin
@@ -129,16 +129,25 @@ in {
                   visible = true;
                 }
                 // {
-                  description = let
-                    description =
-                      if opt.description == null
-                      then lib.debug.traceVal "FIXME: ${opt.name} have no description"
-                      else opt.description;
-                  in ''
-                    ${description}
+                  description = ''
+                    ${lib.optionalString (opt.description != null) opt.description}
                     ${lib.optionalString (opt.internal && cfg.invisible) "*Internal:* true"}
                   '';
-                };
+                }
+                // (
+                  if (lib.length (lib.splitString "\n" opt.default.text or "") > 20)
+                  then {
+                    default._type = "literalMD";
+                    default.text = ''
+                      <details><summary>This value is long. Click to expand.</summary>
+                      ```nix
+                      ${opt.default.text}
+                      ```
+                      </details>
+                    '';
+                  }
+                  else {}
+                );
               options = let
                 evaluated = lib.evalModules {
                   modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ modules;
@@ -154,7 +163,7 @@ in {
         lib.concatStringsSep "\n"
         (lib.mapAttrsToList (n: v: ''
             path=$out/${n}.md
-            cat ${v.optionsCommonMark} >> $path
+            cat ${v.optionsCommonMark} | sed 's/\\</</g' | sed 's/This value is long\. Click to expand\./This value is long. Click to expand./g' >> $path
           '')
           eachOptionsDoc);
 
@@ -170,7 +179,7 @@ in {
       index = {
         nav = [
           {
-            "Reference" = [{"NixOS Module Options" = lib.mapAttrsToList (n: _: "reference/module-options/${n}.md") eachOptionsDoc;}];
+            "NixOS Module Reference" = lib.mapAttrsToList (n: _: {${n} = "reference/module-options/${n}.md";}) eachOptionsDoc;
           }
         ];
       };
