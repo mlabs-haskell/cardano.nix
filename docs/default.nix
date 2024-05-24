@@ -82,7 +82,7 @@ in {
         githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
       }
       {
-        storePath = inputs.cardano-node.outPath;
+        storePath = inputs."cardano-node-8.7.3".outPath;
         githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
       }
     ];

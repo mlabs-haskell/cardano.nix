@@ -13,19 +13,11 @@
       imports = [
         ./cli.nix
       ];
-      nixpkgs.overlays = [
-        config.flake.overlays.cardano-cli
-      ];
     };
     node = {
       imports = [
-        inputs.cardano-node.nixosModules.cardano-node
+        inputs."cardano-node-8.7.3".nixosModules.cardano-node
         ./node.nix
-      ];
-      nixpkgs.overlays = [
-        config.flake.overlays.cardano-cli
-        config.flake.overlays.cardano-node
-        config.flake.overlays.cardano-configurations
       ];
     };
     ogmios = {
@@ -33,17 +25,11 @@
         ./services/ogmios.nix
         ./ogmios.nix
       ];
-      nixpkgs.overlays = [
-        config.flake.overlays.ogmios
-      ];
     };
     kupo = {
       imports = [
         ./services/kupo.nix
         ./kupo.nix
-      ];
-      nixpkgs.overlays = [
-        config.flake.overlays.kupo
       ];
     };
     http = {
@@ -60,7 +46,14 @@
     };
     # the default module imports all modules
     default = {
-      imports = with builtins; attrValues (removeAttrs config.flake.nixosModules ["default"]);
+      imports =
+        [
+          {
+            nixpkgs.overlays = [config.flake.overlays.default];
+          }
+        ]
+        ++ (with builtins;
+            attrValues (removeAttrs config.flake.nixosModules ["default"]));
     };
   };
 }
