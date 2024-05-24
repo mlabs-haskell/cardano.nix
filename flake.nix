@@ -14,10 +14,10 @@
       flake = false;
     };
     "cardano-node-8.1.1" = {
-      url = "github:intersectmbo/cardano-node?ref=8.7.3";
+      url = "github:intersectmbo/cardano-node?ref=8.1.1";
     };
     "cardano-configurations-8.1.1" = {
-      url = "github:input-output-hk/cardano-configurations/21249e0d5c68b4e8f3661b250aa8272a8785d678";
+      url = "github:input-output-hk/cardano-configurations/cc75f41fcd854e2088d3792c46eb7033b445489b";
       flake = false;
     };
 
