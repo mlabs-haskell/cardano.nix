@@ -237,6 +237,8 @@ in {
         '';
       };
 
+      packages."${cfg.packageName}-serve" = config.packages.${cfg.packageName}.serve;
+
       devshells.default = {
         commands = let
           category = "documentation";
@@ -245,7 +247,7 @@ in {
             inherit category;
             name = "docs-serve";
             help = "serve documentation web page";
-            command = "nix run .#${cfg.packageName}.serve";
+            command = "nix run .#${cfg.packageName}-serve";
           }
           {
             inherit category;
