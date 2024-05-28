@@ -2,6 +2,8 @@ In order to access all the options available in `cardano.nix`, the [NixOS module
 
 ### Start new project with flake template
 
+Before starting, follow the [installation instructions](installation.md).
+
 An easy way to get started is to use the [flake template](https://zero-to-nix.com/concepts/flakes#templates) provided by this project. Here's how to start a new project using the template:
 
 ```
@@ -17,6 +19,10 @@ git add .
 The default template provides a virtual machine configuration starting all the services in the preview testnet. Here's how to run it:
 
 `nix run .#vm`
+
+A virtual machine is started, with `cardano-cli` available to query the node:
+
+`cardano-cli query tip --testnet-magic 2`
 
 This machine is set up just like the one in [Run a VM](vm.md), but can be customized.
 

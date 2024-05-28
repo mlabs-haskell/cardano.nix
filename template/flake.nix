@@ -6,7 +6,7 @@
   };
   outputs = inputs @ {self, ...}: {
     nixosConfigurations = {
-      server-vm = inputs.nixpkgs.lib.nixosSystem {
+      vm = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           inputs.cardano-nix.nixosModules.default
@@ -16,9 +16,9 @@
       };
     };
     apps.x86_64-linux = {
-      server-vm = {
+      vm = {
         type = "app";
-        program = "${self.nixosConfigurations.server-vm.config.system.build.vm}/bin/run-nixos-vm";
+        program = "${self.nixosConfigurations.vm.config.system.build.vm}/bin/run-nixos-vm";
       };
     };
   };
