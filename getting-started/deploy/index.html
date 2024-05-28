@@ -1057,6 +1057,7 @@
 
 <p>In order to access all the options available in <code>cardano.nix</code>, the <a href="https://zero-to-nix.com/concepts/nixos#modules">NixOS module</a> provided by this project has to be included in a <a href="https://zero-to-nix.com/concepts/nixos#configuration">NixOS configuration</a> and deployed to a (local or remote or virtual) machine.</p>
 <h3 id="start-new-project-with-flake-template">Start new project with flake template</h3>
+<p>Before starting, follow the <a href="../installation/">installation instructions</a>.</p>
 <p>An easy way to get started is to use the <a href="https://zero-to-nix.com/concepts/flakes#templates">flake template</a> provided by this project. Here's how to start a new project using the template:</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
@@ -1071,6 +1072,8 @@
 <h3 id="run-a-virtual-machine">Run a virtual machine</h3>
 <p>The default template provides a virtual machine configuration starting all the services in the preview testnet. Here's how to run it:</p>
 <p><code>nix run .#vm</code></p>
+<p>A virtual machine is started, with <code>cardano-cli</code> available to query the node:</p>
+<p><code>cardano-cli query tip --testnet-magic 2</code></p>
 <p>This machine is set up just like the one in <a href="../vm/">Run a VM</a>, but can be customized.</p>
 <h3 id="look-around">Look around</h3>
 <h4 id="flakenix"><code>flake.nix</code></h4>
