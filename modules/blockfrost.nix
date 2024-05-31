@@ -17,6 +17,24 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
+      services.openssh = {
+        enable = true;
+        settings = {
+          PermitRootLogin = "yes";
+          PermitEmptyPasswords = "yes";
+        };
+      };
+
+      security.pam.services.sshd.allowNullPassword = true;
+
+      virtualisation.forwardPorts = [
+        {
+          from = "host";
+          host.port = 2000;
+          guest.port = 22;
+        }
+      ];
+
       services.blockfrost = {
         enable = true;
         settings = {
