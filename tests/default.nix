@@ -6,5 +6,6 @@
     ./kupo.nix
     ./http.nix
     ./db-sync.nix
+    ./blockfrost.nix
   ];
 }

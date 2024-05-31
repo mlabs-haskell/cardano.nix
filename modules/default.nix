@@ -44,6 +44,12 @@
         ./db-sync.nix
       ];
     };
+    blockfrost = {
+      imports = [
+        inputs.blockfrost.nixosModules.default
+        ./blockfrost.nix
+      ];
+    };
     # the default module imports all modules
     default = {
       imports =
