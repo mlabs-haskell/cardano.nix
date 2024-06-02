@@ -7,11 +7,15 @@
   rootConfig = config;
 in {
   imports = [
-    ./render.nix
+    (import ./renderDocs.nix) # avoiding infinite recursion
   ];
+
+  flake.flakeModules.renderDocs = import ./renderDocs.nix;
 
   renderDocs = {
     enable = true;
+    name = "cardano-nix-docs";
+    mkDocs-yml = ./mkdocs.yml;
     sidebarOptions = [
       {
         anchor = "cardano";
