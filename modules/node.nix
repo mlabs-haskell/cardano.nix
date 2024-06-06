@@ -34,6 +34,7 @@ in {
     services.cardano-node = {
       enable = true;
 
+      package = lib.mkDefault pkgs.cardano-node;
       inherit (cfg) socketPath;
       nodeConfigFile = cfg.configPath;
       environment = config.cardano.network;

@@ -617,17 +617,17 @@
     "cardano-configurations-8.1.1": {
       "flake": false,
       "locked": {
-        "lastModified": 1688088573,
-        "narHash": "sha256-NmuZhfS8Jgba3pl9j43D3mrsp6vArN84nmOt5H0BpIg=",
+        "lastModified": 1692193634,
+        "narHash": "sha256-cKw+iXKoMNrfN8M34/CtUelUZVLktVtzNzOYHI20dC0=",
         "owner": "input-output-hk",
         "repo": "cardano-configurations",
-        "rev": "cc75f41fcd854e2088d3792c46eb7033b445489b",
+        "rev": "9b69b59ef2fb2838855017f19af57b38c5d4abe4",
         "type": "github"
       },
       "original": {
         "owner": "input-output-hk",
         "repo": "cardano-configurations",
-        "rev": "cc75f41fcd854e2088d3792c46eb7033b445489b",
+        "rev": "9b69b59ef2fb2838855017f19af57b38c5d4abe4",
         "type": "github"
       }
     },

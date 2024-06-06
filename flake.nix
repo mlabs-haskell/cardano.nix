@@ -17,7 +17,7 @@
       url = "github:intersectmbo/cardano-node?ref=8.1.1";
     };
     "cardano-configurations-8.1.1" = {
-      url = "github:input-output-hk/cardano-configurations/cc75f41fcd854e2088d3792c46eb7033b445489b";
+      url = "github:input-output-hk/cardano-configurations/9b69b59ef2fb2838855017f19af57b38c5d4abe4";
       flake = false;
     };
 
