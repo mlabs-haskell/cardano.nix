@@ -21,7 +21,6 @@ in {
         enable = true;
         settings = {
           inherit (config.cardano) network;
-          server.debug = true;
           dbSync = {
             inherit (dbsync-cfg.postgres) user port database;
             host = dbsync-cfg.postgres.socketdir; # Required, to force connect by local socket, as well as local auth
@@ -47,13 +46,13 @@ in {
         ProtectKernelModules = true;
         SystemCallArchitectures = "native";
         # FIXME: Turn MemoryDenyWriteExecute prevent service from work
-        #          MemoryDenyWriteExecute = true;
+        # MemoryDenyWriteExecute = true;
         RestrictNamespaces = true;
         ProtectHostname = true;
         ProtectKernelTunables = true;
         RestrictRealtime = true;
         # FIXME: Turn SystemCallFilter prevent service from work
-        #          SystemCallFilter = ["@system-service" "~@privileged"];
+        # SystemCallFilter = ["@system-service" "~@privileged"];
         PrivateDevices = true;
         RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
         ProtectHome = true;
