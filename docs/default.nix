@@ -85,6 +85,10 @@ in {
         storePath = inputs."cardano-node-8.7.3".outPath;
         githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
       }
+      {
+        storePath = inputs.cardano-db-sync.outPath;
+        githubUrl = "https://github.com/IntersectMBO/cardano-db-sync/tree/master";
+      }
     ];
   };
 }
