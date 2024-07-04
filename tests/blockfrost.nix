@@ -12,6 +12,9 @@
           blockfrost.enable = true;
         };
 
+        # We want to see what happens, if test failed
+        services.blockfrost.settings.server.debug = true;
+
         environment.systemPackages = with pkgs; [jq bc curl];
       };
 
