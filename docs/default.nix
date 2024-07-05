@@ -102,7 +102,7 @@ in {
       }
       {
         storePath = inputs.blockfrost.outPath;
-        githubUri = "https://github.com/blockfrost/blockfrost-backend-ryo/tree/master";
+        githubUrl = "https://github.com/blockfrost/blockfrost-backend-ryo/tree/master";
       }
     ];
   };
