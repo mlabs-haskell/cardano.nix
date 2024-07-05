@@ -2,7 +2,6 @@
   config,
   inputs,
   self,
-  lib,
   ...
 }: let
   rootConfig = config;
@@ -76,7 +75,7 @@ in {
       }
       {
         anchor = "cardano.blockfrost";
-        modules = [rootConfig.flake.nixosModules.blockfrost {services.blockfrost.package = lib.mkForce null;}];
+        modules = [rootConfig.flake.nixosModules.blockfrost];
         namespaces = ["cardano.blockfrost"];
       }
       {
