@@ -214,7 +214,7 @@ in {
 
         installPhase = ''
           mv site $out
-          rm $out/default.nix  # Clean nwanted side-effect of mkdocs
+          rm $out/default.nix  # Clean unwanted side-effect of mkdocs
         '';
 
         passthru.serve = pkgs.writeShellScriptBin "serve" ''
