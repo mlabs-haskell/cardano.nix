@@ -4,6 +4,7 @@
     ./ogmios.nix
     ./kupo.nix
     # TODO add support for multiple blockfrost versions and re-export derivations from this flake
+    ./oura.nix
   ];
   perSystem = {system, ...}: {
     # add default package versions under attribute names without version
@@ -22,6 +23,7 @@
       cardano-configurations = packages."cardano-configurations-8.7.3";
       ogmios = packages."ogmios-6.1.0";
       kupo = packages."kupo-2.8.0";
+      inherit (packages) oura;
     };
     "cardano-node-8.1.1" = final: _prev:
     # overlay for packages compatible with cardano-transaction-lib 8.0.0
