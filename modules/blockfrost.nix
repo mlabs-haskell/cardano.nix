@@ -51,8 +51,7 @@ in {
         ProtectHostname = true;
         ProtectKernelTunables = true;
         RestrictRealtime = true;
-        # FIXME: Turn SystemCallFilter prevent service from work
-        # SystemCallFilter = ["@system-service" "~@privileged"];
+        # TODO: Find the most restricting systemCallFilter
         PrivateDevices = true;
         RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
         ProtectHome = true;
