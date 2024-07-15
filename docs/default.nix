@@ -73,6 +73,16 @@ in {
         modules = [rootConfig.flake.nixosModules.http];
         namespaces = ["services.http-proxy"];
       }
+      {
+        anchor = "cardano.blockfrost";
+        modules = [rootConfig.flake.nixosModules.blockfrost];
+        namespaces = ["cardano.blockfrost"];
+      }
+      {
+        anchor = "services.blockfrost";
+        modules = [rootConfig.flake.nixosModules.blockfrost];
+        namespaces = ["services.blockfrost"];
+      }
     ];
 
     # Replace `/nix/store` related paths with public urls
@@ -88,6 +98,10 @@ in {
       {
         storePath = inputs.cardano-db-sync.outPath;
         githubUrl = "https://github.com/IntersectMBO/cardano-db-sync/tree/master";
+      }
+      {
+        storePath = inputs.blockfrost.outPath;
+        githubUrl = "https://github.com/blockfrost/blockfrost-backend-ryo/tree/master";
       }
     ];
   };

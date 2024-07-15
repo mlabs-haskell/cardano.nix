@@ -85,6 +85,7 @@ in {
       config,
       lib,
       pkgs,
+      system,
       ...
     }: let
       inherit (pkgs) stdenv mkdocs python311Packages;
@@ -150,8 +151,14 @@ in {
                 );
               options = let
                 evaluated = lib.evalModules {
-                  modules = (import "${inputs.nixpkgs}/nixos/modules/module-list.nix") ++ modules;
-                  specialArgs = {inherit pkgs;};
+                  modules =
+                    modules
+                    ++ [
+                      {
+                        imports = builtins.import "${inputs.nixpkgs}/nixos/modules/module-list.nix";
+                        nixpkgs.system = system;
+                      }
+                    ];
                 };
               in
                 lib.foldr (path: acc: lib.recursiveUpdate acc (lib.attrByPath (lib.splitString "." path) {} evaluated.options)) {} namespaces;
@@ -214,7 +221,7 @@ in {
 
         installPhase = ''
           mv site $out
-          rm $out/default.nix  # Clean nwanted side-effect of mkdocs
+          rm $out/default.nix  # Clean unwanted side-effect of mkdocs
         '';
 
         passthru.serve = pkgs.writeShellScriptBin "serve" ''
