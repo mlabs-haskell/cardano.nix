@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.http/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.blockfrost/">
       
       
-        <link rel="prev" href="../cardano.db-sync/">
+        <link rel="prev" href="../cardano.ogmios/">
       
       
-        <link rel="next" href="../cardano.kupo/">
+        <link rel="next" href="../services.cardano-db-sync/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>cardano.http - cardano.nix</title>
+        <title>services.blockfrost - cardano.nix</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cardanohttpenable" class="md-skip">
+        <a href="#servicesblockfrostenable" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cardano.http
+              services.blockfrost
             
           </span>
         </div>
@@ -635,28 +635,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    cardano.http
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../cardano.http/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -665,33 +647,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#cardanohttpenable" class="md-nav__link">
-    <span class="md-ellipsis">
-      cardano.http.enable
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -764,10 +719,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../services.blockfrost/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    services.blockfrost
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -776,6 +749,177 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.enable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncdatabase" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsynchost" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.host
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncmaxconnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.maxConnections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncport" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.port
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.network
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverdebug" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.debug
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverlistenaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.listenAddress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverport" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.port
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverprometheusmetrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.prometheusMetrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingstokenregistryurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.tokenRegistryUrl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfroststatedir" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.stateDir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.user
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -918,9 +1062,153 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cardanohttpenable" class="md-nav__link">
+  <a href="#servicesblockfrostenable" class="md-nav__link">
     <span class="md-ellipsis">
-      cardano.http.enable
+      services.blockfrost.enable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncdatabase" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsynchost" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.host
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncmaxconnections" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.maxConnections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncport" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.port
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsdbsyncuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.dbSync.user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.network
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverdebug" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.debug
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverlistenaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.listenAddress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverport" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.port
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingsserverprometheusmetrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.server.prometheusMetrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostsettingstokenregistryurl" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.settings.tokenRegistryUrl
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfroststatedir" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.stateDir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesblockfrostuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.blockfrost.user
     </span>
   </a>
   
@@ -941,7 +1229,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/cardano.http.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/services.blockfrost.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -950,17 +1238,17 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/cardano.http.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/services.blockfrost.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>cardano.http</h1>
+  <h1>services.blockfrost</h1>
 
-<h2 id="cardanohttpenable">cardano.http.enable</h2>
-<p>Whether to enable HTTP SSL proxy and load balancer for cardano services.</p>
+<h2 id="servicesblockfrostenable">services.blockfrost.enable</h2>
+<p>Whether to enable Blockfrost.</p>
 <p><em>Type:</em>
 boolean</p>
 <p><em>Default:</em>
@@ -968,7 +1256,139 @@ boolean</p>
 <p><em>Example:</em>
 <code>true</code></p>
 <p><em>Declared by:</em>
- - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/http.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/http.nix</a></p>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostpackage">services.blockfrost.package</h2>
+<p><em>Type:</em>
+package</p>
+<p><em>Default:</em>
+<code>&lt;derivation blockfrost-backend-ryo&gt;</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostgroup">services.blockfrost.group</h2>
+<p>Group to run blockfrost service as</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"blockfrost"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettings">services.blockfrost.settings</h2>
+<p>Freeform attrset that generates the JSON configuration file used by Blockfrost.</p>
+<p><em>Type:</em>
+JSON value</p>
+<p><em>Default:</em>
+<code>{ }</code></p>
+<p><em>Example:</em></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>&#39;&#39;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>  {
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    user = config.services.cardano-db-sync.postgres.user;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    port = config.services.cardano-db-sync.postgres.port;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    database = config.services.cardano-db-sync.postgres.database;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    host = config.services.cardano-db-sync.postgres.socketdir;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>  }
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>&#39;&#39;
+</span></code></pre></div></td></tr></table></div>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsdbsyncdatabase">services.blockfrost.settings.dbSync.database</h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"cdbsync"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsdbsynchost">services.blockfrost.settings.dbSync.host</h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"localhost"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsdbsyncmaxconnections">services.blockfrost.settings.dbSync.maxConnections</h2>
+<p><em>Type:</em>
+signed integer</p>
+<p><em>Default:</em>
+<code>10</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsdbsyncport">services.blockfrost.settings.dbSync.port</h2>
+<p><em>Type:</em>
+16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
+<p><em>Default:</em>
+<code>5432</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsdbsyncuser">services.blockfrost.settings.dbSync.user</h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"cexplorer"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsnetwork">services.blockfrost.settings.network</h2>
+<p><em>Type:</em>
+one of “mainnet”, “preprod”, “preview”, “testnet”</p>
+<p><em>Default:</em>
+<code>"mainnet"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsserverdebug">services.blockfrost.settings.server.debug</h2>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Default:</em>
+<code>false</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsserverlistenaddress">services.blockfrost.settings.server.listenAddress</h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"localhost"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsserverport">services.blockfrost.settings.server.port</h2>
+<p><em>Type:</em>
+16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
+<p><em>Default:</em>
+<code>3000</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingsserverprometheusmetrics">services.blockfrost.settings.server.prometheusMetrics</h2>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Default:</em>
+<code>false</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostsettingstokenregistryurl">services.blockfrost.settings.tokenRegistryUrl</h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"https://tokens.cardano.org"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfroststatedir">services.blockfrost.stateDir</h2>
+<p><em>Type:</em>
+path</p>
+<p><em>Default:</em>
+<code>"/var/lib/blockfrost"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
+<h2 id="servicesblockfrostuser">services.blockfrost.user</h2>
+<p>User to run blockfrost service as</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Default:</em>
+<code>"blockfrost"</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 
 
 

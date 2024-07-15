@@ -36,6 +36,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.blockfrost/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.cli/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
@@ -67,6 +72,11 @@
     </url>
     <url>
          <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.ogmios/</loc>
+         <lastmod>1980-01-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/mlabs-haskell/cardano.nix/reference/module-options/services.blockfrost/</loc>
          <lastmod>1980-01-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
