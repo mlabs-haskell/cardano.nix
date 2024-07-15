@@ -3,6 +3,7 @@
     ./cardano.nix
     ./ogmios.nix
     ./kupo.nix
+    # TODO add support for multiple blockfrost versions and re-export derivations from this flake
   ];
   perSystem = {system, ...}: {
     # add default package versions under attribute names without version

@@ -23,10 +23,10 @@
 
     # Services
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.2.0.1"; # compatible with 8.7.3
+      url = "github:intersectmbo/cardano-db-sync/13.2.0.1"; # compatible with cardano-node 8.7.3
     };
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo?ref=v2.0.2";
+      url = "github:blockfrost/blockfrost-backend-ryo/v2.0.3"; # compatible with cardano-db-sync 13.2.0.1
     };
 
     # Utilities
