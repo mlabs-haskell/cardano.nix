@@ -65,7 +65,6 @@
       inherit inputs;
     }
     {
-      debug = true;
       imports = [
         ./checks
         ./ci
