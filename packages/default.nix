@@ -3,6 +3,7 @@
     ./cardano.nix
     ./ogmios.nix
     ./kupo.nix
+    ./oura.nix
     # TODO add support for multiple blockfrost versions and re-export derivations from this flake
   ];
   perSystem = {system, ...}: {
