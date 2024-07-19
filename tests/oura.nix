@@ -8,8 +8,17 @@
           cli.enable = true;
           node.enable = true;
           oura.enable = true;
+          oura.integrate = true;
         };
 
+        # Suppress excessive output from cardano-node,
+        #we assume that node works, and it ensured by other tests
+        services.cardano-node.extraServiceConfig = _: {
+          serviceConfig = {
+            StandardOutput = "null";
+            StandardError = "null";
+          };
+        };
         services.oura.settings = {
           sink = {
             type = "Logs";
