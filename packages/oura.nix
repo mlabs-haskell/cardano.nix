@@ -6,7 +6,7 @@
     };
   in {
     packages = {
-      inherit oura;
+      "oura-${oura.version}" = oura;
     };
   };
 }
