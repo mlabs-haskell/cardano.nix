@@ -1,1 +1,1 @@
-../template/vm.nix
+../templates/default/vm.nix

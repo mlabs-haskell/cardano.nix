@@ -76,9 +76,11 @@
         ./tests
         ./packages
       ];
-      flake.templates.default = {
-        path = ./template;
-        description = "Example flake using cardano.nix";
+      flake.templates = {
+        default = {
+          path = ./templates/default;
+          description = "Example flake using cardano.nix";
+        };
       };
       systems = [
         "x86_64-linux"
