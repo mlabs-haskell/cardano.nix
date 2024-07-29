@@ -35,12 +35,25 @@
       testScript = {nodes, ...}: let
         magic = toString nodes.machine.config.cardano.networkNumber;
       in ''
+        import json
         machine.wait_for_unit("cardano-node")
         machine.wait_for_unit("cardano-node-socket")
         machine.wait_until_succeeds("""[[ $(echo "$(cardano-cli query tip --testnet-magic ${magic} | jq '.syncProgress' --raw-output) > 0.001" | bc) == "1" ]]""")
         machine.wait_for_unit("oura")
-        print(machine.succeed("cat ${nodes.machine.config.services.oura.configFile}"))
-        print(machine.succeed("tail /var/log/oura"))
+        lines = machine.succeed("tail /var/log/oura/oura.jsonl")
+        print(lines)
+        # Ensure that block/slot numbers monotonicaly grow
+        block_max = 0
+        slot_max = 0
+        for each in lines.strip().split("\n"):
+            each = each.strip()
+            js = json.loads(each)
+            slot = int(js["block"]["slot"])
+            block = int(js["context"]["slot"])
+            assert block > block_max
+            assert slot > slot_max
+            block_max, slot_max = block, slot
+
         print(machine.succeed("systemd-analyze security oura"))
       '';
     };
