@@ -21,13 +21,13 @@ in {
       user = lib.mkOption {
         description = "User to run oura service as";
         type = lib.types.str;
-        default = "root";
+        default = "oura";
       };
 
       group = lib.mkOption {
         description = "Group to run oura service as";
         type = lib.types.str;
-        default = "root";
+        default = "oura";
       };
 
       settings = lib.mkOption {
@@ -57,6 +57,7 @@ in {
       isSystemUser = true;
       inherit (cfg) group;
       home = cfg.stateDir;
+      extraGroups = ["cardano-node"];
     };
     users.groups.oura = lib.mkIf (cfg.group == "oura") {};
 
@@ -68,6 +69,32 @@ in {
         User = cfg.user;
         StateDirectory = lib.removePrefix cfg.baseWorkDir cfg.stateDir;
         WorkingDirectory = cfg.stateDir;
+        # Security
+        UMask = "0077";
+        AmbientCapabilities = ["CAP_NET_BIND_SERVICE"];
+        DevicePolicy = "closed";
+        LockPersonality = true;
+        MemoryDenyWriteExecute = true;
+        NoNewPrivileges = true;
+        PrivateDevices = true;
+        PrivateMounts = true;
+        PrivateTmp = true;
+        ProcSubset = "pid";
+        ProtectClock = true;
+        ProtectControlGroups = true;
+        ProtectHome = true;
+        ProtectHostname = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProtectProc = "invisible";
+        RemoveIPC = true;
+        RestrictAddressFamilies = ["AF_UNIX" "AF_INET" "AF_INET6"];
+        RestrictNamespaces = true;
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        SystemCallArchitectures = "native";
+        SystemCallFilter = ["~@cpu-emulation @resources @debug @keyring @mount @obsolete @privileged @setuid"];
       };
     };
   };

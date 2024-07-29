@@ -22,13 +22,15 @@
         services.oura.settings = {
           sink = {
             type = "Logs";
-            output_path = "/var/log/oura";
+            output_path = "/var/log/oura/oura.jsonl";
             output_format = "JSONL";
             max_bytes_per_file = 1000000;
             max_total_files = 10;
             compress_files = false;
           };
         };
+        # Writeable place for a "testing log file"
+        systemd.tmpfiles.rules = ["d /var/log/oura 755 oura oura"];
         environment.systemPackages = with pkgs; [jq bc curl];
       };
 
