@@ -29,6 +29,15 @@
       url = "github:blockfrost/blockfrost-backend-ryo/v2.0.3"; # compatible with cardano-db-sync 13.2.0.1
     };
 
+    oura = {
+      url = "github:txpipe/oura/v1.8.6";
+      inputs.crane.follows = "crane";
+    };
+    crane = {
+      url = "github:ipetkov/crane";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Utilities
     devour-flake = {
       url = "github:srid/devour-flake";

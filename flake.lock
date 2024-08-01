@@ -1065,6 +1065,26 @@
         "type": "github"
       }
     },
+    "crane_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721058578,
+        "narHash": "sha256-fs/PVa3H5dS1//4BjecWi3nitXm5fRObx0JxXIAo+JA=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "17e5109bb1d9fb393d70fba80988f7d70d1ded1a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "crystal": {
       "inputs": {
         "ameba-src": "ameba-src",
@@ -5047,6 +5067,28 @@
         "type": "github"
       }
     },
+    "oura": {
+      "inputs": {
+        "crane": [
+          "crane"
+        ],
+        "utils": "utils_6"
+      },
+      "locked": {
+        "lastModified": 1720226386,
+        "narHash": "sha256-oBvHLxWM2vN351flm7jWjwuatFEK6la/nX9fHNy9/hk=",
+        "owner": "txpipe",
+        "repo": "oura",
+        "rev": "d94068562d98f43aeef8e224111fbdaeb2bc186c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "txpipe",
+        "ref": "v1.8.6",
+        "repo": "oura",
+        "type": "github"
+      }
+    },
     "paisano": {
       "inputs": {
         "nixpkgs": [
@@ -5251,12 +5293,14 @@
         "cardano-db-sync": "cardano-db-sync",
         "cardano-node-8.1.1": "cardano-node-8.1.1",
         "cardano-node-8.7.3": "cardano-node-8.7.3",
+        "crane": "crane_2",
         "devour-flake": "devour-flake",
         "devshell": "devshell_4",
         "flake-parts": "flake-parts_5",
         "flake-root": "flake-root",
         "hercules-ci-effects": "hercules-ci-effects",
         "nixpkgs": "nixpkgs_30",
+        "oura": "oura",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
         "treefmt-nix": "treefmt-nix_3"
       }
@@ -6043,6 +6087,21 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_6": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
         "type": "github"
       },
       "original": {

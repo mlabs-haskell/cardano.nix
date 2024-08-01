@@ -50,6 +50,12 @@
         ./blockfrost.nix
       ];
     };
+    oura = {
+      imports = [
+        ./oura.nix
+        ./services/oura.nix
+      ];
+    };
     # the default module imports all modules
     default = {
       imports =
