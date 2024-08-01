@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/getting-started/installation/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/reference/module-options/cardano.oura/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../cardano.ogmios/">
       
       
-        <link rel="next" href="../vm/">
+        <link rel="next" href="../services.blockfrost/">
       
       
-      <link rel="icon" href="../../assets/favicon.png">
+      <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
     
     
       
-        <title>Installation - cardano.nix</title>
+        <title>cardano.oura - cardano.nix</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requirements" class="md-skip">
+        <a href="#cardanoouraenable" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="https://mlabs-haskell.github.io/cardano.nix" title="cardano.nix" class="md-header__button md-logo" aria-label="cardano.nix" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation
+              cardano.oura
             
           </span>
         </div>
@@ -245,7 +245,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://mlabs-haskell.github.io/cardano.nix" title="cardano.nix" class="md-nav__button md-logo" aria-label="cardano.nix" data-md-component="logo">
       
-  <img src="../../assets/logo.svg" alt="logo">
+  <img src="../../../assets/logo.svg" alt="logo">
 
     </a>
     cardano.nix
@@ -272,7 +272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -289,8 +289,6 @@
       
   
   
-    
-  
   
   
     
@@ -302,11 +300,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -320,7 +318,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Getting Started
@@ -331,28 +329,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Installation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../getting-started/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -361,75 +341,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#binary-cache" class="md-nav__link">
-    <span class="md-ellipsis">
-      Binary cache
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-that-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check that it works
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learn-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learn more
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -442,7 +353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vm/" class="md-nav__link">
+      <a href="../../../getting-started/vm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -463,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deploy/" class="md-nav__link">
+      <a href="../../../getting-started/deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -531,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/develop/" class="md-nav__link">
+      <a href="../../../development/develop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -552,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../development/contributing/" class="md-nav__link">
+      <a href="../../../development/contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -573,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../license/" class="md-nav__link">
+      <a href="../../../license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -598,8 +509,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -609,11 +522,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -627,7 +540,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             NixOS Module Reference
@@ -641,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano/" class="md-nav__link">
+      <a href="../cardano/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -662,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.blockfrost/" class="md-nav__link">
+      <a href="../cardano.blockfrost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -683,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.cli/" class="md-nav__link">
+      <a href="../cardano.cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -704,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.db-sync/" class="md-nav__link">
+      <a href="../cardano.db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -725,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.http/" class="md-nav__link">
+      <a href="../cardano.http/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -746,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.kupo/" class="md-nav__link">
+      <a href="../cardano.kupo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -767,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.node/" class="md-nav__link">
+      <a href="../cardano.node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -788,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.ogmios/" class="md-nav__link">
+      <a href="../cardano.ogmios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -806,10 +719,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../reference/module-options/cardano.oura/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    cardano.oura
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -818,6 +749,42 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cardanoouraenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      cardano.oura.enable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cardanoouraintegrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      cardano.oura.integrate
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -830,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.blockfrost/" class="md-nav__link">
+      <a href="../services.blockfrost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -851,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.cardano-db-sync/" class="md-nav__link">
+      <a href="../services.cardano-db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -872,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.cardano-node/" class="md-nav__link">
+      <a href="../services.cardano-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -893,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.http-proxy/" class="md-nav__link">
+      <a href="../services.http-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -914,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.kupo/" class="md-nav__link">
+      <a href="../services.kupo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -935,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.ogmios/" class="md-nav__link">
+      <a href="../services.ogmios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -956,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/module-options/services.oura/" class="md-nav__link">
+      <a href="../services.oura/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1002,53 +969,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#cardanoouraenable" class="md-nav__link">
     <span class="md-ellipsis">
-      Requirements
+      cardano.oura.enable
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#cardanoouraintegrate" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup
+      cardano.oura.integrate
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#binary-cache" class="md-nav__link">
-    <span class="md-ellipsis">
-      Binary cache
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-that-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check that it works
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#learn-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learn more
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1067,7 +1001,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/getting-started/installation.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/reference/module-options/cardano.oura.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1076,34 +1010,36 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/getting-started/installation.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/reference/module-options/cardano.oura.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Installation</h1>
+  <h1>cardano.oura</h1>
 
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>linux</li>
-<li>nix</li>
-<li>kvm (optional, for running virtual machine tests)</li>
-</ul>
-<h2 id="setup">Setup</h2>
-<p>Follow <a href="https://zero-to-nix.com/start/install">this guide</a> to Install nix with <a href="https://nix.dev/concepts/flakes.html">flakes</a> enabled.</p>
-<h3 id="binary-cache">Binary cache</h3>
-<p>You can optionally use this project's binary cache to skip building software and download it instead. Edit <code>/etc/nix/nix.conf</code> (or related settings in NixOS config) and merge the new values separated by spaces into the options:</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>substituters = ... https://cache.staging.mlabs.city/cardano-nix
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>trusted-public-keys = ... cardano-nix:BQ7QKgoQQAuL3Kh6pfIJ8oxrihUbUSxf6tN9SxyW608=
-</span></code></pre></div></td></tr></table></div>
-<p>Don't edit <code>~/.config/nix/nix.conf</code> in your home directory. Don't add users to <code>trusted-users</code> because it is <a href="https://nixos.org/manual/nix/stable/command-ref/conf-file.html?highlight=trusted-user#conf-trusted-users">insecure</a>.</p>
-<h3 id="check-that-it-works">Check that it works</h3>
-<p><code>nix --version</code></p>
-<h3 id="learn-more">Learn more</h3>
-<p>For an introduction to the Nix ecosystem, check out <a href="https://zero-to-nix.com/">Zero to Nix</a>. Learn more about <a href="https://zero-to-nix.com/concepts/flakes">Nix flakes</a> and <a href="https://zero-to-nix.com/concepts/nixos">NixOS</a>.</p>
+<h2 id="cardanoouraenable">cardano.oura.enable</h2>
+<p>Whether to enable Oura.</p>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Default:</em>
+<code>false</code></p>
+<p><em>Example:</em>
+<code>true</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/oura.nix</a></p>
+<h2 id="cardanoouraintegrate">cardano.oura.integrate</h2>
+<p>Whether to enable connect oura to local cardano-node via N2C
+.</p>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Default:</em>
+<code>false</code></p>
+<p><em>Example:</em>
+<code>true</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/oura.nix</a></p>
 
 
 
@@ -1167,10 +1103,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
       
     
   </body>
