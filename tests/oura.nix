@@ -12,7 +12,7 @@
         };
 
         # Suppress excessive output from cardano-node,
-        #we assume that node works, and it ensured by other tests
+        # we assume that node works as it's ensured by other tests
         services.cardano-node.extraServiceConfig = _: {
           serviceConfig = {
             StandardOutput = "null";
