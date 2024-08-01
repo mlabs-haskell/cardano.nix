@@ -11,7 +11,7 @@ in {
       // {default = config.cardano.enable or false;};
     integrate =
       lib.mkEnableOption ''
-        Automatically connect oura to local cardano-node via N2C
+        connect oura to local cardano-node via N2C
       ''
       // {default = config.cardano.node.enable or false;};
   };
