@@ -14,6 +14,7 @@ in {
       package = lib.mkPackageOption pkgs "oura" {};
 
       stateDir = lib.mkOption {
+        description = "State directory for oura service";
         type = lib.types.path;
         default = "${cfg.baseWorkDir}oura";
       };

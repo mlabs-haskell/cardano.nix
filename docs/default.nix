@@ -83,6 +83,16 @@ in {
         modules = [rootConfig.flake.nixosModules.blockfrost];
         namespaces = ["services.blockfrost"];
       }
+      {
+        anchor = "cardano.oura";
+        modules = [rootConfig.flake.nixosModules.oura];
+        namespaces = ["cardano.oura"];
+      }
+      {
+        anchor = "services.oura";
+        modules = [rootConfig.flake.nixosModules.oura];
+        namespaces = ["services.oura"];
+      }
     ];
 
     # Replace `/nix/store` related paths with public urls
