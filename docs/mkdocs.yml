@@ -63,6 +63,7 @@ nav:
       - Installation: getting-started/installation.md
       - Run a VM: getting-started/vm.md
       - Deploy: getting-started/deploy.md
+      - Load Balancer: getting-started/load-balancer.md
   - Development:
       - development/develop.md
       - development/contributing.md
