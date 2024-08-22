@@ -20,7 +20,7 @@
       cardano-cli = packages."cardano-cli-9.1.0";
       cardano-node = packages."cardano-node-9.1.0";
       cardano-configurations = packages."cardano-configurations-9.1.0";
-      ogmios = packages."ogmios-6.1.0";
+      ogmios = packages."ogmios-6.6.0";
       kupo = packages."kupo-2.9.0";
       oura = packages."oura-1.9.0";
     };
