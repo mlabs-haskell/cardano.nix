@@ -20,8 +20,7 @@ in {
     configPath = lib.mkOption {
       description = "Path to cardano-node configuration.";
       type = lib.types.path;
-      # TODO: remove "_p2p" after updating cardano-node to >= 8.9.0
-      default = "${pkgs.cardano-configurations}/network/${config.cardano.network}_p2p/cardano-node/config.json";
+      default = "${pkgs.cardano-configurations}/network/${config.cardano.network}/cardano-node/config.json";
       defaultText = lib.literalExpression "\${pkgs.cardano-configurations}/network/\${config.cardano.network}_p2p/cardano-node/config.json";
     };
   };
