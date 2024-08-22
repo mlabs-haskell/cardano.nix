@@ -7,7 +7,6 @@
     ./http.nix
     ./load-balancer.nix
     ./db-sync.nix
-    ./ctl-8.nix
     ./blockfrost.nix
     ./oura.nix
   ];
