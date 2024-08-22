@@ -10,7 +10,7 @@
       "6.6.0" = {
         "x86_64-linux" = {
           url = mkUrl "6.6.0" "x86_64-linux";
-          hash = "sha256-TiPpgQruKRM40i1iUdlDcG+V1ddgt9L/36zP3qqQlDI=";
+          hash = "sha256-A+Pk/9QWeDqhsRiq+XTQU2gZKsQDb+iC/DAuIfCbhd4=";
         };
       };
       "6.5.0" = {
