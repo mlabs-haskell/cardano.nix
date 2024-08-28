@@ -34,6 +34,8 @@
               testScript = _: ''
                 start_all()
                 join_all()
+                while True:
+                    proxy.sleep(60)
               '';
             }
           ];

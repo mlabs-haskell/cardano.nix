@@ -106,7 +106,7 @@ in {
 
       statusPage = true;
 
-      upstreams = mapAttrs (_: cfg._mkUpstream) cfg.services;
+      upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.port != null) cfg.services);
       virtualHosts = mapAttrs (_: cfg._mkVirtualHost) cfg.services;
     };
   };
