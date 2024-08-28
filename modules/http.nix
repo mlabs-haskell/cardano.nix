@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.cardano.http;
-  inherit (lib) mkIf mkEnableOption optional;
+  inherit (lib) mkIf mkDefault mkEnableOption optional;
 in {
   options.cardano.http = {
     enable = mkEnableOption ''
@@ -23,10 +23,9 @@ in {
 
     services.http-proxy = {
       enable = true;
-      servers = mkIf config.cardano.enable ["127.0.0.1"];
+      servers = mkIf (config.cardano.ogmios.enable || config.cardano.kupo.enable) (mkDefault ["127.0.0.1"]);
       services = {
         cardano-node = {
-          inherit (config.services.cardano-node) port;
           inherit (config.services.cardano-node.package.passthru.identifier) version;
         };
         ogmios = {

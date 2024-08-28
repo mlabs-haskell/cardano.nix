@@ -44,7 +44,8 @@ in {
           };
           port = mkOption {
             description = "Upstream server port.";
-            type = types.port;
+            type = types.nullOr types.port;
+            default = null;
           };
           version = mkOption {
             description = "This string will be served at path '/version'.";
@@ -78,7 +79,7 @@ in {
             return = "200 ${service.version}";
             extraConfig = "add_header Content-Type text/plain;";
           };
-          "/" = {
+          "/" = mkIf (service.port != null) {
             proxyWebsockets = true;
             proxyPass = "http://${service.name}";
           };
