@@ -27,8 +27,10 @@ This NixOS configuration will start `cardano-node` and `ogmios` on the `preview`
 [Install nix with flakes](https://github.com/DeterminateSystems/nix-installer). Run a virtual machine with cardano-node and ogmios:
 
 ```bash
-nix run github:mlabs-haskell/cardano.nix#
+nix run github:mlabs-haskell/cardano.nix#vm-preview
 ```
+
+Ogmios will be available at http://localhost:1337
 
 Read the [Documentation](https://mlabs-haskell.github.io/cardano.nix/) on how to get started and deploy cardano services on virtual or cloud machines.
 

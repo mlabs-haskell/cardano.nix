@@ -1,6 +1,7 @@
 {
   cardano = {
-    enable = true;
     network = "preview";
+    node.enable = true;
+    ogmios.enable = true;
   };
 }
