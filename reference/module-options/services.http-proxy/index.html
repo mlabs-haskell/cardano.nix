@@ -388,6 +388,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/load-balancer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load Balancer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1164,7 +1185,7 @@
   <h1>services.http-proxy</h1>
 
 <h2 id="serviceshttp-proxyenable">services.http-proxy.enable</h2>
-<p>Whether to enable HTTP proxy, TLS endpoint and load balancer.</p>
+<p>Whether to enable HTTP reverse proxy, TLS endpoint and load balancer.</p>
 <p><em>Type:</em>
 boolean</p>
 <p><em>Default:</em>
@@ -1222,7 +1243,9 @@ string</p>
 <h2 id="serviceshttp-proxyservicesport">services.http-proxy.services.<name>.port</h2>
 <p>Upstream server port.</p>
 <p><em>Type:</em>
-16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
+null or 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
+<p><em>Default:</em>
+<code>null</code></p>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyservicesservers">services.http-proxy.services.<name>.servers</h2>

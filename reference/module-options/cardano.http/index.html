@@ -388,6 +388,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/load-balancer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load Balancer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1002,7 +1023,16 @@
   <h1>cardano.http</h1>
 
 <h2 id="cardanohttpenable">cardano.http.enable</h2>
-<p>Whether to enable HTTP SSL proxy and load balancer for cardano services.</p>
+<p>Whether to enable HTTP SSL proxy and load balancer for cardano services</p>
+<p>This option has the following effects:</p>
+<ul>
+<li>set <code>networking.firewall.allowedTCPPorts</code> to open port 80, and if <code>https</code> is enabled, port 443 as well</li>
+<li>set <code>services.http-proxy.enable</code> to <code>true</code>, see the documentation for that option</li>
+<li>set <code>services.http-proxy.services.{ogmios,kupo}.{port,version}</code> in order to automatically forward these services</li>
+<li>set <code>services.http-proxy.services.cardano-node.version</code> to expose version</li>
+<li>if either <code>cardano.{ogmios,kupo}.enable</code> is true, set <code>services.http-proxy.servers</code> to <code>mkDefault [ "127.0.0.1" ]</code>
+   .</li>
+</ul>
 <p><em>Type:</em>
 boolean</p>
 <p><em>Default:</em>
