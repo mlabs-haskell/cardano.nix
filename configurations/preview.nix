@@ -1,1 +1,1 @@
-../template/preview.nix
+../templates/default/preview.nix

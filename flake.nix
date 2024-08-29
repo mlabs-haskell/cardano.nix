@@ -70,9 +70,7 @@
   };
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake
-    {
-      inherit inputs;
-    }
+    {inherit inputs;}
     {
       imports = [
         ./checks
@@ -85,9 +83,15 @@
         ./tests
         ./packages
       ];
-      flake.templates.default = {
-        path = ./template;
-        description = "Example flake using cardano.nix";
+      flake.templates = {
+        default = {
+          path = ./templates/default;
+          description = "Example flake using cardano.nix";
+        };
+        load-balancer = {
+          path = ./templates/load-balancer;
+          description = "Example flake using cardano.nix with load balancer";
+        };
       };
       systems = [
         "x86_64-linux"

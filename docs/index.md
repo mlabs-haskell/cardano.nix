@@ -19,8 +19,9 @@ This NixOS configuration will start `cardano-node` and related services on the `
 ```nix
 {
   cardano = {
-    enable = true;
     network = "preview";
+    node.enable = true;
+    ogmios.enable = true;
   };
 }
 ```

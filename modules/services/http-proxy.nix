@@ -7,7 +7,7 @@
   inherit (lib) types listToAttrs mkOption mkEnableOption mapAttrs mkIf optionalString;
 in {
   options.services.http-proxy = {
-    enable = mkEnableOption "HTTP proxy, TLS endpoint and load balancer";
+    enable = mkEnableOption "HTTP reverse proxy, TLS endpoint and load balancer";
     domainName = mkOption {
       description = "Domain name. For each service a virtualHost is configured as a subdomain.";
       type = types.str;
@@ -44,7 +44,8 @@ in {
           };
           port = mkOption {
             description = "Upstream server port.";
-            type = types.port;
+            type = types.nullOr types.port;
+            default = null;
           };
           version = mkOption {
             description = "This string will be served at path '/version'.";
@@ -78,7 +79,7 @@ in {
             return = "200 ${service.version}";
             extraConfig = "add_header Content-Type text/plain;";
           };
-          "/" = {
+          "/" = mkIf (service.port != null) {
             proxyWebsockets = true;
             proxyPass = "http://${service.name}";
           };
@@ -105,7 +106,7 @@ in {
 
       statusPage = true;
 
-      upstreams = mapAttrs (_: cfg._mkUpstream) cfg.services;
+      upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.port != null) cfg.services);
       virtualHosts = mapAttrs (_: cfg._mkVirtualHost) cfg.services;
     };
   };
