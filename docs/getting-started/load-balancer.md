@@ -43,7 +43,7 @@ To deploy the network of nodes and proxy to cloud providers such as AWS, Google 
 
 ### Deploy Cloud Infrastructure
 
-Cloud resources need to be created, for example with an Infrastructure-as-Code tool such as [OpenTofu](https://opentofu.org/) or [NixOps](https://github.com/NixOS/nixops).
+Cloud resources need to be created, for example with an Infrastructure-as-Code tool such as AWS CloudFormation or [OpenTofu](https://opentofu.org/).
 
 #### Cloud Machines
 
@@ -73,7 +73,7 @@ Alternatively, a wildcard record may be added for `*.my.example.com`.
 
 NixOS has to be installed on the cloud machines. If the cloud provider does not have NixOS images, this can be achieved starting from mainstream distros like Debian or Ubuntu using [nixos-infect](https://github.com/elitak/nixos-infect) from cloud-init user data. A better option is to generate cloud images, eg. using [nixos-generators]https://github.com/nix-community/nixos-generators) and start the cloud machines from those.
 
-To deploy operating system configuration via SSH, `services.openssh` needs to be configured and `users.users.root.openssh.authorizedKeys.keys` set. Deployment can be done via `nixos-rebuild --flake . --target-host HOST` or using a [deployment app](https://github.com/nix-community/awesome-nix?tab=readme-ov-file#deployment-tools) such as [https://github.com/zhaofengli/colmena](colmena), or integrated into an infrastructure tool like NixOps or [terraform-nixos](https://github.com/nix-community/terraform-nixos).
+To deploy operating system configuration via SSH, `services.openssh` needs to be configured and `users.users.root.openssh.authorizedKeys.keys` set. Deployment can be done via `nixos-rebuild --flake . --target-host HOST` or using a [deployment app](https://github.com/nix-community/awesome-nix?tab=readme-ov-file#deployment-tools) such as [https://github.com/zhaofengli/colmena](colmena), or integrated into an infrastructure tool like [terraform-nixos](https://github.com/nix-community/terraform-nixos).
 
 #### Node Adresses
 
