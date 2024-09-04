@@ -7,6 +7,18 @@
   }: let
     mkUrl = version: system: "https://github.com/CardanoSolutions/ogmios/releases/download/v${version}/ogmios-v${version}-${system}.zip";
     releases = {
+      "6.6.1" = {
+        "x86_64-linux" = {
+          url = mkUrl "6.6.1" "x86_64-linux";
+          hash = "sha256-d1YtXSDRE3NZ3wvRjYwh2gcch/SYkojQFXXJSQZAnuI=";
+        };
+      };
+      "6.6.0" = {
+        "x86_64-linux" = {
+          url = mkUrl "6.6.0" "x86_64-linux";
+          hash = "sha256-A+Pk/9QWeDqhsRiq+XTQU2gZKsQDb+iC/DAuIfCbhd4=";
+        };
+      };
       "6.5.0" = {
         "x86_64-linux" = {
           url = mkUrl "6.5.0" "x86_64-linux";
