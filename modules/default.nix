@@ -3,6 +3,8 @@
   config,
   ...
 }: {
+  flake.flakeModules.docs = ../docs/render.nix;
+
   flake.nixosModules = {
     cardano = {
       imports = [
