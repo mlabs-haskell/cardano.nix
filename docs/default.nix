@@ -12,6 +12,8 @@ in {
 
   renderDocs = {
     enable = true;
+    name = "cardano-nix-docs";
+    mkdocsYamlFile = ./mkdocs.yml;
     sidebarOptions = [
       {
         anchor = "cardano";
