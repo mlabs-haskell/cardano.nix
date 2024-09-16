@@ -18,12 +18,14 @@
           Text to display in TOC for this options group
         '';
       };
+
       modules = mkOption {
         type = listOf deferredModule;
         description = ''
           List of modules to scan/render options
         '';
       };
+
       namespaces = mkOption {
         type = listOf str;
         description = ''
@@ -40,6 +42,7 @@
           Path to be replaced
         '';
       };
+
       githubUrl = mkOption {
         type = str;
         description = ''
@@ -51,12 +54,22 @@
 in {
   options.renderDocs = {
     enable = mkEnableOption "Document rendering";
+
     name = mkOption {
       type = str;
       description = ''
         Title of the documentation
       '';
     };
+
+    directory = mkOption {
+      type = path;
+      default = "${self}/docs";
+      description = ''
+        Directorying containing the documentation
+      '';
+    };
+
     packageName = mkOption {
       type = str;
       default = "docs";
@@ -64,13 +77,15 @@ in {
         Name of package containing the documentation
       '';
     };
+
     mkdocsYamlFile = mkOption {
       type = path;
-      default = "${self}/docs/mkdocs.yml";
+      default = "${cfg.directory}/mkdocs.yml";
       description = ''
         Path to the mkdocs.yml file
       '';
     };
+
     devshells = mkOption {
       type = listOf str;
       default = ["default"];
@@ -230,11 +245,15 @@ in {
       mkMerge ([
           {
             packages.${cfg.packageName} = stdenv.mkDerivation {
-              src = ../.; # FIXME: use config.flake-root.package here
-              # src = builtins.trace config.flake-root.package config.flake-root.package;
+              src = cfg.directory;
               inherit (cfg) name;
 
               nativeBuildInputs = [my-mkdocs];
+
+              unpackPhase = ''
+                cp -r $src docs
+                chmod -R +w docs
+              '';
 
               buildPhase = ''
                 ln -s ${options-doc} ${docsPath}
