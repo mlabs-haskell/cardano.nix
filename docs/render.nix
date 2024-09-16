@@ -253,6 +253,7 @@ in {
               unpackPhase = ''
                 cp -r $src docs
                 chmod -R +w docs
+                rm -rf ${docsPath}
               '';
 
               buildPhase = ''
