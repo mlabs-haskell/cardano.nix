@@ -1286,7 +1286,7 @@
 
   <h1>Load Balancer</h1>
 
-<p><code>cardano.nix</code> provides the <a href="../reference/module-options/cardano.http/"><code>cardano.http</code></a> and <a href="../reference/module-options/services.http-proxy/"><code>services.http-proxy</code></a> NixOS modules, which implement a HTTP Load Balancing Reverse Proxy and TLS Endpoint using the <a href="https://nginx.org/en/"><code>nginx</code></a> HTTP server.</p>
+<p><code>cardano.nix</code> provides the <a href="../../reference/module-options/cardano.http/"><code>cardano.http</code></a> and <a href="../../reference/module-options/services.http-proxy/"><code>services.http-proxy</code></a> NixOS modules, which implement a HTTP Load Balancing Reverse Proxy and TLS Endpoint using the <a href="https://nginx.org/en/"><code>nginx</code></a> HTTP server.</p>
 <p>Our focus here is to facilitate robust, secure, and efficient HTTP traffic management for Cardano services through load balancing and TLS termination.</p>
 <h2 id="overview">Overview</h2>
 <p>The Load Balancing Reverse Proxy and TLS Endpoint module is designed to handle HTTP requests by distributing them across multiple backend servers, ensuring optimal resource utilization and high availability. It also manages TLS termination, securing the communication between clients and the proxy.</p>
@@ -1297,7 +1297,7 @@
 <li><strong>TLS Termination</strong>: Manage SSL/TLS certificates with Let's Enctypt ACME and handle encryption/decryption at the proxy level.</li>
 <li><strong>Integration with Cardano Services</strong>: Define default forwarded services for backend services included in <code>cardano.nix</code>.</li>
 </ul>
-<p>See documentation for the <a href="../reference/module-options/cardano.http/"><code>cardano.http</code></a> and <a href="../reference/module-options/services.http-proxy/"><code>services.http-proxy</code></a> NixOS modules.</p>
+<p>See documentation for the <a href="../../reference/module-options/cardano.http/"><code>cardano.http</code></a> and <a href="../../reference/module-options/services.http-proxy/"><code>services.http-proxy</code></a> NixOS modules.</p>
 <h2 id="flake-template-with-load-balancer">Flake template with load balancer</h2>
 <p>An easy way to get started is to use the <a href="https://zero-to-nix.com/concepts/flakes#templates">flake template</a> provided by this project. Before starting, follow the <a href="../installation/">installation instructions</a>. Here's how to start a new project using the template:</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -1336,7 +1336,7 @@
 <p>Alternatively, a wildcard record may be added for <code>*.my.example.com</code>.</p>
 <h3 id="operating-system-configuration-and-deployment">Operating System Configuration and Deployment</h3>
 <p>NixOS has to be installed on the cloud machines. If the cloud provider does not have NixOS images, this can be achieved starting from mainstream distros like Debian or Ubuntu using <a href="https://github.com/elitak/nixos-infect">nixos-infect</a> from cloud-init user data. A better option is to generate cloud images, eg. using [nixos-generators]https://github.com/nix-community/nixos-generators) and start the cloud machines from those.</p>
-<p>To deploy operating system configuration via SSH, <code>services.openssh</code> needs to be configured and <code>users.users.root.openssh.authorizedKeys.keys</code> set. Deployment can be done via <code>nixos-rebuild --flake . --target-host HOST</code> or using a <a href="https://github.com/nix-community/awesome-nix?tab=readme-ov-file#deployment-tools">deployment app</a> such as <a href="colmena">https://github.com/zhaofengli/colmena</a>, or integrated into an infrastructure tool like <a href="https://github.com/nix-community/terraform-nixos">terraform-nixos</a>.</p>
+<p>To deploy operating system configuration via SSH, <code>services.openssh</code> needs to be configured and <code>users.users.root.openssh.authorizedKeys.keys</code> set. Deployment can be done via <code>nixos-rebuild --flake . --target-host HOST</code> or using a <a href="https://github.com/nix-community/awesome-nix?tab=readme-ov-file#deployment-tools">deployment app</a> such as <a href="https://github.com/zhaofengli/colmena">colmena</a>, or integrated into an infrastructure tool like <a href="https://github.com/nix-community/terraform-nixos">terraform-nixos</a>.</p>
 <h4 id="node-adresses">Node Adresses</h4>
 <p>The proxy needs to know how to reach the nodes. This is configured in <code>services.http-proxy.servers</code>. In the NixOS test environment, nodes are reachable by hostname, because static <code>hosts</code> entries are added for them automatically. This is not available in the cloud. Several options exist:</p>
 <ul>
@@ -1359,8 +1359,8 @@
 <p>This will set up <a href="https://letsencrypt.org/how-it-works/">Let's Encrypt ACME TLS certificates</a> on the proxy server, enable HTTPS in the nginx web server and redirect all HTTP traffic to HTTPS.</p>
 <h2 id="further-reading">Further reading</h2>
 <p>Check out the following documentation:</p>
-<p><a href="../reference/module-options/cardano.http/"><code>cardano.http</code> NixOS module documentation</a></p>
-<p><a href="../reference/module-options/services.http-proxy/"><code>services.http-proxy</code> NixOS module documentation</a></p>
+<p><a href="../../reference/module-options/cardano.http/"><code>cardano.http</code> NixOS module documentation</a></p>
+<p><a href="../../reference/module-options/services.http-proxy/"><code>services.http-proxy</code> NixOS module documentation</a></p>
 <p><a href="https://search.nixos.org/options">NixOS options</a> such as <code>services.nginx</code>, <code>networking.firewall</code>.</p>
 
 
