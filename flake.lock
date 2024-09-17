@@ -5075,16 +5075,16 @@
         "utils": "utils_6"
       },
       "locked": {
-        "lastModified": 1720226386,
-        "narHash": "sha256-oBvHLxWM2vN351flm7jWjwuatFEK6la/nX9fHNy9/hk=",
+        "lastModified": 1724784734,
+        "narHash": "sha256-+rFPyNqo75wQ8vll8LutoqHwH7H3gdPNkmMQqPx+BrI=",
         "owner": "txpipe",
         "repo": "oura",
-        "rev": "d94068562d98f43aeef8e224111fbdaeb2bc186c",
+        "rev": "2fb369d7e9176feda74f270261b59f7d2ee35bc7",
         "type": "github"
       },
       "original": {
         "owner": "txpipe",
-        "ref": "v1.8.6",
+        "ref": "v1.9.1",
         "repo": "oura",
         "type": "github"
       }

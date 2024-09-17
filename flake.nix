@@ -30,7 +30,7 @@
     };
 
     oura = {
-      url = "github:txpipe/oura/v1.8.6";
+      url = "github:txpipe/oura/v1.9.1";
       inputs.crane.follows = "crane";
     };
     crane = {
