@@ -23,7 +23,7 @@
       cardano-configurations = packages."cardano-configurations-8.7.3";
       ogmios = packages."ogmios-6.1.0";
       kupo = packages."kupo-2.8.0";
-      oura = packages."oura-1.8.6";
+      oura = packages."oura-1.9.1";
     };
     "cardano-node-8.1.1" = final: _prev:
     # overlay for packages compatible with cardano-transaction-lib 8.0.0
