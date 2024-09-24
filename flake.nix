@@ -27,7 +27,6 @@
     blockfrost = {
       url = "github:blockfrost/blockfrost-backend-ryo/v2.1.0"; # compatible with cardano-db-sync 13.3.0.0
     };
-
     oura = {
       url = "github:txpipe/oura/v1.9.1";
       inputs.crane.follows = "crane";
