@@ -3,41 +3,63 @@
   lib,
   ...
 }: let
-  cfg = config.cardano.http;
-  inherit (lib) mkIf mkDefault mkEnableOption optional;
+  cfg = config.cardano.monitoring;
+  inherit (lib) mkIf mkEnableOption mkOption types;
 in {
-  options.cardano.http = {
+  options.cardano.monitoring = {
     enable = mkEnableOption ''
-      Monitoring via Prometheus and Grafana
+      monitoring via Prometheus and Grafana
     '';
+    targets = mkOption {
+      type = with types; listOf string;
+      default = ["localhost"];
+      description = ''
+        List of hosts to to scrape prometheus metrics from.
+      '';
+    };
   };
   config = mkIf cfg.enable {
     services.prometheus = {
       enable = true;
 
-      # scrapeConfigs = { };
-
-      webExternalUrl = "https://prometheus.${config.networking.hostName}.${config.networking.domainName}";
-
-      alertmanager = {
-        enable = true;
-        webExternalUrl = "https://alerts.${config.networking.hostName}.${config.networking.domainName}";
-      };
+      scrapeConfigs = [
+        {
+          job_name = "node";
+          static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.node.port}") cfg.targets;}];
+        }
+        {
+          job_name = "nginx";
+          static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.nginx.port}") cfg.targets;}];
+        }
+      ];
     };
 
     services.grafana = {
       enable = true;
       settings = {
         server = {
-          domain = "status.staging.mlabs.city";
-          http_addr = "127.0.0.1";
-          http_port = 2342;
-          root_url = "https://${config.services.grafana.settings.server.domain}:443/";
+          http_addr = "0.0.0.0";
         };
-        security = {
-          admin_user = "admin";
-          admin_password = "CHANGEME_uDZ2isTf";
-        };
+      };
+      provision = {
+        datasources.settings.datasources = [
+          {
+            name = "Prometheus";
+            type = "prometheus";
+            uid = "local_prometheus";
+            url = "http://localhost:${builtins.toString config.services.prometheus.port}";
+          }
+        ];
+        dashboards.settings.providers = [
+          {
+            name = "node";
+            options.path = ./monitoring/node.json;
+          }
+          {
+            name = "nginx";
+            options.path = ./monitoring/nginx.json;
+          }
+        ];
       };
     };
   };

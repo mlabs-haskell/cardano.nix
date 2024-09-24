@@ -65,5 +65,8 @@ in {
         chmod g+rw ${cfg.socketPath}
       '';
     };
+
+    # Enable Prometheus system metrics exporter.
+    services.prometheus.exporters.node.enable = true;
   };
 }

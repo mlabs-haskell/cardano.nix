@@ -4,10 +4,15 @@
   ...
 }: let
   cfg = config.services.http-proxy;
-  inherit (lib) types listToAttrs mkOption mkEnableOption mapAttrs mkIf optionalString;
+  inherit (lib) types listToAttrs mkOption mkEnableOption mapAttrs mkIf optional optionalString;
 in {
   options.services.http-proxy = {
     enable = mkEnableOption "HTTP reverse proxy, TLS endpoint and load balancer";
+    openFirewall = mkOption {
+      description = "Open firewall for HTTP and HTTPS.";
+      type = types.bool;
+      default = true;
+    };
     domainName = mkOption {
       description = "Domain name. For each service a virtualHost is configured as a subdomain.";
       type = types.str;
@@ -96,6 +101,8 @@ in {
     };
   };
   config = mkIf cfg.enable {
+    networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall ([80] ++ optional cfg.https.enable 443);
+
     services.nginx = {
       enable = true;
       recommendedGzipSettings = true;
@@ -109,5 +116,7 @@ in {
       upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.port != null) cfg.services);
       virtualHosts = mapAttrs (_: cfg._mkVirtualHost) cfg.services;
     };
+
+    services.prometheus.exporters.nginx.enable = true;
   };
 }

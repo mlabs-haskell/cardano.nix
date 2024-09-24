@@ -33,13 +33,15 @@ The template provides virtual machine configurations for three nodes and a load 
 
 `nix run .#vms`
 
-The services will be available on ports forwarded from localhost: ogmios at http://localhost:8001 and kupo at http://localhost:8002 .
+The services will be available on ports forwarded from localhost: ogmios at http://localhost:8001 and kupo at http://localhost:8002 . Grafana is available at http://localhost:8008 .
 
 Press `Ctrl+C` to stop the machines.
 
 ## Deploy to the Cloud
 
 To deploy the network of nodes and proxy to cloud providers such as AWS, Google Cloud, DigitalOcean, or Hetzner, some additional setup is required that is out of scope for this project as it depends on the deployment workflow. Here is an overview:
+
+⚠ Caution: The templates have an empty root password set in `vm.nix` for convenience. Be sure to remove the `vm.nix` import and use public key authentication before deploying to the cloud.
 
 ### Deploy Cloud Infrastructure
 
