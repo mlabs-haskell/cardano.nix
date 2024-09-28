@@ -21,10 +21,15 @@
       "node2"
       "node3"
     ];
+
+    services.http-proxy.services.grafana.servers = ["status"];
   };
 
+  # Open firewall for prometheus exporter. Don't open this port on the public interface when running in the cloud.
+  services.prometheus.exporters.nginx.openFirewall = true;
+
   # Configure services on separate ports, for easier forwarding from VM. Remove this if DNS is configured.
-  networking.firewall.allowedTCPPorts = [81 82];
+  networking.firewall.allowedTCPPorts = [81 82 88];
   services.nginx.virtualHosts.ogmios.listen = [
     {
       addr = "0.0.0.0";
@@ -35,6 +40,12 @@
     {
       addr = "0.0.0.0";
       port = 82;
+    }
+  ];
+  services.nginx.virtualHosts.grafana.listen = [
+    {
+      addr = "0.0.0.0";
+      port = 88;
     }
   ];
 
@@ -54,6 +65,11 @@
       from = "host";
       host.port = 8002;
       guest.port = 82;
+    }
+    {
+      from = "host";
+      host.port = 8008;
+      guest.port = 88;
     }
     {
       from = "host";

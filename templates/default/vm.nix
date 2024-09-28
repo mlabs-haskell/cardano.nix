@@ -1,7 +1,7 @@
 {modulesPath, ...}: {
   imports = [
-    (modulesPath + "/virtualisation/qemu-vm.nix")
-    (modulesPath + "/profiles/qemu-guest.nix")
+    "${modulesPath}/virtualisation/qemu-vm.nix"
+    "${modulesPath}/profiles/qemu-guest.nix"
   ];
 
   # WARNING: don't use this in production
@@ -11,9 +11,15 @@
 
   virtualisation = {
     cores = 2;
-    memorySize = 2048;
+    memorySize = 4096;
     diskSize = 100 * 1024;
     forwardPorts = [
+      {
+        # http
+        from = "host";
+        host.port = 8080;
+        guest.port = 80;
+      }
       {
         # cardano-node
         from = "host";

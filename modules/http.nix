@@ -35,8 +35,8 @@ in {
           inherit (config.services.kupo.package) version;
         };
         grafana = {
-          port = config.services.grafana.settings.server.http_port;
-          version = config.services.grafana.package;
+          port = 3000;
+          inherit (config.services.grafana.package) version;
           servers = mkDefault [];
         };
       };
