@@ -50,11 +50,17 @@
         for each in lines.strip().split("\n"):
             each = each.strip()
             js = json.loads(each)
+            # Very first record haven't block record
+            if not 'block' in js:
+                continue
             slot = int(js["block"]["slot"])
             block = int(js["context"]["slot"])
             assert block > block_max
             assert slot > slot_max
             block_max, slot_max = block, slot
+        # Ensure that we seen few blocks
+        assert block_max > 0
+        assert slot_max > 0
 
         print(machine.succeed("systemd-analyze security oura"))
       '';

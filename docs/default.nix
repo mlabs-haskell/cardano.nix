@@ -104,7 +104,7 @@ in {
         githubUrl = "https://github.com/mlabs-haskell/cardano.nix/tree/main";
       }
       {
-        storePath = inputs."cardano-node-9.1.0".outPath;
+        storePath = inputs."cardano-node-9.2.1".outPath;
         githubUrl = "https://github.com/IntersectMBO/cardano-node/tree/master";
       }
       {

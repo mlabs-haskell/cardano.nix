@@ -5,10 +5,10 @@
     };
 
     # Cardano-node
-    "cardano-node-9.1.0" = {
-      url = "github:intersectmbo/cardano-node?ref=9.1.0";
+    "cardano-node-9.2.1" = {
+      url = "github:intersectmbo/cardano-node?ref=9.2.1";
     };
-    "cardano-configurations-9.1.0" = {
+    "cardano-configurations-9.2.1" = {
       # This version is compatible with cardano-node above and likely needs to be updated together.
       url = "github:input-output-hk/cardano-configurations/7969a73e5c7ee1f3b2a40274b34191fdd8de170b";
       flake = false;
@@ -16,7 +16,7 @@
 
     # Services
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.3.0.0"; # compatible with cardano-node 9.1.0
+      url = "github:intersectmbo/cardano-db-sync/13.3.0.0"; # compatible with cardano-node 9.2.1
     };
     blockfrost = {
       url = "github:blockfrost/blockfrost-backend-ryo/v2.1.0"; # compatible with cardano-db-sync 13.3.0.0
