@@ -123,11 +123,6 @@ in {
             sha256 = "sha256-9iOEwKdFxOyw2T7Non4k2yUwiajWpH3qgQTyJRrttwM=";
           };
         };
-        "grafana-dashboards/cardano-node.json" = {
-          user = "grafana";
-          group = "grafana";
-          source = ./dashboards/cardano-node.json;
-        };
         "grafana-dashboards/postgres.json" = {
           user = "grafana";
           group = "grafana";
