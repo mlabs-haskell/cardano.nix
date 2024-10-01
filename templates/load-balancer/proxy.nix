@@ -25,8 +25,8 @@
     services.http-proxy.services.grafana.servers = ["status"];
   };
 
-  # Open firewall for prometheus exporter. Don't open this port on the public interface when running in the cloud.
-  services.prometheus.exporters.nginx.openFirewall = true;
+  # Enable Prometheus exporters and open firewall. Make sure not to expose these ports publicly when running in the cloud.
+  cardano.monitoring.exporters.enable = true
 
   # Configure services on separate ports, for easier forwarding from VM. Remove this if DNS is configured.
   networking.firewall.allowedTCPPorts = [81 82 88];

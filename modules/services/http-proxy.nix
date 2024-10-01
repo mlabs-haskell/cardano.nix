@@ -116,7 +116,5 @@ in {
       upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.port != null) cfg.services);
       virtualHosts = mapAttrs (_: cfg._mkVirtualHost) cfg.services;
     };
-
-    services.prometheus.exporters.nginx.enable = true;
   };
 }
