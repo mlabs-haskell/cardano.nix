@@ -32,7 +32,7 @@ in {
       }
       {
         anchor = "services.cardano-node";
-        modules = [rootConfig.flake.nixosModules.node];
+        modules = [rootConfig.flake.nixosModules.node {services.cardano-node.environment = "mainnet";}];
         namespaces = ["services.cardano-node"];
       }
       {
