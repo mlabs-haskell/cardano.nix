@@ -21,7 +21,7 @@ in {
       description = "Path to cardano-node configuration.";
       type = lib.types.path;
       default = "${pkgs.cardano-configurations}/network/${config.cardano.network}/cardano-node/config.json";
-      defaultText = lib.literalExpression "\${pkgs.cardano-configurations}/network/\${config.cardano.network}_p2p/cardano-node/config.json";
+      defaultText = lib.literalExpression "\${pkgs.cardano-configurations}/network/\${config.cardano.network}/cardano-node/config.json";
     };
   };
 
