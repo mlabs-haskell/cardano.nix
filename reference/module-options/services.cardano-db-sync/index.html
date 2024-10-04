@@ -944,6 +944,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#servicescardano-db-syncprofiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.cardano-db-sync.profiling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#servicescardano-db-syncrestoresnapshot" class="md-nav__link">
     <span class="md-ellipsis">
       services.cardano-db-sync.restoreSnapshot
@@ -965,6 +974,15 @@
   <a href="#servicescardano-db-syncrestoresnapshotsigkey" class="md-nav__link">
     <span class="md-ellipsis">
       services.cardano-db-sync.restoreSnapshotSigKey
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicescardano-db-syncrtsargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.cardano-db-sync.rtsArgs
     </span>
   </a>
   
@@ -1260,6 +1278,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#servicescardano-db-syncprofiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.cardano-db-sync.profiling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#servicescardano-db-syncrestoresnapshot" class="md-nav__link">
     <span class="md-ellipsis">
       services.cardano-db-sync.restoreSnapshot
@@ -1281,6 +1308,15 @@
   <a href="#servicescardano-db-syncrestoresnapshotsigkey" class="md-nav__link">
     <span class="md-ellipsis">
       services.cardano-db-sync.restoreSnapshotSigKey
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicescardano-db-syncrtsargs" class="md-nav__link">
+    <span class="md-ellipsis">
+      services.cardano-db-sync.rtsArgs
     </span>
   </a>
   
@@ -1360,7 +1396,7 @@ boolean</p>
 <p><em>Type:</em>
 package</p>
 <p><em>Default:</em>
-<code>&lt;derivation cardano-db-sync-exe-cardano-db-sync-13.2.0.1&gt;</code></p>
+<code>&lt;derivation cardano-db-sync-exe-cardano-db-sync-13.3.0.0&gt;</code></p>
 <p><em>Declared by:</em>
  - <a href="https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix">https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix</a></p>
 <h2 id="servicescardano-db-synccluster">services.cardano-db-sync.cluster</h2>
@@ -2437,6 +2473,14 @@ string</p>
 <code>"cexplorer"</code></p>
 <p><em>Declared by:</em>
  - <a href="https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix">https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix</a></p>
+<h2 id="servicescardano-db-syncprofiling">services.cardano-db-sync.profiling</h2>
+<p>Enable GHC profiling.</p>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Default:</em>
+<code>false</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix">https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix</a></p>
 <h2 id="servicescardano-db-syncrestoresnapshot">services.cardano-db-sync.restoreSnapshot</h2>
 <p>Restore a snapshot before starting cardano-db-sync,
 if the snasphot file given by the option exist.
@@ -2462,6 +2506,14 @@ null or string</p>
 null or string</p>
 <p><em>Default:</em>
 <code>null</code></p>
+<p><em>Declared by:</em>
+ - <a href="https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix">https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix</a></p>
+<h2 id="servicescardano-db-syncrtsargs">services.cardano-db-sync.rtsArgs</h2>
+<p>Extra CLI args, to be surrounded by “+RTS”/“-RTS”</p>
+<p><em>Type:</em>
+list of string</p>
+<p><em>Default:</em>
+<code>[ ]</code></p>
 <p><em>Declared by:</em>
  - <a href="https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix">https://github.com/IntersectMBO/cardano-db-sync/tree/master/nix/nixos/cardano-db-sync-service.nix</a></p>
 <h2 id="servicescardano-db-syncsocketpath">services.cardano-db-sync.socketPath</h2>
