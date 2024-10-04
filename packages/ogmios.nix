@@ -7,6 +7,12 @@
   }: let
     mkUrl = version: system: "https://github.com/CardanoSolutions/ogmios/releases/download/v${version}/ogmios-v${version}-${system}.zip";
     releases = {
+      "6.6.2" = {
+        "x86_64-linux" = {
+          url = mkUrl "6.6.2" "x86_64-linux";
+          hash = "sha256-KHOna+zDFJDVD20M2dTD71dcDKWMSXmqOPWMAYef9/4=";
+        };
+      };
       "6.5.0" = {
         "x86_64-linux" = {
           url = mkUrl "6.5.0" "x86_64-linux";
