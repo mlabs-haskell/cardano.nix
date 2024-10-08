@@ -86,9 +86,9 @@
           path = ./templates/default;
           description = "Example flake using cardano.nix";
         };
-        load-balancer = {
-          path = ./templates/load-balancer;
-          description = "Example flake using cardano.nix with load balancer";
+        multi = {
+          path = ./templates/multi;
+          description = "Example flake using cardano.nix with multi-node network, load balancer and monitoring";
         };
       };
       systems = [

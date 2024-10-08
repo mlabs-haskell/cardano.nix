@@ -25,7 +25,7 @@
     packages.x86_64-linux = {
       vms =
         ((import (nixpkgs.outPath + "/nixos/lib") {}).runTest {
-          name = "load-balancer";
+          name = "multi";
           imports = [
             {
               nodes.node1 = ./preview.nix;
