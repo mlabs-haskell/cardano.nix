@@ -12,10 +12,10 @@
         {nixpkgs.hostPlatform = "x86_64-linux";}
       ];
     };
-    vm-monitoring = inputs.nixpkgs.lib.nixosSystem {
+    vm-full = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         self.nixosModules.default
-        ./monitoring.nix
+        ./full.nix
         ./vm.nix
         {nixpkgs.hostPlatform = "x86_64-linux";}
       ];
@@ -27,9 +27,9 @@
         type = "app";
         program = "${self.nixosConfigurations.vm-preview.config.system.build.vm}/bin/run-nixos-vm";
       };
-      vm-monitoring = {
+      vm-full = {
         type = "app";
-        program = "${self.nixosConfigurations.vm-monitoring.config.system.build.vm}/bin/run-nixos-vm";
+        program = "${self.nixosConfigurations.vm-full.config.system.build.vm}/bin/run-nixos-vm";
       };
     };
     devshells.default.commands = [
@@ -40,10 +40,10 @@
         help = "Start vm with cardano services on the preview network with ports forwarded to host";
       }
       {
-        name = "vm-monitoring";
+        name = "vm-full";
         category = "examples";
-        command = "${self.nixosConfigurations.vm-monitoring.config.system.build.vm}/bin/run-nixos-vm";
-        help = "Start vm with cardano services and monitoring with ports forwarded to host";
+        command = "${self.nixosConfigurations.vm-full.config.system.build.vm}/bin/run-nixos-vm";
+        help = "Start vm with all supported cardano services, http proxy and monitoring, with ports forwarded to host";
       }
     ];
   };

@@ -29,12 +29,14 @@ in {
       ports = mkOption {
         type = with types; listOf port;
         default = [
+          config.services.blockfrost.settings.server.port
+          config.services.cardano-db-sync.explorerConfig.PrometheusPort
+          config.services.ogmios.port
           config.services.prometheus.exporters.node.port
           config.services.prometheus.exporters.nginx.port
-          12798 # cardano-node
-          config.services.ogmios.port
-          config.services.blockfrost.settings.server.port
           config.services.prometheus.exporters.postgres.port
+          12798 # cardano-node
+          9186 # oura
         ];
         description = ''
           List of ports where prometheus exporters are exposed. This can be used to open ports in the firewall.
@@ -55,24 +57,37 @@ in {
         enable = true;
         scrapeConfigs = [
           {
-            job_name = "node";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.node.port}") cfg.targets;}];
+            job_name = "blockfrost";
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.blockfrost.settings.server.port}") cfg.targets;}];
           }
           {
-            job_name = "nginx";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.nginx.port}") cfg.targets;}];
+            job_name = "db_sync";
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.cardano-db-sync.explorerConfig.PrometheusPort}") cfg.targets;}];
           }
           {
             job_name = "cardano-node";
             static_configs = [{targets = map (target: "${target}:12798") cfg.targets;}];
           }
           {
+            job_name = "kupo";
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.kupo.port}") cfg.targets;}];
+            metrics_path = "/health";
+          }
+          {
+            job_name = "nginx";
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.nginx.port}") cfg.targets;}];
+          }
+          {
+            job_name = "node";
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.node.port}") cfg.targets;}];
+          }
+          {
             job_name = "ogmios";
             static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.ogmios.port}") cfg.targets;}];
           }
           {
-            job_name = "blockfrost";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.blockfrost.settings.server.port}") cfg.targets;}];
+            job_name = "oura";
+            static_configs = [{targets = map (target: "${target}:9186") cfg.targets;}];
           }
           {
             job_name = "postgres";
@@ -144,6 +159,9 @@ in {
       };
       services.blockfrost = mkIf config.services.bockfrost.enable or false {
         settings.server.prometheusMetrics = true;
+      };
+      services.oura.settings = mkIf config.services.oura.enable or false {
+        metrics.address = "0.0.0.0:9186";
       };
     })
     (mkIf cfg.exporters.openFirewall {

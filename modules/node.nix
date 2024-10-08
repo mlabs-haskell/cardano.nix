@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.cardano.node;
+  inherit (builtins) elemAt match replaceStrings readFile;
 in {
   options.cardano.node = {
     enable =
@@ -20,12 +21,18 @@ in {
     configPath = lib.mkOption {
       description = "Path to cardano-node configuration.";
       type = lib.types.path;
-      default = "${pkgs.cardano-configurations}/network/${config.cardano.network}/cardano-node/config.json";
-      defaultText = lib.literalExpression "\${pkgs.cardano-configurations}/network/\${config.cardano.network}/cardano-node/config.json";
+      default = "/etc/cardano-node/config.json";
     };
   };
 
   config = lib.mkIf cfg.enable {
+    environment.etc."cardano-node/config.json" = {
+      # hack to get config file path
+      text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings ["\n"] [" "] (config.services.cardano-node.script))) 0);
+      user = "cardano-node";
+      group = "cardano-node";
+    };
+
     environment.variables = {
       CARDANO_NODE_SOCKET_PATH = cfg.socketPath;
     };
@@ -35,7 +42,6 @@ in {
 
       package = lib.mkDefault pkgs.cardano-node;
       inherit (cfg) socketPath;
-      nodeConfigFile = cfg.configPath;
       environment = config.cardano.network;
 
       # Listen on all interfaces.
