@@ -28,7 +28,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.etc."cardano-node/config.json" = {
       # hack to get config file path
-      text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings ["\n"] [" "] (config.services.cardano-node.script))) 0);
+      text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings ["\n"] [" "] config.services.cardano-node.script)) 0);
       user = "cardano-node";
       group = "cardano-node";
     };
