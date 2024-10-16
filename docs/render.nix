@@ -124,14 +124,14 @@ in {
       system,
       ...
     }: let
-      inherit (pkgs) stdenv mkdocs python311Packages;
+      inherit (pkgs) stdenv mkdocs python312Packages;
 
       my-mkdocs =
         pkgs.runCommand "my-mkdocs"
         {
           buildInputs = [
             mkdocs
-            python311Packages.mkdocs-material
+            python312Packages.mkdocs-material
           ];
         } ''
           mkdir -p $out/bin

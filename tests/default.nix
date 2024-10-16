@@ -9,5 +9,6 @@
     ./db-sync.nix
     ./blockfrost.nix
     ./oura.nix
+    ./monitoring.nix
   ];
 }

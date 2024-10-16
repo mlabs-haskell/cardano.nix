@@ -19,17 +19,19 @@
       node1 = nixosSystem [./preview.nix {networking.hostName = "node1";}];
       node2 = nixosSystem [./preview.nix {networking.hostName = "node2";}];
       node3 = nixosSystem [./preview.nix {networking.hostName = "node3";}];
+      status = nixosSystem [./status.nix];
       proxy = nixosSystem [./proxy.nix];
     };
     packages.x86_64-linux = {
       vms =
         ((import (nixpkgs.outPath + "/nixos/lib") {}).runTest {
-          name = "load-balancer";
+          name = "multi";
           imports = [
             {
               nodes.node1 = ./preview.nix;
               nodes.node2 = ./preview.nix;
               nodes.node3 = ./preview.nix;
+              nodes.status = ./status.nix;
               nodes.proxy = ./proxy.nix;
               testScript = _: ''
                 start_all()

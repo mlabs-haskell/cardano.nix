@@ -27,7 +27,6 @@
     blockfrost = {
       url = "github:blockfrost/blockfrost-backend-ryo/v2.1.0"; # compatible with cardano-db-sync 13.3.0.0
     };
-
     oura = {
       url = "github:txpipe/oura/v1.9.1";
       inputs.crane.follows = "crane";
@@ -87,9 +86,9 @@
           path = ./templates/default;
           description = "Example flake using cardano.nix";
         };
-        load-balancer = {
-          path = ./templates/load-balancer;
-          description = "Example flake using cardano.nix with load balancer";
+        multi = {
+          path = ./templates/multi;
+          description = "Example flake using cardano.nix with multi-node network, load balancer and monitoring";
         };
       };
       systems = [
