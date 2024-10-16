@@ -34,6 +34,7 @@ in {
       services.cardano-db-sync = {
         enable = true;
         environment = config.services.cardano-node.environments.${config.cardano.network};
+        cluster = config.services.cardano-node.environments.${config.cardano.network};
         inherit (config.cardano.node) socketPath;
         postgres = {
           user = "cardano-db-sync";
