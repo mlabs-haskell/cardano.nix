@@ -84,7 +84,7 @@ in {
             return = "200 ${service.version}";
             extraConfig = "add_header Content-Type text/plain;";
           };
-          "/" = mkIf (service.port != null) {
+          "/" = mkIf (service.servers != [] && service.port != null) {
             proxyWebsockets = true;
             proxyPass = "http://${service.name}";
           };
@@ -113,7 +113,7 @@ in {
 
       statusPage = true;
 
-      upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.port != null) cfg.services);
+      upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.servers != [] && s.port != null) cfg.services);
       virtualHosts = mapAttrs (_: cfg._mkVirtualHost) cfg.services;
     };
   };

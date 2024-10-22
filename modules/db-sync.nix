@@ -5,7 +5,7 @@
 }: let
   cfg = config.cardano.db-sync;
   dbsync-cfg = config.services.cardano-db-sync;
-  inherit (lib) mkIf mkMerge mkEnableOption;
+  inherit (lib) mkEnableOption mkIf mkMerge mkOptionDefault;
 in {
   options.cardano.db-sync = {
     enable =
@@ -29,12 +29,15 @@ in {
     postgres.enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = mkMerge [
     {
+      # fix missing option default
+      services.cardano-db-sync.cluster = mkOptionDefault config.cardano.network;
+    }
+    (mkIf cfg.enable {
       services.cardano-db-sync = {
         enable = true;
         environment = config.services.cardano-node.environments.${config.cardano.network};
-        cluster = config.services.cardano-node.environments.${config.cardano.network};
         inherit (config.cardano.node) socketPath;
         postgres = {
           user = "cardano-db-sync";
@@ -75,14 +78,14 @@ in {
           LockPersonality = true;
         };
       };
-    }
-    (mkIf (config.cardano.node.enable or false) {
+    })
+    (mkIf (cfg.enable && config.cardano.node.enable or false) {
       systemd.services.cardano-db-sync = {
         after = ["cardano-node-socket.service"];
         requires = ["cardano-node-socket.service"];
       };
     })
-    (mkIf cfg.postgres.enable {
+    (mkIf (cfg.enable && cfg.postgres.enable) {
       services.postgresql = {
         enable = true;
         # see warnings: this should be same as user name
@@ -101,5 +104,5 @@ in {
         }
       ];
     })
-  ]);
+  ];
 }
