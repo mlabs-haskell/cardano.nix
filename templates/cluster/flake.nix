@@ -9,27 +9,38 @@
     nixpkgs,
     ...
   }: {
-    nixosConfigurations = let
-      nixosSystem = modules:
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = modules ++ [cardano-nix.nixosModules.default];
-        };
-    in {
-      node1 = nixosSystem [./preview.nix {networking.hostName = "node1";}];
-      node2 = nixosSystem [./preview.nix {networking.hostName = "node2";}];
-      node3 = nixosSystem [./preview.nix {networking.hostName = "node3";}];
-      proxy = nixosSystem [./proxy.nix];
+    nixosConfigurations = {
+      node1 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [{networking.hostName = "node1";} ./preview.nix cardano-nix.nixosModules.default];
+      };
+      node2 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [{networking.hostName = "node2";} ./preview.nix cardano-nix.nixosModules.default];
+      };
+      node3 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [{networking.hostName = "node3";} ./preview.nix cardano-nix.nixosModules.default];
+      };
+      status = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [./status.nix cardano-nix.nixosModules.default];
+      };
+      proxy = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [./proxy.nix cardano-nix.nixosModules.default];
+      };
     };
     packages.x86_64-linux = {
       vms =
         ((import (nixpkgs.outPath + "/nixos/lib") {}).runTest {
-          name = "load-balancer";
+          name = "cluster";
           imports = [
             {
               nodes.node1 = ./preview.nix;
               nodes.node2 = ./preview.nix;
               nodes.node3 = ./preview.nix;
+              nodes.status = ./status.nix;
               nodes.proxy = ./proxy.nix;
               testScript = _: ''
                 start_all()
