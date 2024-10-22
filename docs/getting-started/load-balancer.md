@@ -22,7 +22,7 @@ An easy way to get started is to use the [flake template](https://zero-to-nix.co
 ```
 mkdir myproject
 cd myproject
-nix flake init --template github:mlabs-haskell/cardano.nix#multi
+nix flake init --template github:mlabs-haskell/cardano.nix#cluster
 git init
 git add .
 ```
