@@ -29,14 +29,14 @@ in {
       ports = mkOption {
         type = with types; listOf port;
         default = [
+          config.cardano.node.prometheusExporter.port
+          config.cardano.oura.prometheusExporter.port
           config.services.blockfrost.settings.server.port
           config.services.cardano-db-sync.explorerConfig.PrometheusPort
           config.services.ogmios.port
           config.services.prometheus.exporters.node.port
           config.services.prometheus.exporters.nginx.port
           config.services.prometheus.exporters.postgres.port
-          12798 # cardano-node
-          9186 # oura
         ];
         description = ''
           List of ports where prometheus exporters are exposed. This can be used to open ports in the firewall.
@@ -66,7 +66,7 @@ in {
           }
           {
             job_name = "cardano-node";
-            static_configs = [{targets = map (target: "${target}:12798") cfg.targets;}];
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.cardano.node.prometheusExporter.port}") cfg.targets;}];
           }
           {
             job_name = "kupo";
@@ -87,7 +87,7 @@ in {
           }
           {
             job_name = "oura";
-            static_configs = [{targets = map (target: "${target}:9186") cfg.targets;}];
+            static_configs = [{targets = map (target: "${target}:${builtins.toString config.cardano.oura.prometheusExporter.port}") cfg.targets;}];
           }
           {
             job_name = "postgres";
@@ -149,19 +149,17 @@ in {
       };
     })
     (mkIf cfg.exporters.enable {
+      cardano.node.prometheusExporter.enable = true;
+      cardano.oura.prometheusExporter.enable = true;
+
+      services.blockfrost = mkIf config.services.bockfrost.enable or false {
+        settings.server.prometheusMetrics = true;
+      };
+
       services.prometheus.exporters = {
         node.enable = true;
         nginx.enable = config.services.nginx.enable;
         postgres.enable = config.services.postgresql.enable;
-      };
-      services.cardano-node = mkIf config.services.cardano-node.enable {
-        extraNodeConfig.hasPrometheus = ["0.0.0.0" 12798];
-      };
-      services.blockfrost = mkIf config.services.bockfrost.enable or false {
-        settings.server.prometheusMetrics = true;
-      };
-      services.oura.settings = mkIf config.services.oura.enable or false {
-        metrics.address = "0.0.0.0:9186";
       };
     })
     (mkIf cfg.exporters.openFirewall {

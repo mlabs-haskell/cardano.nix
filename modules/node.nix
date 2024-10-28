@@ -23,6 +23,15 @@ in {
       type = lib.types.path;
       default = "/etc/cardano-node/config.json";
     };
+
+    prometheusExporter.enable =
+      lib.mkEnableOption "prometheus exporter";
+
+    prometheusExporter.port = lib.mkOption {
+      description = "Port where Prometheus exporter is exposed.";
+      type = lib.types.port;
+      default = 12798;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -43,6 +52,10 @@ in {
       package = lib.mkDefault pkgs.cardano-node;
       inherit (cfg) socketPath;
       environment = config.cardano.network;
+
+      extraNodeConfig = lib.mkIf cfg.prometheusExporter.enable {
+        hasPrometheus = ["0.0.0.0" config.cardano.node.prometheusExporter.port];
+      };
 
       # Listen on all interfaces.
       hostAddr = lib.mkDefault "0.0.0.0";
