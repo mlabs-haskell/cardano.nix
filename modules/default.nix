@@ -58,6 +58,11 @@
         ./services/oura.nix
       ];
     };
+    monitoring = {
+      imports = [
+        ./monitoring.nix
+      ];
+    };
     # the default module imports all modules
     default = {
       imports =

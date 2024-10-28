@@ -21,10 +21,15 @@
       "node2"
       "node3"
     ];
+
+    services.http-proxy.services.grafana.servers = ["status"];
   };
 
+  # Enable Prometheus exporters and open firewall. Make sure not to expose these ports publicly when running in the cloud.
+  cardano.monitoring.exporters.enable = true;
+
   # Configure services on separate ports, for easier forwarding from VM. Remove this if DNS is configured.
-  networking.firewall.allowedTCPPorts = [81 82];
+  networking.firewall.allowedTCPPorts = [81 82 88];
   services.nginx.virtualHosts.ogmios.listen = [
     {
       addr = "0.0.0.0";
@@ -35,6 +40,12 @@
     {
       addr = "0.0.0.0";
       port = 82;
+    }
+  ];
+  services.nginx.virtualHosts.grafana.listen = [
+    {
+      addr = "0.0.0.0";
+      port = 88;
     }
   ];
 
@@ -54,6 +65,11 @@
       from = "host";
       host.port = 8002;
       guest.port = 82;
+    }
+    {
+      from = "host";
+      host.port = 8008;
+      guest.port = 88;
     }
     {
       from = "host";

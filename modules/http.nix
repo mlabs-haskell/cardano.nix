@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.cardano.http;
-  inherit (lib) mkIf mkDefault mkEnableOption optional;
+  inherit (lib) mkIf mkDefault mkEnableOption;
 in {
   options.cardano.http = {
     enable = mkEnableOption ''
@@ -19,8 +19,6 @@ in {
     '';
   };
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [80] ++ optional config.services.http-proxy.https.enable 443;
-
     services.http-proxy = {
       enable = true;
       servers = mkIf (config.cardano.ogmios.enable || config.cardano.kupo.enable) (mkDefault ["127.0.0.1"]);
@@ -35,6 +33,11 @@ in {
         kupo = {
           inherit (config.services.kupo) port;
           inherit (config.services.kupo.package) version;
+        };
+        grafana = {
+          port = 3000;
+          inherit (config.services.grafana.package) version;
+          servers = mkDefault [];
         };
       };
     };
