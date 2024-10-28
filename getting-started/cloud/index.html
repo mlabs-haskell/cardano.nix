@@ -10,26 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/getting-started/cloud/">
       
       
+        <link rel="prev" href="../load-balancer/">
       
-        <link rel="next" href="getting-started/installation/">
+      
+        <link rel="next" href="../../development/develop/">
       
       
-      <link rel="icon" href="assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>cardano.nix</title>
+        <title>Deploy to Cloud - cardano.nix</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-the-project" class="md-skip">
+        <a href="#deploy-to-the-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +96,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="https://mlabs-haskell.github.io/cardano.nix" title="cardano.nix" class="md-header__button md-logo" aria-label="cardano.nix" data-md-component="logo">
       
-  <img src="assets/logo.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About the Project
+              Deploy to Cloud
             
           </span>
         </div>
@@ -243,7 +245,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://mlabs-haskell.github.io/cardano.nix" title="cardano.nix" class="md-nav__button md-logo" aria-label="cardano.nix" data-md-component="logo">
       
-  <img src="assets/logo.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     cardano.nix
@@ -267,30 +269,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    About the Project
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -299,53 +281,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what" class="md-nav__link">
-    <span class="md-ellipsis">
-      What?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how" class="md-nav__link">
-    <span class="md-ellipsis">
-      How?
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -354,8 +289,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -365,11 +302,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -383,7 +320,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Getting Started
@@ -397,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -418,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/vm/" class="md-nav__link">
+      <a href="../vm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -439,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/deploy/" class="md-nav__link">
+      <a href="../deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -460,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/load-balancer/" class="md-nav__link">
+      <a href="../load-balancer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,10 +415,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="getting-started/cloud/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Deploy to Cloud
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -490,6 +445,123 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-to-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy to the Cloud
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy to the Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-cloud-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Cloud Infrastructure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Cloud Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Machines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS Records
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-configuration-and-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Configuration and Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating System Configuration and Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-adresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Adresses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -549,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="development/develop/" class="md-nav__link">
+      <a href="../../development/develop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -570,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="development/contributing/" class="md-nav__link">
+      <a href="../../development/contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -591,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="license/" class="md-nav__link">
+      <a href="../../license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.blockfrost/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.blockfrost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.cli/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.db-sync/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.http/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.http/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.kupo/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.kupo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.node/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -806,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.ogmios/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.ogmios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -827,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/cardano.oura/" class="md-nav__link">
+      <a href="../../reference/module-options/cardano.oura/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -848,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.blockfrost/" class="md-nav__link">
+      <a href="../../reference/module-options/services.blockfrost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.cardano-db-sync/" class="md-nav__link">
+      <a href="../../reference/module-options/services.cardano-db-sync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.cardano-node/" class="md-nav__link">
+      <a href="../../reference/module-options/services.cardano-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.http-proxy/" class="md-nav__link">
+      <a href="../../reference/module-options/services.http-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.kupo/" class="md-nav__link">
+      <a href="../../reference/module-options/services.kupo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.ogmios/" class="md-nav__link">
+      <a href="../../reference/module-options/services.ogmios/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -974,7 +1046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/module-options/services.oura/" class="md-nav__link">
+      <a href="../../reference/module-options/services.oura/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1012,8 +1084,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1022,29 +1092,101 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why" class="md-nav__link">
+  <a href="#deploy-to-the-cloud" class="md-nav__link">
     <span class="md-ellipsis">
-      Why?
+      Deploy to the Cloud
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy to the Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-cloud-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Cloud Infrastructure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy Cloud Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloud-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Machines
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#what" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
     <span class="md-ellipsis">
-      What?
+      Networking
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#how" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#dns-records" class="md-nav__link">
     <span class="md-ellipsis">
-      How?
+      DNS Records
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-configuration-and-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Configuration and Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating System Configuration and Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node-adresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node Adresses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1063,7 +1205,7 @@
                   
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/getting-started/cloud.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1072,54 +1214,58 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/getting-started/cloud.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="about-the-project">About the Project</h1>
-<p><code>cardano.nix</code> is a collection of <a href="https://nixos.org">Nix</a> packages and <a href="https://zero-to-nix.com/concepts/nixos#modules">NixOS modules</a> designed to make it easy to operate <a href="https://cardano.org">Cardano</a> related services and infrastructure.</p>
-<h3 id="why">Why?</h3>
-<p><a href="https://zero-to-nix.com/concepts/nix">Nix</a> is a <a href="https://zero-to-nix.com/concepts/declarative">declarative</a> package manager ensuring hash-based <a href="https://zero-to-nix.com/concepts/pinning">dependency pinning</a> and <a href="https://zero-to-nix.com/concepts/reproducibility">reproducible</a> builds. <a href="https://zero-to-nix.com/concepts/nixos">NixOS</a> is a Linux distribution with a <a href="https://zero-to-nix.com/concepts/nixos#configuration">declarative configuration</a> system providing <a href="https://zero-to-nix.com/concepts/nixos#atomicity">atomic</a> updates and <a href="https://zero-to-nix.com/concepts/nixos#rollbacks">rollbacks</a>. These features are responsible for the increased reliability of a NixOS system, making it an attractive DevOps toolset for deploying Cardano services.</p>
-<h3 id="what">What?</h3>
-<p>The <code>cardano.nix</code> project aims to provide <a href="https://zero-to-nix.com/concepts/nixos#modules">NixOS modules</a> for Cardano services such as <code>cardano-node</code>, <code>ogmios</code>, <code>kupo</code>, <code>cardano-db-sync</code>, as well as auxiliary modules such as firewall and HTTP(S), making it easy to deploy these services in production. Very little configuration is needed to run the services with sane defaults that are easy to customize. The services can be run on the same host or in a distributed cluster, and a HTTPS proxy module is also provided.</p>
-<h3 id="how">How?</h3>
-<p>Here are some motivating examples.</p>
-<p>This NixOS configuration will start <code>cardano-node</code> and related services on the <code>preview</code> testnet.</p>
-<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+  <h1>Deploy to Cloud</h1>
+
+<h2 id="deploy-to-the-cloud">Deploy to the Cloud</h2>
+<p>⚠ Caution: The templates have an empty root password set in <code>vm.nix</code> for convenience. Be sure to remove the <code>vm.nix</code> import and use public key authentication before deploying to the cloud.</p>
+<p>To deploy the network of nodes and proxy to cloud providers such as AWS, Google Cloud, DigitalOcean, or Hetzner, some additional setup is required that is out of scope for this project as it depends on the deployment workflow. Here is an overview:</p>
+<h3 id="deploy-cloud-infrastructure">Deploy Cloud Infrastructure</h3>
+<p>Cloud resources need to be created, for example with an Infrastructure-as-Code tool such as AWS CloudFormation or <a href="https://opentofu.org/">OpenTofu</a>.</p>
+<h4 id="cloud-machines">Cloud Machines</h4>
+<p>Virtual machines (AWS EC2, droplet, etc.) need to be created, one for each node and one for the proxy. Synchronizing the blockchain takes a long time so auto scaling is not viable without extra setup, eg. using <a href="https://github.com/mlabs-haskell/cardanow/">cardanow</a> to load snapshots or using shared network storage.</p>
+<h4 id="networking">Networking</h4>
+<p>Private networking needs to be set up between the nodes and proxy, either via the cloud provider's native support (AWS VPC, etc.) or VPN such as wireguard.</p>
+<p>The nodes should be configured to be reachable only via the private network on which the proxy resides. This can be as simple as disabling public IPs for these machines. More complex setups have several options to configure networking, such as the services' listen addresses (<code>services.ogmios.host</code>, and similar NixOS options), OS firewall (<code>networking.firewall.*</code>) and cloud firewall (AWS security groups etc.).</p>
+<h4 id="dns-records">DNS Records</h4>
+<p>To make the proxy reachable via a web address from the browser, DNS records need to be added. This is also required for HTTPS. The opinionated default is a separate subdomain for each service, this can be overridden via nginx configuration.</p>
+<p>Example DNS records, where the proxy public IP is <code>12.34.56.78</code>:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="ss">cardano</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="ss">network</span> <span class="o">=</span> <span class="s2">&quot;preview&quot;</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    node<span class="o">.</span><span class="ss">enable</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    ogmios<span class="o">.</span><span class="ss">enable</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>  <span class="p">};</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>my.example.com A 12.34.56.78
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>ogmios.my.example.com A 12.34.56.78
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>kupo.my.example.com A 12.34.56.78
 </span></code></pre></div></td></tr></table></div>
-<p>This snippet will configure a HTTPS reverse proxy and load balancer with ACME certificates from Let's Encrypt. DNS records need to be set up and the backend servers (configured as above) need to be reachable.</p>
-<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>  cardano<span class="o">.</span>http<span class="o">.</span><span class="ss">enable</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>  services<span class="o">.</span><span class="ss">http-proxy</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="ss">domainName</span> <span class="o">=</span> <span class="s2">&quot;preview.example.com&quot;</span><span class="p">;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>    https<span class="o">.</span><span class="ss">enable</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="ss">servers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;server1&quot;</span> <span class="s2">&quot;server2&quot;</span><span class="p">];</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>  <span class="p">};</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">};</span>
+<p>Alternatively, a wildcard record may be added for <code>*.my.example.com</code>.</p>
+<h3 id="operating-system-configuration-and-deployment">Operating System Configuration and Deployment</h3>
+<p>NixOS has to be installed on the cloud machines. If the cloud provider does not have NixOS images, this can be achieved starting from mainstream distros like Debian or Ubuntu using <a href="https://github.com/elitak/nixos-infect">nixos-infect</a> from cloud-init user data. A better option is to generate cloud images, eg. using [nixos-generators]https://github.com/nix-community/nixos-generators) and start the cloud machines from those.</p>
+<p>To deploy operating system configuration via SSH, <code>services.openssh</code> needs to be configured and <code>users.users.root.openssh.authorizedKeys.keys</code> set. Deployment can be done via <code>nixos-rebuild --flake . --target-host HOST</code> or using a <a href="https://github.com/nix-community/awesome-nix?tab=readme-ov-file#deployment-tools">deployment app</a> such as <a href="https://github.com/zhaofengli/colmena">colmena</a>, or integrated into an infrastructure tool like <a href="https://github.com/nix-community/terraform-nixos">terraform-nixos</a>.</p>
+<h4 id="node-adresses">Node Adresses</h4>
+<p>The proxy needs to know how to reach the nodes. This is configured in <code>services.http-proxy.servers</code>. In the NixOS test environment, nodes are reachable by hostname, because static <code>hosts</code> entries are added for them automatically. This is not available in the cloud. Several options exist:</p>
+<ul>
+<li>Use IP addresses. This is the simplest solution but can be inconvenient if private IPs are automatically assigned. Example:
+  <code>services.http-proxy.servers = [ "10.0.0.1" "10.0.0.2" "10.0.0.3" ];</code></li>
+<li>Add <code>networking.hosts</code> entries to the proxy, possibly from the output of other tools such as OpenTofu.</li>
+<li>Use <code>mdns</code> for local DNS lookups by hostname.</li>
+<li>Use a local DNS server such as <a href="https://dnsmasq.org/doc.html">dnsmasq</a>, optionally with DHCP.</li>
+<li>Use internal DNS provided by the cloud service (AWS Route53 private hosted zone, etc.).</li>
+</ul>
+<h4 id="domain-name">Domain Name</h4>
+<p>Once DNS records are created for the proxy as above, the domain name needs to be configured. This is also required for HTTPS.</p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>services<span class="o">.</span>http-proxy<span class="o">.</span><span class="ss">domainName</span> <span class="o">=</span> <span class="s2">&quot;my.example.com&quot;</span><span class="p">;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Configurations including the above can be deployed to a laptop, a virtual machine, a cloud instance, a container, or any other system running NixOS. Example configurations and shortcuts to run virtual machines are provided as part of the project.</p>
+<p>The server will now respond to HTTP requests with <code>Hosts</code> header set to <code>my.example.com</code>, as well as making the services available at <code>ogmios.my.example.com</code> etc.</p>
+<h4 id="https">HTTPS</h4>
+<p>To serve public web pages and APIs, it is necessary to protect data integrity and confidentiality during transmission, so <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a> needs to be enabled on the proxy. Once DNS and domain names are configured as above, this is easily achieved with the following option:</p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>services<span class="o">.</span>http-proxy<span class="o">.</span>https<span class="o">.</span><span class="ss">enable</span> <span class="o">=</span> <span class="no">true</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>This will set up <a href="https://letsencrypt.org/how-it-works/">Let's Encrypt ACME TLS certificates</a> on the proxy server, enable HTTPS in the nginx web server and redirect all HTTP traffic to HTTPS.</p>
 
 
 
@@ -1183,10 +1329,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "toc.follow", "content.action.edit", "content.action.view", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>
