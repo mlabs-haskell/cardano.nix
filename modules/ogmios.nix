@@ -7,8 +7,7 @@
 in {
   options.cardano.ogmios = {
     enable =
-      lib.mkEnableOption "Ogmios bridge interface for cardano-node"
-      // {default = config.cardano.enable or false;};
+      lib.mkEnableOption "Ogmios bridge interface for cardano-node";
   };
 
   config = lib.mkIf cfg.enable {

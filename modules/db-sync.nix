@@ -8,24 +8,23 @@
   inherit (lib) mkEnableOption mkIf mkMerge mkOptionDefault;
 in {
   options.cardano.db-sync = {
-    enable =
-      mkEnableOption ''
-        Cardano DB Sync provides a way to query local cardano node.
+    enable = mkEnableOption ''
+      Cardano DB Sync provides a way to query local cardano node.
 
-        Cardano DB sync connects to a cardano node and saves blocks to a database.
-        You need to either provide the db connection arguments:
-          ```nix
-          services.cardano-db-sync.database = {
-            # these are the defaults:
-            name = "cardano-db-sync";
-            user = "cardano-db-sync";
-            port = 5432;
-            socketdir = "/run/postgresql";
-          };
-          ```
-        or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
-      ''
-      // {default = config.cardano.enable or false;};
+      Cardano DB sync connects to a cardano node and saves blocks to a database.
+      You need to either provide the db connection arguments:
+        ```nix
+        services.cardano-db-sync.database = {
+          # these are the defaults:
+          name = "cardano-db-sync";
+          user = "cardano-db-sync";
+          port = 5432;
+          socketdir = "/run/postgresql";
+        };
+        ```
+      or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
+    '';
+
     postgres.enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
   };
 

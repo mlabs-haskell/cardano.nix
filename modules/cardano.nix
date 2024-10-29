@@ -7,7 +7,6 @@
   inherit (lib) types;
 in {
   options.cardano = {
-    enable = lib.mkEnableOption "all Cardano services and HTTP proxy";
     network = lib.mkOption {
       description = "Cardano network to operate on.";
       type = types.enum (lib.attrNames cfg.networkNumbers);
