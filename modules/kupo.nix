@@ -7,8 +7,7 @@
 in {
   options.cardano.kupo = {
     enable =
-      lib.mkEnableOption "Kupo chain-indexer"
-      // {default = config.cardano.enable or false;};
+      lib.mkEnableOption "Kupo chain-indexer";
   };
 
   config = lib.mkIf cfg.enable {

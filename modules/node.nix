@@ -8,9 +8,7 @@
   inherit (builtins) elemAt match replaceStrings readFile;
 in {
   options.cardano.node = {
-    enable =
-      lib.mkEnableOption "cardano-node service"
-      // {default = config.cardano.enable or false;};
+    enable = lib.mkEnableOption "cardano-node service";
 
     socketPath = lib.mkOption {
       description = "Path to cardano-node socket.";

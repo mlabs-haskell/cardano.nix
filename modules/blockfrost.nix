@@ -8,25 +8,24 @@
   inherit (lib) mkIf mkMerge mkEnableOption;
 in {
   options.cardano.blockfrost = {
-    enable =
-      mkEnableOption ''
-        Blockfrost.io backend is an API service providing abstraction between you and Cardano blockchain data
+    enable = mkEnableOption ''
+      Blockfrost.io backend is an API service providing abstraction between you and Cardano blockchain data
 
-        Blockfrost connects to a postgresql database, populated by Cardano DB sync with node.
-        You need to either provide the db connection arguments:
-          ```nix
-          services.blockfrost.settings.dbSync = {
-            # these are the defaults:
-            name = "cardano-db-sync";
-            user = "cardano-db-sync";
-            port = 5432;
-            # optionally supply "host" and "password" parameters.
-            socketdir = "/run/postgresql";
-          };
-          ```
-        or enable the default postgresql service with `cardano.blockfrost.postgres.enable`
-      ''
-      // {default = config.cardano.enable or false;};
+      Blockfrost connects to a postgresql database, populated by Cardano DB sync with node.
+      You need to either provide the db connection arguments:
+        ```nix
+        services.blockfrost.settings.dbSync = {
+          # these are the defaults:
+          name = "cardano-db-sync";
+          user = "cardano-db-sync";
+          port = 5432;
+          # optionally supply "host" and "password" parameters.
+          socketdir = "/run/postgresql";
+        };
+        ```
+      or enable the default postgresql service with `cardano.blockfrost.postgres.enable`
+    '';
+
     postgres.enable = mkEnableOption "Connect blockfrost to local postgresql." // {default = true;};
   };
 
