@@ -122,6 +122,11 @@ in {
       };
 
       environment.etc = {
+        "grafana-dashboards/cardano-node.json" = {
+          user = "grafana";
+          group = "grafana";
+          source = ./dashboards/cardano-node.json;
+        };
         "grafana-dashboards/node.json" = {
           user = "grafana";
           group = "grafana";
