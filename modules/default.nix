@@ -18,7 +18,7 @@
     };
     node = {
       imports = [
-        inputs."cardano-node-9.2.1".nixosModules.cardano-node
+        inputs.cardano-node.nixosModules.cardano-node
         ./node.nix
       ];
     };
