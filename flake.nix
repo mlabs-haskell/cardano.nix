@@ -4,39 +4,27 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
-    # Cardano-node
-    # FIXME: dots not allowed in `.follows.` statements
-    "cardano-node-92" = {
-      url = "github:intersectmbo/cardano-node?ref=9.2.1";
-    };
-    "cardano-node-9.2.1".follows = "cardano-node-92";
-    "cardano-configurations-9.2.1" = {
-      # This version is compatible with cardano-node above and likely needs to be updated together.
-      url = "github:input-output-hk/cardano-configurations/7969a73e5c7ee1f3b2a40274b34191fdd8de170b";
-      flake = false;
-    };
-
     # Services
-    cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.3.0.0"; # compatible with cardano-node 9.2.1
 
-      # Following cardano-node's haskell-nix and CHaP, it fix build issue with download from ci.zw3rk
-      inputs.haskellNix.follows = "cardano-node-92/haskellNix";
-      inputs.CHaP.follows = "cardano-node-92/CHaP";
+    "cardano-node" = {
+      url = "github:intersectmbo/cardano-node/10.1.2";
+    };
+    cardano-db-sync = {
+      url = "github:intersectmbo/cardano-db-sync/13.6.0.1";
     };
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v2.1.0"; # compatible with cardano-db-sync 13.3.0.0
+      url = "github:blockfrost/blockfrost-backend-ryo/v2.2.4";
     };
     oura = {
-      url = "github:txpipe/oura/v1.9.1";
+      url = "github:txpipe/oura/v1.9.2";
       inputs.crane.follows = "crane";
     };
     crane = {
       url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Utilities
+
     devour-flake = {
       url = "github:srid/devour-flake";
       flake = false;

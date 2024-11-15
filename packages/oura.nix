@@ -11,8 +11,6 @@
       src = craneLib.cleanCargoSource inputs.oura;
     };
   in {
-    packages = {
-      "oura-${oura.version}" = oura;
-    };
+    packages.oura = oura;
   };
 }
