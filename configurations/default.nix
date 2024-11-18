@@ -2,14 +2,15 @@
   self,
   inputs,
   ...
-}: {
+}:
+{
   flake.nixosConfigurations = {
     vm-preview = inputs.nixpkgs.lib.nixosSystem {
       modules = [
         self.nixosModules.default
         ./preview.nix
         ./vm.nix
-        {nixpkgs.hostPlatform = "x86_64-linux";}
+        { nixpkgs.hostPlatform = "x86_64-linux"; }
       ];
     };
     vm-full = inputs.nixpkgs.lib.nixosSystem {
@@ -17,7 +18,7 @@
         self.nixosModules.default
         ./full.nix
         ./vm.nix
-        {nixpkgs.hostPlatform = "x86_64-linux";}
+        { nixpkgs.hostPlatform = "x86_64-linux"; }
       ];
     };
   };

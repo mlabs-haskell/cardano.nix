@@ -3,7 +3,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.hercules-ci-effects.flakeModule
     "${inputs.hercules-ci-effects}/effects/push-cache/default.nix"
@@ -19,9 +20,11 @@
       };
     };
 
-    perSystem = {config, ...}: {
-      hercules-ci.github-pages.settings.contents = config.packages.docs;
-    };
+    perSystem =
+      { config, ... }:
+      {
+        hercules-ci.github-pages.settings.contents = config.packages.docs;
+      };
 
     push-cache-effect = {
       enable = true;
@@ -29,16 +32,15 @@
         mlabs-cardano-nix = {
           type = "attic";
           secretName = "cardano-nix-cache-push-token";
-          packages = with lib;
+          packages =
+            with lib;
             flatten [
-              (forEach ["apps" "devShells" "packages"]
-                (attr:
-                  forEach config.systems
-                  (system:
-                    collect isDerivation (config.flake.${attr}.${system} or {}))))
-              (forEach (attrValues config.flake.nixosConfigurations)
-                (os:
-                  os.config.system.build.toplevel))
+              (forEach [
+                "apps"
+                "devShells"
+                "packages"
+              ] (attr: forEach config.systems (system: collect isDerivation (config.flake.${attr}.${system} or { }))))
+              (forEach (attrValues config.flake.nixosConfigurations) (os: os.config.system.build.toplevel))
             ];
         };
       };

@@ -3,15 +3,17 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.services.oura;
-  settingsFormat = pkgs.formats.toml {};
-in {
+  settingsFormat = pkgs.formats.toml { };
+in
+{
   options = {
     services.oura = {
       enable = lib.mkEnableOption "oura";
 
-      package = lib.mkPackageOption pkgs "oura" {};
+      package = lib.mkPackageOption pkgs "oura" { };
 
       stateDir = lib.mkOption {
         description = "State directory for oura service";
@@ -34,9 +36,9 @@ in {
       settings = lib.mkOption {
         type = lib.types.submodule {
           freeformType = settingsFormat.type;
-          options = {};
+          options = { };
         };
-        default = {};
+        default = { };
         description = ''
           Freeform attrset that generates the TOML configuration file used by Oura.
         '';
@@ -58,12 +60,12 @@ in {
       isSystemUser = true;
       inherit (cfg) group;
       home = cfg.stateDir;
-      extraGroups = ["cardano-node"];
+      extraGroups = [ "cardano-node" ];
     };
-    users.groups.oura = lib.mkIf (cfg.group == "oura") {};
+    users.groups.oura = lib.mkIf (cfg.group == "oura") { };
 
     systemd.services.oura = {
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/oura daemon --config ${cfg.configFile}";
         Group = cfg.group;
@@ -72,7 +74,7 @@ in {
         WorkingDirectory = cfg.stateDir;
         # Security
         UMask = "0077";
-        AmbientCapabilities = ["CAP_NET_BIND_SERVICE"];
+        AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
         DevicePolicy = "closed";
         LockPersonality = true;
         MemoryDenyWriteExecute = true;
@@ -90,12 +92,16 @@ in {
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
         RemoveIPC = true;
-        RestrictAddressFamilies = ["AF_UNIX" "AF_INET" "AF_INET6"];
+        RestrictAddressFamilies = [
+          "AF_UNIX"
+          "AF_INET"
+          "AF_INET6"
+        ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = ["~@cpu-emulation @resources @debug @keyring @mount @obsolete @privileged @setuid"];
+        SystemCallFilter = [ "~@cpu-emulation @resources @debug @keyring @mount @obsolete @privileged @setuid" ];
       };
     };
   };

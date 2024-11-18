@@ -5,9 +5,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.ogmios;
-in {
+in
+{
   options.services.ogmios = with types; {
     enable = mkEnableOption "Ogmios bridge interface for cardano-node";
 
@@ -55,7 +57,7 @@ in {
     extraArgs = mkOption {
       description = "Extra arguments to ogmios command.";
       type = listOf str;
-      default = [];
+      default = [ ];
     };
   };
 
@@ -63,21 +65,33 @@ in {
     users.users.ogmios = mkIf (cfg.user == "ogmios") {
       isSystemUser = true;
       inherit (cfg) group;
-      extraGroups = ["cardano-node"];
+      extraGroups = [ "cardano-node" ];
     };
-    users.groups.ogmios = mkIf (cfg.group == "ogmios") {};
+    users.groups.ogmios = mkIf (cfg.group == "ogmios") { };
 
     systemd.services.ogmios = {
       enable = true;
-      after = ["cardano-node.service"];
-      wantedBy = ["multi-user.target"];
+      after = [ "cardano-node.service" ];
+      wantedBy = [ "multi-user.target" ];
 
       script = escapeShellArgs (concatLists [
-        ["${cfg.package}/bin/ogmios"]
-        ["--node-socket" cfg.nodeSocketPath]
-        ["--node-config" cfg.nodeConfigPath]
-        ["--host" cfg.host]
-        ["--port" cfg.port]
+        [ "${cfg.package}/bin/ogmios" ]
+        [
+          "--node-socket"
+          cfg.nodeSocketPath
+        ]
+        [
+          "--node-config"
+          cfg.nodeConfigPath
+        ]
+        [
+          "--host"
+          cfg.host
+        ]
+        [
+          "--port"
+          cfg.port
+        ]
         cfg.extraArgs
       ]);
 
@@ -102,7 +116,11 @@ in {
         ProtectKernelModules = true;
         ProtectKernelLogs = true;
         ProtectControlGroups = true;
-        RestrictAddressFamilies = ["AF_UNIX" "AF_INET" "AF_INET6"];
+        RestrictAddressFamilies = [
+          "AF_UNIX"
+          "AF_INET"
+          "AF_INET6"
+        ];
         RestrictNamespaces = true;
         LockPersonality = true;
         RestrictRealtime = true;
@@ -110,7 +128,10 @@ in {
         RemoveIPC = true;
         PrivateMounts = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = ["@system-service" "~@privileged"];
+        SystemCallFilter = [
+          "@system-service"
+          "~@privileged"
+        ];
         MemoryDenyWriteExecute = true;
       };
     };

@@ -2,10 +2,12 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.cardano;
   inherit (lib) types;
-in {
+in
+{
   options.cardano = {
     network = lib.mkOption {
       description = "Cardano network to operate on.";

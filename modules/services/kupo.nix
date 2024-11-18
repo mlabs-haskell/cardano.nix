@@ -3,10 +3,20 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.services.kupo;
-  inherit (lib) escapeShellArgs flatten types mkOption mkEnableOption mkIf optional;
-in {
+  inherit (lib)
+    escapeShellArgs
+    flatten
+    types
+    mkOption
+    mkEnableOption
+    mkIf
+    optional
+    ;
+in
+{
   options.services.kupo = {
     enable = mkEnableOption "Kupo Cardano chain-indexer";
 
@@ -84,7 +94,7 @@ in {
     matches = mkOption {
       description = "The list of addresses to watch.";
       type = types.listOf types.nonEmptyStr;
-      default = ["*"];
+      default = [ "*" ];
     };
 
     since = mkOption {
@@ -102,7 +112,7 @@ in {
     extraArgs = mkOption {
       description = "Extra arguments to kupo command.";
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
     };
   };
 
@@ -117,34 +127,70 @@ in {
     users.users.kupo = mkIf (cfg.user == "kupo") {
       isSystemUser = true;
       inherit (cfg) group;
-      extraGroups = ["cardano-node"];
+      extraGroups = [ "cardano-node" ];
     };
-    users.groups.kupo = mkIf (cfg.group == "kupo") {};
+    users.groups.kupo = mkIf (cfg.group == "kupo") { };
 
     systemd.services.kupo = {
       enable = true;
-      after = ["cardano-node.service" "ogmios.service"];
-      wantedBy = ["multi-user.target"];
+      after = [
+        "cardano-node.service"
+        "ogmios.service"
+      ];
+      wantedBy = [ "multi-user.target" ];
 
       script = escapeShellArgs (flatten [
-        ["${cfg.package}/bin/kupo"]
-        ["--workdir" cfg.workDir]
-        ["--host" cfg.host]
-        ["--port" cfg.port]
+        [ "${cfg.package}/bin/kupo" ]
+        [
+          "--workdir"
+          cfg.workDir
+        ]
+        [
+          "--host"
+          cfg.host
+        ]
+        [
+          "--port"
+          cfg.port
+        ]
         (optional (cfg.ogmiosHost == null) [
-          ["--node-socket" cfg.nodeSocketPath]
-          ["--node-config" cfg.nodeConfigPath]
+          [
+            "--node-socket"
+            cfg.nodeSocketPath
+          ]
+          [
+            "--node-config"
+            cfg.nodeConfigPath
+          ]
         ])
         (optional (cfg.ogmiosHost != null) [
-          ["--ogmios-host" cfg.ogmiosHost]
-          ["--ogmios-port" cfg.ogmiosPort]
+          [
+            "--ogmios-host"
+            cfg.ogmiosHost
+          ]
+          [
+            "--ogmios-port"
+            cfg.ogmiosPort
+          ]
         ])
         (optional (cfg.hydraHost != null) [
-          ["--hydra-host" cfg.hydraHost]
-          ["--hydra-port" cfg.hydraPort]
+          [
+            "--hydra-host"
+            cfg.hydraHost
+          ]
+          [
+            "--hydra-port"
+            cfg.hydraPort
+          ]
         ])
-        ["--since" cfg.since]
-        (map (m: ["--match" m]) cfg.matches)
+        [
+          "--since"
+          cfg.since
+        ]
+        (map (m: [
+          "--match"
+          m
+        ]) cfg.matches)
         (optional cfg.pruneUtxo "--prune-utxo")
         cfg.extraArgs
       ]);
@@ -156,8 +202,8 @@ in {
         StateDirectory = lib.removePrefix "/var/lib/" cfg.workDir;
         # Security
         UMask = "0077";
-        AmbientCapabilities = ["CAP_NET_BIND_SERVICE"];
-        CapabilityBoundingSet = ["CAP_NET_BIND_SERVICE"];
+        AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
+        CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
         DevicePolicy = "closed";
         LockPersonality = true;
         MemoryDenyWriteExecute = true;
@@ -177,12 +223,16 @@ in {
         ProtectProc = "invisible";
         ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies = ["AF_UNIX" "AF_INET" "AF_INET6"];
+        RestrictAddressFamilies = [
+          "AF_UNIX"
+          "AF_INET"
+          "AF_INET6"
+        ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = ["~@cpu-emulation @debug @keyring @mount @obsolete @privileged @setuid"];
+        SystemCallFilter = [ "~@cpu-emulation @debug @keyring @mount @obsolete @privileged @setuid" ];
       };
     };
   };
