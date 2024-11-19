@@ -54,10 +54,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake
-    {inherit inputs;}
-    {
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./checks
         ./ci

@@ -2,28 +2,25 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.cardano.ogmios;
-in {
+in
+{
   options.cardano.ogmios = {
-    enable =
-      lib.mkEnableOption "Ogmios bridge interface for cardano-node";
+    enable = lib.mkEnableOption "Ogmios bridge interface for cardano-node";
   };
 
   config = lib.mkIf cfg.enable {
     services.ogmios = {
       enable = true;
-      nodeSocketPath =
-        lib.mkIf (config.cardano.node.enable or false)
-        config.cardano.node.socketPath or null;
-      nodeConfigPath =
-        lib.mkIf (config.cardano.node.enable or false)
-        config.cardano.node.configPath or null;
+      nodeSocketPath = lib.mkIf (config.cardano.node.enable or false) config.cardano.node.socketPath or null;
+      nodeConfigPath = lib.mkIf (config.cardano.node.enable or false) config.cardano.node.configPath or null;
     };
 
     systemd.services.ogmios = lib.mkIf (config.cardano.node.enable or false) {
-      after = ["cardano-node-socket.service"];
-      requires = ["cardano-node-socket.service"];
+      after = [ "cardano-node-socket.service" ];
+      requires = [ "cardano-node-socket.service" ];
     };
   };
 }

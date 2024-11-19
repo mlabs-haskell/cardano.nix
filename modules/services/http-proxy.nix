@@ -2,10 +2,21 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.services.http-proxy;
-  inherit (lib) types listToAttrs mkOption mkEnableOption mapAttrs mkIf optional optionalString;
-in {
+  inherit (lib)
+    types
+    listToAttrs
+    mkOption
+    mkEnableOption
+    mapAttrs
+    mkIf
+    optional
+    optionalString
+    ;
+in
+{
   options.services.http-proxy = {
     enable = mkEnableOption "HTTP reverse proxy, TLS endpoint and load balancer";
     openFirewall = mkOption {
@@ -31,45 +42,50 @@ in {
     servers = mkOption {
       description = "List of upstream server host names used for all services.";
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
     };
     services = mkOption {
       description = "Configuraiton for each upstream service.";
-      type = types.attrsOf (types.submodule ({name, ...}: {
-        options = {
-          name = mkOption {
-            description = "Name of the service.";
-            type = types.str;
-            default = name;
-          };
-          servers = mkOption {
-            description = "List of upstream server host names.";
-            type = types.listOf types.str;
-            default = cfg.servers;
-          };
-          port = mkOption {
-            description = "Upstream server port.";
-            type = types.nullOr types.port;
-            default = null;
-          };
-          version = mkOption {
-            description = "This string will be served at path '/version'.";
-            type = types.nullOr types.str;
-            default = null;
-          };
-        };
-      }));
+      type = types.attrsOf (
+        types.submodule (
+          { name, ... }:
+          {
+            options = {
+              name = mkOption {
+                description = "Name of the service.";
+                type = types.str;
+                default = name;
+              };
+              servers = mkOption {
+                description = "List of upstream server host names.";
+                type = types.listOf types.str;
+                default = cfg.servers;
+              };
+              port = mkOption {
+                description = "Upstream server port.";
+                type = types.nullOr types.port;
+                default = null;
+              };
+              version = mkOption {
+                description = "This string will be served at path '/version'.";
+                type = types.nullOr types.str;
+                default = null;
+              };
+            };
+          }
+        )
+      );
     };
     _mkUpstream = mkOption {
       type = types.functionTo types.attrs;
       internal = true;
       default = service: {
-        servers = listToAttrs (map
-          (server: {
+        servers = listToAttrs (
+          map (server: {
             name = "${server}:${toString service.port}";
-            value = {};
-          })
-          service.servers);
+            value = { };
+          }) service.servers
+        );
       };
     };
     _mkVirtualHost = mkOption {
@@ -84,7 +100,7 @@ in {
             return = "200 ${service.version}";
             extraConfig = "add_header Content-Type text/plain;";
           };
-          "/" = mkIf (service.servers != [] && service.port != null) {
+          "/" = mkIf (service.servers != [ ] && service.port != null) {
             proxyWebsockets = true;
             proxyPass = "http://${service.name}";
           };
@@ -101,7 +117,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall ([80] ++ optional cfg.https.enable 443);
+    networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall ([ 80 ] ++ optional cfg.https.enable 443);
 
     services.nginx = {
       enable = true;
@@ -113,7 +129,7 @@ in {
 
       statusPage = true;
 
-      upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.servers != [] && s.port != null) cfg.services);
+      upstreams = mapAttrs (_: cfg._mkUpstream) (lib.filterAttrs (_: s: s.servers != [ ] && s.port != null) cfg.services);
       virtualHosts = mapAttrs (_: cfg._mkVirtualHost) cfg.services;
     };
   };

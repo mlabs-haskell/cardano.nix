@@ -2,7 +2,8 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/virtualisation/qemu-vm.nix")
     (modulesPath + "/profiles/qemu-guest.nix")

@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   cardano = {
     network = "preview";
     node.enable = true;

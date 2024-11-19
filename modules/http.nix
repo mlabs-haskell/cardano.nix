@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.cardano.http;
   inherit (lib) mkIf mkDefault mkEnableOption;
-in {
+in
+{
   options.cardano.http = {
     enable = mkEnableOption ''
       HTTP SSL proxy and load balancer for cardano services
@@ -21,7 +23,7 @@ in {
   config = mkIf cfg.enable {
     services.http-proxy = {
       enable = true;
-      servers = mkIf (config.cardano.ogmios.enable || config.cardano.kupo.enable) (mkDefault ["127.0.0.1"]);
+      servers = mkIf (config.cardano.ogmios.enable || config.cardano.kupo.enable) (mkDefault [ "127.0.0.1" ]);
       services = {
         cardano-node = {
           inherit (config.services.cardano-node.package.passthru.identifier) version;
@@ -37,7 +39,7 @@ in {
         grafana = {
           port = 3000;
           inherit (config.services.grafana.package) version;
-          servers = mkDefault [];
+          servers = mkDefault [ ];
         };
       };
     };

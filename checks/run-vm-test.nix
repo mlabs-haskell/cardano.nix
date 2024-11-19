@@ -8,7 +8,7 @@
 writeShellApplication {
   name = "run-vm-test";
 
-  runtimeInputs = [];
+  runtimeInputs = [ ];
 
   text = ''
     cmd_name=$(basename "$0")

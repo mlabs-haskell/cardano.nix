@@ -3,10 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.cardano.node;
-  inherit (builtins) elemAt match replaceStrings readFile;
-in {
+  inherit (builtins)
+    elemAt
+    match
+    replaceStrings
+    readFile
+    ;
+in
+{
   options.cardano.node = {
     enable = lib.mkEnableOption "cardano-node service";
 
@@ -22,8 +29,7 @@ in {
       default = "/etc/cardano-node/config.json";
     };
 
-    prometheusExporter.enable =
-      lib.mkEnableOption "prometheus exporter";
+    prometheusExporter.enable = lib.mkEnableOption "prometheus exporter";
 
     prometheusExporter.port = lib.mkOption {
       description = "Port where Prometheus exporter is exposed.";
@@ -35,7 +41,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.etc."cardano-node/config.json" = {
       # hack to get config file path
-      text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings ["\n"] [" "] config.services.cardano-node.script)) 0);
+      text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings [ "\n" ] [ " " ] config.services.cardano-node.script)) 0);
       user = "cardano-node";
       group = "cardano-node";
     };
@@ -52,7 +58,10 @@ in {
       environment = config.cardano.network;
 
       extraNodeConfig = lib.mkIf cfg.prometheusExporter.enable {
-        hasPrometheus = ["0.0.0.0" config.cardano.node.prometheusExporter.port];
+        hasPrometheus = [
+          "0.0.0.0"
+          config.cardano.node.prometheusExporter.port
+        ];
       };
 
       # Listen on all interfaces.
@@ -66,10 +75,10 @@ in {
     # Socket created by cardano-node is not writable by group . So we wait until it appears and set the permissions.
     systemd.services.cardano-node-socket = {
       description = "Wait for cardano-node socket to appear and set permissions to allow group read and write.";
-      after = ["cardano-node.service"];
-      requires = ["cardano-node.service"];
-      bindsTo = ["cardano-node.service"];
-      requiredBy = ["cardano-node.service"];
+      after = [ "cardano-node.service" ];
+      requires = [ "cardano-node.service" ];
+      bindsTo = [ "cardano-node.service" ];
+      requiredBy = [ "cardano-node.service" ];
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;

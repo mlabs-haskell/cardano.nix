@@ -2,11 +2,18 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.cardano.db-sync;
   dbsync-cfg = config.services.cardano-db-sync;
-  inherit (lib) mkEnableOption mkIf mkMerge mkOptionDefault;
-in {
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkMerge
+    mkOptionDefault
+    ;
+in
+{
   options.cardano.db-sync = {
     enable = mkEnableOption ''
       Cardano DB Sync provides a way to query local cardano node.
@@ -25,7 +32,9 @@ in {
       or enable the default postgresql service with `services.cardano-db-sync.postgres.enable` and possibly overwrite the `services.postgresql` options for your need.
     '';
 
-    postgres.enable = mkEnableOption "Run postgres and connect dbsync to it." // {default = true;};
+    postgres.enable = mkEnableOption "Run postgres and connect dbsync to it." // {
+      default = true;
+    };
   };
 
   config = mkMerge [
@@ -41,7 +50,7 @@ in {
         postgres = {
           user = "cardano-db-sync";
           # use first socket from postgresql settings or default to /run/postgresql
-          socketdir = builtins.head ((config.services.postgresql.settings.unix_socket_directories or []) ++ ["/run/postgresql"]);
+          socketdir = builtins.head ((config.services.postgresql.settings.unix_socket_directories or [ ]) ++ [ "/run/postgresql" ]);
           port = config.services.postgresql.settings.port or 5432;
           database = "cardano-db-sync";
         };
@@ -63,7 +72,10 @@ in {
           ProtectHostname = true;
           ProtectKernelTunables = true;
           RestrictRealtime = true;
-          SystemCallFilter = ["@system-service" "~@privileged"];
+          SystemCallFilter = [
+            "@system-service"
+            "~@privileged"
+          ];
           PrivateDevices = true;
           RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6";
           ProtectHome = true;
@@ -80,15 +92,15 @@ in {
     })
     (mkIf (cfg.enable && config.cardano.node.enable or false) {
       systemd.services.cardano-db-sync = {
-        after = ["cardano-node-socket.service"];
-        requires = ["cardano-node-socket.service"];
+        after = [ "cardano-node-socket.service" ];
+        requires = [ "cardano-node-socket.service" ];
       };
     })
     (mkIf (cfg.enable && cfg.postgres.enable) {
       services.postgresql = {
         enable = true;
         # see warnings: this should be same as user name
-        ensureDatabases = [dbsync-cfg.postgres.database];
+        ensureDatabases = [ dbsync-cfg.postgres.database ];
         ensureUsers = [
           {
             name = "${dbsync-cfg.postgres.database}";

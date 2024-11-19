@@ -3,17 +3,25 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.cardano.monitoring;
-  inherit (lib) mkIf mkEnableOption mkMerge mkOption types;
-in {
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    mkMerge
+    mkOption
+    types
+    ;
+in
+{
   options.cardano.monitoring = {
     enable = mkEnableOption ''
       monitoring services Prometheus and Grafana
     '';
     targets = mkOption {
       type = with types; listOf string;
-      default = ["localhost"];
+      default = [ "localhost" ];
       description = ''
         List of hosts to to scrape prometheus metrics from.
       '';
@@ -58,40 +66,40 @@ in {
         scrapeConfigs = [
           {
             job_name = "blockfrost";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.blockfrost.settings.server.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.blockfrost.settings.server.port}") cfg.targets; } ];
           }
           {
             job_name = "db_sync";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.cardano-db-sync.explorerConfig.PrometheusPort}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.cardano-db-sync.explorerConfig.PrometheusPort}") cfg.targets; } ];
           }
           {
             job_name = "cardano-node";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.cardano.node.prometheusExporter.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.cardano.node.prometheusExporter.port}") cfg.targets; } ];
           }
           {
             job_name = "kupo";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.kupo.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.kupo.port}") cfg.targets; } ];
             metrics_path = "/health";
           }
           {
             job_name = "nginx";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.nginx.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.nginx.port}") cfg.targets; } ];
           }
           {
             job_name = "node";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.node.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.node.port}") cfg.targets; } ];
           }
           {
             job_name = "ogmios";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.ogmios.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.ogmios.port}") cfg.targets; } ];
           }
           {
             job_name = "oura";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.cardano.oura.prometheusExporter.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.cardano.oura.prometheusExporter.port}") cfg.targets; } ];
           }
           {
             job_name = "postgres";
-            static_configs = [{targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.postgres.port}") cfg.targets;}];
+            static_configs = [ { targets = map (target: "${target}:${builtins.toString config.services.prometheus.exporters.postgres.port}") cfg.targets; } ];
           }
         ];
       };

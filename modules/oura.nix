@@ -2,19 +2,19 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.cardano.oura;
-in {
+in
+{
   options.cardano.oura = {
-    enable =
-      lib.mkEnableOption "Oura event processing pipeline for Cardano";
+    enable = lib.mkEnableOption "Oura event processing pipeline for Cardano";
 
-    integrate =
-      lib.mkEnableOption ''connect oura to local cardano-node via N2C''
-      // {default = config.cardano.node.enable or false;};
+    integrate = lib.mkEnableOption ''connect oura to local cardano-node via N2C'' // {
+      default = config.cardano.node.enable or false;
+    };
 
-    prometheusExporter.enable =
-      lib.mkEnableOption "prometheus exporter";
+    prometheusExporter.enable = lib.mkEnableOption "prometheus exporter";
 
     prometheusExporter.port = lib.mkOption {
       description = "Port where Prometheus exporter is exposed.";
@@ -29,7 +29,10 @@ in {
       settings = {
         source = lib.mkIf cfg.integrate {
           type = "N2C";
-          address = ["Unix" config.cardano.node.socketPath];
+          address = [
+            "Unix"
+            config.cardano.node.socketPath
+          ];
           magic = config.cardano.network;
         };
         metrics.address = lib.mkIf cfg.prometheusExporter.enable "0.0.0.0:${builtins.toString cfg.prometheusExporter.port}";
@@ -37,8 +40,8 @@ in {
     };
 
     systemd.services.oura = lib.mkIf (config.cardano.node.enable or false) {
-      after = ["cardano-node-socket.service"];
-      requires = ["cardano-node-socket.service"];
+      after = [ "cardano-node-socket.service" ];
+      requires = [ "cardano-node-socket.service" ];
     };
   };
 }

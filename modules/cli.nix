@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options.cardano.cli.enable = lib.mkOption {
     description = "Add cardano-cli to 'environment.systemPackages'.";
     type = lib.types.bool;
@@ -11,6 +12,6 @@
   };
 
   config = lib.mkIf config.cardano.cli.enable {
-    environment.systemPackages = [pkgs.cardano-cli];
+    environment.systemPackages = [ pkgs.cardano-cli ];
   };
 }

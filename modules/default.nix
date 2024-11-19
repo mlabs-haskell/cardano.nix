@@ -2,7 +2,8 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   flake.flakeModules.docs = ../docs/render.nix;
 
   flake.nixosModules = {
@@ -65,14 +66,11 @@
     };
     # the default module imports all modules
     default = {
-      imports =
-        [
-          {
-            nixpkgs.overlays = [config.flake.overlays.default];
-          }
-        ]
-        ++ (with builtins;
-            attrValues (removeAttrs config.flake.nixosModules ["default"]));
+      imports = [
+        {
+          nixpkgs.overlays = [ config.flake.overlays.default ];
+        }
+      ] ++ (with builtins; attrValues (removeAttrs config.flake.nixosModules [ "default" ]));
     };
   };
 }
