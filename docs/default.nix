@@ -68,16 +68,6 @@
         namespaces = [ "services.cardano-db-sync" ];
       }
       {
-        anchor = "cardano.http";
-        modules = [ config.flake.nixosModules.http ];
-        namespaces = [ "cardano.http" ];
-      }
-      {
-        anchor = "services.http-proxy";
-        modules = [ config.flake.nixosModules.http ];
-        namespaces = [ "services.http-proxy" ];
-      }
-      {
         anchor = "cardano.blockfrost";
         modules = [ config.flake.nixosModules.blockfrost ];
         namespaces = [ "cardano.blockfrost" ];
@@ -96,6 +86,21 @@
         anchor = "services.oura";
         modules = [ config.flake.nixosModules.oura ];
         namespaces = [ "services.oura" ];
+      }
+      {
+        anchor = "cardano.http";
+        modules = [ config.flake.nixosModules.http ];
+        namespaces = [ "cardano.http" ];
+      }
+      {
+        anchor = "services.http-proxy";
+        modules = [ config.flake.nixosModules.http ];
+        namespaces = [ "services.http-proxy" ];
+      }
+      {
+        anchor = "cardano.monitoring";
+        modules = [ config.flake.nixosModules.default ];
+        namespaces = [ "cardano.monitoring" ];
       }
     ];
 
