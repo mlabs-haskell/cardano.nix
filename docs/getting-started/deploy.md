@@ -10,8 +10,6 @@ An easy way to get started is to use the [flake template](https://zero-to-nix.co
 mkdir myproject
 cd myproject
 nix flake init --template github:mlabs-haskell/cardano.nix
-git init
-git add .
 ```
 
 ### Run a virtual machine
@@ -30,22 +28,22 @@ This machine is set up just like the one in [Run a VM](vm.md), but can be custom
 
 #### `flake.nix`
 
-This [Nix Flake](https://zero-to-nix.com/concepts/flakes) is the entry point to the project. It locks inputs and provides the following inputs:
+This [Nix Flake](https://zero-to-nix.com/concepts/flakes) is the entry point to the project. It locks inputs and provides the following outputs:
 
-- a NixOS configuration for the virtual machine, under `nixosConfigurations.server-vm`
-- an app to run the virtual machine as above, under `apps.x86_64-linux.server-vm`
+- a NixOS configuration for the virtual machine, under `nixosConfigurations.vm`
+- an app to run the virtual machine as above, under `apps.x86_64-linux.vm`
 
-#### `preview.nix`
+#### `configuration.nix`
 
-This is the [NixOS configuration](https://zero-to-nix.com/concepts/nixos#configuration) to run cardano services for the machine.
+This is the [NixOS configuration](https://zero-to-nix.com/concepts/nixos#configuration) to run cardano services on the machine.
 
 #### `vm.nix`
 
-This NixOS configuration sets virtual machine options such as cores, memory and port forwarding. It is included in the configuration for the `nixosConfigurations.server-vm` virtual machine in `flake.nix`.
+Local VM configuration for convenient development. Don't use this in the cloud, it is insecure with an empty root password. Sets virtual machine options such as cores, memory and port forwarding. It is included in the configuration for the `nixosConfigurations.vm` virtual machine in `flake.nix`.
 
 ### Customize
 
-To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../reference/module-options/cardano.md) (see other modules in the menu on the left). You can ad these options to `preview.nix` to configure the system.
+To learn more, browse available [NixOS options in nixpkgs](https://search.nixos.org/options) and [NixOS options provided by cardano.nix](../reference/module-options/cardano.md) (see other modules in the menu on the left). You can ad these options to `configuration.nix` to configure the system.
 
 ### Deployment options
 
