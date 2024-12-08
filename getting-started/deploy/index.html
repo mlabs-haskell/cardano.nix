@@ -455,9 +455,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#previewnix" class="md-nav__link">
+  <a href="#configurationnix" class="md-nav__link">
     <span class="md-ellipsis">
-      preview.nix
+      configuration.nix
     </span>
   </a>
   
@@ -1129,9 +1129,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#previewnix" class="md-nav__link">
+  <a href="#configurationnix" class="md-nav__link">
     <span class="md-ellipsis">
-      preview.nix
+      configuration.nix
     </span>
   </a>
   
@@ -1208,13 +1208,9 @@
 <p>An easy way to get started is to use the <a href="https://zero-to-nix.com/concepts/flakes#templates">flake template</a> provided by this project. Here's how to start a new project using the template:</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>mkdir myproject
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>mkdir myproject
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>cd myproject
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>nix flake init --template github:mlabs-haskell/cardano.nix
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>git init
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>git add .
 </span></code></pre></div></td></tr></table></div>
 <h3 id="run-a-virtual-machine">Run a virtual machine</h3>
 <p>The default template provides a virtual machine configuration starting all the services in the preview testnet. Here's how to run it:</p>
@@ -1224,17 +1220,17 @@
 <p>This machine is set up just like the one in <a href="../vm/">Run a VM</a>, but can be customized.</p>
 <h3 id="look-around">Look around</h3>
 <h4 id="flakenix"><code>flake.nix</code></h4>
-<p>This <a href="https://zero-to-nix.com/concepts/flakes">Nix Flake</a> is the entry point to the project. It locks inputs and provides the following inputs:</p>
+<p>This <a href="https://zero-to-nix.com/concepts/flakes">Nix Flake</a> is the entry point to the project. It locks inputs and provides the following outputs:</p>
 <ul>
-<li>a NixOS configuration for the virtual machine, under <code>nixosConfigurations.server-vm</code></li>
-<li>an app to run the virtual machine as above, under <code>apps.x86_64-linux.server-vm</code></li>
+<li>a NixOS configuration for the virtual machine, under <code>nixosConfigurations.vm</code></li>
+<li>an app to run the virtual machine as above, under <code>apps.x86_64-linux.vm</code></li>
 </ul>
-<h4 id="previewnix"><code>preview.nix</code></h4>
-<p>This is the <a href="https://zero-to-nix.com/concepts/nixos#configuration">NixOS configuration</a> to run cardano services for the machine.</p>
+<h4 id="configurationnix"><code>configuration.nix</code></h4>
+<p>This is the <a href="https://zero-to-nix.com/concepts/nixos#configuration">NixOS configuration</a> to run cardano services on the machine.</p>
 <h4 id="vmnix"><code>vm.nix</code></h4>
-<p>This NixOS configuration sets virtual machine options such as cores, memory and port forwarding. It is included in the configuration for the <code>nixosConfigurations.server-vm</code> virtual machine in <code>flake.nix</code>.</p>
+<p>Local VM configuration for convenient development. Don't use this in the cloud, it is insecure with an empty root password. Sets virtual machine options such as cores, memory and port forwarding. It is included in the configuration for the <code>nixosConfigurations.vm</code> virtual machine in <code>flake.nix</code>.</p>
 <h3 id="customize">Customize</h3>
-<p>To learn more, browse available <a href="https://search.nixos.org/options">NixOS options in nixpkgs</a> and <a href="../../reference/module-options/cardano/">NixOS options provided by cardano.nix</a> (see other modules in the menu on the left). You can ad these options to <code>preview.nix</code> to configure the system.</p>
+<p>To learn more, browse available <a href="https://search.nixos.org/options">NixOS options in nixpkgs</a> and <a href="../../reference/module-options/cardano/">NixOS options provided by cardano.nix</a> (see other modules in the menu on the left). You can ad these options to <code>configuration.nix</code> to configure the system.</p>
 <h3 id="deployment-options">Deployment options</h3>
 <p>The configuration can be deployed to any target running NixOS, such as:</p>
 <ul>
