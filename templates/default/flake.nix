@@ -12,8 +12,16 @@
           system = "x86_64-linux";
           modules = [
             inputs.cardano-nix.nixosModules.default
-            ./preview.nix
+            ./configuration.nix
             ./vm.nix
+          ];
+        };
+        server = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            inputs.cardano-nix.nixosModules.default
+            ./configuration.nix
+            # add server configuraition here
           ];
         };
       };
