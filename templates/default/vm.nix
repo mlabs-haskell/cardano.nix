@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   modulesPath,
   ...
@@ -20,6 +21,14 @@
   # Allow root login without password, auto login
   users.users.root.password = "";
   services.getty.autologinUser = "root";
+
+  services.ogmios.host = "0.0.0.0";
+  services.kupo.host = "0.0.0.0";
+
+  networking.firewall.allowedTCPPorts = [
+    config.services.ogmios.port
+    config.services.kupo.port
+  ];
 
   virtualisation = {
     cores = 2;
