@@ -16,7 +16,7 @@
           system = "x86_64-linux";
           modules = [
             { networking.hostName = "node1"; }
-            ./preview.nix
+            ./configuration.nix
             cardano-nix.nixosModules.default
           ];
         };
@@ -24,7 +24,7 @@
           system = "x86_64-linux";
           modules = [
             { networking.hostName = "node2"; }
-            ./preview.nix
+            ./configuration.nix
             cardano-nix.nixosModules.default
           ];
         };
@@ -32,7 +32,7 @@
           system = "x86_64-linux";
           modules = [
             { networking.hostName = "node3"; }
-            ./preview.nix
+            ./configuration.nix
             cardano-nix.nixosModules.default
           ];
         };
@@ -57,9 +57,9 @@
             name = "cluster";
             imports = [
               {
-                nodes.node1 = ./preview.nix;
-                nodes.node2 = ./preview.nix;
-                nodes.node3 = ./preview.nix;
+                nodes.node1 = ./configuration.nix;
+                nodes.node2 = ./configuration.nix;
+                nodes.node3 = ./configuration.nix;
                 nodes.status = ./status.nix;
                 nodes.proxy = ./proxy.nix;
                 testScript = _: ''

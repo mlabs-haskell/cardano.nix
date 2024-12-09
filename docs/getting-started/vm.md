@@ -4,11 +4,11 @@ This project provides a virtual machine configuration with all cardano services.
 
 A virtual machine will be started with the following services, and the following ports forwarded from the host to the VM.
 
-| Service      | Port |
-| ------------ | ---- |
-| cardano-node | 3001 |
-| ogmios       | 1337 |
-| kupo         | 1442 |
+| Service      | Port                                           |
+| ------------ | ---------------------------------------------- |
+| cardano-node | 3001                                           |
+| ogmios       | [http://localhost:1337](http://localhost:1337) |
+| kupo         | [http://localhost:1442](http://localhost:1442) |
 
 You can log in with user `root`. The password is empty. In the virtual machine, `cardano-cli` is available to query the node.
 
