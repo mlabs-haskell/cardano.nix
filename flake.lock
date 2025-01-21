@@ -101,16 +101,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1730408279,
-        "narHash": "sha256-YeSPvCrfc0OmMqhzGN/WXcBSfXIlnEnqWemzqQTz+zw=",
+        "lastModified": 1737368354,
+        "narHash": "sha256-zDqNLiaF3A4/rkMTL2sJWyyPVBB9kwezsfzTmkIBN14=",
         "owner": "blockfrost",
         "repo": "blockfrost-backend-ryo",
-        "rev": "30ec8cf23d9c222199dc5afba9b79b5bfeec3337",
+        "rev": "a49be24384279c916e86dbd9be267ab259bed596",
         "type": "github"
       },
       "original": {
         "owner": "blockfrost",
-        "ref": "v2.2.4",
+        "ref": "v3.1.0",
         "repo": "blockfrost-backend-ryo",
         "type": "github"
       }

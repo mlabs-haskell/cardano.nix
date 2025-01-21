@@ -13,7 +13,7 @@
       url = "github:intersectmbo/cardano-db-sync/13.6.0.1";
     };
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v2.2.4";
+      url = "github:blockfrost/blockfrost-backend-ryo/v3.1.0";
     };
     oura = {
       url = "github:txpipe/oura/v1.9.2";
