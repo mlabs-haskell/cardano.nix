@@ -34,7 +34,7 @@ Alternatively, a wildcard record may be added for `*.my.example.com`.
 
 ### Operating System Configuration and Deployment
 
-NixOS has to be installed on the cloud machines. If the cloud provider does not have NixOS images, this can be achieved starting from mainstream distros like Debian or Ubuntu using [nixos-infect](https://github.com/elitak/nixos-infect) from cloud-init user data. A better option is to generate cloud images, eg. using [nixos-generators]https://github.com/nix-community/nixos-generators) and start the cloud machines from those.
+NixOS has to be installed on the cloud machines. If the cloud provider does not have NixOS images, this can be achieved starting from mainstream distros like Debian or Ubuntu using [nixos-anywhere](https://github.com/nix-community/nixos-anywhere) through ssh or [nixos-infect](https://github.com/elitak/nixos-infect) from cloud-init user data. A better option is to generate cloud images, eg. using [nixos-generators]https://github.com/nix-community/nixos-generators) and start the cloud machines from those.
 
 To deploy operating system configuration via SSH, `services.openssh` needs to be configured and `users.users.root.openssh.authorizedKeys.keys` set. Deployment can be done via `nixos-rebuild --flake . --target-host HOST` or using a [deployment app](https://github.com/nix-community/awesome-nix?tab=readme-ov-file#deployment-tools) such as [colmena](https://github.com/zhaofengli/colmena), or integrated into an infrastructure tool like [terraform-nixos](https://github.com/nix-community/terraform-nixos).
 
