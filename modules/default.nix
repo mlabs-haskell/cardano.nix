@@ -23,6 +23,14 @@
         ./node.nix
       ];
     };
+
+    test-node = {
+      imports = [
+        config.flake.nixosModules.node
+        ./test-node.nix
+      ];
+    };
+
     ogmios = {
       imports = [
         ./services/ogmios.nix

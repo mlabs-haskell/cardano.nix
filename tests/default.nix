@@ -2,6 +2,7 @@
   imports = [
     ./cardano-cli.nix
     ./node.nix
+    ./test-node.nix
     ./ogmios.nix
     ./kupo.nix
     ./http.nix

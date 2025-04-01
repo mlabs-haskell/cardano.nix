@@ -29,6 +29,12 @@ in
       default = "/etc/cardano-node/config.json";
     };
 
+    copyCardanoNodeConfigToEtc = lib.mkOption {
+      description = "If set to true, this will -- at Nix evaluation time -- copy the cardano node's config file to `/etc/cardano-node/config.json`";
+      type = lib.types.bool;
+      default = true;
+    };
+
     prometheusExporter.enable = lib.mkEnableOption "prometheus exporter";
 
     prometheusExporter.port = lib.mkOption {
@@ -39,15 +45,31 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.etc."cardano-node/config.json" = {
-      # hack to get config file path
-      text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings [ "\n" ] [ " " ] config.services.cardano-node.script)) 0);
-      user = "cardano-node";
-      group = "cardano-node";
+    environment.etc = lib.mkIf cfg.copyCardanoNodeConfigToEtc {
+      "cardano-node/config.json" = {
+        # NOTE(jaredponn) April 11, 2025: The previous author mentions that this is a 
+        #
+        # > hack to get config file path
+        #
+        # NOTE(jaredponn) April 11, 2025: This line forces the config file to be
+        # known at Nix evaluation time which causes trouble if you want to
+        # "dynamically create" the config which is desirable when -- for
+        # example -- creating a test node setup that sets the system
+        # start time to now.
+        text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings [ "\n" ] [ " " ] config.services.cardano-node.script)) 0);
+        user = "cardano-node";
+        group = "cardano-node";
+      };
     };
 
     environment.variables = {
+      # Set convenience environment variables when interacting with the node
+      # via `cardano-cli` in the machine.
+      # In particular, see
+      # <https://github.com/IntersectMBO/cardano-cli/blob/master/cardano-cli/src/Cardano/CLI/Environment.hs>
+      # for details on the environment variables it reads.
       CARDANO_NODE_SOCKET_PATH = cfg.socketPath;
+      CARDANO_NODE_NETWORK_ID = if config.cardano.network == "mainnet" then "mainnet" else config.cardano.networkNumber;
     };
 
     services.cardano-node = {
