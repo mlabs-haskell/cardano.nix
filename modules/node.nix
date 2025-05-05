@@ -47,15 +47,13 @@ in
   config = lib.mkIf cfg.enable {
     environment.etc = lib.mkIf cfg.copyCardanoNodeConfigToEtc {
       "cardano-node/config.json" = {
-        # NOTE(jaredponn) April 11, 2025: The previous author mentions that this is a 
-        #
-        # > hack to get config file path
-        #
-        # NOTE(jaredponn) April 11, 2025: This line forces the config file to be
-        # known at Nix evaluation time which causes trouble if you want to
-        # "dynamically create" the config which is desirable when -- for
-        # example -- creating a test node setup that sets the system
-        # start time to now.
+        # NOTE(jaredponn): This is a hack to get config file path
+        # This line forces the config file to be known at Nix
+        # evaluation time which causes trouble if you want to
+        # "dynamically create" the config which is desirable when --
+        # for example -- creating a test node setup that sets the
+        # system start time to now.
+
         text = readFile (elemAt (match ".* --config ([^ ]+) .*" (replaceStrings [ "\n" ] [ " " ] config.services.cardano-node.script)) 0);
         user = "cardano-node";
         group = "cardano-node";
