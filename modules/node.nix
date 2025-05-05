@@ -64,7 +64,7 @@ in
       # Set convenience environment variables when interacting with the node
       # via `cardano-cli` in the machine.
       # In particular, see
-      # <https://github.com/IntersectMBO/cardano-cli/blob/master/cardano-cli/src/Cardano/CLI/Environment.hs>
+      # https://github.com/IntersectMBO/cardano-cli/blob/master/cardano-cli/src/Cardano/CLI/Environment.hs
       # for details on the environment variables it reads.
       CARDANO_NODE_SOCKET_PATH = cfg.socketPath;
       CARDANO_NODE_NETWORK_ID = if config.cardano.network == "mainnet" then "mainnet" else config.cardano.networkNumber;

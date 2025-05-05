@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.cardano.test-node;
+  cfg = config.cardano.private-testnet-node;
 in
 {
 
@@ -14,7 +14,7 @@ in
     ./node.nix
   ];
 
-  options.cardano.test-node = {
+  options.cardano.private-testnet-node = {
     enable = lib.mkEnableOption ''
       cardano-devnet node (a private testnet node) which -- when enabled --
       switches the system's cardano-node to a private testnet node (with its
@@ -69,7 +69,6 @@ in
     };
 
     # The following options are the genesis files for specific eras
-    ##############################
     genesisAlonzo = lib.mkOption {
       internal = true;
       type = lib.types.path;
@@ -95,7 +94,6 @@ in
     };
 
     # The following options are wrappers for the options provided by the cardano-node
-    ##############################
     nodeConfigFile = lib.mkOption {
       internal = true;
       type = lib.types.path;
@@ -147,7 +145,7 @@ in
     cardano.network = lib.mkForce "private";
 
     # Create a directory of the test node's config files
-    # Why don't we just link the Cardano node directly to the files in
+    # We don't just link the Cardano node directly to the files in
     # `./fixtures/test-node/`? This is because we need to dynamically fill some
     # values in when the system is running e.g. the system start time.
     systemd.services.cardano-node-config = {
@@ -219,7 +217,7 @@ in
       # messes with things. Note that if `useSystemdReload` is true, it makes
       # the `cardano-node` go looking in `/etc/cardano-node/topology-0.yaml`
       # instead of whatever value we provide. See
-      # <https://github.com/IntersectMBO/cardano-node/blob/aec56982f99a3e94d6cde969f666133ff2f68890/nix/nixos/cardano-node-service.nix#L586-L599>
+      # https://github.com/IntersectMBO/cardano-node/blob/aec56982f99a3e94d6cde969f666133ff2f68890/nix/nixos/cardano-node-service.nix#L586-L599
       # for details.
       useSystemdReload = lib.mkForce false;
     };
@@ -255,8 +253,8 @@ in
         1>&2 echo "Distributing initial funds."
         ${lib.attrsets.foldlAttrs (
           acc: addr: amountOrAmounts:
-          # WARNING(jaredponn) April 22, 2025: probably terrible time complexity.
-          # NOTE(jaredponn) April 22, 2025: Loosely, this convoluted nix
+          # WARNING(jaredponn): probably terrible time complexity.
+          # NOTE(jaredponn): Loosely, this convoluted nix
           # expression builds a shell script like
           # ```
           # request-from-faucet --address <addr1> --amount <amount11>
@@ -321,16 +319,12 @@ in
             1>&2 echo "Creating a UTxO for $ADDRESS with $AMOUNT lovelace from $FAUCET"
 
             # Temporary working directory
-            #############################
             TMP="$(mktemp -d)"
             trap "rm -rf \$TMP" EXIT
 
             # Build and sign the tx from the faucet
-            #############################
 
-            # NOTE(jaredponn) April 21, 2025: Most of the
-            # tx building follows from the following
-            # articles:
+            # NOTE(jaredponn) Most of the tx building follows from the following articles:
             # - https://developers.cardano.org/docs/get-started/create-simple-transaction/
             # - https://github.com/cardano-scaling/hydra/blob/master/demo/seed-devnet.sh
 
@@ -371,7 +365,6 @@ in
             1>&2 echo "Finished building and signing transaction $TX_ID"
 
             # Await the tx
-            #############################
             1>&2 echo "Awaiting $TX_ID by waiting for tx-in $TX_IN"
 
             while test "$(cardano-cli query utxo --tx-in "$TX_IN" --output-json | jq length)" -eq 0; do
@@ -395,7 +388,5 @@ in
 
       systemPackages = [ pkgs.request-from-faucet ];
     };
-
   };
-
 }

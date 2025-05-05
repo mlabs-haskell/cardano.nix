@@ -7,8 +7,8 @@
         {
           cardano = {
             cli.enable = true;
-            test-node.enable = true;
-            test-node.initialFunds = {
+            private-testnet-node.enable = true;
+            private-testnet-node.initialFunds = {
               addr_test1vzrv7az4xq620y20pyn44yhvl89r7nwa7ga5ftn9rleenxqharu33 = [
                 2000000
                 3000000

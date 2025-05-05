@@ -24,10 +24,10 @@
       ];
     };
 
-    test-node = {
+    private-testnet-node = {
       imports = [
         config.flake.nixosModules.node
-        ./test-node.nix
+        ./private-testnet-node.nix
       ];
     };
 
