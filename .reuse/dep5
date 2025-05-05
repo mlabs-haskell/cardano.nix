@@ -10,3 +10,7 @@ License: Apache-2.0
 Files: docs/assets/favicon.png docs/assets/logo.svg
 Copyright: © 2023 MLabs LTD <legal@mlabs.city>
 License: LicenseRef-MLabs
+
+Files: modules/fixtures/*
+Copyright: © 2023 MLabs LTD <legal@mlabs.city>
+License: LicenseRef-MLabs

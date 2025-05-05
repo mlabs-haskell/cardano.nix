@@ -1,5 +1,5 @@
 {
-  perSystem.vmTests.tests.cardano-node = {
+  perSystem.vmTests.tests.online-node = {
     impure = true;
     module = {
       nodes.machine =

@@ -23,6 +23,14 @@
         ./node.nix
       ];
     };
+
+    private-testnet-node = {
+      imports = [
+        config.flake.nixosModules.node
+        ./private-testnet-node.nix
+      ];
+    };
+
     ogmios = {
       imports = [
         ./services/ogmios.nix
