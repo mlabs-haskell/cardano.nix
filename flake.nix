@@ -7,7 +7,7 @@
     # Services
 
     cardano-node = {
-      url = "github:intersectmbo/cardano-node/10.1.4";
+      url = "github:intersectmbo/cardano-node/10.3.1";
     };
     cardano-db-sync = {
       url = "github:intersectmbo/cardano-db-sync/13.6.0.1";
