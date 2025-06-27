@@ -140,14 +140,14 @@ in
         ...
       }:
       let
-        inherit (pkgs) stdenv mkdocs python312Packages;
+        inherit (pkgs) stdenv mkdocs python3Packages;
 
         my-mkdocs =
           pkgs.runCommand "my-mkdocs"
             {
               buildInputs = [
                 mkdocs
-                python312Packages.mkdocs-material
+                python3Packages.mkdocs-material
               ];
             }
             ''
