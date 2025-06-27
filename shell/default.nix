@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.devshell.flakeModule
-    inputs.pre-commit-hooks-nix.flakeModule
+    inputs.git-hooks-nix.flakeModule
   ];
 
   perSystem =
