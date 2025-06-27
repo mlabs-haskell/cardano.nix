@@ -9,7 +9,7 @@
     cardano-node = {
       url = "github:intersectmbo/cardano-node/10.4.1";
     };
-    # TODO remove this input once this PR is part of a release 
+    # TODO remove this input once this PR is part of a release
     # https://github.com/IntersectMBO/cardano-node/pull/6207
     cardano-node-nixos-module-fixed = {
       url = "github:intersectmbo/cardano-node/40192a627d56d4c467cd88c0ceac50e83cccb0a7";
