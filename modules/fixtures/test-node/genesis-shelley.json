@@ -10,7 +10,7 @@
   "maxKESEvolutions": 60,
   "maxLovelaceSupply": 2000000000000,
   "networkId": "Testnet",
-  "networkMagic": 42,
+  "networkMagic": 2,
   "protocolParams": {
     "a0": 0.0,
     "decentralisationParam": 0,

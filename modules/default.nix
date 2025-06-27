@@ -19,7 +19,7 @@
     };
     node = {
       imports = [
-        inputs.cardano-node.nixosModules.cardano-node
+        inputs.cardano-node-nixos-module-fixed.nixosModules.cardano-node
         ./node.nix
       ];
     };

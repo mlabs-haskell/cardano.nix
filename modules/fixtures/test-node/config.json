@@ -65,6 +65,7 @@
   "TraceTxInbound": false,
   "TraceTxOutbound": false,
   "TraceTxSubmissionProtocol": false,
+  "TraceOptions": {},
 
   "options": {
     "mapBackends": {

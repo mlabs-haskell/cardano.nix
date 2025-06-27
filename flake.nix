@@ -7,16 +7,21 @@
     # Services
 
     cardano-node = {
-      url = "github:intersectmbo/cardano-node/10.1.4";
+      url = "github:intersectmbo/cardano-node/10.4.1";
+    };
+    # TODO remove this input once this PR is part of a release
+    # https://github.com/IntersectMBO/cardano-node/pull/6207
+    cardano-node-nixos-module-fixed = {
+      url = "github:intersectmbo/cardano-node/40192a627d56d4c467cd88c0ceac50e83cccb0a7";
     };
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.6.0.1";
+      url = "github:intersectmbo/cardano-db-sync/13.6.0.2";
     };
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v3.1.0";
+      url = "github:blockfrost/blockfrost-backend-ryo/v4.1.2";
     };
     oura = {
-      url = "github:txpipe/oura/v1.9.2";
+      url = "github:txpipe/oura/v1.9.4";
       inputs.crane.follows = "crane";
     };
     crane = {
@@ -44,10 +49,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    pre-commit-hooks-nix = {
-      url = "github:cachix/pre-commit-hooks.nix";
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";

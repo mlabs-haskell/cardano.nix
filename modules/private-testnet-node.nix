@@ -139,10 +139,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Set the `cardano.network` option to `private` which has network magic 42.
+    # Set the `cardano.network` option to `preview` which has network magic 2.
     # In particular, this matches the `networkMagic` value in
     # `./fixtures/test-node/genesis-shelley.json`
-    cardano.network = lib.mkForce "private";
+    cardano.network = lib.mkForce "preview";
 
     # Create a directory of the test node's config files
     # We don't just link the Cardano node directly to the files in

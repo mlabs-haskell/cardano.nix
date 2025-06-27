@@ -33,7 +33,11 @@
         anchor = "services.cardano-node";
         modules = [
           config.flake.nixosModules.node
-          { services.cardano-node.environment = "mainnet"; }
+          {
+            # we need to set this value otherwise the evaluation fails
+            # it's not shown in the docs (we show only types, default values, descriptions, etc...)
+            services.cardano-node.environment = "mainnet";
+          }
         ];
         namespaces = [ "services.cardano-node" ];
       }
