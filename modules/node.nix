@@ -23,12 +23,6 @@ in
       default = "/run/cardano-node/node.socket";
     };
 
-    configPath = lib.mkOption {
-      description = "Path to cardano-node configuration.";
-      type = lib.types.path;
-      default = "/etc/cardano-node/config.json";
-    };
-
     copyCardanoNodeConfigToEtc = lib.mkOption {
       description = "If set to true, this will -- at Nix evaluation time -- copy the cardano node's config file to `/etc/cardano-node/config.json`";
       type = lib.types.bool;
