@@ -10,6 +10,7 @@
     cardano = {
       imports = [
         ./cardano.nix
+        ./providers.nix
       ];
     };
     cli = {

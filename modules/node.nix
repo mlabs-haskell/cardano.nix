@@ -111,5 +111,14 @@ in
         chmod g+rw ${cfg.socketPath}
       '';
     };
+
+    # Register as default node socket for others `cardano.nix` consumers
+    cardano.providers.node = {
+      active = true;
+      inherit (cfg) socketPath;
+      accessGroup = "cardano-node";
+      requires = "cardano-node-socket.service";
+      after = "cardano-node-socket.service";
+    };
   };
 }
