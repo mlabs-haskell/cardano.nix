@@ -31,7 +31,7 @@ in
           type = "N2C";
           address = [
             "Unix"
-            config.cardano.node.socketPath
+            config.cardano.providers.node.socketPath
           ];
           magic = config.cardano.network;
         };
@@ -39,9 +39,9 @@ in
       };
     };
 
-    systemd.services.oura = lib.mkIf (config.cardano.node.enable or false) {
-      after = [ "cardano-node-socket.service" ];
-      requires = [ "cardano-node-socket.service" ];
+    systemd.services.oura = lib.mkIf config.cardano.providers.node.active {
+      after = [ config.cardano.providers.node.after ];
+      requires = [ config.cardano.providers.node.requires ];
     };
   };
 }
