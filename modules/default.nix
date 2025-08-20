@@ -73,6 +73,12 @@
         ./monitoring.nix
       ];
     };
+    demeter-run = {
+      imports = [
+        ./demeter-run.nix
+        ./services/demeter-run.nix
+      ];
+    };
     # the default module imports all modules
     default = {
       imports = [
