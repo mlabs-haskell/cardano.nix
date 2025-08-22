@@ -42,7 +42,7 @@ in
 
     # Register as cardano-node socket provider
     cardano.providers.node = {
-      inherit (dmtr_cfg) socketPath;
+      socketPath = dmtr_cfg.socket;
       accessGroup = dmtr_cfg.group;
       requires = "demeter-run.service";
       after = "demeter-run.service";
