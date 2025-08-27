@@ -22,5 +22,13 @@ in
       after = [ "cardano-node-socket.service" ];
       requires = [ "cardano-node-socket.service" ];
     };
+
+    # Register as default Ogmios provider for others `cardano.nix` consumers
+    cardano.providers.ogmios = {
+      active = true;
+      inherit (config.service.ogmios) host port;
+      after = "ogmios.service";
+      requires = "ogmios.service";
+    };
   };
 }

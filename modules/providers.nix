@@ -52,6 +52,22 @@ let
       '';
     };
   };
+  tcpOptions = name: {
+    host = mkOption {
+      type = types.str;
+      internal = true;
+      description = ''
+        Host address for TCP connection to ${name}, to refer by consumers.
+      '';
+    };
+    port = mkOption {
+      type = types.port;
+      internal = true;
+      description = ''
+        Port address for TCP connection to ${name}, to refer by consumers.
+      '';
+    };
+  };
 in
 {
   options.cardano.providers = mkOption {
@@ -60,6 +76,8 @@ in
     type = types.submodule {
       options = {
         node = sharedOptions // socketOptions "cardano node";
+        ogmios = sharedOptions // tcpOptions "Ogmios";
+        kupo = sharedOptions // tcpOptions "Kupo";
       };
     };
   };
