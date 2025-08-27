@@ -24,5 +24,13 @@ in
       after = lib.optional (config.cardano.node.enable or false) "cardano-node-socket.service" ++ lib.optional (config.cardano.ogmios.enable or false) "ogmios.service";
       requires = lib.optional (config.cardano.node.enable or false) "cardano-node-socket.service" ++ lib.optional (config.cardano.ogmios.enable or false) "ogmios.service";
     };
+
+    # Register as default Kupo provider for others `cardano.nix` consumers
+    cardano.providers.kupo = {
+      active = true;
+      inherit (config.service.kupo) host port;
+      after = "kupo.service";
+      requires = "kupo.service";
+    };
   };
 }
