@@ -21,13 +21,6 @@ let
         Mark service provider as active
       '';
     };
-    accessGroup = mkOption {
-      type = types.str;
-      internal = true;
-      description = ''
-        Group to access service provider
-      '';
-    };
     requires = mkOption {
       type = types.str;
       internal = true;
@@ -43,15 +36,30 @@ let
       '';
     };
   };
+  socketOptions = name: {
+    accessGroup = mkOption {
+      type = types.str;
+      internal = true;
+      description = ''
+        Group to access ${name} service provider
+      '';
+    };
+    socketPath = mkOption {
+      type = types.path;
+      internal = true;
+      description = ''
+        Path to ${name} socket path, to refer by consumers
+      '';
+    };
+  };
 in
 {
-  options.cardano.providers = {
-    node = sharedOptions // {
-      socketPath = mkOption {
-        type = types.path;
-        description = ''
-          Cardano node socket path, to refer by consumers
-        '';
+  options.cardano.providers = mkOption {
+    description = "Abstraction layer to plug in different providers of cardano-node/ogmios/kupo/etc";
+    internal = true;
+    type = types.submodule {
+      options = {
+        node = sharedOptions // socketOptions "cardano node";
       };
     };
   };
