@@ -46,7 +46,7 @@ in
       services.cardano-db-sync = {
         enable = true;
         environment = config.services.cardano-node.environments.${config.cardano.network};
-        inherit (config.cardano.node) socketPath;
+        inherit (config.cardano.providers.node) socketPath;
         postgres = {
           user = "cardano-db-sync";
           # use first socket from postgresql settings or default to /run/postgresql
@@ -59,6 +59,8 @@ in
       systemd.services.cardano-db-sync = {
         serviceConfig = {
           User = "cardano-db-sync";
+          # Default db-sync service hardcode "cardano-node"
+          SupplementaryGroups = config.cardano.providers.node.accessGroup;
           # Security
           UMask = "0077";
           CapabilityBoundingSet = "";
@@ -90,10 +92,10 @@ in
         };
       };
     })
-    (mkIf (cfg.enable && config.cardano.node.enable or false) {
+    (mkIf (cfg.enable && config.cardano.providers.node.active) {
       systemd.services.cardano-db-sync = {
-        after = [ "cardano-node-socket.service" ];
-        requires = [ "cardano-node-socket.service" ];
+        after = [ config.cardano.providers.node.after ];
+        requires = [ config.cardano.providers.node.requires ];
       };
     })
     (mkIf (cfg.enable && cfg.postgres.enable) {
