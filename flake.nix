@@ -24,6 +24,10 @@
       url = "github:txpipe/oura/v1.9.4";
       inputs.crane.follows = "crane";
     };
+    demeter-run-cli = {
+      url = "github:demeter-run/cli";
+      flake = false;
+    };
     crane = {
       url = "github:ipetkov/crane";
     };
