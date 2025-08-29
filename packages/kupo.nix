@@ -1,6 +1,6 @@
 let
   truncateVersion = version: builtins.head (builtins.match "v?([0-9]+\\.[0-9]+).*" version);
-  mkUrl = system: version: "https://github.com/CardanoSolutions/kupo/releases/download/v${truncateVersion version}/kupo-${version}-${system}.zip";
+  mkUrl = system: version: "https://github.com/CardanoSolutions/kupo/releases/download/v${truncateVersion version}/kupo-v${version}-${system}.zip";
   mkPackage =
     pkgs: version: hash:
     pkgs.fetchzip {
@@ -19,6 +19,6 @@ in
   perSystem =
     { pkgs, ... }:
     {
-      packages.kupo = mkPackage pkgs "2.9.0" "sha256-sEfaFPph1qBuPrxQzFeTKU/9i9w0KF/v7GpxxmorPWQ=";
+      packages.kupo = mkPackage pkgs "2.11.0" "sha256-kOYenPdLEYwub4obEsgMEkytZQN/9CF64pfeS1Jr5QY=";
     };
 }
