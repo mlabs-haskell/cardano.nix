@@ -77,10 +77,10 @@ in
     };
 
     directory = mkOption {
-      type = path;
-      default = "${self}/docs";
+      type = str;
+      default = "docs";
       description = ''
-        Directorying containing the documentation
+        Directory containing the documentation, relative to the project's root
       '';
     };
 
@@ -268,7 +268,9 @@ in
         [
           {
             packages.${cfg.packageName} = stdenv.mkDerivation {
-              src = cfg.directory;
+              src = self.outPath;
+              sourceRoot = cfg.directory;
+
               inherit (cfg) name;
 
               nativeBuildInputs = [ my-mkdocs ];
