@@ -564,6 +564,22 @@
         "type": "github"
       }
     },
+    "demeter-run-cli": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740775656,
+        "narHash": "sha256-bCyNwn+nmU/wtWvwLig/uFmKlGkjIcpJJgetZJGn3hk=",
+        "owner": "demeter-run",
+        "repo": "cli",
+        "rev": "1b9ef1c4b864dcb22c37b07e9162736b920553eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "demeter-run",
+        "repo": "cli",
+        "type": "github"
+      }
+    },
     "devour-flake": {
       "flake": false,
       "locked": {
@@ -2775,6 +2791,7 @@
         "cardano-node": "cardano-node",
         "cardano-node-nixos-module-fixed": "cardano-node-nixos-module-fixed",
         "crane": "crane",
+        "demeter-run-cli": "demeter-run-cli",
         "devour-flake": "devour-flake",
         "devshell": "devshell",
         "flake-parts": "flake-parts",
