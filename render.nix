@@ -209,7 +209,11 @@ in
                     evaluated = lib.evalModules {
                       modules = modules ++ [
                         {
-                          imports = builtins.import "${inputs.nixpkgs}/nixos/modules/module-list.nix";
+                          # We need standard NixOS modules _plus_ `cardano.providers` inside context of evaluation, because lof of modules
+                          # refers to them in `default` statement.
+                          # Also we couldn't use `builtins.import`, because it raise a conflict in option definitions,
+                          # so use nested module with `imports = []` statement.
+                          imports = builtins.import "${inputs.nixpkgs}/nixos/modules/module-list.nix" ++ [ { imports = [ ../modules/providers.nix ]; } ];
                           nixpkgs.system = system;
                         }
                       ];
