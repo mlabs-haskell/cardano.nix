@@ -77,3 +77,14 @@ git pull origin main
 git tag v1.1.0
 git push origin v1.1.0
 ```
+
+### 5. Create GitHub Release
+
+Create the GitHub release using the CLI:
+
+```bash
+# Create release from tag with changelog
+gh release create v1.1.0 --title "Release v1.1.0" --notes-from-tag
+```
+
+Alternatively, you can create the release manually at https://github.com/mlabs-haskell/cardano.nix/releases/new and select the tag you just created.
