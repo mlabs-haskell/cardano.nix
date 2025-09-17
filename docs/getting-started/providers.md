@@ -14,28 +14,28 @@ The module ensures that shared options and access rules are consistent across al
 
 This design has several advantages:
 
-- Flexibility – a consumer does not need to know whether the node is provided locally or remotely.
-- Transparency – switching between a local cardano-node and a remote tunnel (e.g. from Demeter run) requires no changes on the consumer side.
-- Reusability – common configuration options are centralized and can be shared across different providers.
-- Consistency – consumers operate against a unified contract, regardless of the actual implementation.
+- **Flexibility** – a consumer does not need to know whether the node is provided locally or remotely.
+- **Transparency** – switching between a local `cardano-node` and a remote tunnel (e.g., from Demeter) requires no changes on the consumer side.
+- **Reusability** – common configuration options are centralized and can be shared across different providers.
+- **Consistency** – consumers operate against a unified contract, regardless of the actual implementation.
 
 ### Contract and Visibility
 
-Options under `cardano.provider.*` should be set only in respective provider implementation,
-and only referred in other services..
+Options under `cardano.provider.*` should be set only in respective provider implementations,
+and only referenced in other services.
 
-If service provider is enabled, it must set `cardano.provider.$servicename.active = true`.
-Consumers could check `cardano.provider.$servicename.active` for service presense and use provider values without additional check.
+If a service provider is enabled, it must set `cardano.provider.$servicename.active = true`.
+Consumers can check `cardano.provider.$servicename.active` for service presence and use provider values without additional checks.
 
 ### Service Integration Guidelines
 
-All new services added under cardano.nix must integrate exclusively through the provider interface:
+All new services added under `cardano.nix` must integrate exclusively through the provider interface:
 
-Services must use cardano.providers.node.socketPath to locate the node socket.
+- Services must use `cardano.providers.node.socketPath` to locate the node socket.
 
-Services must respect cardano.providers.node.accessGroup for Unix group–based permissions.
+- Services must respect `cardano.providers.node.accessGroup` for Unix group-based permissions.
 
-Direct references to a particular cardano-node systemd unit or its implementation details are forbidden.
+- Direct references to a particular `cardano-node` systemd unit or its implementation details are forbidden.
 
-This rule applies not only to Cardano consumers like cardano-cli or monitoring tools, but also to middleware services such as Ogmios, Kupo, and others.
+This rule applies not only to Cardano consumers like `cardano-cli` or monitoring tools, but also to middleware services such as Ogmios, Kupo, and others.
 The goal is to guarantee that any consumer can transparently switch between different backends (local node, remote tunnel, etc.) without reconfiguration.
