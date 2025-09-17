@@ -25,6 +25,7 @@
           statix
           config.treefmt.build.wrapper
           reuse
+          git-cliff
         ];
         commands = [
           {
