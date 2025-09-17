@@ -649,6 +649,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-create-github-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Create GitHub Release
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1226,6 +1235,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-create-github-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Create GitHub Release
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1339,6 +1357,13 @@
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>git<span class="w"> </span>tag<span class="w"> </span>v1.1.0
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.1.0
 </span></code></pre></div></td></tr></table></div>
+<h3 id="5-create-github-release">5. Create GitHub Release</h3>
+<p>Create the GitHub release using the CLI:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># Create release from tag with changelog</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>gh<span class="w"> </span>release<span class="w"> </span>create<span class="w"> </span>v1.1.0<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Release v1.1.0&quot;</span><span class="w"> </span>--notes-from-tag
+</span></code></pre></div></td></tr></table></div>
+<p>Alternatively, you can create the release manually at https://github.com/mlabs-haskell/cardano.nix/releases/new and select the tag you just created.</p>
 
 
 
