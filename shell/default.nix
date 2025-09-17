@@ -17,14 +17,15 @@
           name = "cardano.nix";
           motd = ''
             ❄️ Welcome to the {14}{bold}cardano.nix{reset} devshell ❄️
-            $(type -p menu &>/dev/null && menu)
-            $(type -p update-pre-commit-hooks &>/dev/null && update-pre-commit-hooks)
+            $(menu)
+            $(${config.pre-commit.installationScript})
           '';
         };
         packages = with pkgs; [
           statix
           config.treefmt.build.wrapper
           reuse
+          git-cliff
         ];
         commands = [
           {
