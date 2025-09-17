@@ -1,0 +1,22 @@
+version = 1
+SPDX-PackageName = "cardano.nix"
+SPDX-PackageSupplier = "<legal@mlabs.city>"
+SPDX-PackageDownloadLocation = "https://github.com/mlabs-haskell/cardano.nix"
+
+[[annotations]]
+path = ["**.lock", "**.nix", "**.md", "**.css", "**.toml", "docs/mkdocs.yml", ".envrc", ".gitignore", "**/.gitignore", "modules/dashboards/**.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "© 2023 MLabs LTD <legal@mlabs.city>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["docs/assets/favicon.png", "docs/assets/logo.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "© 2023 MLabs LTD <legal@mlabs.city>"
+SPDX-License-Identifier = "LicenseRef-MLabs"
+
+[[annotations]]
+path = "modules/fixtures/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "© 2023 MLabs LTD <legal@mlabs.city>"
+SPDX-License-Identifier = "LicenseRef-MLabs"
