@@ -1,4 +1,3 @@
-
 [changelog]
 header = """
 # Changelog
@@ -17,7 +16,7 @@ body = """
     ## {{ group | title }}
     {% for commit in commits %}
         - {% if commit.scope %}{{ commit.scope }}: {% endif %}{{ commit.message | split(pat="\n") | first | trim }} 
-          ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/mlabs-haskell/cardano-nix/commit/{{ commit.id }})) - {{ commit.author.name }} ({{ commit.author.timestamp | date(format="%Y-%m-%d") }})
+          ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/mlabs-haskell/cardano.nix/commit/{{ commit.id }})) - {{ commit.author.name }} ({{ commit.author.timestamp | date(format="%Y-%m-%d") }})
     {% endfor %}
 {% endfor %}
 """
