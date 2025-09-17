@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2025-09-17
+
+### Features
+
+- Add experimental indirection layer for node socketPath
+  ([8ee8252](https://github.com/mlabs-haskell/cardano.nix/commit/8ee825291efccbbe313383044d25fff612d42519))
+
+- Add demeter-run-cli package
+  ([f7010af](https://github.com/mlabs-haskell/cardano.nix/commit/f7010afbf6716cee5fce217e4516714dd7e04f9e))
+
+### Bug Fixes
+
+- Fix documentation rendering and changelog generation
+  ([0c1c75a](https://github.com/mlabs-haskell/cardano.nix/commit/0c1c75a2010fba0b9b8a681da56262caade7cc2c))
+
+### Improvements
+
+- Refactor services to use new provider system for Ogmios, Kupo and db-sync
+  ([cf0618a](https://github.com/mlabs-haskell/cardano.nix/commit/cf0618a275d91d4afa049e52ba260346abc4c599))
+
+- Migrate to REUSE.toml for license management
+  ([cf9553d](https://github.com/mlabs-haskell/cardano.nix/commit/cf9553d227fc003709ae635ad2292d16db411844))
+
+- Add changelog to website documentation
+  ([f79c503](https://github.com/mlabs-haskell/cardano.nix/commit/f79c503014ff0c47221f3917991903b508121a66))
+
 ## [1.0.0] - 2025-08-29
 
 ### Initial Release
