@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/development/contributing/">
+        <link rel="canonical" href="https://github.com/mlabs-haskell/cardano.nix/development/release/">
       
       
-        <link rel="prev" href="../develop/">
+        <link rel="prev" href="../contributing/">
       
       
-        <link rel="next" href="../release/">
+        <link rel="next" href="../../license/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Contributing - cardano.nix</title>
+        <title>Release Management Guide - cardano.nix</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reporting-issues" class="md-skip">
+        <a href="#release-management-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Release Management Guide
             
           </span>
         </div>
@@ -513,6 +513,28 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -522,12 +544,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Contributing
+    Release Management Guide
     
   </span>
   
@@ -539,7 +563,7 @@
         
   
   <span class="md-ellipsis">
-    Contributing
+    Release Management Guide
     
   </span>
   
@@ -552,6 +576,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -560,38 +586,71 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reporting-issues" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Reporting issues
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#proposing-features" class="md-nav__link">
+  <a href="#system-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Proposing features
+      System Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#code-style-guidelines" class="md-nav__link">
+  <a href="#release-process" class="md-nav__link">
     <span class="md-ellipsis">
-      Code style guidelines
+      Release Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-determine-next-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Determine Next Version
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#checks" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-generate-and-review-changelog" class="md-nav__link">
     <span class="md-ellipsis">
-      Checks
+      2. Generate and Review Changelog
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-release-branch-and-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create Release Branch and Pull Request
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-and-push-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create and Push Tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -599,28 +658,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../release/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Release Management Guide
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1116,6 +1153,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1124,38 +1163,71 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reporting-issues" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Reporting issues
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#proposing-features" class="md-nav__link">
+  <a href="#system-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Proposing features
+      System Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#code-style-guidelines" class="md-nav__link">
+  <a href="#release-process" class="md-nav__link">
     <span class="md-ellipsis">
-      Code style guidelines
+      Release Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Release Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-determine-next-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Determine Next Version
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#checks" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-generate-and-review-changelog" class="md-nav__link">
     <span class="md-ellipsis">
-      Checks
+      2. Generate and Review Changelog
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-release-branch-and-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Create Release Branch and Pull Request
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-and-push-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create and Push Tag
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1175,7 +1247,7 @@
 
 
   
-    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/development/contributing.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/edit/main/docs/development/release.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1184,36 +1256,89 @@
     
       
     
-    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/development/contributing.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/mlabs-haskell/cardano.nix/raw/main/docs/development/release.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-  <h1>Contributing</h1>
-
-<p>There are several ways you can contribute.</p>
-<h2 id="reporting-issues">Reporting issues</h2>
+<h1 id="release-management-guide">Release Management Guide</h1>
+<p>This guide describes the process for creating new releases of the <code>cardano.nix</code> project.</p>
+<p><strong>Note</strong>: This process applies to releases v1.0.0 and later. Prior to v1.0.0, the project did not follow semantic versioning, maintain a changelog, or use conventional commits.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting, ensure you have:</p>
 <ul>
-<li>Search the issue tracker before creating a new issue</li>
-<li>Provide detailed steps to reproduce the issue</li>
-<li>Include as much information as possible</li>
+<li>Write access to the repository</li>
+<li><code>git-cliff</code> installed (automatically available in the project's dev shell)</li>
+<li>Knowledge of <a href="https://www.conventionalcommits.org/">Conventional Commits</a></li>
 </ul>
-<h2 id="proposing-features">Proposing features</h2>
+<h2 id="system-overview">System Overview</h2>
+<p>The project uses:</p>
 <ul>
-<li>Use the issue tracker to propose new features</li>
-<li>Feel free to also propose a PR implementing it</li>
+<li><strong>Semantic Versioning</strong> (SemVer) for versioning</li>
+<li><strong>git-cliff</strong> for automatic changelog generation</li>
+<li><strong>Conventional Commits</strong> to automatically categorize changes</li>
+<li>Git tags in the format <code>v[0-9]*</code> (e.g., <code>v1.0.0</code>, <code>v1.1.0</code>)</li>
 </ul>
-<h2 id="code-style-guidelines">Code style guidelines</h2>
+<h2 id="release-process">Release Process</h2>
+<h3 id="1-determine-next-version">1. Determine Next Version</h3>
+<p>Based on commits using SemVer:</p>
 <ul>
-<li>Format everything with <code>nix fmt .</code></li>
+<li><strong>MAJOR</strong> (x.0.0): Breaking changes</li>
+<li><strong>MINOR</strong> (x.y.0): New backward-compatible features</li>
+<li><strong>PATCH</strong> (x.y.z): Backward-compatible bug fixes</li>
 </ul>
-<h2 id="checks">Checks</h2>
+<h3 id="2-generate-and-review-changelog">2. Generate and Review Changelog</h3>
+<p>Generate the changelog for the new version:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># Generate changelog for the next version (example: v1.1.0)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>git-cliff<span class="w"> </span>--unreleased<span class="w"> </span>-t<span class="w"> </span>v1.1.0<span class="w"> </span>--prepend<span class="w"> </span>CHANGELOG.md
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Important</strong>: Review the generated changelog and:</p>
 <ul>
-<li>You can verify that all checks pass with <code>nix flake check</code></li>
+<li>Remove any development-only commits (typo fixes, formatting, internal refactoring)</li>
+<li>Delete changes that are not significant enough for a changelog</li>
+<li>Merge related changes into a single entry when appropriate</li>
+<li>Fix any formatting issues</li>
+<li>Start the documentation site with <code>nix run .#docs.serve</code> to preview the rendering</li>
 </ul>
-<p>Thank you for contributing to <code>cardano.nix</code>! Your help is greatly appreciated 😊</p>
+<h3 id="3-create-release-branch-and-pull-request">3. Create Release Branch and Pull Request</h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span>
+<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Create and switch to release branch</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>release/v1.1.0
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Commit the updated changelog</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>git<span class="w"> </span>add<span class="w"> </span>CHANGELOG.md
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: update changelog for v1.1.0&quot;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="c1"># Push release branch</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>release/v1.1.0
+</span></code></pre></div></td></tr></table></div>
+<p>Create a pull request for the release branch and merge it using "Rebase and merge" to keep a clean history.</p>
+<h3 id="4-create-and-push-tag">4. Create and Push Tag</h3>
+<p>After the PR is merged:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Switch back to main and pull latest</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># Create and push the tag</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>git<span class="w"> </span>tag<span class="w"> </span>v1.1.0
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.1.0
+</span></code></pre></div></td></tr></table></div>
 
 
 
