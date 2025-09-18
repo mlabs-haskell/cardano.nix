@@ -18,6 +18,6 @@ in
   perSystem =
     { pkgs, ... }:
     {
-      packages.ogmios = mkPackage pkgs "6.8.0" "sha256-PM3tB6YdFsXRxGptDuxOvLke0m/08ySy4oV1WfIu//g=";
+      packages.ogmios = mkPackage pkgs "6.13.0" "sha256-b8EscEAsyBkC4PHu+XLtO4sT8WlbWfjfhu/HnOsOQ3E=";
     };
 }
