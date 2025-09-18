@@ -7,7 +7,7 @@
     # Services
 
     cardano-node = {
-      url = "github:intersectmbo/cardano-node/10.4.1";
+      url = "github:intersectmbo/cardano-node/10.5.1";
     };
     # TODO remove this input once this PR is part of a release
     # https://github.com/IntersectMBO/cardano-node/pull/6207
@@ -15,7 +15,7 @@
       url = "github:intersectmbo/cardano-node/40192a627d56d4c467cd88c0ceac50e83cccb0a7";
     };
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.6.0.2";
+      url = "github:intersectmbo/cardano-db-sync/13.6.0.5";
     };
     blockfrost = {
       url = "github:blockfrost/blockfrost-backend-ryo/v4.1.2";
