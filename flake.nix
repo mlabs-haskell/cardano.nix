@@ -99,17 +99,8 @@
         ./shell
         ./tests
         ./packages
+        ./templates
       ];
-      flake.templates = {
-        default = {
-          path = ./templates/default;
-          description = "Example flake using cardano.nix";
-        };
-        cluster = {
-          path = ./templates/cluster;
-          description = "Example flake for deploying a cardano.nix cluster with multiple nodes, load balancer and monitoring";
-        };
-      };
       systems = [ "x86_64-linux" ];
     };
 }
