@@ -20,7 +20,7 @@
     };
     node = {
       imports = [
-        inputs.cardano-node-nixos-module-fixed.nixosModules.cardano-node
+        inputs.cardano-node.nixosModules.cardano-node
         ./node.nix
       ];
     };
@@ -85,7 +85,8 @@
         {
           nixpkgs.overlays = [ config.flake.overlays.default ];
         }
-      ] ++ (with builtins; attrValues (removeAttrs config.flake.nixosModules [ "default" ]));
+      ]
+      ++ (with builtins; attrValues (removeAttrs config.flake.nixosModules [ "default" ]));
     };
   };
 }
