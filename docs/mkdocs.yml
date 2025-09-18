@@ -65,6 +65,7 @@ nav:
       - Deploy: getting-started/deploy.md
       - Load Balancer: getting-started/load-balancer.md
       - Deploy to Cloud: getting-started/cloud.md
+      - Providers: getting-started/providers.md
   - Development:
       - development/develop.md
       - development/contributing.md
