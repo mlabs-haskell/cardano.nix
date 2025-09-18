@@ -15,7 +15,7 @@
       url = "github:intersectmbo/cardano-node/40192a627d56d4c467cd88c0ceac50e83cccb0a7";
     };
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.6.0.2";
+      url = "github:intersectmbo/cardano-db-sync/13.6.0.5";
     };
     blockfrost = {
       url = "github:blockfrost/blockfrost-backend-ryo/v4.1.2";

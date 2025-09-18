@@ -3,11 +3,11 @@
     "CHaP": {
       "flake": false,
       "locked": {
-        "lastModified": 1730824761,
-        "narHash": "sha256-Kv99PeYWdqmj5OStnp6kE6fjHbx6irTYyEPoFuukfHU=",
+        "lastModified": 1732742574,
+        "narHash": "sha256-XUhDWQeChjNPcYluz8sCbs5vW+3jEYysxEhpKdFXbt0=",
         "owner": "IntersectMBO",
         "repo": "cardano-haskell-packages",
-        "rev": "d3d36220528058f9a24cff43fc723e60f6a786ad",
+        "rev": "375a4694472aa362b7abba0e8b7f3de787e90c91",
         "type": "github"
       },
       "original": {
@@ -386,19 +386,20 @@
           "haskellNix",
           "nixpkgs-unstable"
         ],
+        "nixpkgsUpstream": "nixpkgsUpstream",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1732233848,
-        "narHash": "sha256-UU42L0i8LW9BzhsNJTlWwKdH0nIzbYlOjDmr893RcHo=",
+        "lastModified": 1742316958,
+        "narHash": "sha256-8dADl0Y5mu8rHGADDC56KYV/kQlDFITTpgRiSTHwUc8=",
         "owner": "intersectmbo",
         "repo": "cardano-db-sync",
-        "rev": "944e53232ad5f5f87ed97634d2e4e08496db7a1c",
+        "rev": "cb61094c82254464fc9de777225e04d154d9c782",
         "type": "github"
       },
       "original": {
         "owner": "intersectmbo",
-        "ref": "13.6.0.2",
+        "ref": "13.6.0.5",
         "repo": "cardano-db-sync",
         "type": "github"
       }
@@ -2644,6 +2645,22 @@
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "47585496bcb13fb72e4a90daeea2f434e2501998",
+        "type": "github"
+      }
+    },
+    "nixpkgsUpstream": {
+      "locked": {
+        "lastModified": 1737942377,
+        "narHash": "sha256-8Eo/jRAgT3CbAloyqOj6uPN1EqBvLI/Tv2g+RxHjkhU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "88a55dffa4d44d294c74c298daf75824dc0aafb5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
