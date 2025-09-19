@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.0] - 2025-09-19
+
+### Features
+
+- Update cardano-db-sync from 13.6.0.2 to 13.6.0.5
+  ([182c65e](https://github.com/mlabs-haskell/cardano.nix/commit/182c65edc8f2ebd8195d1723ab851e3a9c68a7bd))
+
+- Update ogmios from 6.8.0 to 6.13.0
+  ([0a2658a](https://github.com/mlabs-haskell/cardano.nix/commit/0a2658a829ea390a42fd86b010f778b2d6620ede))
+
+- Update cardano-node from 10.4.1 to 10.5.1
+  ([ad56d64](https://github.com/mlabs-haskell/cardano.nix/commit/ad56d644ea0273965483c605d91c2e8ad98bd19f))
+
+### Bug Fixes
+
+- Use PraosMode as default consensus mode for cardano-node
+  ([1ee34ff](https://github.com/mlabs-haskell/cardano.nix/commit/1ee34ff79eac80570851a0f4fb31724d9a7c93f0))
+
+### Documentation
+
+- Add release management guide
+  ([0b5f9c1](https://github.com/mlabs-haskell/cardano.nix/commit/0b5f9c12280139be9db5d9a17c83d460a4e1591c))
+
+### Improvements
+
+- Move flake-parts definition to templates
+  ([4c12871](https://github.com/mlabs-haskell/cardano.nix/commit/4c128713668c8c9e409529425f4e909cd8e6e854))
+
+- Format code using latest nixfmt
+  ([b2bfa00](https://github.com/mlabs-haskell/cardano.nix/commit/b2bfa007e905dbb749ec794e80d1578d49b40f09))
+
+- Update flake inputs and reduce transitive dependencies
+  ([3c73703](https://github.com/mlabs-haskell/cardano.nix/commit/3c737030879adec3e3bf452d7bd7432a885a5c49))
+
 ## [1.1.0] - 2025-09-17
 
 ### Features
