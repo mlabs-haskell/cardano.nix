@@ -77,12 +77,17 @@ in
       inherit (cfg) socketPath;
       environment = config.cardano.network;
 
-      extraNodeConfig = lib.mkIf cfg.prometheusExporter.enable {
-        hasPrometheus = [
-          "0.0.0.0"
-          config.cardano.node.prometheusExporter.port
-        ];
-      };
+      extraNodeConfig = lib.mkMerge [
+        # Use PraosMode by default instead of GenesisMode for better peer connectivity
+        (lib.mkDefault { ConsensusMode = "PraosMode"; })
+
+        (lib.mkIf cfg.prometheusExporter.enable {
+          hasPrometheus = [
+            "0.0.0.0"
+            config.cardano.node.prometheusExporter.port
+          ];
+        })
+      ];
 
       # Listen on all interfaces.
       hostAddr = lib.mkDefault "0.0.0.0";
