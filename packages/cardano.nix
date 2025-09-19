@@ -1,10 +1,9 @@
-{ inputs, ... }:
 {
   perSystem =
-    { system, ... }:
+    { inputs', ... }:
     {
       packages = {
-        inherit (inputs.cardano-node.packages.${system}) cardano-cli cardano-node;
+        inherit (inputs'.cardano-node.packages) cardano-cli cardano-node;
       };
     };
 }

@@ -121,11 +121,12 @@ in
       };
 
       config = {
-        checks = mapAttrs' (name: test: nameValuePair "vmTests-${test.name}" test.check) (lib.filterAttrs (_: v: lib.elem system v.systems && !v.impure) cfg.tests);
+        checks = mapAttrs' (_name: test: nameValuePair "vmTests-${test.name}" test.check) (lib.filterAttrs (_: v: lib.elem system v.systems && !v.impure) cfg.tests);
 
         apps = {
           run-vm-tests.program = lib.getExe cfg.runVmTestScript;
-        } // mapAttrs' (name: test: nameValuePair "vmTests-${test.name}" { program = "${test.check.driver}/bin/nixos-test-driver"; }) (lib.filterAttrs (_: v: lib.elem system v.systems) cfg.tests);
+        }
+        // mapAttrs' (_name: test: nameValuePair "vmTests-${test.name}" { program = "${test.check.driver}/bin/nixos-test-driver"; }) (lib.filterAttrs (_: v: lib.elem system v.systems) cfg.tests);
 
         devshells.default.commands = [
           {
@@ -138,5 +139,5 @@ in
       };
     };
 
-  herculesCI.onPush.default.outputs.effects = mapAttrs' (name: test: nameValuePair "vmTests-${test.name}" test.effect) (lib.filterAttrs (_: v: lib.elem config.defaultEffectSystem v.systems && v.impure) (config.perSystem config.defaultEffectSystem).vmTests.tests);
+  herculesCI.onPush.default.outputs.effects = mapAttrs' (_name: test: nameValuePair "vmTests-${test.name}" test.effect) (lib.filterAttrs (_: v: lib.elem config.defaultEffectSystem v.systems && v.impure) (config.perSystem config.defaultEffectSystem).vmTests.tests);
 }
