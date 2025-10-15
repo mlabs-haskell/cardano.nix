@@ -68,6 +68,10 @@ in
       '';
     };
 
+    updateSystemStartTime = lib.mkEnableOption "update the system start time in Shelley and Byron genesis files" // {
+      default = true;
+    };
+
     # The following options are the genesis files for specific eras
     genesisAlonzo = lib.mkOption {
       internal = true;
@@ -180,21 +184,31 @@ in
         install -o cardano-node -g cardano-node -m 600 ${cfg.operationalCertificate} "$CONFIGURATION_DIRECTORY/opcert.cert"
         install -o cardano-node -g cardano-node -m 600 ${cfg.signingKey} "$CONFIGURATION_DIRECTORY/byron-delegate.key"
         install -o cardano-node -g cardano-node -m 600 ${cfg.topology} "$CONFIGURATION_DIRECTORY/topology.json"
+      ''
+      + (
+        if cfg.updateSystemStartTime then
+          ''
+            # Copy the configuration files that require additional initialization
+            # on boot
+            START_TIME="$(date -u)"
 
-        # Copy the configuration files that require additional initialization
-        # on boot
-        START_TIME="$(date -u)"
+            jq '.startTime |= $start_time' \
+              --argjson start_time "$(date -d "$START_TIME" +%s)" \
+              < ${cfg.genesisByron} \
+              > "$CONFIGURATION_DIRECTORY/genesis-byron.json"
 
-        jq '.startTime |= $start_time' \
-          --argjson start_time "$(date -d "$START_TIME" +%s)" \
-          < ${cfg.genesisByron} \
-          > "$CONFIGURATION_DIRECTORY/genesis-byron.json"
-
-        jq '.systemStart |= $start_time' \
-          --arg start_time "$(date -d "$START_TIME" -u +%FT%TZ)" \
-          < ${cfg.genesisShelley} \
-          > "$CONFIGURATION_DIRECTORY/genesis-shelley.json"
-
+            jq '.systemStart |= $start_time' \
+              --arg start_time "$(date -d "$START_TIME" -u +%FT%TZ)" \
+              < ${cfg.genesisShelley} \
+              > "$CONFIGURATION_DIRECTORY/genesis-shelley.json"
+          ''
+        else
+          ''
+            install -o cardano-node -g cardano-node -m 600 ${cfg.genesisByron} "$CONFIGURATION_DIRECTORY/genesis-byron.json"
+            install -o cardano-node -g cardano-node -m 600 ${cfg.genesisShelley} "$CONFIGURATION_DIRECTORY/genesis-shelley.json"
+          ''
+      )
+      + ''
         touch "$CONFIGURATION_DIRECTORY/done"
       '';
     };
