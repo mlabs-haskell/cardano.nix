@@ -1806,24 +1806,25 @@
     },
     "oura": {
       "inputs": {
-        "crane": [
-          "crane_"
-        ],
-        "utils": [
+        "flake-utils": [
           "flake-utils_"
-        ]
+        ],
+        "nixpkgs": [
+          "nixpkgs_"
+        ],
+        "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1750697545,
-        "narHash": "sha256-M41AcSWxY9tQLkY8+aFo3xvjVo9YaKdnkHhXcc0BqU0=",
+        "lastModified": 1759168425,
+        "narHash": "sha256-E7arNlvEjZo9rev+i/FOiMMxFqqbPUe/4+hBwOxoo2c=",
         "owner": "txpipe",
         "repo": "oura",
-        "rev": "0ea451908aa02e15443d8e40b956094bd0fa22b0",
+        "rev": "382ba23cee4faa1f77e4e64b1c33bc6bf4d48885",
         "type": "github"
       },
       "original": {
         "owner": "txpipe",
-        "ref": "v1.9.4",
+        "ref": "v2.0.0",
         "repo": "oura",
         "type": "github"
       }

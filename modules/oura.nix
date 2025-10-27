@@ -29,11 +29,11 @@ in
       settings = {
         source = lib.mkIf cfg.integrate {
           type = "N2C";
-          address = [
-            "Unix"
-            config.cardano.providers.node.socketPath
-          ];
-          magic = config.cardano.network;
+          socket_path = config.cardano.providers.node.socketPath;
+        };
+        chain = lib.mkIf cfg.integrate {
+          type = config.cardano.network;
+          magic = config.cardano.networkNumber;
         };
         metrics.address = lib.mkIf cfg.prometheusExporter.enable "0.0.0.0:${builtins.toString cfg.prometheusExporter.port}";
       };

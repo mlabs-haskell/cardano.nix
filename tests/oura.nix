@@ -22,8 +22,21 @@
             };
           };
           services.oura.settings = {
+            intersect = {
+              type = "Tip";
+            };
+            filters = [
+              {
+                type = "LegacyV1";
+                include_block_end_events = true;
+                include_transaction_details = true;
+                include_transaction_end_events = true;
+                include_block_details = true;
+                include_block_cbor = true;
+              }
+            ];
             sink = {
-              type = "Logs";
+              type = "FileRotate";
               output_path = "/var/log/oura/oura.jsonl";
               output_format = "JSONL";
               max_bytes_per_file = 1000000;
@@ -36,7 +49,6 @@
           environment.systemPackages = with pkgs; [
             jq
             bc
-            curl
           ];
         };
 
@@ -60,16 +72,16 @@
               each = each.strip()
               js = json.loads(each)
               # Very first record haven't block record
-              if not 'block' in js:
+              if not 'block_end' in js["record"]:
                   continue
-              slot = int(js["block"]["slot"])
-              block = int(js["context"]["slot"])
-              assert block > block_max
-              assert slot > slot_max
+              slot = int(js["record"]["block_end"]["slot"])
+              block = int(js["record"]["block_end"]["number"])
+              assert block > block_max, "block > block_max"
+              assert slot > slot_max, "slot > slot_max"
               block_max, slot_max = block, slot
           # Ensure that we seen few blocks
-          assert block_max > 0
-          assert slot_max > 0
+          assert block_max > 0, "block_max > 0"
+          assert slot_max > 0, "slot_max > 0"
 
           print(machine.succeed("systemd-analyze security oura"))
         '';
