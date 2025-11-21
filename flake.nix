@@ -63,10 +63,12 @@
     };
 
     oura = {
-      url = "github:txpipe/oura/v1.9.4";
+      url = "github:txpipe/oura/v2.0.0";
       inputs = {
-        utils.follows = "flake-utils_";
-        crane.follows = "crane_";
+        # We use own packaging, using crane and default rust from _our_ nixpkgs
+        flake-utils.follows = "flake-utils_";
+        nixpkgs.follows = "nixpkgs_";
+        rust-overlay.follows = "";
       };
     };
 
