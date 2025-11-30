@@ -4,7 +4,7 @@ let
     pkgs: version: hash:
     pkgs.fetchzip {
       name = "ogmios-${version}";
-      url = mkUrl pkgs.system version;
+      url = mkUrl pkgs.stdenv.hostPlatform.system version;
       inherit hash;
       stripRoot = false;
       postFetch = "chmod +x $out/bin/ogmios";
