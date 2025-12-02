@@ -58,8 +58,8 @@
     };
 
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v4.1.2";
-      # inputs.nixpkgs.follows = "nixpkgs_";  # FIXME do this when https://github.com/blockfrost/blockfrost-backend-ryo/issues/279 is merged
+      url = "github:blockfrost/blockfrost-backend-ryo/v4.3.0";
+      inputs.nixpkgs.follows = "nixpkgs_";
     };
 
     oura = {

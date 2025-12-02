@@ -68,19 +68,21 @@
     },
     "blockfrost": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs_"
+        ]
       },
       "locked": {
-        "lastModified": 1749464997,
-        "narHash": "sha256-9FFC13FH7LeT2izPrYgCgDpj2vhxGwIpuGMKNQlBZXU=",
+        "lastModified": 1759927499,
+        "narHash": "sha256-zqz+MgVXcuyS86lTX1tG0ZAhD18+9b67MA1ospNXIuQ=",
         "owner": "blockfrost",
         "repo": "blockfrost-backend-ryo",
-        "rev": "7400007a369d34bbdb88ae1b576b89b4bb528b7f",
+        "rev": "b414d51d1e5e78d19f1194b41c15187c1c80da9e",
         "type": "github"
       },
       "original": {
         "owner": "blockfrost",
-        "ref": "v4.1.2",
+        "ref": "v4.3.0",
         "repo": "blockfrost-backend-ryo",
         "type": "github"
       }
@@ -1332,7 +1334,7 @@
     "nix": {
       "inputs": {
         "lowdown-src": "lowdown-src",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
@@ -1353,7 +1355,7 @@
     "nix_2": {
       "inputs": {
         "lowdown-src": "lowdown-src_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-regression": "nixpkgs-regression_2"
       },
       "locked": {
@@ -1388,16 +1390,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1687420147,
-        "narHash": "sha256-NILbmZVsoP2Aw0OAIXdbYXrWc/qggIDDyIwZ01yUx+Q=",
+        "lastModified": 1657693803,
+        "narHash": "sha256-G++2CJ9u0E7NNTAi9n5G8TdDmGJXcIjkJ3NF8cetQB8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d449a456ba7d81038fc9ec9141eae7ee3aaf2982",
+        "rev": "365e1b3a859281cf11b94f87231adeabbdd878a2",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-23.05",
+        "ref": "nixos-22.05-small",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1740,22 +1742,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1657693803,
-        "narHash": "sha256-G++2CJ9u0E7NNTAi9n5G8TdDmGJXcIjkJ3NF8cetQB8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "365e1b3a859281cf11b94f87231adeabbdd878a2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-22.05-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1764242076,
         "narHash": "sha256-sKoIWfnijJ0+9e4wRvIgm/HgE27bzwQxcEmo2J/gNpI=",
         "owner": "NixOS",
@@ -1861,7 +1847,7 @@
           "cardano-node",
           "iohkNix"
         ],
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs_": [
           "nixpkgs"
         ],
