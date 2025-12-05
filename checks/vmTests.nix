@@ -96,7 +96,7 @@ in
                   # Import all of our NixOS modules by default.
                   nixosModules.default
                   # Fix missing `pkgs.system` in tests.
-                  { nixpkgs.overlays = [ (_: _: { inherit system; }) ]; }
+                  { nixpkgs.overlays = [ (_: _: { inherit (pkgs.stdenv.hostPlatform) system; }) ]; }
                 ];
                 documentation.enable = lib.mkDefault false;
               };

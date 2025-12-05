@@ -9,7 +9,7 @@
   ];
   flake.overlays = {
     default = final: _prev: {
-      inherit ((config.perSystem final.system).packages)
+      inherit ((config.perSystem final.stdenv.hostPlatform.system).packages)
         cardano-cli
         cardano-node
         demeter-run-cli

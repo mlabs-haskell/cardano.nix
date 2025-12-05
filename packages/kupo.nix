@@ -4,7 +4,7 @@ let
   mkPackage =
     pkgs: version: hash:
     pkgs.fetchzip {
-      url = mkUrl pkgs.system version;
+      url = mkUrl pkgs.stdenv.hostPlatform.system version;
       inherit hash;
       stripRoot = false;
       name = "kupo-${version}";

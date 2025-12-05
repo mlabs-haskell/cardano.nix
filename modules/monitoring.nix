@@ -20,7 +20,7 @@ in
       monitoring services Prometheus and Grafana
     '';
     targets = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       default = [ "localhost" ];
       description = ''
         List of hosts to to scrape prometheus metrics from.
