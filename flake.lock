@@ -806,11 +806,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714676393,
-        "narHash": "sha256-OA2LZPTCHyH0PcsNkjeTLvgsn4JmsV2VTvXQacHeUZU=",
+        "lastModified": 1765288655,
+        "narHash": "sha256-EEp3TdjeRSOhhyGV2eOeA0mBh+nM3K5kzWhm+i+ExCU=",
         "owner": "mlabs-haskell",
         "repo": "hercules-ci-effects",
-        "rev": "5ad8f9613b735cb4f8222f07ae45ca37bfe76a23",
+        "rev": "1361c6dcaafa178abd79b151a695e0c10afd9d7a",
         "type": "github"
       },
       "original": {
