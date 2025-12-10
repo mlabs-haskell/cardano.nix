@@ -4,7 +4,7 @@ let
     pkgs: version: hash:
     pkgs.fetchzip {
       name = "ogmios-${version}";
-      url = mkUrl pkgs.system version;
+      url = mkUrl pkgs.stdenv.hostPlatform.system version;
       inherit hash;
       stripRoot = false;
       postFetch = "chmod +x $out/bin/ogmios";
@@ -18,6 +18,6 @@ in
   perSystem =
     { pkgs, ... }:
     {
-      packages.ogmios = mkPackage pkgs "6.13.0" "sha256-b8EscEAsyBkC4PHu+XLtO4sT8WlbWfjfhu/HnOsOQ3E=";
+      packages.ogmios = mkPackage pkgs "6.14.0" "sha256-luN05hKGwB00y0mSTGAexi+l7edMfBSEg7WenGEMO6o=";
     };
 }

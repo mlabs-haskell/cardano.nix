@@ -27,7 +27,7 @@ writeShellApplication {
       echo "  Options:"
       echo "    -h --help          Show this screen."
       echo "    -l --list          Show available tests."
-      echo "    -s --system        Specify the target platform [default: ${stdenv.system}]."
+      echo "    -s --system        Specify the target platform [default: ${stdenv.hostPlatform.system}]."
       echo "    -i --interactive   Run the test interactively."
       echo
     }
@@ -41,7 +41,7 @@ writeShellApplication {
     args=$(getopt -o lihs: --long list,interactive,help,system: -n 'tests' -- "$@")
     eval set -- "$args"
 
-    system="${stdenv.system}"
+    system="${stdenv.hostPlatform.system}"
     nix_args="''${NIX_ARGS:=}"
     driver_args=()
 
