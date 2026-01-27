@@ -47,7 +47,7 @@
     cardano-node.url = "github:intersectmbo/cardano-node/10.5.3"; # following `nixpkgs_` doesn'work
 
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.6.0.7";
+      url = "github:intersectmbo/cardano-db-sync/13.6.0.6";
       inputs = {
         nixpkgs.follows = "cardano-node/nixpkgs"; # following `nixpkgs_` doesn't work
         utils.follows = "flake-utils_";
@@ -58,7 +58,7 @@
     };
 
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v4.3.0";
+      url = "github:blockfrost/blockfrost-backend-ryo/v5.0.0";
       inputs.nixpkgs.follows = "nixpkgs_";
     };
 
