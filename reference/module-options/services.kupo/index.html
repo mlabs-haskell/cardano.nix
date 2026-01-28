@@ -1740,50 +1740,57 @@
 <p>Whether to enable Kupo Cardano chain-indexer.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupopackage">services.kupo.package</h2>
 <p>Kupo package.</p>
 <p><em>Type:</em>
 package</p>
-<p><em>Default:</em>
-<code>null</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="no">null</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupoextraargs">services.kupo.extraArgs</h2>
 <p>Extra arguments to kupo command.</p>
 <p><em>Type:</em>
 list of string</p>
-<p><em>Default:</em>
-<code>[ ]</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">[</span> <span class="p">]</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupogroup">services.kupo.group</h2>
 <p>Group to run kupo service as.</p>
 <p><em>Type:</em>
 non-empty string</p>
-<p><em>Default:</em>
-<code>"kupo"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="s2">&quot;kupo&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupohost">services.kupo.host</h2>
 <p>Host address or name to listen on.</p>
 <p><em>Type:</em>
 non-empty string</p>
-<p><em>Default:</em>
-<code>"127.0.0.1"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="s2">&quot;127.0.0.1&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupohydrahost">services.kupo.hydraHost</h2>
 <p>Hydra host name. Optional.</p>
 <p><em>Type:</em>
 null or non-empty string</p>
-<p><em>Default:</em>
-<code>null</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="no">null</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupohydraport">services.kupo.hydraPort</h2>
@@ -1797,11 +1804,11 @@ null or non-empty string</p>
 <p><em>Type:</em>
 list of non-empty string</p>
 <p><em>Default:</em></p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>[
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>  &quot;*&quot;
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>]
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">[</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>  <span class="s2">&quot;*&quot;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="p">]</span>
 </span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
@@ -1809,72 +1816,81 @@ list of non-empty string</p>
 <p>Path to cardano-node config.json file. Ignored if <code>ogmiosHost</code> is not <code>null</code></p>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/etc/cardano-node/config.json"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="s2">&quot;/etc/cardano-node/config.json&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskuponodesocketpath">services.kupo.nodeSocketPath</h2>
 <p>Path to cardano-node IPC socket. Ignored if <code>ogmiosHost</code> is not <code>null</code>.</p>
 <p><em>Type:</em>
 null or absolute path</p>
-<p><em>Default:</em>
-<code>"/run/cardano-node/node.socket"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="s2">&quot;/run/cardano-node/node.socket&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupoogmioshost">services.kupo.ogmiosHost</h2>
 <p>Ogmios host name. Optional, will connect to cardano-node if <code>null</code>.</p>
 <p><em>Type:</em>
 null or non-empty string</p>
-<p><em>Default:</em>
-<code>null</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="no">null</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupoogmiosport">services.kupo.ogmiosPort</h2>
 <p>Ogmios port. Ignored if <code>ogmiosHost</code> is <code>null</code>.</p>
 <p><em>Type:</em>
 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>1337</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="mi">1337</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupoport">services.kupo.port</h2>
 <p>TCP port to listen on.</p>
 <p><em>Type:</em>
 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>1442</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="mi">1442</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupopruneutxo">services.kupo.pruneUtxo</h2>
 <p>Automatically remove inputs that are spent on-chain.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskuposince">services.kupo.since</h2>
 <p>Watching depth.</p>
 <p><em>Type:</em>
 non-empty string</p>
-<p><em>Default:</em>
-<code>"origin"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="s2">&quot;origin&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupouser">services.kupo.user</h2>
 <p>User to run kupo service as.</p>
 <p><em>Type:</em>
 non-empty string</p>
-<p><em>Default:</em>
-<code>"kupo"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="s2">&quot;kupo&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 <h2 id="serviceskupoworkdir">services.kupo.workDir</h2>
 <p>Directory to start the kupo and store its data. Must start with <code>/var/lib/</code>.</p>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/var/lib/kupo"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="s2">&quot;/var/lib/kupo&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/kupo.nix</a></p>
 

@@ -1496,50 +1496,57 @@
 <p>Whether to enable oura.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix</a></p>
 <h2 id="servicesourapackage">services.oura.package</h2>
 <p>The oura package to use.</p>
 <p><em>Type:</em>
 package</p>
-<p><em>Default:</em>
-<code>pkgs.oura</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>pkgs<span class="o">.</span>oura
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix</a></p>
 <h2 id="servicesouragroup">services.oura.group</h2>
 <p>Group to run oura service as</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"oura"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="s2">&quot;oura&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix</a></p>
 <h2 id="servicesourasettings">services.oura.settings</h2>
 <p>Freeform attrset that generates the TOML configuration file used by Oura.</p>
 <p><em>Type:</em>
 open submodule of (TOML value)</p>
-<p><em>Default:</em>
-<code>{ }</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">{</span> <span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix</a></p>
 <h2 id="servicesourastatedir">services.oura.stateDir</h2>
 <p>State directory for oura service</p>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/var/lib/oura"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="s2">&quot;/var/lib/oura&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix</a></p>
 <h2 id="servicesourauser">services.oura.user</h2>
 <p>User to run oura service as</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"oura"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="s2">&quot;oura&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/oura.nix</a></p>
 

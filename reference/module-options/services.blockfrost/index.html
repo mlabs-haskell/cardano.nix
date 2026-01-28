@@ -1740,142 +1740,160 @@
 <p>Whether to enable Blockfrost.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostpackage">services.blockfrost.package</h2>
 <p><em>Type:</em>
 package</p>
-<p><em>Default:</em>
-<code>&lt;derivation blockfrost-backend-ryo&gt;</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">&lt;</span><span class="nb">derivation</span> blockfrost-backend-ryo<span class="o">&gt;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostgroup">services.blockfrost.group</h2>
 <p>Group to run blockfrost service as</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"blockfrost"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="s2">&quot;blockfrost&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettings">services.blockfrost.settings</h2>
 <p>Freeform attrset that generates the JSON configuration file used by Blockfrost.</p>
 <p><em>Type:</em>
 open submodule of (JSON value)</p>
-<p><em>Default:</em>
-<code>{ }</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">{</span> <span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Example:</em></p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span>
-<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>&#39;&#39;
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>  {
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>    user = config.services.cardano-db-sync.postgres.user;
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    port = config.services.cardano-db-sync.postgres.port;
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    database = config.services.cardano-db-sync.postgres.database;
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    host = config.services.cardano-db-sync.postgres.socketdir;
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>  }
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>&#39;&#39;
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="s s-Multiline">&#39;&#39;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="s s-Multiline">  {</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="s s-Multiline">    user = config.services.cardano-db-sync.postgres.user;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="s s-Multiline">    port = config.services.cardano-db-sync.postgres.port;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="s s-Multiline">    database = config.services.cardano-db-sync.postgres.database;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="s s-Multiline">    host = config.services.cardano-db-sync.postgres.socketdir;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="s s-Multiline">  }</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="s s-Multiline">&#39;&#39;</span>
 </span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsdbsyncdatabase">services.blockfrost.settings.dbSync.database</h2>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"cdbsync"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="s2">&quot;cdbsync&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsdbsynchost">services.blockfrost.settings.dbSync.host</h2>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"localhost"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="s2">&quot;localhost&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsdbsyncmaxconnections">services.blockfrost.settings.dbSync.maxConnections</h2>
 <p><em>Type:</em>
 signed integer</p>
-<p><em>Default:</em>
-<code>10</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="mi">10</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsdbsyncport">services.blockfrost.settings.dbSync.port</h2>
 <p><em>Type:</em>
 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>5432</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="mi">5432</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsdbsyncuser">services.blockfrost.settings.dbSync.user</h2>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"cexplorer"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="s2">&quot;cexplorer&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsnetwork">services.blockfrost.settings.network</h2>
 <p><em>Type:</em>
 one of “mainnet”, “preprod”, “preview”, “testnet”, “sanchonet”</p>
-<p><em>Default:</em>
-<code>"mainnet"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="s2">&quot;mainnet&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsserverdebug">services.blockfrost.settings.server.debug</h2>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsserverlistenaddress">services.blockfrost.settings.server.listenAddress</h2>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"localhost"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="s2">&quot;localhost&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsserverport">services.blockfrost.settings.server.port</h2>
 <p><em>Type:</em>
 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>3000</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="mi">3000</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingsserverprometheusmetrics">services.blockfrost.settings.server.prometheusMetrics</h2>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostsettingstokenregistryurl">services.blockfrost.settings.tokenRegistryUrl</h2>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"https://tokens.cardano.org"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="s2">&quot;https://tokens.cardano.org&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfroststatedir">services.blockfrost.stateDir</h2>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/var/lib/blockfrost"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="s2">&quot;/var/lib/blockfrost&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 <h2 id="servicesblockfrostuser">services.blockfrost.user</h2>
 <p>User to run blockfrost service as</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"blockfrost"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="s2">&quot;blockfrost&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix">https://github.com/blockfrost/blockfrost-backend-ryo/tree/master/nixos-module.nix</a></p>
 

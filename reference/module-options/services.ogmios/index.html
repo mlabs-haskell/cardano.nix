@@ -1564,42 +1564,48 @@
 <p>Whether to enable Ogmios bridge interface for cardano-node.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmiospackage">services.ogmios.package</h2>
 <p>Ogmios package</p>
 <p><em>Type:</em>
 package</p>
-<p><em>Default:</em>
-<code>null</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="no">null</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmiosextraargs">services.ogmios.extraArgs</h2>
 <p>Extra arguments to ogmios command.</p>
 <p><em>Type:</em>
 list of string</p>
-<p><em>Default:</em>
-<code>[ ]</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">[</span> <span class="p">]</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmiosgroup">services.ogmios.group</h2>
 <p>Group to run Ogmios service as.</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"ogmios"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="s2">&quot;ogmios&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmioshost">services.ogmios.host</h2>
 <p>Host address or name to listen on.</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"127.0.0.1"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="s2">&quot;127.0.0.1&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmiosnodeconfigpath">services.ogmios.nodeConfigPath</h2>
@@ -1612,24 +1618,27 @@ absolute path</p>
 <p>Path to cardano-node IPC socket.</p>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/run/cardano-node/node.socket"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="s2">&quot;/run/cardano-node/node.socket&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmiosport">services.ogmios.port</h2>
 <p>TCP port to listen on.</p>
 <p><em>Type:</em>
 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>1337</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="mi">1337</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 <h2 id="servicesogmiosuser">services.ogmios.user</h2>
 <p>User to run Ogmios service as.</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"ogmios"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="s2">&quot;ogmios&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/ogmios.nix</a></p>
 

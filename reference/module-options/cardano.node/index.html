@@ -1498,52 +1498,60 @@
 <p>Whether to enable cardano-node service.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 <h2 id="cardanonodeconfigpath">cardano.node.configPath</h2>
 <p>Path to cardano-node configuration.</p>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/etc/cardano-node/config.json"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="s2">&quot;/etc/cardano-node/config.json&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 <h2 id="cardanonodecopycardanonodeconfigtoetc">cardano.node.copyCardanoNodeConfigToEtc</h2>
 <p>If set to true, this will – at Nix evaluation time – copy the cardano node’s config file to <code>/etc/cardano-node/config.json</code></p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 <h2 id="cardanonodeprometheusexporterenable">cardano.node.prometheusExporter.enable</h2>
 <p>Whether to enable prometheus exporter.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 <h2 id="cardanonodeprometheusexporterport">cardano.node.prometheusExporter.port</h2>
 <p>Port where Prometheus exporter is exposed.</p>
 <p><em>Type:</em>
 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>12798</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="mi">12798</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 <h2 id="cardanonodesocketpath">cardano.node.socketPath</h2>
 <p>Path to cardano-node socket.</p>
 <p><em>Type:</em>
 absolute path</p>
-<p><em>Default:</em>
-<code>"/run/cardano-node/node.socket"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="s2">&quot;/run/cardano-node/node.socket&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/node.nix</a></p>
 

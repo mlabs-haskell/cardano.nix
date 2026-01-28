@@ -1608,50 +1608,57 @@
 <p>Whether to enable HTTP reverse proxy, TLS endpoint and load balancer.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
-<p><em>Example:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
+<p><em>Example:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxydomainname">services.http-proxy.domainName</h2>
 <p>Domain name. For each service a virtualHost is configured as a subdomain.</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>""</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="s2">&quot;&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyhttpsenable">services.http-proxy.https.enable</h2>
 <p>Enable TLS and redirect all connections to HTTPS. Requires certificates. Supports ACME.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyhttpsacmeenable">services.http-proxy.https.acme.enable</h2>
 <p>Enable Let’s Encrypt ACME TLS certificates. Requires public DNS records pointing to server and <code>security.acme</code> configured.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>false</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="no">false</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyopenfirewall">services.http-proxy.openFirewall</h2>
 <p>Open firewall for HTTP and HTTPS.</p>
 <p><em>Type:</em>
 boolean</p>
-<p><em>Default:</em>
-<code>true</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="no">true</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyservers">services.http-proxy.servers</h2>
 <p>List of upstream server host names used for all services.</p>
 <p><em>Type:</em>
 list of string</p>
-<p><em>Default:</em>
-<code>[ ]</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">[</span> <span class="p">]</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyservices">services.http-proxy.services</h2>
@@ -1664,32 +1671,36 @@ attribute set of (submodule)</p>
 <p>Name of the service.</p>
 <p><em>Type:</em>
 string</p>
-<p><em>Default:</em>
-<code>"‹name›"</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="s2">&quot;‹name›&quot;</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyservicesport">services.http-proxy.services.<name>.port</h2>
 <p>Upstream server port.</p>
 <p><em>Type:</em>
 null or 16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
-<p><em>Default:</em>
-<code>null</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="no">null</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyservicesservers">services.http-proxy.services.<name>.servers</h2>
 <p>List of upstream server host names.</p>
 <p><em>Type:</em>
 list of string</p>
-<p><em>Default:</em>
-<code>[ ]</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">[</span> <span class="p">]</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 <h2 id="serviceshttp-proxyservicesversion">services.http-proxy.services.<name>.version</h2>
 <p>This string will be served at path ‘/version’.</p>
 <p><em>Type:</em>
 null or string</p>
-<p><em>Default:</em>
-<code>null</code></p>
+<p><em>Default:</em></p>
+<div class="language-nix highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="no">null</span>
+</span></code></pre></div></td></tr></table></div>
 <p><em>Declared by:</em>
  - <a href="https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix">https://github.com/mlabs-haskell/cardano.nix/tree/main/modules/services/http-proxy.nix</a></p>
 
