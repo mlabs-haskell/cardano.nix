@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.0] - 2026-01-28
+
+### Features
+
+- Add `updateSystemStartTime` option to private-testnet-node
+  ([02a438d](https://github.com/mlabs-haskell/cardano.nix/commit/02a438d0b412ff094f9b77ae3e148b6382629861))
+
+- Update cardano-node from 10.5.1 to 10.5.3
+  ([2fab310](https://github.com/mlabs-haskell/cardano.nix/commit/2fab310a1ec024b8a670c486c8e2034ffdfd522c))
+
+- Update oura from 1.9.4 to 2.0.0
+  ([665eb2b](https://github.com/mlabs-haskell/cardano.nix/commit/665eb2ba082050d3d183c56ce57e57913a992cf2))
+
+- Update ogmios from 6.13.0 to 6.14.0
+  ([406fc3d](https://github.com/mlabs-haskell/cardano.nix/commit/406fc3dc49f8ba47f26acd9564914c53c293fae9))
+
+- Update cardano-db-sync from 13.6.0.5 to 13.6.0.6
+  ([498e2ff](https://github.com/mlabs-haskell/cardano.nix/commit/498e2ff0764d216824dd5252fe014d48bce72207))
+
+- Update blockfrost from 4.1.2 to 5.0.0
+  ([498e2ff](https://github.com/mlabs-haskell/cardano.nix/commit/498e2ff0764d216824dd5252fe014d48bce72207))
+
+### Bug Fixes
+
+- Fix eval errors by bumping hercules-ci-effect
+  ([d6a5810](https://github.com/mlabs-haskell/cardano.nix/commit/d6a5810f96958b758596ccc9be6dfebdf08b0a5e))
+
+### Improvements
+
+- Fix deprecated 'stdenv.system' warnings
+  ([b53ccdc](https://github.com/mlabs-haskell/cardano.nix/commit/b53ccdc060c2631c92a65a1c1e3b87eb85cb5a16))
+
 ## [1.2.0] - 2025-09-19
 
 ### Features
