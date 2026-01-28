@@ -10,7 +10,7 @@ in
   options.cardano.oura = {
     enable = lib.mkEnableOption "Oura event processing pipeline for Cardano";
 
-    integrate = lib.mkEnableOption ''connect oura to local cardano-node via N2C'' // {
+    integrate = lib.mkEnableOption "connect oura to local cardano-node via N2C" // {
       default = config.cardano.node.enable or false;
     };
 

@@ -284,7 +284,7 @@ in
           in
           ''
             ${acc}
-            ${builtins.concatStringsSep "\n" (builtins.map (amount: ''request-from-faucet --address  ${lib.escapeShellArg addr} --amount ${builtins.toString amount}'') amounts)}
+            ${builtins.concatStringsSep "\n" (builtins.map (amount: "request-from-faucet --address  ${lib.escapeShellArg addr} --amount ${builtins.toString amount}") amounts)}
           ''
         ) "" cfg.initialFunds}
 
