@@ -44,7 +44,7 @@
 
   # Services
   inputs = {
-    cardano-node.url = "github:intersectmbo/cardano-node/10.5.3"; # following `nixpkgs_` doesn'work
+    cardano-node.url = "github:intersectmbo/cardano-node/10.5.4"; # following `nixpkgs_` doesn'work
 
     cardano-db-sync = {
       url = "github:intersectmbo/cardano-db-sync/13.6.0.6";
