@@ -73,16 +73,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1764672179,
-        "narHash": "sha256-iU+7Futr/FzJ7gRQ9EHbzPq7CESo3Znhn22bc9GBKWA=",
+        "lastModified": 1774862298,
+        "narHash": "sha256-3HwgpKlF+mAg4dPVc35B2k8bV9k2IQiINUnTLhLaFPQ=",
         "owner": "blockfrost",
         "repo": "blockfrost-backend-ryo",
-        "rev": "833bf4bf33365c71ab7285d422c79ecb3b22932a",
+        "rev": "563bd3682483f9a6ea238c78efae084ceb034eab",
         "type": "github"
       },
       "original": {
         "owner": "blockfrost",
-        "ref": "v5.0.0",
+        "ref": "v6.4.0",
         "repo": "blockfrost-backend-ryo",
         "type": "github"
       }
