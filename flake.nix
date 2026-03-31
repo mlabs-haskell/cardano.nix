@@ -44,10 +44,10 @@
 
   # Services
   inputs = {
-    cardano-node.url = "github:intersectmbo/cardano-node/10.5.4"; # following `nixpkgs_` doesn'work
+    cardano-node.url = "github:intersectmbo/cardano-node/10.6.2"; # following `nixpkgs_` doesn'work
 
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.6.0.6";
+      url = "github:intersectmbo/cardano-db-sync/13.7.0.1";
       inputs = {
         nixpkgs.follows = "cardano-node/nixpkgs"; # following `nixpkgs_` doesn't work
         utils.follows = "flake-utils_";
