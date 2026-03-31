@@ -2,6 +2,7 @@
 {
   imports = [
     ./cardano.nix
+    ./db-sync.nix
     ./demeter-run-cli.nix
     ./ogmios.nix
     ./kupo.nix
