@@ -65,7 +65,7 @@ in
     users.users.ogmios = mkIf (cfg.user == "ogmios") {
       isSystemUser = true;
       inherit (cfg) group;
-      extraGroups = [ "cardano-node" ];
+      extraGroups = [ config.cardano.providers.node.accessGroup ];
     };
     users.groups.ogmios = mkIf (cfg.group == "ogmios") { };
 

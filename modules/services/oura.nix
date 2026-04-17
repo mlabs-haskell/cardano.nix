@@ -60,7 +60,7 @@ in
       isSystemUser = true;
       inherit (cfg) group;
       home = cfg.stateDir;
-      extraGroups = [ "cardano-node" ];
+      extraGroups = [ config.cardano.providers.node.accessGroup ];
     };
     users.groups.oura = lib.mkIf (cfg.group == "oura") { };
 
