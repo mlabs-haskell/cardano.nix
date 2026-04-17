@@ -127,7 +127,7 @@ in
     users.users.kupo = mkIf (cfg.user == "kupo") {
       isSystemUser = true;
       inherit (cfg) group;
-      extraGroups = [ "cardano-node" ];
+      extraGroups = [ config.cardano.providers.node.accessGroup ];
     };
     users.groups.kupo = mkIf (cfg.group == "kupo") { };
 
