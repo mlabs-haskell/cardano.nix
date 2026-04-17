@@ -14,7 +14,7 @@ in
     package = mkOption {
       type = types.package;
       description = "The demeter-run-cli package.";
-      default = pkgs.demeter-run-cli;
+      default = pkgs.demeter-run-cli or null;
     };
 
     user = mkOption {
@@ -51,7 +51,7 @@ in
     };
   };
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.demeter-run-cli ];
+    environment.systemPackages = [ cfg.package ];
     users.users.${cfg.user} = {
       inherit (cfg) group;
       isSystemUser = true;
