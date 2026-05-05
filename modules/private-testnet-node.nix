@@ -85,6 +85,12 @@ in
       default = ./fixtures/test-node/genesis-conway.json;
     };
 
+    genesisDijkstra = lib.mkOption {
+      internal = true;
+      type = lib.types.path;
+      default = ./fixtures/test-node/genesis-dijkstra.json;
+    };
+
     genesisByron = lib.mkOption {
       internal = true;
       type = lib.types.path;
@@ -178,6 +184,7 @@ in
         install -o cardano-node -g cardano-node -m 664 ${cfg.nodeConfigFile} "$CONFIGURATION_DIRECTORY/config.json"
         install -o cardano-node -g cardano-node -m 664 ${cfg.genesisAlonzo} "$CONFIGURATION_DIRECTORY/genesis-alonzo.json"
         install -o cardano-node -g cardano-node -m 664 ${cfg.genesisConway} "$CONFIGURATION_DIRECTORY/genesis-conway.json"
+        install -o cardano-node -g cardano-node -m 664 ${cfg.genesisDijkstra} "$CONFIGURATION_DIRECTORY/genesis-dijkstra.json"
         install -o cardano-node -g cardano-node -m 600 ${cfg.vrfKey} "$CONFIGURATION_DIRECTORY/vrf.skey"
         install -o cardano-node -g cardano-node -m 600 ${cfg.kesKey} "$CONFIGURATION_DIRECTORY/kes.skey"
         install -o cardano-node -g cardano-node -m 600 ${cfg.delegationCertificate} "$CONFIGURATION_DIRECTORY/byron-delegation.cert"
