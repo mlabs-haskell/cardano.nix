@@ -25,6 +25,9 @@
           statix.enable = true;
         };
         settings.formatter.nixfmt.options = [ "--width=65536" ];
+
+        # Exclude vendored cardano-node-service from formatting
+        settings.excludes = [ "modules/services/cardano-node-service.nix" ];
       };
 
       devshells.default.commands = [

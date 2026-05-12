@@ -207,7 +207,13 @@ in
                 options =
                   let
                     evaluated = lib.evalModules {
+                      #specialArgs = {
+                      #  inherit inputs;
+                      #};
                       modules = modules ++ [
+                        {
+                          _module.args.inputs = inputs;
+                        }
                         {
                           # We need standard NixOS modules _plus_ `cardano.providers` inside context of evaluation, because lof of modules
                           # refers to them in `default` statement.

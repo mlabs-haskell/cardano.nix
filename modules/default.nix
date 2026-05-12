@@ -18,12 +18,18 @@
         ./cli.nix
       ];
     };
-    node = {
-      imports = [
-        inputs.cardano-node.nixosModules.cardano-node
-        ./node.nix
-      ];
-    };
+    node =
+      { pkgs, ... }:
+      {
+        imports = [
+          # inputs.cardano-node.nixosModules.cardano-node
+          ./services/cardano-node-service.nix
+          ./node.nix
+        ];
+        services.cardano-node.cardanoNodePackages = inputs.cardano-node.packages.${pkgs.stdenv.hostPlatform.system}.cardano-node // {
+          cardanoLib = pkgs.callPackage "${inputs.iohkNix_}/cardano-lib" { };
+        };
+      };
 
     private-testnet-node = {
       imports = [
