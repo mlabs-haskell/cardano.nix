@@ -1067,15 +1067,6 @@ in {
           assertion = all (i: !(cfg.withUtxoHdLmdb i && cfg.withUtxoHdLsmt i)) (genList trivial.id cfg.instances);
           message = "Each instance can only declare either withUtxoHdLmdb or withUtxoHdLsmt";
         }
-        {
-          assertion = count (o: o != null) (with cfg; [
-            (tracerSocketPathAccept i)
-            (tracerSocketPathConnect i)
-            (tracerSocketNetworkAccept i)
-            (tracerSocketNetworkConnect i)
-          ]) <= 1;
-          message   = "Only one option of services.cardano-node.tracerSocket(PathAccept|PathConnect|NetworkAccept|NetworkConnect) can be declared.";
-        }
       ];
 
       warnings = optional (cfg.useNewTopology != null) ''
