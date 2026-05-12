@@ -26,7 +26,8 @@
           ./services/cardano-node-service.nix
           ./node.nix
         ];
-        services.cardano-node.cardanoNodePackages = inputs.cardano-node.packages.${pkgs.stdenv.hostPlatform.system}.cardano-node // {
+        services.cardano-node.cardanoNodePackages = {
+          inherit (inputs.cardano-node.packages.${pkgs.stdenv.hostPlatform.system}) cardano-node;
           cardanoLib = pkgs.callPackage "${inputs.iohkNix_}/cardano-lib" { };
         };
       };
