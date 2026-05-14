@@ -22,9 +22,11 @@
       { pkgs, ... }:
       {
         imports = [
+          ./node.nix
+          # FIXME using patched cardano-node NixOS module instead of upstream one
+          # because of an evaluation failure in Hercules CI
           # inputs.cardano-node.nixosModules.cardano-node
           ./services/cardano-node-service.nix
-          ./node.nix
         ];
         services.cardano-node.cardanoNodePackages = {
           inherit (inputs.cardano-node.packages.${pkgs.stdenv.hostPlatform.system}) cardano-node;

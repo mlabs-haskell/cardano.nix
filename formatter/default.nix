@@ -27,6 +27,7 @@
         settings.formatter.nixfmt.options = [ "--width=65536" ];
 
         # Exclude vendored cardano-node-service from formatting
+        # https://github.com/IntersectMBO/cardano-node/pull/6528
         settings.excludes = [ "modules/services/cardano-node-service.nix" ];
       };
 
