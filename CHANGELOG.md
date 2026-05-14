@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.0] - 2026-05-14
+
+### Features
+
+- Update cardano-node from 10.5.3 to 10.7.1
+  ([d63ef88](https://github.com/mlabs-haskell/cardano.nix/commit/d63ef8819f0aa6c0a94b7c6e0f71ece02ee9da79))
+
+- Update cardano-db-sync from 13.6.0.6 to 13.7.0.1
+  ([8f75ac2](https://github.com/mlabs-haskell/cardano.nix/commit/8f75ac27e35ae514534615364e338c42d62cb654))
+
+- Update blockfrost from v5.0.0 to v6.4.0
+  ([ee8c2d6](https://github.com/mlabs-haskell/cardano.nix/commit/ee8c2d6d6d8ca377efdf1c1e10aaaec85f9d2d8a))
+
+- Re-export db-sync packages
+  ([66a4279](https://github.com/mlabs-haskell/cardano.nix/commit/66a427901421074b799bcb0eeb411b744d967d60))
+
+### Bug Fixes
+
+- Fix db-sync-tool package name
+  ([e3cc6ca](https://github.com/mlabs-haskell/cardano.nix/commit/e3cc6caf7cef7ddfa8e079fd6bbab1ffdff2d537))
+
+- Add Dijkstra era genesis to private-testnet-node
+  ([d253d23](https://github.com/mlabs-haskell/cardano.nix/commit/d253d23cb8a2d5db1f407509e29338f31b27866b))
+
 ## [1.3.0] - 2026-01-28
 
 ### Features
