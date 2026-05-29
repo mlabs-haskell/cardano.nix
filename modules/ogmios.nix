@@ -15,7 +15,6 @@ in
     services.ogmios = {
       enable = true;
       nodeSocketPath = lib.mkIf (config.cardano.node.enable or false) config.cardano.node.socketPath or null;
-      nodeConfigPath = lib.mkIf (config.cardano.node.enable or false) config.cardano.node.configPath or null;
     };
 
     systemd.services.ogmios = lib.mkIf (config.cardano.node.enable or false) {

@@ -40,6 +40,7 @@ in
     nodeConfigPath = mkOption {
       description = "Path to cardano-node config.json file. Required.";
       type = path;
+      default = "/etc/cardano-node/config.json";
     };
 
     host = mkOption {
