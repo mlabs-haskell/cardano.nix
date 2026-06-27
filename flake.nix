@@ -58,7 +58,7 @@
     };
 
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v6.4.0";
+      url = "github:blockfrost/blockfrost-backend-ryo/v6.7.0";
       inputs.nixpkgs.follows = "nixpkgs_";
     };
 
