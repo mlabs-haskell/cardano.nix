@@ -7,6 +7,7 @@
 let
   cfg = config.cardano.monitoring;
   inherit (lib)
+    mkDefault
     mkIf
     mkEnableOption
     mkMerge
@@ -109,6 +110,15 @@ in
         settings = {
           server = {
             http_addr = "0.0.0.0";
+          };
+          security = {
+            # - Grafana's secret key (services.grafana.settings.security.secret_key) doesn't have a default
+            #   value anymore. Please generate your own and use a file-provider on this option! See also
+            #   https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#secret_key for more information.
+            #
+            # As stated in the NixOS changelog for 26.05, there's no official way to rotate.
+            # Either hard-code the old key ("SW2YcwTIb9zpOOhoPsMm") if your setup doesn't have any secrets in the DB that need
+            secret_key = mkDefault (builtins.trace "Warning (cardano.nix): insecure graphana key used" "SW2YcwTIb9zpOOhoPsMm");
           };
         };
         provision = {

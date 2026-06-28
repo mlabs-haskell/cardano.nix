@@ -1,7 +1,7 @@
 {
   # Utilities
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -59,7 +59,8 @@
 
     blockfrost = {
       url = "github:blockfrost/blockfrost-backend-ryo/v6.7.0";
-      inputs.nixpkgs.follows = "nixpkgs_";
+      # Following nixpkgs didn't work anymore, new nodejs package breaks blockfrost
+      # inputs.nixpkgs.follows = "nixpkgs_";
     };
 
     oura = {
