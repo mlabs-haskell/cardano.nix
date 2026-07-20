@@ -1,7 +1,7 @@
 {
   # Utilities
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -44,22 +44,24 @@
 
   # Services
   inputs = {
-    cardano-node.url = "github:intersectmbo/cardano-node/10.7.1"; # following `nixpkgs_` doesn'work
+    cardano-node.url = "github:intersectmbo/cardano-node/11.0.1"; # following `nixpkgs_` doesn'work
 
     cardano-db-sync = {
-      url = "github:intersectmbo/cardano-db-sync/13.7.0.1";
+      url = "github:intersectmbo/cardano-db-sync/13.7.2.1";
       inputs = {
-        nixpkgs.follows = "cardano-node/nixpkgs"; # following `nixpkgs_` doesn't work
+        # following `nixpkgs_` not `cardano-node/nixpkgs` doesn't work
+        #nixpkgs.follows = "nixpkgs_";
         utils.follows = "flake-utils_";
-        hackageNix.follows = "hackageNix_";
+        #hackageNix.follows = "hackageNix_";
         iohkNix.follows = "iohkNix_";
         flake-compat.follows = "flake-compat_";
       };
     };
 
     blockfrost = {
-      url = "github:blockfrost/blockfrost-backend-ryo/v6.4.0";
-      inputs.nixpkgs.follows = "nixpkgs_";
+      url = "github:blockfrost/blockfrost-backend-ryo/v6.7.0";
+      # Following nixpkgs didn't work anymore, new nodejs package breaks blockfrost
+      # inputs.nixpkgs.follows = "nixpkgs_";
     };
 
     oura = {
