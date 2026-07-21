@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.0] - 2026-07-21
+
+## <!-- 0 -->🚀 Features
+
+- blockfrost: bump 6.4.0 -> 6.7.0
+  ([abe1954](https://github.com/mlabs-haskell/cardano.nix/commit/abe1954fbb920185251381e714a1aa1862dda118)) - Alexander V. Nikolaev (2026-06-27)
+
+- cardano-node: bump 10.7.1 -> 11.0.1
+  ([2eb2665](https://github.com/mlabs-haskell/cardano.nix/commit/2eb2665cea73a2f8e59b4d5db5ed17eda0c99522)) - Alexander V. Nikolaev (2026-06-28)
+
+- ogmios: bump 6.14.0 -> 7.0.0
+  ([3d0e841](https://github.com/mlabs-haskell/cardano.nix/commit/3d0e841efb1c0db3cb3b5c5a707b14db63e32175)) - Alexander V. Nikolaev (2026-07-07)
+
+- cardano-db-sync: bump 13.7.0.1 -> 13.7.2.1
+  ([39728e3](https://github.com/mlabs-haskell/cardano.nix/commit/39728e32b90620fbc50489d095cd9f32ec55771f)) - Alexander V. Nikolaev (2026-07-07)
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- bump nixpkgs and treefmt-nix
+  ([2327437](https://github.com/mlabs-haskell/cardano.nix/commit/23274378d60ad4fd052e14bbc25c190d06f02a26)) - Alexander V. Nikolaev (2026-06-28)
+
 ## [1.4.0] - 2026-05-14
 
 ### Features
