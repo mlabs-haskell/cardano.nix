@@ -19,6 +19,6 @@ in
   perSystem =
     { pkgs, ... }:
     {
-      packages.kupo = mkPackage pkgs "2.11.0" "sha256-kOYenPdLEYwub4obEsgMEkytZQN/9CF64pfeS1Jr5QY=";
+      packages.kupo = mkPackage pkgs "2.12.0" "sha256-BiuGwBpqDgj/2UyZK9WaDDUWWMBlbVsIsJ+i5Ao4HX4=";
     };
 }
